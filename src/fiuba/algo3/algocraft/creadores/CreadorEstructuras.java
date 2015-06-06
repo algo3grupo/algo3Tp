@@ -1,7 +1,7 @@
 package fiuba.algo3.algocraft.creadores;
 
+import fiuba.algo3.algocraft.Interfaces.IRecolectores;
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
-import fiuba.algo3.algocraft.entidadesAbstractas.Recolectores;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEntidadException;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
 import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
@@ -21,16 +21,16 @@ public abstract class CreadorEstructuras extends Creador {
 		
 		try {
 			Estructura estructura = (Estructura)crearEntidad(string, posicion, null);
-			if(estructura instanceof Recolectores){
+			if(estructura instanceof IRecolectores){
 				
 				if (( (estructura.nombre() == "Centro De Minerales") || (estructura.nombre()  == "Nexo Mineral") ) 
 														& (! mundo.hayMineral(posicion))){
-					estructura.jugador().reintegroCosto(estructura);
+					estructura.getJugador().reintegroCosto(estructura);
 					throw new NoHayMineralEnElLugarACrear();
 				}
 				else if (((estructura.nombre()  == "Refineria") || (estructura.nombre()  == "Asimilador") ) 	
 												& (! mundo.hayGas(posicion))){
-					estructura.jugador().reintegroCosto(estructura);
+					estructura.getJugador().reintegroCosto(estructura);
 					throw new NoHayGasEnElLugarACrear();
 				}
 			}

@@ -8,7 +8,7 @@ import fiuba.algo3.algocraft.jugador.Jugador;
 
 public abstract class ColaDeAcciones extends Entidad implements IColaDeAcciones{
 	
-	ArrayList<IAccion> colaDeAcciones;
+	private ArrayList<IAccion> colaDeAcciones;
 	
 	public ColaDeAcciones(Entidad entidad)
 	{
@@ -19,6 +19,8 @@ public abstract class ColaDeAcciones extends Entidad implements IColaDeAcciones{
 	
 	public ColaDeAcciones(Jugador jugador) {
 		super(jugador);
+		
+		colaDeAcciones = new ArrayList<IAccion>();
 	}
 
 	public void agregarAccion(IAccion accion)

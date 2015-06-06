@@ -1,10 +1,10 @@
 package fiuba.algo3.algocraft.estructurasProtoss;
 
 import fiuba.algo3.algocraft.atributosEntidades.Costo;
-import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
+import fiuba.algo3.algocraft.entidadesAbstractas.Protegidas;
 import fiuba.algo3.algocraft.jugador.Jugador;
 
-public class PuertoEstelar extends Estructura {
+public class PuertoEstelar extends Protegidas {
 
 	public PuertoEstelar(Jugador jugador) {
 		super(jugador);

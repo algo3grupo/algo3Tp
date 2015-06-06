@@ -6,7 +6,7 @@ import fiuba.algo3.algocraft.Interfaces.IColaDeAcciones;
 public class CrearUnidad implements IAccion
 {
 	
-	char turnos;
+	private char turnos;
 	
 	public CrearUnidad()
 	{

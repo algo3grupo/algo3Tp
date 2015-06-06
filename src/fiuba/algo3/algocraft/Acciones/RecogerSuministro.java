@@ -7,7 +7,7 @@ import fiuba.algo3.algocraft.Interfaces.IRecolectores;
 public class RecogerSuministro implements IAccion
 {
 
-		IRecolectores llamador;
+		private IRecolectores llamador;
 		
 		public RecogerSuministro(IRecolectores llamador)
 		{
@@ -16,7 +16,7 @@ public class RecogerSuministro implements IAccion
 		
 		public void ejecutar(IColaDeAcciones ejecutor)
 		{
-			this.llamador.recolectarSuminstro();
+			this.llamador.recolectarSuministro();
 		}
 }
 

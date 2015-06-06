@@ -1,20 +1,25 @@
 package fiuba.algo3.algocraft.estructurasProtoss;
 
+import fiuba.algo3.algocraft.Acciones.RecogerSuministro;
+import fiuba.algo3.algocraft.Interfaces.IRecolectores;
 import fiuba.algo3.algocraft.atributosEntidades.Costo;
-import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
-import fiuba.algo3.algocraft.entidadesAbstractas.Recolectores;
+import fiuba.algo3.algocraft.entidadesAbstractas.Protegidas;
 import fiuba.algo3.algocraft.jugador.Jugador;
 
-public class NexoMineral extends Estructura implements Recolectores{
+public class NexoMineral extends Protegidas implements IRecolectores{
 
-	public NexoMineral(Jugador jugador) {
+	public NexoMineral(Jugador jugador) 
+	{
 		super(jugador);
 		this.nombre = "Nexo Mineral";
 		this.costo = new Costo(50,0); 
+		
+		agregarAccion(new RecogerSuministro(this));
 	}
 	
-	public void recolectarSuministro() {
-		
+	public void recolectarSuministro()
+	{
+		getJugador().agregarGas(10);
 	}
 
 }

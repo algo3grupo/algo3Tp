@@ -1,6 +1,6 @@
 package fiuba.algo3.algocraft.mundo;
 
-import fiuba.algo3.algocraft.vector2D.Entidad;
+import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 

@@ -13,7 +13,7 @@ public class RecuperarCampo implements IAccion {
 		this.llamador = llamador;
 	}
 	
-	public void ejecutar(IColaDeAcciones llamador)
+	public void ejecutar(IColaDeAcciones ejecutor)
 	{
 		this.llamador.recuperarCampo();
 	}

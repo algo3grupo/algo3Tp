@@ -14,7 +14,7 @@ public class RecogerSuministro implements IAccion
 			this.llamador = llamador;
 		}
 		
-		public void ejecutar(IColaDeAcciones llamador)
+		public void ejecutar(IColaDeAcciones ejecutor)
 		{
 			this.llamador.recolectarSuminstro();
 		}

@@ -1,7 +1,8 @@
-package fiuba.algo3.algocraft.entidadesAbstractas;
+package fiuba.algo3.algocraft.Acciones;
 
 import fiuba.algo3.algocraft.Interfaces.IAccion;
 import fiuba.algo3.algocraft.Interfaces.IColaDeAcciones;
+import fiuba.algo3.algocraft.entidadesAbstractas.Protegidas;
 
 public class RecuperarCampo implements IAccion {
 	

@@ -1,4 +1,4 @@
-package fiuba.algo3.algocraft.entidadesAbstractas;
+package fiuba.algo3.algocraft.Interfaces;
 
 public interface IEstructura {
 

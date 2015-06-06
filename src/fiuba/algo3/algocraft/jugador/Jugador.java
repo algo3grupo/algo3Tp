@@ -7,7 +7,7 @@ import fiuba.algo3.algocraft.creadores.CreadorEstructuras;
 import fiuba.algo3.algocraft.creadores.CreadorUnidades;
 import fiuba.algo3.algocraft.entidadesAbstractas.EntidadAbstracta;
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
-import fiuba.algo3.algocraft.entidadesAbstractas.IEstructura;
+import fiuba.algo3.algocraft.Interfaces.IEstructura;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaUnidadException;

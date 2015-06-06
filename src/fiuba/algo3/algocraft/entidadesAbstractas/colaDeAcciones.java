@@ -17,7 +17,8 @@ public abstract class ColaDeAcciones extends Entidad implements IColaDeAcciones{
 		colaDeAcciones = new ArrayList<IAccion>();
 	}
 	
-	public ColaDeAcciones(Jugador jugador) {
+	public ColaDeAcciones(Jugador jugador) 
+	{
 		super(jugador);
 		
 		colaDeAcciones = new ArrayList<IAccion>();

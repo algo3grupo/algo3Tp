@@ -1,9 +1,9 @@
-package fiuba.algo3.algoCraft.estructurasTerran;
+package fiuba.algo3.algocraft.estructurasTerran;
 
-import fiuba.algo3.algoCraft.atributosEntidades.Costo;
-import fiuba.algo3.algoCraft.entidadesAbstractas.Estructura;
-import fiuba.algo3.algoCraft.entidadesAbstractas.Recolectores;
-import fiuba.algo3.algoCraft.jugador.Jugador;
+import fiuba.algo3.algocraft.atributosEntidades.Costo;
+import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
+import fiuba.algo3.algocraft.entidadesAbstractas.Recolectores;
+import fiuba.algo3.algocraft.jugador.Jugador;
 
 public class CentroDeMineral extends Estructura implements Recolectores {
 

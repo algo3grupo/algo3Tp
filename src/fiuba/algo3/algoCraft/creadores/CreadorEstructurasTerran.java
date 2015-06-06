@@ -1,12 +1,12 @@
-package fiuba.algo3.algoCraft.creadores;
+package fiuba.algo3.algocraft.creadores;
 
-import fiuba.algo3.algoCraft.estructurasTerran.Barraca;
-import fiuba.algo3.algoCraft.estructurasTerran.CentroDeMineral;
-import fiuba.algo3.algoCraft.estructurasTerran.DepositoSuministro;
-import fiuba.algo3.algoCraft.estructurasTerran.Fabrica;
-import fiuba.algo3.algoCraft.estructurasTerran.PuertoEstelarT;
-import fiuba.algo3.algoCraft.estructurasTerran.Refineria;
-import fiuba.algo3.algoCraft.jugador.Jugador;
+import fiuba.algo3.algocraft.estructurasTerran.Barraca;
+import fiuba.algo3.algocraft.estructurasTerran.CentroDeMineral;
+import fiuba.algo3.algocraft.estructurasTerran.DepositoSuministro;
+import fiuba.algo3.algocraft.estructurasTerran.Fabrica;
+import fiuba.algo3.algocraft.estructurasTerran.PuertoEstelarT;
+import fiuba.algo3.algocraft.estructurasTerran.Refineria;
+import fiuba.algo3.algocraft.jugador.Jugador;
 
 public class CreadorEstructurasTerran extends CreadorEstructuras {
 	

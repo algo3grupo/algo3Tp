@@ -1,7 +1,7 @@
-package fiuba.algo3.algoCraft.mundo;
+package fiuba.algo3.algocraft.mundo;
 
-import fiuba.algo3.algoCraft.vector2D.Entidad;
-import fiuba.algo3.algoCraft.vector2D.Vector2D;
+import fiuba.algo3.algocraft.vector2D.Entidad;
+import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 
 public class Mineral extends Entidad {

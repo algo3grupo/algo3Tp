@@ -1,8 +1,8 @@
-package fiuba.algo3.algoCraft.unidadesTerran;
+package fiuba.algo3.algocraft.unidadesTerran;
 
-import fiuba.algo3.algoCraft.atributosEntidades.Costo;
-import fiuba.algo3.algoCraft.entidadesAbstractas.UnidadNave;
-import fiuba.algo3.algoCraft.jugador.Jugador;
+import fiuba.algo3.algocraft.atributosEntidades.Costo;
+import fiuba.algo3.algocraft.entidadesAbstractas.UnidadNave;
+import fiuba.algo3.algocraft.jugador.Jugador;
 
 public class NaveTransporteTerran extends UnidadNave {
 

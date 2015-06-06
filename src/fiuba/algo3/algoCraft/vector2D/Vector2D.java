@@ -1,4 +1,4 @@
-package fiuba.algo3.algoCraft.vector2D;
+package fiuba.algo3.algocraft.vector2D;
 
 public class Vector2D {
 	

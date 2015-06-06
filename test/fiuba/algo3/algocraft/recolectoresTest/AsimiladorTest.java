@@ -1,4 +1,4 @@
-package test.fiuba.algo3.algocraft.recolectoresTest;
+package fiuba.algo3.algocraft.recolectoresTest;
 
 import java.util.ArrayList;
 
@@ -6,17 +6,17 @@ import junit.framework.Assert;
 
 import org.junit.Test;
 
-import fiuba.algo3.algoCraft.entidadesAbstractas.Estructura;
-import fiuba.algo3.algoCraft.entidadesAbstractas.IEstructura;
-import fiuba.algo3.algoCraft.excepciones.NoEsDeSuRazaLaEstructuraException;
-import fiuba.algo3.algoCraft.excepciones.NoHayGasEnElLugarACrear;
-import fiuba.algo3.algoCraft.excepciones.NoHayMineralEnElLugarACrear;
-import fiuba.algo3.algoCraft.excepciones.NoTieneLaEstructuraCreadaException;
-import fiuba.algo3.algoCraft.excepciones.NoTieneRecursosSuficientesException;
-import fiuba.algo3.algoCraft.jugador.Protoss;
-import fiuba.algo3.algoCraft.mundo.Gas;
-import fiuba.algo3.algoCraft.mundo.Mundo;
-import fiuba.algo3.algoCraft.vector2D.Vector2D;
+import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
+import fiuba.algo3.algocraft.entidadesAbstractas.IEstructura;
+import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
+import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
+import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
+import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
+import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
+import fiuba.algo3.algocraft.jugador.Protoss;
+import fiuba.algo3.algocraft.mundo.Gas;
+import fiuba.algo3.algocraft.mundo.Mundo;
+import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class AsimiladorTest {
 	@Test

@@ -1,10 +1,10 @@
-package fiuba.algo3.algoCraft.entidadesAbstractas;
+package fiuba.algo3.algocraft.entidadesAbstractas;
 
 import java.util.ArrayList;
 
-import fiuba.algo3.algoCraft.atributosEntidades.Costo;
-import fiuba.algo3.algoCraft.excepciones.NoTieneLaEstructuraCreadaException;
-import fiuba.algo3.algoCraft.jugador.Jugador;
+import fiuba.algo3.algocraft.atributosEntidades.Costo;
+import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
+import fiuba.algo3.algocraft.jugador.Jugador;
 
 public abstract class EntidadAbstracta {
 	private int ID;

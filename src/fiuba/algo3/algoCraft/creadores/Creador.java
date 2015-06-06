@@ -1,17 +1,17 @@
-package fiuba.algo3.algoCraft.creadores;
+package fiuba.algo3.algocraft.creadores;
 
 import java.util.ArrayList;
 
-import fiuba.algo3.algoCraft.atributosEntidades.Costo;
-import fiuba.algo3.algoCraft.entidadesAbstractas.EntidadAbstracta;
-import fiuba.algo3.algoCraft.excepciones.NoEsDeSuRazaLaEntidadException;
-import fiuba.algo3.algoCraft.excepciones.NoHayGasEnElLugarACrear;
-import fiuba.algo3.algoCraft.excepciones.NoHayMineralEnElLugarACrear;
-import fiuba.algo3.algoCraft.excepciones.NoTieneLaEstructuraCreadaException;
-import fiuba.algo3.algoCraft.excepciones.NoTieneRecursosSuficientesException;
-import fiuba.algo3.algoCraft.jugador.Jugador;
-import fiuba.algo3.algoCraft.mundo.Mundo;
-import fiuba.algo3.algoCraft.vector2D.Vector2D;
+import fiuba.algo3.algocraft.atributosEntidades.Costo;
+import fiuba.algo3.algocraft.entidadesAbstractas.EntidadAbstracta;
+import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEntidadException;
+import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
+import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
+import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
+import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
+import fiuba.algo3.algocraft.jugador.Jugador;
+import fiuba.algo3.algocraft.mundo.Mundo;
+import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public abstract class Creador {
 	/**Crea la entidad pedida corroborando

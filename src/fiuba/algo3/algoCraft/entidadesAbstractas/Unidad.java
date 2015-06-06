@@ -1,6 +1,6 @@
-package fiuba.algo3.algoCraft.entidadesAbstractas;
+package fiuba.algo3.algocraft.entidadesAbstractas;
 
-import fiuba.algo3.algoCraft.jugador.Jugador;
+import fiuba.algo3.algocraft.jugador.Jugador;
 
 
 public abstract class Unidad extends EntidadAbstracta {

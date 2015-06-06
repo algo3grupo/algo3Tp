@@ -1,4 +1,4 @@
-package fiuba.algo3.algoCraft.excepciones;
+package fiuba.algo3.algocraft.excepciones;
 
 public class ParametroNulo extends RuntimeException {
 

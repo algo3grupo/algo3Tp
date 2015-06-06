@@ -1,11 +1,11 @@
-package fiuba.algo3.algoCraft.creadores;
+package fiuba.algo3.algocraft.creadores;
 
-import fiuba.algo3.algoCraft.jugador.Jugador;
-import fiuba.algo3.algoCraft.unidadesTerran.Espectro;
-import fiuba.algo3.algoCraft.unidadesTerran.Golliat;
-import fiuba.algo3.algoCraft.unidadesTerran.Marine;
-import fiuba.algo3.algoCraft.unidadesTerran.NaveCiencia;
-import fiuba.algo3.algoCraft.unidadesTerran.NaveTransporteTerran;
+import fiuba.algo3.algocraft.jugador.Jugador;
+import fiuba.algo3.algocraft.unidadesTerran.Espectro;
+import fiuba.algo3.algocraft.unidadesTerran.Golliat;
+import fiuba.algo3.algocraft.unidadesTerran.Marine;
+import fiuba.algo3.algocraft.unidadesTerran.NaveCiencia;
+import fiuba.algo3.algocraft.unidadesTerran.NaveTransporteTerran;
 
 public class CreadorUnidadesTerran extends CreadorUnidades {
 	

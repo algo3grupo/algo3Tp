@@ -1,11 +1,11 @@
-package test.fiuba.algo3.algocraft.mundoTest;
+package fiuba.algo3.algocraft.mundoTest;
 
 import static org.junit.Assert.*;
 import junit.framework.Assert;
 
 import org.junit.Test;
 
-import fiuba.algo3.algoCraft.vector2D.Vector2D;
+import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class Vector2DTest {
 

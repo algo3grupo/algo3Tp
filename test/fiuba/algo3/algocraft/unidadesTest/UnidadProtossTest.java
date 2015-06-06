@@ -1,20 +1,20 @@
-package test.fiuba.algo3.algocraft.unidadesTest;
+package fiuba.algo3.algocraft.unidadesTest;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import fiuba.algo3.algoCraft.entidadesAbstractas.Unidad;
-import fiuba.algo3.algoCraft.excepciones.NoEsDeSuRazaLaEstructuraException;
-import fiuba.algo3.algoCraft.excepciones.NoEsDeSuRazaLaUnidadException;
-import fiuba.algo3.algoCraft.excepciones.NoHayGasEnElLugarACrear;
-import fiuba.algo3.algoCraft.excepciones.NoHayMineralEnElLugarACrear;
-import fiuba.algo3.algoCraft.excepciones.NoTieneLaEstructuraCreadaException;
-import fiuba.algo3.algoCraft.excepciones.NoTieneRecursosSuficientesException;
-import fiuba.algo3.algoCraft.jugador.Jugador;
-import fiuba.algo3.algoCraft.jugador.Protoss;
-import fiuba.algo3.algoCraft.unidadesProtoss.Zealot;
-import fiuba.algo3.algoCraft.excepciones.NoTienePoblacionSuficienteException;
+import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
+import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
+import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaUnidadException;
+import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
+import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
+import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
+import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
+import fiuba.algo3.algocraft.jugador.Jugador;
+import fiuba.algo3.algocraft.jugador.Protoss;
+import fiuba.algo3.algocraft.unidadesProtoss.Zealot;
+import fiuba.algo3.algocraft.excepciones.NoTienePoblacionSuficienteException;
 
 public class UnidadProtossTest {
 	

@@ -1,8 +1,8 @@
-package fiuba.algo3.algoCraft.unidadesProtoss;
+package fiuba.algo3.algocraft.unidadesProtoss;
 
-import fiuba.algo3.algoCraft.atributosEntidades.Costo;
-import fiuba.algo3.algoCraft.entidadesAbstractas.UnidadNave;
-import fiuba.algo3.algoCraft.jugador.Jugador;
+import fiuba.algo3.algocraft.atributosEntidades.Costo;
+import fiuba.algo3.algocraft.entidadesAbstractas.UnidadNave;
+import fiuba.algo3.algocraft.jugador.Jugador;
 
 public class NaveTransporteProtoss extends UnidadNave {
 

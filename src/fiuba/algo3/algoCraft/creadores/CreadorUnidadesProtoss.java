@@ -1,11 +1,11 @@
-package fiuba.algo3.algoCraft.creadores;
+package fiuba.algo3.algocraft.creadores;
 
-import fiuba.algo3.algoCraft.jugador.Jugador;
-import fiuba.algo3.algoCraft.unidadesProtoss.AltoTemplario;
-import fiuba.algo3.algoCraft.unidadesProtoss.Dragon;
-import fiuba.algo3.algoCraft.unidadesProtoss.NaveTransporteProtoss;
-import fiuba.algo3.algoCraft.unidadesProtoss.Scout;
-import fiuba.algo3.algoCraft.unidadesProtoss.Zealot;
+import fiuba.algo3.algocraft.jugador.Jugador;
+import fiuba.algo3.algocraft.unidadesProtoss.AltoTemplario;
+import fiuba.algo3.algocraft.unidadesProtoss.Dragon;
+import fiuba.algo3.algocraft.unidadesProtoss.NaveTransporteProtoss;
+import fiuba.algo3.algocraft.unidadesProtoss.Scout;
+import fiuba.algo3.algocraft.unidadesProtoss.Zealot;
 
 public class CreadorUnidadesProtoss extends CreadorUnidades {
 	

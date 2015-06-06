@@ -1,7 +1,7 @@
-package fiuba.algo3.algoCraft.jugador;
+package fiuba.algo3.algocraft.jugador;
 
-import fiuba.algo3.algoCraft.creadores.CreadorEstructurasProtoss;
-import fiuba.algo3.algoCraft.creadores.CreadorUnidadesProtoss;
+import fiuba.algo3.algocraft.creadores.CreadorEstructurasProtoss;
+import fiuba.algo3.algocraft.creadores.CreadorUnidadesProtoss;
 
 public class Protoss extends Jugador {
 

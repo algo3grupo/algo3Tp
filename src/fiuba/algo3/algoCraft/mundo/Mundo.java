@@ -1,14 +1,14 @@
-package fiuba.algo3.algoCraft.mundo;
+package fiuba.algo3.algocraft.mundo;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
 
-import fiuba.algo3.algoCraft.excepciones.DivisionDeGrillaNoEsMultiploDeResolucion;
-import fiuba.algo3.algoCraft.excepciones.ParametroNegativo;
-import fiuba.algo3.algoCraft.excepciones.ParametroNulo;
-import fiuba.algo3.algoCraft.excepciones.posicionDeJugadorIndefinida;
-import fiuba.algo3.algoCraft.vector2D.Vector2D;
+import fiuba.algo3.algocraft.excepciones.DivisionDeGrillaNoEsMultiploDeResolucion;
+import fiuba.algo3.algocraft.excepciones.ParametroNegativo;
+import fiuba.algo3.algocraft.excepciones.ParametroNulo;
+import fiuba.algo3.algocraft.excepciones.posicionDeJugadorIndefinida;
+import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class Mundo {
 	

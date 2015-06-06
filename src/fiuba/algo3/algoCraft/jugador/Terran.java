@@ -1,7 +1,7 @@
-package fiuba.algo3.algoCraft.jugador;
+package fiuba.algo3.algocraft.jugador;
 
-import fiuba.algo3.algoCraft.creadores.CreadorEstructurasTerran;
-import fiuba.algo3.algoCraft.creadores.CreadorUnidadesTerran;
+import fiuba.algo3.algocraft.creadores.CreadorEstructurasTerran;
+import fiuba.algo3.algocraft.creadores.CreadorUnidadesTerran;
 
 public class Terran extends Jugador {
 

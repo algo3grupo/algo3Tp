@@ -1,4 +1,4 @@
-package test.fiuba.algo3.algocraft.mundoTest;
+package fiuba.algo3.algocraft.mundoTest;
 
 import static org.junit.Assert.*;
 
@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import org.junit.Assert;
 import org.junit.Test;
 
-import fiuba.algo3.algoCraft.excepciones.posicionDeJugadorIndefinida;
-import fiuba.algo3.algoCraft.excepciones.ParametroNegativo;
-import fiuba.algo3.algoCraft.excepciones.ParametroNulo;
-import fiuba.algo3.algoCraft.excepciones.DivisionDeGrillaNoEsMultiploDeResolucion;
-import fiuba.algo3.algoCraft.mundo.Gas;
-import fiuba.algo3.algoCraft.mundo.Mineral;
-import fiuba.algo3.algoCraft.mundo.Mundo;
-import fiuba.algo3.algoCraft.vector2D.Vector2D;
+import fiuba.algo3.algocraft.excepciones.posicionDeJugadorIndefinida;
+import fiuba.algo3.algocraft.excepciones.ParametroNegativo;
+import fiuba.algo3.algocraft.excepciones.ParametroNulo;
+import fiuba.algo3.algocraft.excepciones.DivisionDeGrillaNoEsMultiploDeResolucion;
+import fiuba.algo3.algocraft.mundo.Gas;
+import fiuba.algo3.algocraft.mundo.Mineral;
+import fiuba.algo3.algocraft.mundo.Mundo;
+import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class MundoTest {
 	

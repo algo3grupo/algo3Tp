@@ -1,12 +1,12 @@
-package fiuba.algo3.algoCraft.creadores;
+package fiuba.algo3.algocraft.creadores;
 
-import fiuba.algo3.algoCraft.estructurasProtoss.Acceso;
-import fiuba.algo3.algoCraft.estructurasProtoss.ArchivosTemplarios;
-import fiuba.algo3.algoCraft.estructurasProtoss.Asimilador;
-import fiuba.algo3.algoCraft.estructurasProtoss.NexoMineral;
-import fiuba.algo3.algoCraft.estructurasProtoss.Pilon;
-import fiuba.algo3.algoCraft.estructurasProtoss.PuertoEstelar;
-import fiuba.algo3.algoCraft.jugador.Jugador;
+import fiuba.algo3.algocraft.estructurasProtoss.Acceso;
+import fiuba.algo3.algocraft.estructurasProtoss.ArchivosTemplarios;
+import fiuba.algo3.algocraft.estructurasProtoss.Asimilador;
+import fiuba.algo3.algocraft.estructurasProtoss.NexoMineral;
+import fiuba.algo3.algocraft.estructurasProtoss.Pilon;
+import fiuba.algo3.algocraft.estructurasProtoss.PuertoEstelar;
+import fiuba.algo3.algocraft.jugador.Jugador;
 
 public class CreadorEstructurasProtoss extends CreadorEstructuras {
 	

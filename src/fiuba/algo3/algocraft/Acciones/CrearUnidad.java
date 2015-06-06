@@ -13,14 +13,14 @@ public class CrearUnidad implements IAccion
 		
 	}
 	
-	public void ejecutar(IColaDeAcciones llamador)
+	public void ejecutar(IColaDeAcciones ejecutor)
 	{
 		turnos--;
 		
 		if(turnos == 0)
 		{
 			//se crea la unidad
-			llamador.QuitarAccion(this);
+			ejecutor.QuitarAccion(this);
 		}
 	}
 

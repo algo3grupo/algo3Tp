@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import fiuba.algo3.algocraft.atributosEntidades.Costo;
 import fiuba.algo3.algocraft.creadores.CreadorEstructuras;
 import fiuba.algo3.algocraft.creadores.CreadorUnidades;
-import fiuba.algo3.algocraft.entidadesAbstractas.EntidadAbstracta;
+import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.Interfaces.IEstructura;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
@@ -130,7 +130,7 @@ public abstract class Jugador {
 		
 	}
 	
-	public void reintegroCosto(EntidadAbstracta entidad) {
+	public void reintegroCosto(Entidad entidad) {
 		
 		agregarMineral( entidad.costo().minerales() );
 		agregarGas(entidad.costo().gas());

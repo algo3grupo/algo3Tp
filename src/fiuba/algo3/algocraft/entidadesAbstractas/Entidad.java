@@ -78,7 +78,7 @@ public abstract class Entidad {
 	}
 	
 
-	public Jugador jugador() {
+	public Jugador getJugador() {
 		
 		return this.jugador;
 	}

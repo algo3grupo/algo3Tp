@@ -2,8 +2,6 @@ package fiuba.algo3.algocraft.mundo;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Iterator;
-
 import fiuba.algo3.algocraft.excepciones.DivisionDeGrillaNoEsMultiploDeResolucion;
 import fiuba.algo3.algocraft.excepciones.ParametroNegativo;
 import fiuba.algo3.algocraft.excepciones.ParametroNulo;

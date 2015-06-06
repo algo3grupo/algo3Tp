@@ -9,6 +9,10 @@ public abstract class Estructura extends ColaDeAcciones implements IEstructura{
 		super(jugador);
 	}
 
+	public Estructura(Estructura estructura) {
+		super(estructura);
+	}
+
 	public void actualizarPoblacion() {
 		
 	}

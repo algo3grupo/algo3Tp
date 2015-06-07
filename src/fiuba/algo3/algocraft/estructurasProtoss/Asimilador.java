@@ -7,12 +7,9 @@ import fiuba.algo3.algocraft.entidadesAbstractas.Protegidas;
 import fiuba.algo3.algocraft.jugador.Jugador;
 
 public class Asimilador extends Protegidas implements IRecolectores {
+	
 	public Asimilador(Jugador jugador) {
-		super(jugador);
-		this.nombre = "Asimilador";
-		this.costo = new Costo(50,0);
-		this.vida = 450;
-		inicializarCampoYLimiteCampo(450);
+		super(0, 450, 0, jugador, "Asimilador", new Costo(50,0), "");
 		
 		agregarAccion(new RecogerSuministro(this));
 	}

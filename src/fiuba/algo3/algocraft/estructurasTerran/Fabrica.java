@@ -7,11 +7,7 @@ import fiuba.algo3.algocraft.jugador.Jugador;
 public class Fabrica extends Estructura {
 
 	public Fabrica(Jugador jugador) {
-		super(jugador);
-		this.nombre = "Fabrica";
-		this.costo = new Costo(200,100);
-		this.requiere = "Barraca";
-		this.vida = 1250;
+		super(0, 1250, 0, jugador, "Fabrica", new Costo(200,100), "Barraca");
 	}
 
 }

@@ -7,14 +7,7 @@ import fiuba.algo3.algocraft.jugador.Jugador;
 public class Dragon extends UnidadAtaqueBasico {
 
 	public Dragon(Jugador jugador) {
-		super(jugador);
-		this.vida= 100;
-		this.rangoDeVision=1;
-		this.ataqueT=8;
-		this.suministro = 2;
-		this.nombre = "Dragon";
-		this.requiere  = "Acceso";
-		this.costo = new Costo(125,50);
+		super(0, 100, 1, jugador, "Dragon", new Costo(125,50), "Acceso", 2, 8);
 	}
 
 }

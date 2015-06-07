@@ -7,14 +7,7 @@ import fiuba.algo3.algocraft.jugador.Jugador;
 public class Espectro extends UnidadAtaqueBasico {
 
 	public Espectro(Jugador jugador) {
-		super(jugador);
-		this.vida = 120;
-		this.rangoDeVision = 7;
-		this.ataqueT= 8;
-		this.suministro = 2;
-		this.nombre = "Espectro";
-		this.requiere  = "Puerto Estelar";
-		this.costo = new Costo(150,100);
+		super(0, 120, 7, jugador, "Espectro", new Costo(150,100), "Puerto Estelar", 2, 8);
 	}
 
 }

@@ -9,10 +9,7 @@ import fiuba.algo3.algocraft.jugador.Jugador;
 public class CentroDeMineral extends Estructura implements IRecolectores {
 
 	public CentroDeMineral(Jugador jugador) {
-		super(jugador);
-		this.nombre = "Centro De Minerales";
-		this.costo = new Costo(50,0);
-		this.vida = 500;
+		super(0, 500, 0, jugador, "Centro De Minerales", new Costo(50,0), "");
 		
 		agregarAccion(new RecogerSuministro(this));
 	}

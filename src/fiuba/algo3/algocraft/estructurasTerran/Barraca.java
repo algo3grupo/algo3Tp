@@ -7,10 +7,7 @@ import fiuba.algo3.algocraft.jugador.Jugador;
 public class Barraca extends Estructura {
 
 	public Barraca(Jugador jugador) {
-		super(jugador);
-		this.nombre = "Barraca";
-		this.costo = new Costo(150,0);
-		this.vida = 1000;
+		super(0, 1000, 0, jugador, "Barraca", new Costo(150,0), "");
 	}
 
 }

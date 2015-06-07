@@ -9,15 +9,25 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public abstract class Entidad {
 	private int ID;
-	protected int vida;
-	protected int rangoDeVision;
-	protected Jugador jugador;
-	protected String nombre;
-	protected Costo costo;
-	protected String requiere;
+	private int vida;
+	private int rangoDeVision;
+	private Jugador jugador;
+	private String nombre;
+	private Costo costo;
+	private String requiere;
 	private Vector2D posicion;
 	private int dimensionX;
 	private int dimensionY;
+	
+	public Entidad(int ID, int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere){
+		this.ID = ID;
+		this.vida = vida;
+		this.rangoDeVision = rangoDeVision;
+		this.jugador = jugador;
+		this.nombre = nombre;
+		this.costo = costo;
+		this.requiere = requiere;
+	}
 	
 	public boolean incluyeA(Vector2D posicion)
 	{		
@@ -38,12 +48,6 @@ public abstract class Entidad {
 		this.dimensionX = dimensionX;
 		this.dimensionY = dimensionY;
 
-	}
-	
-	public Entidad(Jugador jugador)
-	{
-		this.jugador = jugador;
-		requiere = "";
 	}
 
 	public Entidad(Entidad entidad) 

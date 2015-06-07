@@ -7,11 +7,7 @@ import fiuba.algo3.algocraft.jugador.Jugador;
 public class Acceso extends Protegidas{
 
 	public Acceso(Jugador jugador) {
-		super(jugador);
-		this.nombre = "Acceso";
-		this.costo = new Costo(150,0);
-		this.vida = 500;
-		inicializarCampoYLimiteCampo(500);
+		super(0, 500, 0, jugador, "Acceso",new Costo(150,0), "");
 	}
 
 }

@@ -7,14 +7,7 @@ import fiuba.algo3.algocraft.jugador.Jugador;
 public class Golliat extends UnidadAtaqueBasico {
 
 	public Golliat(Jugador jugador) {
-		super(jugador);
-		this.vida=125;
-		this.rangoDeVision = 8;
-		this.ataqueT = 12;
-		this.suministro = 2;
-		this.nombre = "Golliat";
-		this.requiere  = "Fabrica";
-		this.costo = new Costo(100,50);
+		super(0, 125, 8, jugador, "Golliat", new Costo(100,50), "Fabrica", 2, 12);
 	}
 
 }

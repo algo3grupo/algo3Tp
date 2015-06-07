@@ -7,16 +7,12 @@ import fiuba.algo3.algocraft.jugador.Jugador;
 public class Pilon extends Protegidas {
 
 	public Pilon(Jugador jugador) {
-		super(jugador);
-		this.nombre = "Pilon";
-		this.costo = new Costo(100,0); 
-		this.vida = 300;
-		inicializarCampoYLimiteCampo(300);
+		super(0, 300, 0, jugador, "Pilon", new Costo(100,0), "");
 	}
 	
 	public void actualizarPoblacion(){
 		
-		this.jugador.aumentarPoblacion(5);
+		getJugador().aumentarPoblacion(5);
 		
 	}
 }

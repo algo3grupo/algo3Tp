@@ -10,6 +10,7 @@ public class DepositoSuministro extends Estructura {
 		super(jugador);
 		this.nombre = "Deposito Suministro";
 		this.costo = new Costo(100,0);
+		this.vida = 500;
 	}
 	
 	public void actualizarPoblacion(){

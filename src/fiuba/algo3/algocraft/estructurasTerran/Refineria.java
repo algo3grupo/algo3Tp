@@ -12,6 +12,7 @@ public class Refineria extends Estructura implements IRecolectores {
 		super(jugador);
 		this.nombre = "Refineria";
 		this.costo = new Costo(100,0);
+		this.vida = 750;
 		
 		agregarAccion(new RecogerSuministro(this));
 	}

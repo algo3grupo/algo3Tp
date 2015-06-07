@@ -10,6 +10,8 @@ public class Acceso extends Protegidas{
 		super(jugador);
 		this.nombre = "Acceso";
 		this.costo = new Costo(150,0);
+		this.vida = 500;
+		inicializarCampoYLimiteCampo(500);
 	}
 
 }

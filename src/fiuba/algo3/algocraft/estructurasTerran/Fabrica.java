@@ -11,6 +11,7 @@ public class Fabrica extends Estructura {
 		this.nombre = "Fabrica";
 		this.costo = new Costo(200,100);
 		this.requiere = "Barraca";
+		this.vida = 1250;
 	}
 
 }

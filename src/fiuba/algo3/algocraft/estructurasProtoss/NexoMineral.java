@@ -13,6 +13,8 @@ public class NexoMineral extends Protegidas implements IRecolectores{
 		super(jugador);
 		this.nombre = "Nexo Mineral";
 		this.costo = new Costo(50,0); 
+		this.vida = 250;
+		inicializarCampoYLimiteCampo(250);
 		
 		agregarAccion(new RecogerSuministro(this));
 	}

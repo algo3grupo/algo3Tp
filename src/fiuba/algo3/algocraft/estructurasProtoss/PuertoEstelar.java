@@ -11,6 +11,8 @@ public class PuertoEstelar extends Protegidas {
 		this.nombre = "Puerto Estelar";
 		this.costo = new Costo(150,150);
 		this.requiere = "Acceso";
+		this.vida = 600;
+		inicializarCampoYLimiteCampo(600);
 	}
 
 }

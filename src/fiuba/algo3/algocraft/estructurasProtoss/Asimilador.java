@@ -11,6 +11,8 @@ public class Asimilador extends Protegidas implements IRecolectores {
 		super(jugador);
 		this.nombre = "Asimilador";
 		this.costo = new Costo(50,0);
+		this.vida = 450;
+		inicializarCampoYLimiteCampo(450);
 		
 		agregarAccion(new RecogerSuministro(this));
 	}

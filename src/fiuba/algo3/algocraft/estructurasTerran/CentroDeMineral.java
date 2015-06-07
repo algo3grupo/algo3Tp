@@ -12,6 +12,7 @@ public class CentroDeMineral extends Estructura implements IRecolectores {
 		super(jugador);
 		this.nombre = "Centro De Minerales";
 		this.costo = new Costo(50,0);
+		this.vida = 500;
 		
 		agregarAccion(new RecogerSuministro(this));
 	}

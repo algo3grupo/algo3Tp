@@ -11,6 +11,7 @@ public class PuertoEstelarT extends Estructura {
 		this.nombre = "Puerto Estelar";
 		this.costo = new Costo(150,100);
 		this.requiere = "Fabrica";
+		this.vida = 1300;
 	}
 
 }

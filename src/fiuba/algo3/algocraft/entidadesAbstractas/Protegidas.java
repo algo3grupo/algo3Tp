@@ -6,12 +6,12 @@ import fiuba.algo3.algocraft.jugador.Jugador;
 public abstract class Protegidas extends Estructura 
 {
 	private int campo;
+	private int limiteCampo;
 	
 	public Protegidas(Estructura estructura)
 	{
 		super(estructura);
-		
-		campo = 100;		
+				
 		this.agregarAccion(new RecuperarCampo(this));
 	}
 
@@ -21,7 +21,15 @@ public abstract class Protegidas extends Estructura
 
 	public void recuperarCampo() 
 	{
-		campo += 10;	
+		if (campo < limiteCampo)
+		{
+			campo += 10;	
+		}
 	}
-
+	
+	public void inicializarCampoYLimiteCampo(int limite)
+	{
+		this.limiteCampo = limite;
+		this.campo = limite;
+	}
 }

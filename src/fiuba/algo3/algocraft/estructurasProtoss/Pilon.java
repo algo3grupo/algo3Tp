@@ -10,6 +10,8 @@ public class Pilon extends Protegidas {
 		super(jugador);
 		this.nombre = "Pilon";
 		this.costo = new Costo(100,0); 
+		this.vida = 300;
+		inicializarCampoYLimiteCampo(300);
 	}
 	
 	public void actualizarPoblacion(){

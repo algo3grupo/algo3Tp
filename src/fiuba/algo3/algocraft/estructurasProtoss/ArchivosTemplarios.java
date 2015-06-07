@@ -11,6 +11,8 @@ public class ArchivosTemplarios extends Protegidas {
 		this.nombre = "Archivos Templarios";
 		this.costo = new Costo(150,200);
 		this.requiere ="Puerto Estelar";
+		this.vida = 500;
+		inicializarCampoYLimiteCampo(500);
 	}
 
 }

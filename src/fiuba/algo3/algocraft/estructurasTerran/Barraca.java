@@ -10,6 +10,7 @@ public class Barraca extends Estructura {
 		super(jugador);
 		this.nombre = "Barraca";
 		this.costo = new Costo(150,0);
+		this.vida = 1000;
 	}
 
 }

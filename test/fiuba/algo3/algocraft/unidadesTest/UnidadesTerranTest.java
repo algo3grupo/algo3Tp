@@ -6,6 +6,7 @@ import static org.junit.Assert.fail;
 import org.junit.Test;
 
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
+import fiuba.algo3.algocraft.excepciones.ErrorAlHacerCopia;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaUnidadException;
 import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
@@ -27,7 +28,7 @@ public class UnidadesTerranTest {
 	}
 	
 	@Test
-	public void intentaCrearUnidadSinLaEstructura(){
+	public void intentaCrearUnidadSinLaEstructura() throws ErrorAlHacerCopia{
 		Jugador jugador= new Terran("Pepe",250 ,100 );
 		try {
 			jugador.agregarUnidad("Marine");
@@ -44,7 +45,7 @@ public class UnidadesTerranTest {
 	}
 	
 	@Test
-	public void creaUnidadDespuesDeCrearEstructura(){
+	public void creaUnidadDespuesDeCrearEstructura() throws ErrorAlHacerCopia{
 		Jugador jugador= new Terran("Pepe", 350 ,100 );
 		try {
 			
@@ -66,7 +67,7 @@ public class UnidadesTerranTest {
 	}
 	
 	@Test
-	public void creaUnidadYNoTieneMineralesSuficientes(){
+	public void creaUnidadYNoTieneMineralesSuficientes() throws ErrorAlHacerCopia{
 		Jugador jugador= new Terran("Pepe", 210 ,100 );
 		try {
 			jugador.agregarEstructura("Deposito Suministro", null, null);
@@ -85,7 +86,7 @@ public class UnidadesTerranTest {
 	}
 	
 	@Test
-	public void creaUnidadYNoTieneGasSuficiente(){
+	public void creaUnidadYNoTieneGasSuficiente() throws ErrorAlHacerCopia{
 		Jugador jugador= new Terran("Pepe", 650 ,110);
 		try {
 			jugador.agregarEstructura("Deposito Suministro", null, null);
@@ -107,7 +108,7 @@ public class UnidadesTerranTest {
 
 
 	@Test
-	public void creaUnidadYNoTieneEspacioSuficienteParaCrearla(){
+	public void creaUnidadYNoTieneEspacioSuficienteParaCrearla() throws ErrorAlHacerCopia{
 		Jugador jugador= new Terran("Pepe", 380 , 60 );
 	try {
 		jugador.agregarEstructura("Barraca", null, null);

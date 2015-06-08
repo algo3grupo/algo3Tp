@@ -2,7 +2,7 @@ package fiuba.algo3.algocraft.entidadesAbstractas;
 
 import java.util.ArrayList;
 
-import fiuba.algo3.algocraft.atributosEntidades.Costo;
+import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
@@ -28,6 +28,10 @@ public abstract class Entidad {
 		this.costo = costo;
 		this.requiere = requiere;
 	}
+	
+	
+	
+
 	
 	public boolean incluyeA(Vector2D posicion)
 	{		
@@ -79,9 +83,21 @@ public abstract class Entidad {
 	public String requiere() {
 		
 		return requiere;
+		
 	}
 	
-
+	public int verVida(){
+		
+		return vida;
+		
+	}
+	
+	public int verRangoVision(){
+		
+		return rangoDeVision;
+		
+	}
+	
 	public Jugador getJugador() {
 		
 		return this.jugador;

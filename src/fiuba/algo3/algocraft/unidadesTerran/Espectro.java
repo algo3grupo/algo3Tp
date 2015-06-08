@@ -1,6 +1,6 @@
 package fiuba.algo3.algocraft.unidadesTerran;
 
-import fiuba.algo3.algocraft.atributosEntidades.Costo;
+import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.entidadesAbstractas.UnidadAtaqueBasico;
 import fiuba.algo3.algocraft.jugador.Jugador;
 

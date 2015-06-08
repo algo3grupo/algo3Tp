@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import fiuba.algo3.algocraft.excepciones.ErrorAlHacerCopia;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
 import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
@@ -15,7 +16,7 @@ import fiuba.algo3.algocraft.jugador.Protoss;
 public class EstructuraProtossTest {
 
 	@Test
-	public void correlacionPuertoEstelarNecesitaAcceso() {
+	public void correlacionPuertoEstelarNecesitaAcceso() throws ErrorAlHacerCopia {
 		
 		Jugador jugador= new Protoss("Pepe",300,300);
 		try {
@@ -32,7 +33,7 @@ public class EstructuraProtossTest {
 	}
 	
 	@Test
-	public void correlacionArchivosTemplariosNecesitaPuertoEstelar() {
+	public void correlacionArchivosTemplariosNecesitaPuertoEstelar() throws ErrorAlHacerCopia {
 		
 		Jugador jugador= new Protoss("Pepe", 450 ,350);
 		try {

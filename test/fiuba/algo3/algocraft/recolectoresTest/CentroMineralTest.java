@@ -7,6 +7,7 @@ import junit.framework.Assert;
 import org.junit.Test;
 
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
+import fiuba.algo3.algocraft.excepciones.ErrorAlHacerCopia;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
 import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
@@ -21,7 +22,7 @@ public class CentroMineralTest {
 	@Test
 	public void crearCentroMineralesEnUnLugarConMinerales() throws NoEsDeSuRazaLaEstructuraException,
 														NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException, 
-														NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear{
+														NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia{
         
 		Mundo mundo = new Mundo(500,10);	
 		mundo.generar();
@@ -41,7 +42,7 @@ public class CentroMineralTest {
 	@Test
 	public void crearCentroMineralesEnUnLugarSinMineralesNoDebeSerPosible() throws NoEsDeSuRazaLaEstructuraException, 
 															NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException, 
-															NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear{
+															NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia{
 
 		Mundo mundo = new Mundo(500,10);
 		mundo.generar();

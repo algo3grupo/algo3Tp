@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.Interfaces.IEstructura;
+import fiuba.algo3.algocraft.excepciones.ErrorAlHacerCopia;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
 import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
@@ -22,7 +23,7 @@ public class AsimiladorTest {
 	@Test
 	public void crearAsimiladorEnUnLugarConGas() throws NoEsDeSuRazaLaEstructuraException, 
 												NoTieneLaEstructuraCreadaException,	NoTieneRecursosSuficientesException, 
-												NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear{
+												NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia{
         
 		Mundo mundo = new Mundo(500,10);
 		mundo.generar();
@@ -42,7 +43,7 @@ public class AsimiladorTest {
 	@Test
 	public void crearAsimiladorEnUnLugarSinGasNoDebeSerPosible() throws NoEsDeSuRazaLaEstructuraException, 
 																NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
-																NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear{
+																NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia{
 
 		Mundo mundo = new Mundo(500,10);
 		mundo.generar();

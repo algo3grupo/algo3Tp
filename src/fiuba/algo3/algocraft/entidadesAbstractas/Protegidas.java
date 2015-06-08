@@ -1,10 +1,10 @@
 package fiuba.algo3.algocraft.entidadesAbstractas;
 
 import fiuba.algo3.algocraft.Acciones.RecuperarCampo;
-import fiuba.algo3.algocraft.atributosEntidades.Costo;
+import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.jugador.Jugador;
 
-public abstract class Protegidas extends Estructura 
+public abstract class Protegidas extends Estructura
 {
 	private int campo;
 	private int limiteCampo;
@@ -28,6 +28,11 @@ public abstract class Protegidas extends Estructura
 		{
 			campo += 10;	
 		}
+	}
+	
+	public Object clone(){
+		Object obj = null;
+		return obj;
 	}
 	
 }

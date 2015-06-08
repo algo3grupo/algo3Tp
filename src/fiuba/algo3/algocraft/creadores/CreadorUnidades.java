@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
+import fiuba.algo3.algocraft.excepciones.ErrorAlHacerCopia;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEntidadException;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaUnidadException;
 import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
@@ -13,7 +14,8 @@ public abstract class CreadorUnidades extends Creador {
 	
 	public Unidad crearUnidad(String string, ArrayList<Estructura> estructuras) throws NoEsDeSuRazaLaUnidadException,
 																					NoTieneLaEstructuraCreadaException,
-																					NoTieneRecursosSuficientesException{
+																					NoTieneRecursosSuficientesException,
+																					ErrorAlHacerCopia{
 		try {
 			
 			return (Unidad)crearEntidad(string, null, null);

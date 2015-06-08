@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import fiuba.algo3.algocraft.Interfaces.IAccion;
 import fiuba.algo3.algocraft.Interfaces.IColaDeAcciones;
-import fiuba.algo3.algocraft.atributosEntidades.Costo;
+import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.jugador.Jugador;
 
 public abstract class ColaDeAcciones extends Entidad implements IColaDeAcciones{

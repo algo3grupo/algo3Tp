@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
+import fiuba.algo3.algocraft.excepciones.ErrorAlHacerCopia;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaUnidadException;
 import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
@@ -27,7 +28,7 @@ public class UnidadProtossTest {
 	}
 	
 	@Test
-	public void intentaCrearUnidadSinLaEstructura(){
+	public void intentaCrearUnidadSinLaEstructura() throws ErrorAlHacerCopia{
 		Jugador jugador= new Protoss("Pepe",250 ,100 );
 		try {
 			jugador.agregarUnidad("Zealot");
@@ -42,7 +43,7 @@ public class UnidadProtossTest {
 	}
 	
 	@Test
-	public void creaUnidadDespuesDeCrearEstructura(){
+	public void creaUnidadDespuesDeCrearEstructura() throws ErrorAlHacerCopia{
 		Jugador jugador= new Protoss("Pepe", 350 ,100 );
 		try {
 			
@@ -64,7 +65,7 @@ public class UnidadProtossTest {
 	}
 	
 	@Test
-	public void creaUnidadYNoTieneMineralesSuficientes(){
+	public void creaUnidadYNoTieneMineralesSuficientes() throws ErrorAlHacerCopia{
 		Jugador jugador= new Protoss("Pepe", 200 ,100 );
 		try {
 			jugador.agregarEstructura("Acceso", null, null);
@@ -83,7 +84,7 @@ public class UnidadProtossTest {
 	}
 	
 	@Test
-	public void creaUnidadYNoTieneGasSuficiente(){
+	public void creaUnidadYNoTieneGasSuficiente() throws ErrorAlHacerCopia{
 		Jugador jugador= new Protoss("Pepe", 380 ,30 );
 		try {
 			jugador.agregarEstructura("Acceso", null, null);
@@ -104,7 +105,7 @@ public class UnidadProtossTest {
 
 
 	@Test
-	public void creaUnidadYNoTieneEspacioSuficienteParaCrearla(){
+	public void creaUnidadYNoTieneEspacioSuficienteParaCrearla() throws ErrorAlHacerCopia{
 		Jugador jugador= new Protoss("Pepe", 380 , 60 );
 	try {
 		jugador.agregarEstructura("Acceso", null, null);

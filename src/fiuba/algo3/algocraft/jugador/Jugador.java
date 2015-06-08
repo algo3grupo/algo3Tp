@@ -2,12 +2,13 @@ package fiuba.algo3.algocraft.jugador;
 
 import java.util.ArrayList;
 
-import fiuba.algo3.algocraft.atributosEntidades.Costo;
+import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.creadores.CreadorEstructuras;
 import fiuba.algo3.algocraft.creadores.CreadorUnidades;
 import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
+import fiuba.algo3.algocraft.excepciones.ErrorAlHacerCopia;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaUnidadException;
 import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
@@ -44,7 +45,7 @@ public abstract class Jugador {
 																				NoTieneLaEstructuraCreadaException,
 																				NoTieneRecursosSuficientesException,
 																				NoHayMineralEnElLugarACrear, 
-																				NoHayGasEnElLugarACrear{
+																				NoHayGasEnElLugarACrear, ErrorAlHacerCopia{
 		
 		Estructura estructura = creadorEstructuras.crearEstructura(string, posicion, mundo);
 		estructuras.add( estructura);
@@ -56,7 +57,7 @@ public abstract class Jugador {
 	public void agregarUnidad(String string) throws NoEsDeSuRazaLaUnidadException,
 													NoTieneLaEstructuraCreadaException,
 													NoTieneRecursosSuficientesException, 
-													NoTienePoblacionSuficienteException {
+													NoTienePoblacionSuficienteException, ErrorAlHacerCopia {
 		
 		Unidad unidad = creadorUnidades.crearUnidad(string,estructuras);
 		//se fija si hay poblacion para ponerla

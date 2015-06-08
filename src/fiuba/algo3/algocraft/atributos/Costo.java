@@ -1,4 +1,4 @@
-package fiuba.algo3.algocraft.atributosEntidades;
+package fiuba.algo3.algocraft.atributos;
 
 public class Costo {
 	private int mineral;

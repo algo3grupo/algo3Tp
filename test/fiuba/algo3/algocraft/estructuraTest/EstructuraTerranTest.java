@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import fiuba.algo3.algocraft.excepciones.ErrorAlHacerCopia;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
 import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
@@ -15,7 +16,7 @@ import fiuba.algo3.algocraft.jugador.Terran;
 public class EstructuraTerranTest {
 
 	@Test
-	public void correlacionPuertoEstelarNecesitaFabrica() {
+	public void correlacionPuertoEstelarNecesitaFabrica() throws ErrorAlHacerCopia {
 		
 		Jugador jugador= new Terran("Pepe",2500,2500);
 		try {
@@ -32,7 +33,7 @@ public class EstructuraTerranTest {
 	}
 	
 	@Test
-	public void correlacionFabricaNecesitaBarraca() {
+	public void correlacionFabricaNecesitaBarraca() throws ErrorAlHacerCopia {
 		
 		Jugador jugador= new Terran("Pepe", 2500 , 2500);
 		try {

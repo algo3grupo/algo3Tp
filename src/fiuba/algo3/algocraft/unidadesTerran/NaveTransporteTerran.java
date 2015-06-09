@@ -7,7 +7,7 @@ import fiuba.algo3.algocraft.jugador.Jugador;
 public class NaveTransporteTerran extends UnidadNave {
 
 	public NaveTransporteTerran(Jugador jugador) {
-		super( 150, 8, jugador, "Nave Transporte", new Costo(125,50), "Puerto Estelar", 2);
+		super( 150, 8, jugador,  new Costo(125,50),  2);
 	}
 
 }

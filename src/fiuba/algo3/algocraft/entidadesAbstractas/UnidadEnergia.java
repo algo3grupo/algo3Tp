@@ -7,8 +7,9 @@ import fiuba.algo3.algocraft.jugador.Jugador;
 public class UnidadEnergia extends Unidad {
 	private int energia;
 	
-	public UnidadEnergia( int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int suministro) {
-		super( vida, rangoDeVision, jugador, nombre, costo, requiere, suministro);
+	public UnidadEnergia( int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int suministro,
+			int transporte) {
+		super( vida, rangoDeVision, jugador, nombre, costo, requiere, suministro, transporte);
 		this.energia = 50;
 	}
 	

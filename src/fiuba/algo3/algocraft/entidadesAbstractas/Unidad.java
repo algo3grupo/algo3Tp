@@ -8,10 +8,12 @@ import fiuba.algo3.algocraft.jugador.Jugador;
 
 public abstract class Unidad extends ColaDeAcciones {
 	private int suministro;
+	private int transporte;
 
-	public Unidad( int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int suministro) {
+	public Unidad( int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int suministro, int transporte) {
 		super( vida, rangoDeVision, jugador, nombre, costo, requiere);
 		this.suministro = suministro;
+		this.transporte = transporte;
 	}
 
 
@@ -34,6 +36,22 @@ public abstract class Unidad extends ColaDeAcciones {
 			}
 		}
 		return null;
+	}
+
+
+	public int transporte() {
+		
+		return transporte;
+	}
+
+
+	public boolean esVoladora() {
+		
+		if( transporte == 0){
+			return true;
+		}
+		
+		return false;
 	}
 
 

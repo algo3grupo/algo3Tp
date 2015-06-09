@@ -7,7 +7,7 @@ import fiuba.algo3.algocraft.jugador.Jugador;
 public class AltoTemplario extends UnidadEnergia {
 
 	public AltoTemplario(Jugador jugador) {
-		super( 40, 7, jugador, "Alto Templario", new Costo(100,0), "Archivos Templarios", 2);
+		super( 40, 7, jugador, "Alto Templario", new Costo(100,0), "Archivos Templarios", 2, 2);
 	}
 
 }

@@ -11,7 +11,7 @@ public class Alucinacion extends HechizoCopiaUnidades {
 		}
 	
 	public Unidad nuevaUnidadCopia(Unidad unidad){
-		Unidad copia = new UnidadCopia(unidad.nombre(),unidad.getJugador());
+		Unidad copia = new UnidadCopia( unidad );
 		return copia;
 	}
 	

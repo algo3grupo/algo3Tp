@@ -9,7 +9,7 @@ public class Espectro extends UnidadAtaqueBasico {
 
 	public Espectro(Jugador jugador) {
 		
-		super(0, 120, 7, jugador, "Espectro", new Costo(150,100), "Puerto Estelar", 2, new Ataque( 8, 20, 5, 5));
+		super( 120, 7, jugador, "Espectro", new Costo(150,100), "Puerto Estelar", 2, new Ataque( 8, 20, 5, 5));
 	}
 
 }

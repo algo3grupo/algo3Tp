@@ -80,9 +80,14 @@ public abstract class Jugador {
 	}
 
 	public void aumentarPoblacion(int i) {
-		
-		poblacionMaxima += i;
-		
+		if (poblacionMaxima+i > 200){
+			poblacionMaxima = 200;
+			
+		}
+		else{
+			poblacionMaxima += i;
+			
+		}
 	}
 	
 	public void disminuirPoblacion(int i) {

@@ -7,7 +7,7 @@ import fiuba.algo3.algocraft.jugador.Jugador;
 public class DepositoSuministro extends Estructura {
 
 	public DepositoSuministro(Jugador jugador) {
-		super(0, 500, 0, jugador, "Deposito Suministro", new Costo(100,0), "");
+		super( 500, 0, jugador, "Deposito Suministro", new Costo(100,0), "");
 	}
 	
 	public void actualizarPoblacion(){

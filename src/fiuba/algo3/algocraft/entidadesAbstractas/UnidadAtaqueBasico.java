@@ -8,9 +8,9 @@ public abstract class UnidadAtaqueBasico extends Unidad {
 	
 	private Ataque ataque;
 
-	public UnidadAtaqueBasico(int ID, int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int suministro, Ataque ataque) 
+	public UnidadAtaqueBasico( int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int suministro, Ataque ataque) 
 	{
-		super(ID, vida, rangoDeVision, jugador, nombre, costo, requiere, suministro);
+		super( vida, rangoDeVision, jugador, nombre, costo, requiere, suministro);
 		this.ataque = ataque;
 	}
 

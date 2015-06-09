@@ -18,9 +18,9 @@ public abstract class ColaDeAcciones extends Entidad implements IColaDeAcciones{
 		colaDeAcciones = new ArrayList<IAccion>();
 	}
 	
-	public ColaDeAcciones(int ID, int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere) {
+	public ColaDeAcciones( int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere) {
 
-		super(ID, vida, rangoDeVision, jugador, nombre, costo, requiere);
+		super(vida, rangoDeVision, jugador, nombre, costo, requiere);
 		
 		colaDeAcciones = new ArrayList<IAccion>();
 	}

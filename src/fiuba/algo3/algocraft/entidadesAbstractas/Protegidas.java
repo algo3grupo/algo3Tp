@@ -16,8 +16,8 @@ public abstract class Protegidas extends Estructura
 		this.agregarAccion(new RecuperarCampo(this));
 	}
 
-	public Protegidas(int ID, int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere) {
-		super(ID, vida, rangoDeVision, jugador, nombre, costo, requiere);
+	public Protegidas( int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere) {
+		super( vida, rangoDeVision, jugador, nombre, costo, requiere);
 		this.campo = vida;
 		this.limiteCampo = vida;
 	}

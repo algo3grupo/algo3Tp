@@ -9,7 +9,7 @@ import fiuba.algo3.algocraft.jugador.Jugador;
 public class Refineria extends Estructura implements IRecolectores {
 
 	public Refineria(Jugador jugador) {
-		super(0, 750, 0, jugador, "Refineria", new Costo(100,0), "");
+		super( 750, 0, jugador, "Refineria", new Costo(100,0), "");
 		
 		agregarAccion(new RecogerSuministro(this));
 	}

@@ -8,7 +8,7 @@ public class Acceso extends Protegidas{
 
 	public Acceso(Jugador jugador) {
 		
-		super(0, 500, 0, jugador, "Acceso",new Costo(150,0), "");
+		super( 500, 0, jugador, "Acceso",new Costo(150,0), "");
 		
 	}
 

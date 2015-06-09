@@ -1,5 +1,7 @@
 package fiuba.algo3.algocraft.entidadesAbstractas;
 
+import java.util.ArrayList;
+
 import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.jugador.Jugador;
 
@@ -7,8 +9,8 @@ import fiuba.algo3.algocraft.jugador.Jugador;
 public abstract class Unidad extends ColaDeAcciones {
 	private int suministro;
 
-	public Unidad(int ID, int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int suministro) {
-		super(ID, vida, rangoDeVision, jugador, nombre, costo, requiere);
+	public Unidad( int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int suministro) {
+		super( vida, rangoDeVision, jugador, nombre, costo, requiere);
 		this.suministro = suministro;
 	}
 
@@ -16,6 +18,22 @@ public abstract class Unidad extends ColaDeAcciones {
 	public int suministro() {
 		
 		return suministro;
+	}
+
+
+	public ArrayList<Unidad> obtenerUnidadesAliadasEnRango(int rango) {
+		//devuelve tmb a la unidad q llama lafuncion
+		ArrayList<Unidad> unidadesTodas = getJugador().ObtenerUnidades();
+		ArrayList<Unidad> unidadesCercanas = new ArrayList<Unidad>();
+		
+		for ( int i= 0; i < unidadesTodas.size(); i++ ){
+			
+			if ( this.obtenerPosicion().distanciaA(unidadesTodas.get(i).obtenerPosicion()) < rango){
+				
+				unidadesCercanas.add(unidadesTodas.get(i));
+			}
+		}
+		return null;
 	}
 
 

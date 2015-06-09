@@ -6,7 +6,7 @@ public class TormentaPsiconica extends HechizoAreaDeEfecto {
 
 	public TormentaPsiconica() {
 		
-		super(75);
+		super(75, 5);
 
 	}
 

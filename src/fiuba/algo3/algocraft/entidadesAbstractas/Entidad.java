@@ -6,6 +6,7 @@ import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
+import fiuba.algo3.algocraft.ID;
 
 public abstract class Entidad {
 	private int ID;
@@ -19,8 +20,8 @@ public abstract class Entidad {
 	private int dimensionX;
 	private int dimensionY;
 	
-	public Entidad(int ID, int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere){
-		this.ID = ID;
+	public Entidad( int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere){
+		this.ID = new ID().getIdNuevo();
 		this.vida = vida;
 		this.rangoDeVision = rangoDeVision;
 		this.jugador = jugador;
@@ -101,5 +102,19 @@ public abstract class Entidad {
 	public Jugador getJugador() {
 		
 		return this.jugador;
+	}
+	
+	public void atacadoVida(int danio){
+		
+		if (vida - danio <= 0){
+			eliminar();
+		}
+			this.vida -= danio;
+	}
+
+
+	private void eliminar() {
+		
+		
 	}
 }

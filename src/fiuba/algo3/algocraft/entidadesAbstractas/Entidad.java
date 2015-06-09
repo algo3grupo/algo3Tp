@@ -9,6 +9,7 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 import fiuba.algo3.algocraft.ID;
 
 public abstract class Entidad {
+	private int turnos;
 	private int ID;
 	private int vida;
 	private int rangoDeVision;
@@ -20,7 +21,7 @@ public abstract class Entidad {
 	private int dimensionX;
 	private int dimensionY;
 	
-	public Entidad( int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere){
+	public Entidad( int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int turnos){
 		this.ID = new ID().getIdNuevo();
 		this.vida = vida;
 		this.rangoDeVision = rangoDeVision;
@@ -28,6 +29,7 @@ public abstract class Entidad {
 		this.nombre = nombre;
 		this.costo = costo;
 		this.requiere = requiere;
+		this.turnos = turnos;
 	}
 	
 	
@@ -112,9 +114,22 @@ public abstract class Entidad {
 			this.vida -= danio;
 	}
 
-
+	public int turnosEnCrear(){
+		return turnos;
+		
+	}
+	
 	private void eliminar() {
 		
 		
+	}
+
+
+
+
+
+	public int ID() {
+		
+		return ID;
 	}
 }

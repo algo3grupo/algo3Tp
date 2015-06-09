@@ -9,7 +9,7 @@ public class Golliat extends UnidadAtaqueBasico {
 
 	public Golliat(Jugador jugador) {
 		
-		super( 125, 8, jugador, "Golliat", new Costo(100,50), "Fabrica", 2, 2,new Ataque(12, 10, 6, 5));
+		super( 125, 8, jugador, "Golliat", new Costo(100,50), "Fabrica", 2, 2, 6,new Ataque(12, 10, 6, 5));
 		
 	}
 

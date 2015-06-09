@@ -7,7 +7,7 @@ import fiuba.algo3.algocraft.jugador.Jugador;
 public class PuertoEstelar extends Protegidas {
 
 	public PuertoEstelar(Jugador jugador) {
-		super( 600, 0, jugador, "Puerto Estelar", new Costo(150,150), "Acceso");
+		super( 600, 0, jugador, "Puerto Estelar", new Costo(150,150), "Acceso", 10);
 	}
 
 }

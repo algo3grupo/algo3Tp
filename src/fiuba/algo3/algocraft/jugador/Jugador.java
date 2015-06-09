@@ -2,6 +2,9 @@ package fiuba.algo3.algocraft.jugador;
 
 import java.util.ArrayList;
 
+import fiuba.algo3.algocraft.IModo;
+import fiuba.algo3.algocraft.ModoNombre;
+import fiuba.algo3.algocraft.Acciones.CrearUnidad;
 import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.creadores.CreadorEstructuras;
 import fiuba.algo3.algocraft.creadores.CreadorUnidades;
@@ -13,6 +16,7 @@ import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaUnidadException;
 import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
+import fiuba.algo3.algocraft.excepciones.NoSeEncontroLaEstructura;
 import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
 import fiuba.algo3.algocraft.excepciones.NoTienePoblacionSuficienteException;
 import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
@@ -61,7 +65,7 @@ public abstract class Jugador {
 		
 		Unidad unidad = creadorUnidades.crearUnidad(string,estructuras);
 		//se fija si hay poblacion para ponerla
-		if ( poblacionActual+unidad.suministro() <= poblacionMaxima) {
+		if ( hayPoblacionParaUnidad(unidad)) {
 				poblacionActual += unidad.suministro();
 			
 		}else { 
@@ -73,12 +77,28 @@ public abstract class Jugador {
 		unidades.add(unidad);
 		
 	}
+	
+	public void ponerEnColaCreacionUnidad(String nombre) throws NoEsDeSuRazaLaUnidadException, 
+								NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
+								ErrorAlHacerCopia, NoSeEncontroLaEstructura{
+		Unidad unidad = creadorUnidades.crearUnidad(nombre ,estructuras);
+		
+		Estructura estructura = (Estructura) BuscadorLista.obtenerEntidad( (ArrayList)estructuras, (IModo)new ModoNombre(unidad.requiere()));
+		estructura.agregarAccion(new CrearUnidad(unidad.turnosEnCrear(), unidad));
+		
+	}
 
 
+	
 	public ArrayList<Unidad> ObtenerUnidades() {
 		return unidades;
 	}
 
+	public boolean hayPoblacionParaUnidad(Unidad unidad){
+		
+		return (poblacionActual + unidad.suministro() <= poblacionMaxima);
+	}
+		
 	public void aumentarPoblacion(int i) {
 		if (poblacionMaxima+i > 200){
 			poblacionMaxima = 200;

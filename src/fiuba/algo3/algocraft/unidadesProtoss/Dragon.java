@@ -9,7 +9,7 @@ public class Dragon extends UnidadAtaqueBasico {
 
 	public Dragon(Jugador jugador) {
 		
-		super( 100, 1, jugador, "Dragon", new Costo(125,50), "Acceso", 2 , 4 ,new Ataque(20, 20, 4, 4));
+		super( 100, 1, jugador, "Dragon", new Costo(125,50), "Acceso", 2 , 4, 6 ,new Ataque(20, 20, 4, 4));
 		
 	}
 

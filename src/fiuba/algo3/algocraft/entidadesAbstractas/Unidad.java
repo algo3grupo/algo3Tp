@@ -10,8 +10,9 @@ public abstract class Unidad extends ColaDeAcciones {
 	private int suministro;
 	private int transporte;
 
-	public Unidad( int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int suministro, int transporte) {
-		super( vida, rangoDeVision, jugador, nombre, costo, requiere);
+	public Unidad( int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, 
+			int suministro, int transporte, int turnos) {
+		super( vida, rangoDeVision, jugador, nombre, costo, requiere, turnos);
 		this.suministro = suministro;
 		this.transporte = transporte;
 	}
@@ -53,6 +54,9 @@ public abstract class Unidad extends ColaDeAcciones {
 		
 		return false;
 	}
+
+
+	
 
 
 	

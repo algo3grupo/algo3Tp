@@ -11,8 +11,8 @@ public class UnidadEnergia extends Unidad {
 	private int energia;
 	
 	public UnidadEnergia( int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int suministro,
-			int transporte) {
-		super( vida, rangoDeVision, jugador, nombre, costo, requiere, suministro, transporte);
+			int transporte, int turnos) {
+		super( vida, rangoDeVision, jugador, nombre, costo, requiere, suministro, transporte, turnos);
 		this.energia = 50;
 	}
 	

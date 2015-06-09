@@ -40,7 +40,7 @@ public abstract class Creador {
 				}
 				gastar(entidad);
 				try {
-					//La copia es realizada por medio de reflexion, sin tener que saber que unidad o estructura es
+					//La copia es realizada por medio de reflexion
 					Constructor constructor = entidad.getClass().getConstructor(Jugador.class);
 					Entidad copia = (Entidad)constructor.newInstance(entidad.getJugador());
 					return copia;
@@ -68,5 +68,6 @@ public abstract class Creador {
 		
 		throw new NoTieneRecursosSuficientesException();
 	}
+	
 	
 }

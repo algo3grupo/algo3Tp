@@ -6,7 +6,7 @@ public class EMP extends HechizoAreaDeEfecto {
 
 	public EMP() {
 		
-		super(100);
+		super(100, 5);
 		
 	}
 

@@ -1,8 +1,11 @@
 package fiuba.algo3.algocraft.entidadesAbstractas;
 
 import fiuba.algo3.algocraft.atributos.Costo;
+import fiuba.algo3.algocraft.atributos.Hechizo;
 import fiuba.algo3.algocraft.excepciones.NoTieneEnergiaSuficiente;
 import fiuba.algo3.algocraft.jugador.Jugador;
+import fiuba.algo3.algocraft.mundo.Mundo;
+import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class UnidadEnergia extends Unidad {
 	private int energia;
@@ -11,6 +14,17 @@ public class UnidadEnergia extends Unidad {
 			int transporte) {
 		super( vida, rangoDeVision, jugador, nombre, costo, requiere, suministro, transporte);
 		this.energia = 50;
+	}
+	
+	public void lanzarHechizo(Hechizo hechizo, Vector2D posicion, Mundo mundo) throws NoTieneEnergiaSuficiente{
+		
+		if (tieneEnergiaSuficiente(hechizo.obtenerCosto())){
+			hechizo.lanzarHechizoA(posicion, mundo);
+			gastarEnergia(hechizo.obtenerCosto());	
+		}else{
+			throw new NoTieneEnergiaSuficiente();
+		}
+		
 	}
 	
 	public void cargarEnergia(int i){
@@ -23,13 +37,10 @@ public class UnidadEnergia extends Unidad {
 		}
 	}
 	
-	public void gastarEnergia(int i) throws NoTieneEnergiaSuficiente{
-		if (tieneEnergiaSuficiente(i)){
+	public void gastarEnergia(int i){
+		
 			energia-=i;
-		}
-		else{
-			throw new NoTieneEnergiaSuficiente();
-		}
+		
 	}
 
 	private boolean tieneEnergiaSuficiente(int i) {

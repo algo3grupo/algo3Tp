@@ -77,12 +77,14 @@ public abstract class Entidad {
 	public void estaLaEstructuraCreada(ArrayList<Estructura> estructuras) throws NoTieneLaEstructuraCreadaException  {
 		
 		for (int i = 0; i < estructuras.size(); i++) {
-			if( estructuras.get(i).nombre() == this.requiere() );
+			
+			if( ( estructuras.get(i).nombre() == this.requiere() ) & (estructuras.get(i).turnosEnCrear() == 0)){
 				return;
+			}
 		}
 		throw new NoTieneLaEstructuraCreadaException();
+		
 	}
-
 	public String requiere() {
 		
 		return requiere;
@@ -121,10 +123,18 @@ public abstract class Entidad {
 	
 	private void eliminar() {
 		
+		jugador.eliminar(this);
+		
 		
 	}
 
-
+	public void disminuirTurno(){
+		//los turnos no disminuyen a menos que 0
+		turnos --;
+		if (turnos < 0){
+			turnos = 0;
+		}
+	}
 
 
 

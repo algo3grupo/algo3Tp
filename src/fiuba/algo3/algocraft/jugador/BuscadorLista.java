@@ -11,6 +11,7 @@ public abstract class BuscadorLista {
 	public static Entidad obtenerEntidad(ArrayList entidades, IModo modo) throws NoSeEncontroLaEstructura{
 		for (int i=0; i < entidades.size(); i++)
 		{
+			//compara un atributo de entidad, con el valor a comparar en modo
 			if (modo.compara((Entidad)entidades.get(i))){
 				
 				return (Entidad) entidades.get(i);

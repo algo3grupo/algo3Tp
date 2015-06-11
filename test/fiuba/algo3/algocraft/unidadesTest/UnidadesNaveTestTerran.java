@@ -14,11 +14,13 @@ import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaUnidadException;
 import fiuba.algo3.algocraft.excepciones.NoEsPosibleCargarEstaUnidad;
 import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
+import fiuba.algo3.algocraft.excepciones.NoSeEncontroLaEstructura;
 import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
 import fiuba.algo3.algocraft.excepciones.NoTienePoblacionSuficienteException;
 import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.jugador.Terran;
+import fiuba.algo3.algocraft.pasaTurnos.PasaTurnos;
 
 
 public class UnidadesNaveTestTerran {
@@ -26,17 +28,23 @@ public class UnidadesNaveTestTerran {
 	@Test
 	public void crearNaveYCargarUnaUnidad() throws NoEsDeSuRazaLaEstructuraException, NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 					NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoEsDeSuRazaLaUnidadException,
-					NoTienePoblacionSuficienteException, NoEsPosibleCargarEstaUnidad {
-		Jugador jugador = new Terran("PEpe", 4000, 4000);
+					NoEsPosibleCargarEstaUnidad, NoSeEncontroLaEstructura {
+		Jugador jugador = new Terran("PEpe");
+		jugador.agregarMineral(4000);
+		jugador.agregarGas(4000);
 		jugador.agregarEstructura("Deposito Suministro", null, null);
 		jugador.agregarEstructura("Barraca", null, null);
+		PasaTurnos.pasarTurnos(jugador, 12);
 		jugador.agregarEstructura("Fabrica", null, null);
+		PasaTurnos.pasarTurnos(jugador, 12);
 		jugador.agregarEstructura("Puerto Estelar", null, null);
+		PasaTurnos.pasarTurnos(jugador, 10);
 		jugador.agregarUnidad("Nave Transporte");
 		jugador.agregarUnidad("Marine");
+		PasaTurnos.pasarTurnos(jugador, 15);
 		ArrayList<Unidad> unidades = jugador.ObtenerUnidades();
-		UnidadNave nave = (UnidadNave) unidades.get(0);
-		nave.cargarUnidad(unidades.get(1));
+		UnidadNave nave = (UnidadNave) unidades.get(1);
+		nave.cargarUnidad(unidades.get(0));
 		assertEquals(nave.cantidadCarga(), 1);
 
 	}
@@ -44,14 +52,20 @@ public class UnidadesNaveTestTerran {
 	@Test
 	public void crearNaveYLaUnaUnidadQueQuiereCargarEsVoladora() throws NoEsDeSuRazaLaEstructuraException, NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 					NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoEsDeSuRazaLaUnidadException,
-					NoTienePoblacionSuficienteException {
-		Jugador jugador = new Terran("PEpe", 4000, 4000);
+					NoSeEncontroLaEstructura {
+		Jugador jugador = new Terran("PEpe");
+		jugador.agregarMineral(4000);
+		jugador.agregarGas(4000);
 		jugador.agregarEstructura("Deposito Suministro", null, null);
 		jugador.agregarEstructura("Barraca", null, null);
+		PasaTurnos.pasarTurnos(jugador, 12);
 		jugador.agregarEstructura("Fabrica", null, null);
+		PasaTurnos.pasarTurnos(jugador, 12);
 		jugador.agregarEstructura("Puerto Estelar", null, null);
+		PasaTurnos.pasarTurnos(jugador, 10);
 		jugador.agregarUnidad("Nave Transporte");
 		jugador.agregarUnidad("Espectro");
+		PasaTurnos.pasarTurnos(jugador, 15);
 		ArrayList<Unidad> unidades = jugador.ObtenerUnidades();
 		UnidadNave nave = (UnidadNave) unidades.get(0);
 		try {
@@ -65,22 +79,28 @@ public class UnidadesNaveTestTerran {
 	@Test
 	public void crearNaveYQuiereSobreCargarLaNave() throws NoEsDeSuRazaLaEstructuraException, NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 					NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoEsDeSuRazaLaUnidadException,
-					NoTienePoblacionSuficienteException {
-		Jugador jugador = new Terran("PEpe", 4000, 4000);
+					NoSeEncontroLaEstructura {
+		Jugador jugador = new Terran("PEpe");
+		jugador.agregarMineral(4000);
+		jugador.agregarGas(4000);
 		jugador.agregarEstructura("Deposito Suministro", null, null);
 		jugador.agregarEstructura("Deposito Suministro", null, null);
 		jugador.agregarEstructura("Deposito Suministro", null, null);
 		jugador.agregarEstructura("Barraca", null, null);
+		PasaTurnos.pasarTurnos(jugador, 12);
 		jugador.agregarEstructura("Fabrica", null, null);
+		PasaTurnos.pasarTurnos(jugador, 12);
 		jugador.agregarEstructura("Puerto Estelar", null, null);
+		PasaTurnos.pasarTurnos(jugador, 10);
 		jugador.agregarUnidad("Nave Transporte");
 		for (int i=1; i < 6; i++){
 			jugador.agregarUnidad("Golliat");
 		}
+		PasaTurnos.pasarTurnos(jugador, 15);
 		ArrayList<Unidad> unidades = jugador.ObtenerUnidades();
-		UnidadNave nave = (UnidadNave) unidades.get(0);
+		UnidadNave nave = (UnidadNave) unidades.get(4);
 		try {
-			for (int i=1; i < 5; i++){
+			for (int i=0; i < 4; i++){
 			nave.cargarUnidad(unidades.get(i));
 			}
 		} catch (NoEsPosibleCargarEstaUnidad e) {

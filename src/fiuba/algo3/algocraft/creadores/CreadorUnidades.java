@@ -12,7 +12,7 @@ import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
 
 public abstract class CreadorUnidades extends Creador {
 	
-	public Unidad crearUnidad(String string, ArrayList<Estructura> estructuras) throws NoEsDeSuRazaLaUnidadException,
+	public Unidad crearUnidad(String string) throws NoEsDeSuRazaLaUnidadException,
 																					NoTieneLaEstructuraCreadaException,
 																					NoTieneRecursosSuficientesException,
 																					ErrorAlHacerCopia{

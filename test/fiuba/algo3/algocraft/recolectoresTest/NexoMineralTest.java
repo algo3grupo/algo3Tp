@@ -27,7 +27,7 @@ public class NexoMineralTest {
 		Mundo mundo = new Mundo(500,10);
 		mundo.generar();
 		
-        Protoss jugadorProtoss = new Protoss(null, 200, 0);
+        Protoss jugadorProtoss = new Protoss(null);
         
         Vector2D posicionBaseDeJugador = mundo.posicionBaseJugador1();
         
@@ -47,7 +47,7 @@ public class NexoMineralTest {
 		Mundo mundo = new Mundo(500,10);
 		mundo.generar();
 
-		Protoss jugadorProtoss = new Protoss(null, 200, 0);
+		Protoss jugadorProtoss = new Protoss(null);
         
 		/*Busco una posicion que no tenga minerales*/
         int i=1;

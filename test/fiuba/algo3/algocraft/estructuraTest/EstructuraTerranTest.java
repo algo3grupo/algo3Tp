@@ -18,7 +18,9 @@ public class EstructuraTerranTest {
 	@Test
 	public void correlacionPuertoEstelarNecesitaFabrica() throws ErrorAlHacerCopia {
 		
-		Jugador jugador= new Terran("Pepe",2500,2500);
+		Jugador jugador= new Terran("Pepe");
+		jugador.agregarMineral(2300);
+		jugador.agregarGas(2500);
 		try {
 			jugador.agregarEstructura("Deposito Suministro", null, null);
 			jugador.agregarEstructura("Barraca", null, null);
@@ -35,7 +37,9 @@ public class EstructuraTerranTest {
 	@Test
 	public void correlacionFabricaNecesitaBarraca() throws ErrorAlHacerCopia {
 		
-		Jugador jugador= new Terran("Pepe", 2500 , 2500);
+		Jugador jugador= new Terran("Pepe");
+		jugador.agregarMineral(2300);
+		jugador.agregarGas(2500);
 		try {
 			jugador.agregarEstructura("Deposito Suministro", null, null);
 			jugador.agregarEstructura("Fabrica", null, null);

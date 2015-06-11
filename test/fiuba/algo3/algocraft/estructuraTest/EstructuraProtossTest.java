@@ -12,13 +12,16 @@ import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
 import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.jugador.Protoss;
+import fiuba.algo3.algocraft.pasaTurnos.PasaTurnos;
 
 public class EstructuraProtossTest {
 
 	@Test
 	public void correlacionPuertoEstelarNecesitaAcceso() throws ErrorAlHacerCopia {
 		
-		Jugador jugador= new Protoss("Pepe",300,300);
+		Jugador jugador= new Protoss("Pepe");
+		jugador.agregarMineral(100);
+		jugador.agregarGas(300);
 		try {
 	
 				jugador.agregarEstructura("Puerto Estelar", null, null);
@@ -33,9 +36,11 @@ public class EstructuraProtossTest {
 	}
 	
 	@Test
-	public void correlacionArchivosTemplariosNecesitaPuertoEstelar() throws ErrorAlHacerCopia {
+	public void correlacionArchivosTemplariosNecesitaPuertoEstelarYNoLaTiene() throws ErrorAlHacerCopia {
 		
-		Jugador jugador= new Protoss("Pepe", 450 ,350);
+		Jugador jugador= new Protoss("Pepe");
+		jugador.agregarMineral(250);
+		jugador.agregarGas(350);
 		try {
 			jugador.agregarEstructura("Acceso", null, null);
 			jugador.agregarEstructura("Archivos Templarios", null, null);
@@ -47,5 +52,46 @@ public class EstructuraProtossTest {
 		}  catch ( NoTieneLaEstructuraCreadaException e){}
 		
 	}
-
+	
+	@Test
+	public void correlacionArchivosTemplariosNecesitaPuertoEstelarQueNoSeTerminoDeConstruir() throws ErrorAlHacerCopia {
+		
+		Jugador jugador= new Protoss("Pepe");
+		jugador.agregarMineral(250);
+		jugador.agregarGas(350);
+		try {
+			jugador.agregarEstructura("Puerto Estelar", null, null);
+			jugador.agregarEstructura("Archivos Templarios", null, null);
+		} catch (NoEsDeSuRazaLaEstructuraException
+				| NoTieneRecursosSuficientesException
+				|NoHayMineralEnElLugarACrear 
+				| NoHayGasEnElLugarACrear e) {
+			fail("Deberia tirar error de estructura no creada");
+		}  catch ( NoTieneLaEstructuraCreadaException e){}
+		
+	}
+	
+	@Test
+	public void correlacionArchivosTemplariosNecesitaPuertoEstelarYLoTiene() throws Exception {
+		
+		Jugador jugador= new Protoss("Pepe");
+		jugador.agregarMineral(250);
+		jugador.agregarGas(350);
+		try {
+			jugador.agregarEstructura("Acceso", null, null);
+			PasaTurnos.pasarTurnos(jugador, 8);
+			jugador.agregarEstructura("Puerto Estelar", null, null);
+			PasaTurnos.pasarTurnos(jugador, 10);
+			jugador.agregarEstructura("Archivos Templarios", null, null);
+		} catch (NoEsDeSuRazaLaEstructuraException
+				| NoTieneRecursosSuficientesException
+				|NoHayMineralEnElLugarACrear 
+				| NoHayGasEnElLugarACrear 
+				|NoTieneLaEstructuraCreadaException e) {
+			throw e;
+		} 
+		
+		assert(true);
+		
+	}
 }

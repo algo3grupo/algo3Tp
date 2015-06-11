@@ -27,7 +27,7 @@ public class RefineriaTest {
 		Mundo mundo = new Mundo(500,10);
 		mundo.generar();
 		
-        Terran jugadorTerran = new Terran(null, 200, 0);
+        Terran jugadorTerran = new Terran(null);
         
         Vector2D posicionBaseDeJugador = mundo.posicionBaseJugador1();
         
@@ -47,7 +47,7 @@ public class RefineriaTest {
 		Mundo mundo = new Mundo(500,10);
 		mundo.generar();
 
-		Terran jugadorTerran = new Terran(null, 200, 0);
+		Terran jugadorTerran = new Terran(null);
         
 		/*Busco una posicion que no tenga gas*/
         int i=1;

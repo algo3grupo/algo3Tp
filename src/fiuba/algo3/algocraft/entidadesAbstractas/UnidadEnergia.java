@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.entidadesAbstractas;
 
+import fiuba.algo3.algocraft.Interfaces.IEfectoEMP;
 import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.atributos.Hechizo;
 import fiuba.algo3.algocraft.excepciones.NoTieneEnergiaSuficiente;
@@ -7,7 +8,7 @@ import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.mundo.Mundo;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 
-public class UnidadEnergia extends Unidad {
+public class UnidadEnergia extends Unidad implements IEfectoEMP{
 	private int energia;
 	
 	public UnidadEnergia( int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int suministro,
@@ -47,5 +48,13 @@ public class UnidadEnergia extends Unidad {
 		
 		return (energia - i > 0);
 		
+	}
+	
+	public void atacadoPorEMP(){
+		energia = 0;
+	}
+	
+	public int obtenerEnergia(){
+		return energia;
 	}
 }

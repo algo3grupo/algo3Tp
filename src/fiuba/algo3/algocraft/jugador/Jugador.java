@@ -8,6 +8,7 @@ import fiuba.algo3.algocraft.Acciones.CrearUnidad;
 import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.creadores.CreadorEstructuras;
 import fiuba.algo3.algocraft.creadores.CreadorUnidades;
+import fiuba.algo3.algocraft.entidadesAbstractas.ColaDeAcciones;
 import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
@@ -35,10 +36,11 @@ public abstract class Jugador {
 	protected CreadorUnidades creadorUnidades;
 	private int poblacionMaxima;
 	
-	public Jugador(String nombreJugador, int mineralesInicial, int gasInicial) {
+	public Jugador(String nombreJugador) {
+		
 		this.nombre = nombreJugador;
-		this.minerales = mineralesInicial;
-		this.gas = gasInicial;
+		this.minerales = 200;
+		this.gas = 0;
 		this.poblacionActual = 0;
 		this.unidades = new ArrayList<Unidad>();
 		this.estructuras = new ArrayList<Estructura>();
@@ -52,7 +54,7 @@ public abstract class Jugador {
 																				NoHayGasEnElLugarACrear, ErrorAlHacerCopia{
 		
 		Estructura estructura = creadorEstructuras.crearEstructura(string, posicion, mundo);
-		estructuras.add( estructura);
+		incorporarEstructura(estructura);
 		estructura.actualizarPoblacion();
 		
 	}
@@ -60,31 +62,22 @@ public abstract class Jugador {
 
 	public void agregarUnidad(String string) throws NoEsDeSuRazaLaUnidadException,
 													NoTieneLaEstructuraCreadaException,
-													NoTieneRecursosSuficientesException, 
-													NoTienePoblacionSuficienteException, ErrorAlHacerCopia {
+													NoTieneRecursosSuficientesException,  
+													NoSeEncontroLaEstructura, ErrorAlHacerCopia {
 		
-		Unidad unidad = creadorUnidades.crearUnidad(string,estructuras);
-		//se fija si hay poblacion para ponerla
-		if ( hayPoblacionParaUnidad(unidad)) {
-				poblacionActual += unidad.suministro();
-			
-		}else { 
-			//tiene que reintegrar porque al crear se paga por la unidad
-			reintegroCosto(unidad);
-			throw new NoTienePoblacionSuficienteException();
-		}
+		estructuraEmpiezaACrearUnidad(string);
 		
-		unidades.add(unidad);
 		
 	}
 	
-	public void ponerEnColaCreacionUnidad(String nombre) throws NoEsDeSuRazaLaUnidadException, 
+	public void estructuraEmpiezaACrearUnidad(String nombre) throws NoEsDeSuRazaLaUnidadException, 
 								NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 								ErrorAlHacerCopia, NoSeEncontroLaEstructura{
-		Unidad unidad = creadorUnidades.crearUnidad(nombre ,estructuras);
-		
+		//crea la unidad
+		Unidad unidad = creadorUnidades.crearUnidad(nombre);
+		//si puede crearla la agrega a la cola de acciones de la estructura que la crea
 		Estructura estructura = (Estructura) BuscadorLista.obtenerEntidad( (ArrayList)estructuras, (IModo)new ModoNombre(unidad.requiere()));
-		estructura.agregarAccion(new CrearUnidad(unidad.turnosEnCrear(), unidad));
+		estructura.agregarAccion(new CrearUnidad( unidad ));
 		
 	}
 
@@ -98,7 +91,13 @@ public abstract class Jugador {
 		
 		return (poblacionActual + unidad.suministro() <= poblacionMaxima);
 	}
+	
+	private void sumarSuministroUnidad(Unidad unidad){
 		
+		poblacionActual += unidad.suministro();
+		
+	}
+	
 	public void aumentarPoblacion(int i) {
 		if (poblacionMaxima+i > 200){
 			poblacionMaxima = 200;
@@ -161,4 +160,35 @@ public abstract class Jugador {
 		agregarGas(entidad.costo().gas());
 		
 	}
+	
+	public void incorporarEstructura(Estructura estructura){
+		estructuras.add(estructura);
+		
+	}
+	
+	public void incorporarUnidad(Unidad unidad){
+		// a ser usada cuando se sabe que se puede sumar la unidad
+		unidades.add(unidad);
+		sumarSuministroUnidad(unidad);
+	
+	}
+	
+	private void ejecutarAccionesDeLista(ArrayList lista){
+		for (int i = 0; i < lista.size(); i++){
+			((ColaDeAcciones) lista.get(i)).ejecutarAcciones();
+			
+		}
+		
+	}
+	public void terminarTurno(){
+		ejecutarAccionesDeLista((ArrayList) estructuras);
+		ejecutarAccionesDeLista((ArrayList) unidades);
+		
+		
+	}
+
+	public void eliminar(Entidad entidad) {
+		//sacar de la lista, 
+	}
+	
 }

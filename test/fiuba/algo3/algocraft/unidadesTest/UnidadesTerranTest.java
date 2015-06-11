@@ -11,32 +11,35 @@ import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaUnidadException;
 import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
+import fiuba.algo3.algocraft.excepciones.NoSeEncontroLaEstructura;
 import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
 import fiuba.algo3.algocraft.excepciones.NoTienePoblacionSuficienteException;
 import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.jugador.Terran;
+import fiuba.algo3.algocraft.pasaTurnos.PasaTurnos;
 import fiuba.algo3.algocraft.unidadesTerran.Marine;
 
 public class UnidadesTerranTest {
 
 	@Test
 	public void instaciarMarine(){
-		Jugador jugador= new Terran("Pepe", 100 ,100 );
+		Jugador jugador= new Terran("Pepe");
 		Unidad marine = new Marine(jugador);
 		assertEquals("Marine",marine.nombre());
 	}
 	
 	@Test
-	public void intentaCrearUnidadSinLaEstructura() throws ErrorAlHacerCopia{
-		Jugador jugador= new Terran("Pepe",250 ,100 );
+	public void intentaCrearUnidadSinLaEstructura() throws ErrorAlHacerCopia, NoSeEncontroLaEstructura{
+		Jugador jugador= new Terran("Pepe");
+		jugador.agregarMineral(50);
+		jugador.agregarGas(100);
 		try {
 			jugador.agregarUnidad("Marine");
 			fail("Deberia lanzar que no esta la estructura creada");
 			
 		} catch (NoEsDeSuRazaLaUnidadException
-				|NoTieneRecursosSuficientesException
-				| NoTienePoblacionSuficienteException e) {
+				|NoTieneRecursosSuficientesException e) {
 				fail("No deberia tirar este error");
 				
 		} catch (NoTieneLaEstructuraCreadaException e) {
@@ -45,38 +48,42 @@ public class UnidadesTerranTest {
 	}
 	
 	@Test
-	public void creaUnidadDespuesDeCrearEstructura() throws ErrorAlHacerCopia{
-		Jugador jugador= new Terran("Pepe", 350 ,100 );
+	public void creaUnidadDespuesDeCrearEstructura() throws ErrorAlHacerCopia, NoSeEncontroLaEstructura{
+		Jugador jugador= new Terran("Pepe");
+		jugador.agregarMineral(150);
+		jugador.agregarGas(100);
 		try {
 			
 			jugador.agregarEstructura("Deposito Suministro", null, null);
 			jugador.agregarEstructura("Barraca", null, null);
+			PasaTurnos.pasarTurnos(jugador, 15);
 			jugador.agregarUnidad("Marine");
 			
 		} catch (NoEsDeSuRazaLaUnidadException
 				| NoEsDeSuRazaLaEstructuraException
 				| NoTieneLaEstructuraCreadaException
 				| NoTieneRecursosSuficientesException
-				| NoTienePoblacionSuficienteException
 				| NoHayMineralEnElLugarACrear 
 				| NoHayGasEnElLugarACrear e) {
 			fail("No deberia tirar este error");
 		}
-		
+		PasaTurnos.pasarTurnos(jugador, 7);
 		assertEquals("Marine", jugador.ObtenerUnidades().get(0).nombre());
 	}
 	
 	@Test
-	public void creaUnidadYNoTieneMineralesSuficientes() throws ErrorAlHacerCopia{
-		Jugador jugador= new Terran("Pepe", 210 ,100 );
+	public void creaUnidadYNoTieneMineralesSuficientes() throws ErrorAlHacerCopia, NoSeEncontroLaEstructura{
+		Jugador jugador= new Terran("Pepe" );
+		jugador.agregarMineral(10);
+		jugador.agregarGas(100);
 		try {
 			jugador.agregarEstructura("Deposito Suministro", null, null);
 			jugador.agregarEstructura("Barraca", null, null);
+			PasaTurnos.pasarTurnos(jugador, 10);
 			jugador.agregarUnidad("Marine");
 		} catch (NoEsDeSuRazaLaUnidadException
 				| NoEsDeSuRazaLaEstructuraException
 				| NoTieneLaEstructuraCreadaException
-				| NoTienePoblacionSuficienteException
 				| NoHayMineralEnElLugarACrear 
 				| NoHayGasEnElLugarACrear e) {
 			fail("No deberia tirar este error");
@@ -86,18 +93,21 @@ public class UnidadesTerranTest {
 	}
 	
 	@Test
-	public void creaUnidadYNoTieneGasSuficiente() throws ErrorAlHacerCopia{
-		Jugador jugador= new Terran("Pepe", 650 ,110);
+	public void creaUnidadYNoTieneGasSuficiente() throws ErrorAlHacerCopia, NoSeEncontroLaEstructura{
+		Jugador jugador= new Terran("Pepe");
+		jugador.agregarMineral(450);
+		jugador.agregarGas(110);
 		try {
 			jugador.agregarEstructura("Deposito Suministro", null, null);
 			jugador.agregarEstructura("Barraca", null, null);
+			PasaTurnos.pasarTurnos(jugador, 12);
 			jugador.agregarEstructura("Fabrica", null, null);
+			PasaTurnos.pasarTurnos(jugador, 12);
 			jugador.agregarUnidad("Golliat");
 			fail("No deberia llegar a esta parte");
 		} catch (NoEsDeSuRazaLaUnidadException
 				| NoEsDeSuRazaLaEstructuraException
 				| NoTieneLaEstructuraCreadaException
-				| NoTienePoblacionSuficienteException
 				| NoHayMineralEnElLugarACrear 
 				| NoHayGasEnElLugarACrear e) {
 			fail("No deberia tirar este error");
@@ -108,12 +118,15 @@ public class UnidadesTerranTest {
 
 
 	@Test
-	public void creaUnidadYNoTieneEspacioSuficienteParaCrearla() throws ErrorAlHacerCopia{
-		Jugador jugador= new Terran("Pepe", 380 , 60 );
+	public void creaUnidadYNoTieneEspacioSuficienteParaCrearla() throws ErrorAlHacerCopia, NoSeEncontroLaEstructura{
+		Jugador jugador= new Terran("Pepe");
+		jugador.agregarMineral(180);
+		jugador.agregarGas(60);
 	try {
 		jugador.agregarEstructura("Barraca", null, null);
+		PasaTurnos.pasarTurnos(jugador, 15);
 		jugador.agregarUnidad("Marine");
-		fail("No deberia llegar a esta parte");
+		
 	} catch (NoEsDeSuRazaLaUnidadException
 			| NoEsDeSuRazaLaEstructuraException
 			| NoTieneLaEstructuraCreadaException
@@ -121,9 +134,10 @@ public class UnidadesTerranTest {
 			| NoHayMineralEnElLugarACrear 
 			| NoHayGasEnElLugarACrear e) {
 		fail("No deberia tirar este error");
-	} catch (NoTienePoblacionSuficienteException e){
-		}
+	} 
+		
+		assertEquals(jugador.ObtenerUnidades().size(), 0);
 	
 	}
-
+	
 }

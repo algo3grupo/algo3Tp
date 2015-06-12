@@ -16,4 +16,10 @@ public class Mineral extends Entidad {
 		super(posicionMineral,dimension,dimension);			
 	}
 
+	@Override
+	public void hacerMisAcciones() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

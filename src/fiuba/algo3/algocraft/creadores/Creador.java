@@ -35,8 +35,8 @@ public abstract class Creador {
 		for ( int i = 0; i < entidades.size(); i++) {
 			if( (entidades.get(i).nombre() == string) ){
 				Entidad entidad = entidades.get(i);
-				if (entidad.requiere()!=""){
-					entidad.estaLaEstructuraCreada(entidad.getJugador().obtenerEstructuras());
+				if (! entidad.estaLaEstructuraCreada(entidad.getJugador().obtenerEstructuras())){
+					throw new NoTieneLaEstructuraCreadaException();
 				}
 				gastar(entidad);
 				try {

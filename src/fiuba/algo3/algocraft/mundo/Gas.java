@@ -14,6 +14,12 @@ public class Gas extends Entidad{
 	public Gas(Vector2D posicionGas, int dimension) 
 	{
 		super(posicionGas,dimension,dimension);			
+	}
+
+	@Override
+	public void hacerMisAcciones() {
+		// TODO Auto-generated method stub
+		
 	}	
 
 }

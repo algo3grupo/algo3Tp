@@ -14,6 +14,14 @@ public class Espacio extends Entidad{
 	public Espacio(Vector2D posicionEspacio, int dimension) 
 	{
 		super(posicionEspacio,dimension,dimension);			
-	}	
+	}
+
+	@Override
+	public void hacerMisAcciones() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 
 }

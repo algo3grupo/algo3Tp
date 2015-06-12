@@ -37,6 +37,11 @@ public abstract class ColaDeAcciones extends Entidad implements IColaDeAcciones{
 				colaDeAcciones.remove(i);		
 	}
 	
+	public void hacerMisAcciones()
+	{
+		ejecutarAcciones();
+	}
+	
 	public void ejecutarAcciones()
 	{
 		for(int i=0;i<colaDeAcciones.size();i++)

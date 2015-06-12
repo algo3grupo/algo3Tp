@@ -9,15 +9,16 @@ import fiuba.algo3.algocraft.excepciones.NoTienePoblacionSuficienteException;
 
 public class CrearUnidad implements IAccion{
 	private Unidad unidad;
+	private Estructura estructura;
 	
-	public CrearUnidad( Unidad unidad){
+	public CrearUnidad(Estructura llamador, Unidad unidad){
 		this.unidad = unidad;
+		this.estructura = llamador;
 	}
 
-	public void crearUnidad(IColaDeAcciones llamador) throws  NoTienePoblacionSuficienteException {
+	public void lanzarAlMapa() throws  NoTienePoblacionSuficienteException {
 		
 		
-		Estructura estructura = (Estructura)llamador;
 		if (! estructura.getJugador().hayPoblacionParaUnidad(unidad)){
 			throw new NoTienePoblacionSuficienteException();
 		}
@@ -31,9 +32,9 @@ public class CrearUnidad implements IAccion{
 	public void ejecutar(IColaDeAcciones llamador) {
 		unidad.disminuirTurno();
 		
-		if (unidad.turnosEnCrear() == 0){
+		if (unidad.estaHabilitada()){
 			try {
-				crearUnidad(llamador);
+				lanzarAlMapa();
 			} catch (NoTienePoblacionSuficienteException e) {
 				//mientras que no tenga poblacion para sacarla no quita esta accion
 				return;				

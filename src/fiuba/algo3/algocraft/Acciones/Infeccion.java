@@ -20,7 +20,7 @@ public class Infeccion implements IAccion {
 	
 
 	private void radiacion(Unidad unidad){
-		//ataca directamente la vida de las unidades
+		//ataca directamente la vida de las unidades aliadas
 		
 		ArrayList<Unidad> unidades= (ArrayList<Unidad>)unidad.obtenerUnidadesAliadasEnRango( rango );
 		for ( int i = 0; i < unidades.size() ; i++){

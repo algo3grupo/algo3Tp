@@ -30,9 +30,5 @@ public abstract class Protegidas extends Estructura
 		}
 	}
 	
-	public Object clone(){
-		Object obj = null;
-		return obj;
-	}
 	
 }

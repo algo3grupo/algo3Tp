@@ -32,8 +32,6 @@ public abstract class Entidad {
 		this.turnos = turnos;
 	}
 	
-	
-	
 
 	
 	public boolean incluyeA(Vector2D posicion)
@@ -45,9 +43,11 @@ public abstract class Entidad {
 		return false;
 	}
 
+	
 	public Vector2D obtenerPosicion() {
 		return new Vector2D(posicion);
 	}
+	
 	
 	public Entidad(Vector2D posicion, int dimensionX, int dimensionY)
 	{
@@ -57,6 +57,7 @@ public abstract class Entidad {
 
 	}
 
+	
 	public Entidad(Entidad entidad) 
 	{
 		posicion = new Vector2D(entidad.posicion);
@@ -74,15 +75,20 @@ public abstract class Entidad {
 		return this.costo;
 	}
 	
-	public void estaLaEstructuraCreada(ArrayList<Estructura> estructuras) throws NoTieneLaEstructuraCreadaException  {
+	public boolean estaLaEstructuraCreada(ArrayList<Estructura> estructuras) throws NoTieneLaEstructuraCreadaException  {
 		
-		for (int i = 0; i < estructuras.size(); i++) {
+		if (this.requiere == ""){
+			return true;
+		}
+		else{
+			for (int i = 0; i < estructuras.size(); i++) {
 			
-			if( ( estructuras.get(i).nombre() == this.requiere() ) & (estructuras.get(i).turnosEnCrear() == 0)){
-				return;
+				if( ( estructuras.get(i).nombre() == this.requiere() ) & (estructuras.get(i).estaHabilitada())){
+					return true;
+				}
 			}
 		}
-		throw new NoTieneLaEstructuraCreadaException();
+		return false;
 		
 	}
 	public String requiere() {
@@ -135,11 +141,27 @@ public abstract class Entidad {
 			turnos = 0;
 		}
 	}
-
+	
+	public boolean estaHabilitada(){
+		
+		return (turnos == 0);
+	}
 
 
 	public int ID() {
 		
 		return ID;
+	}
+	
+	public abstract void hacerMisAcciones();
+	
+	public void ejecutarAccionesDeTurno()
+	{
+		disminuirTurno();
+		
+		if(!estaHabilitada())
+			return;
+		hacerMisAcciones();
+		
 	}
 }

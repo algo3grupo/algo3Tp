@@ -16,6 +16,10 @@ public class Asimilador extends Protegidas implements IRecolectores {
 	
 	public void recolectarSuministro()
 	{
+		
 		getJugador().agregarMineral(10);
 	}
+
+	
+	
 }

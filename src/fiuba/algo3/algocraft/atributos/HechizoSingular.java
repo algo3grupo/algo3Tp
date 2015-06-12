@@ -16,9 +16,7 @@ public abstract class HechizoSingular extends Hechizo {
 		//si hay una unidad en el lugar
 		//la unidad q se hechiza es la q estaba en esa posicion
 		//sino no tira el hechizo
-		Unidad unidad = new Zealot(null); 
-		hechizar(unidad);
-		
+				
 	}
 	
 	public void hechizar(Unidad unidad){

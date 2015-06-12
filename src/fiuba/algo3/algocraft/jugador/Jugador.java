@@ -55,7 +55,7 @@ public abstract class Jugador {
 		
 		Estructura estructura = creadorEstructuras.crearEstructura(string, posicion, mundo);
 		incorporarEstructura(estructura);
-		estructura.actualizarPoblacion();
+		
 		
 	}
 
@@ -76,8 +76,9 @@ public abstract class Jugador {
 		//crea la unidad
 		Unidad unidad = creadorUnidades.crearUnidad(nombre);
 		//si puede crearla la agrega a la cola de acciones de la estructura que la crea
+		//el buscador de listas, devuelve entidades habilitadas
 		Estructura estructura = (Estructura) BuscadorLista.obtenerEntidad( (ArrayList)estructuras, (IModo)new ModoNombre(unidad.requiere()));
-		estructura.agregarAccion(new CrearUnidad( unidad ));
+		estructura.agregarAccion(new CrearUnidad( estructura, unidad ));
 		
 	}
 
@@ -175,7 +176,7 @@ public abstract class Jugador {
 	
 	private void ejecutarAccionesDeLista(ArrayList lista){
 		for (int i = 0; i < lista.size(); i++){
-			((ColaDeAcciones) lista.get(i)).ejecutarAcciones();
+			((Entidad) lista.get(i)).ejecutarAccionesDeTurno();
 			
 		}
 		

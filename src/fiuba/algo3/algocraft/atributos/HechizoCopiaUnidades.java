@@ -18,7 +18,7 @@ public abstract class HechizoCopiaUnidades extends Hechizo {
 	}
 	
 	public void lanzarHechizoA(Vector2D posicion, Mundo mundo){
-		
+		//donde copia la unidad
 		
 	}
 	

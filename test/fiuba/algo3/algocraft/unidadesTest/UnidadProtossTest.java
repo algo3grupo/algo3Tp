@@ -24,14 +24,14 @@ public class UnidadProtossTest {
 	
 	@Test
 	public void instaciarZealot(){
-		Jugador jugador= new Protoss("Pepe");
+		Jugador jugador= new Protoss("Pepe","#FF0000");
 		Unidad zealot = new Zealot(jugador);
 		assertEquals("Zealot",zealot.nombre());
 	}
 	
 	@Test
 	public void intentaCrearUnidadSinLaEstructura() throws ErrorAlHacerCopia, NoSeEncontroLaEstructura{
-		Jugador jugador= new Protoss("Pepe");
+		Jugador jugador= new Protoss("Pepe","#FF0000");
 		jugador.agregarMineral(50);
 		jugador.agregarGas(100);
 		try {
@@ -47,7 +47,7 @@ public class UnidadProtossTest {
 	
 	@Test
 	public void creaUnidadDespuesDeCrearEstructura() throws ErrorAlHacerCopia, NoSeEncontroLaEstructura{
-		Jugador jugador= new Protoss("Pepe" );
+		Jugador jugador= new Protoss("Pepe","#FF0000");
 		jugador.agregarMineral(250);
 		jugador.agregarGas(100);
 		try {
@@ -71,7 +71,7 @@ public class UnidadProtossTest {
 	
 	@Test
 	public void creaUnidadYNoTieneMineralesSuficientes() throws ErrorAlHacerCopia, NoSeEncontroLaEstructura{
-		Jugador jugador= new Protoss("Pepe");
+		Jugador jugador= new Protoss("Pepe","#FF0000");
 		jugador.agregarMineral(100);
 		jugador.agregarGas(100);
 		try {
@@ -92,7 +92,7 @@ public class UnidadProtossTest {
 	
 	@Test
 	public void creaUnidadYNoTieneGasSuficiente() throws ErrorAlHacerCopia, NoSeEncontroLaEstructura{
-		Jugador jugador= new Protoss("Pepe");
+		Jugador jugador= new Protoss("Pepe","#FF0000");
 		jugador.agregarMineral(180);
 		jugador.agregarGas(30);
 		try {
@@ -115,7 +115,7 @@ public class UnidadProtossTest {
 
 	@Test
 	public void creaUnidadYNoTieneEspacioSuficienteParaCrearla() throws ErrorAlHacerCopia, NoSeEncontroLaEstructura{
-		Jugador jugador= new Protoss("Pepe");
+		Jugador jugador= new Protoss("Pepe","#FF0000");
 		jugador.agregarMineral(380);
 		jugador.agregarGas(60);
 	try {

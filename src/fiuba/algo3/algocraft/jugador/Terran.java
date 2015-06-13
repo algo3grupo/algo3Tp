@@ -5,8 +5,8 @@ import fiuba.algo3.algocraft.creadores.CreadorUnidadesTerran;
 
 public class Terran extends Jugador {
 
-	public Terran(String nombreJugador) {
-		super(nombreJugador);
+	public Terran(String nombreJugador, String colorJugador) {
+		super(nombreJugador,colorJugador);
 		this.creadorEstructuras = new CreadorEstructurasTerran(this);
 		this.creadorUnidades =new CreadorUnidadesTerran(this);
 	}

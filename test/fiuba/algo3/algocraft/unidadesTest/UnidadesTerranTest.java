@@ -24,14 +24,14 @@ public class UnidadesTerranTest {
 
 	@Test
 	public void instaciarMarine(){
-		Jugador jugador= new Terran("Pepe");
+		Jugador jugador= new Terran("Pepe","#FF0000");
 		Unidad marine = new Marine(jugador);
 		assertEquals("Marine",marine.nombre());
 	}
 	
 	@Test
 	public void intentaCrearUnidadSinLaEstructura() throws ErrorAlHacerCopia, NoSeEncontroLaEstructura{
-		Jugador jugador= new Terran("Pepe");
+		Jugador jugador= new Terran("Pepe","#FF0000");
 		jugador.agregarMineral(50);
 		jugador.agregarGas(100);
 		try {
@@ -49,7 +49,7 @@ public class UnidadesTerranTest {
 	
 	@Test
 	public void creaUnidadDespuesDeCrearEstructura() throws ErrorAlHacerCopia, NoSeEncontroLaEstructura{
-		Jugador jugador= new Terran("Pepe");
+		Jugador jugador= new Terran("Pepe","#FF0000");
 		jugador.agregarMineral(150);
 		jugador.agregarGas(100);
 		try {
@@ -73,7 +73,7 @@ public class UnidadesTerranTest {
 	
 	@Test
 	public void creaUnidadYNoTieneMineralesSuficientes() throws ErrorAlHacerCopia, NoSeEncontroLaEstructura{
-		Jugador jugador= new Terran("Pepe" );
+		Jugador jugador= new Terran("Pepe","#FF0000");
 		jugador.agregarMineral(10);
 		jugador.agregarGas(100);
 		try {
@@ -94,7 +94,7 @@ public class UnidadesTerranTest {
 	
 	@Test
 	public void creaUnidadYNoTieneGasSuficiente() throws ErrorAlHacerCopia, NoSeEncontroLaEstructura{
-		Jugador jugador= new Terran("Pepe");
+		Jugador jugador= new Terran("Pepe","#FF0000");
 		jugador.agregarMineral(450);
 		jugador.agregarGas(110);
 		try {
@@ -119,7 +119,7 @@ public class UnidadesTerranTest {
 
 	@Test
 	public void creaUnidadYNoTieneEspacioSuficienteParaCrearla() throws ErrorAlHacerCopia, NoSeEncontroLaEstructura{
-		Jugador jugador= new Terran("Pepe");
+		Jugador jugador= new Terran("Pepe","#FF0000");
 		jugador.agregarMineral(180);
 		jugador.agregarGas(60);
 	try {

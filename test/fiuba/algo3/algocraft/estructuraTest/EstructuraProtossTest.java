@@ -19,7 +19,7 @@ public class EstructuraProtossTest {
 	@Test
 	public void correlacionPuertoEstelarNecesitaAcceso() throws ErrorAlHacerCopia {
 		
-		Jugador jugador= new Protoss("Pepe");
+		Jugador jugador= new Protoss("Pepe","#FF0000");
 		jugador.agregarMineral(100);
 		jugador.agregarGas(300);
 		try {
@@ -38,7 +38,7 @@ public class EstructuraProtossTest {
 	@Test
 	public void correlacionArchivosTemplariosNecesitaPuertoEstelarYNoLaTiene() throws ErrorAlHacerCopia {
 		
-		Jugador jugador= new Protoss("Pepe");
+		Jugador jugador= new Protoss("Pepe","#FF0000");
 		jugador.agregarMineral(250);
 		jugador.agregarGas(350);
 		try {
@@ -56,7 +56,7 @@ public class EstructuraProtossTest {
 	@Test
 	public void correlacionArchivosTemplariosNecesitaPuertoEstelarQueNoSeTerminoDeConstruir() throws ErrorAlHacerCopia {
 		
-		Jugador jugador= new Protoss("Pepe");
+		Jugador jugador= new Protoss("Pepe","#FF0000");
 		jugador.agregarMineral(250);
 		jugador.agregarGas(350);
 		try {
@@ -74,7 +74,7 @@ public class EstructuraProtossTest {
 	@Test
 	public void correlacionArchivosTemplariosNecesitaPuertoEstelarYLoTiene() throws Exception {
 		
-		Jugador jugador= new Protoss("Pepe");
+		Jugador jugador= new Protoss("Pepe","#FF0000");
 		jugador.agregarMineral(250);
 		jugador.agregarGas(350);
 		try {

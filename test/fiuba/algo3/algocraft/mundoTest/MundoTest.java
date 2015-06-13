@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.junit.Assert;
 import org.junit.Test;
 
+import fiuba.algo3.algocraft.Juego;
 import fiuba.algo3.algocraft.excepciones.posicionDeJugadorIndefinida;
 import fiuba.algo3.algocraft.excepciones.ParametroNegativo;
 import fiuba.algo3.algocraft.excepciones.ParametroNulo;
@@ -21,51 +22,68 @@ public class MundoTest {
 	@Test
 	public void crearMundo() 
 	{
-		new Mundo(500,10);
+		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+        
+		Mundo mundo = new Mundo(500,10,juego);
 
 	}
 	
 	@Test
 	public void generarMundo() 
 	{
-		new Mundo(500,10).generar();
+		
+		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");        
+	
+		new Mundo(500,10,juego).generar();
 	}
 	
 	@Test(expected = ParametroNegativo.class)
 	public void resolucionNegativa() 
 	{
-		new Mundo(-500,10);	
+		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+        
+		Mundo mundo = new Mundo(-500,10,juego);	
 	}
 	
 	@Test(expected = ParametroNegativo.class)
 	public void divisionDeGrillaNegativa() 
 	{
-		new Mundo(500,-10);	
+		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+        
+		Mundo mundo = new Mundo(500,-10,juego);
 	}
 	
 	@Test(expected = ParametroNulo.class)
 	public void divisionDeGrillaCero()
 	{
-		new Mundo(500,0);	
+		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+        
+		Mundo mundo = new Mundo(500,0,juego);
 	}
 	
 	@Test(expected = ParametroNulo.class)
 	public void resolucionCero() 
 	{
-		new Mundo(0,10);	
+		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+        
+		Mundo mundo = new Mundo(0,10,juego);	
 	}
 	
 	@Test(expected = DivisionDeGrillaNoEsMultiploDeResolucion.class)
 	public void divisionDeGrillaDistintoAMultiploDeResolucion() 
 	{
-		new Mundo(500,3);	
+		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+        
+		Mundo mundo = new Mundo(500,3,juego);
 	}
 
 
 	@Test
 	public void posicionValidaBaseJugadores() 
 	{
-		Mundo mundo = new Mundo(500,10);
+		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+        
+		Mundo mundo = new Mundo(500,10,juego);
 		
 		mundo.generar();
 		
@@ -82,7 +100,9 @@ public class MundoTest {
 	@Test
 	public void distanciaEntreBasesDeJugadoresGrande() 
 	{
-		Mundo mundo = new Mundo(500,10);
+		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+        
+		Mundo mundo = new Mundo(500,10,juego);
 		
 		mundo.generar();
 		
@@ -94,7 +114,9 @@ public class MundoTest {
 	@Test
 	public void recursosCercanosALasBasesDeLosJugares() 
 	{
-		Mundo mundo = new Mundo(500,10);
+		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+        
+		Mundo mundo = new Mundo(500,10,juego);
 		
 		mundo.generar();
 		
@@ -112,7 +134,9 @@ public class MundoTest {
 	public void listaDeMineralesCercanos() 
 	{
 
-		Mundo mundo = new Mundo(500,10);
+		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+        
+		Mundo mundo = new Mundo(500,10,juego);
 		
 		mundo.generar();
 		
@@ -122,7 +146,9 @@ public class MundoTest {
 	@Test
 	public void listaDeGasesCercanos() 
 	{
-		Mundo mundo = new Mundo(500,10);
+		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+        
+		Mundo mundo = new Mundo(500,10,juego);
 		
 		mundo.generar();
 		
@@ -132,7 +158,9 @@ public class MundoTest {
 	@Test
 	public void obtenerResolucion() 
 	{
-		Mundo mundo = new Mundo(500,10);
+		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+        
+		Mundo mundo = new Mundo(500,10,juego);
 		
 		mundo.generar();
 		
@@ -142,7 +170,9 @@ public class MundoTest {
 	@Test(expected = posicionDeJugadorIndefinida.class)
 	public void posicionBaseJugador1Vacia() 
 	{
-		Mundo mundo = new Mundo(500,10);
+		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+        
+		Mundo mundo = new Mundo(500,10,juego);
 		
 		mundo.posicionBaseJugador1();
 	}
@@ -150,7 +180,9 @@ public class MundoTest {
 	@Test(expected = posicionDeJugadorIndefinida.class)
 	public void posicionBaseJugador2Vacia()
 	{
-		Mundo mundo = new Mundo(500,10);
+		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+        
+		Mundo mundo = new Mundo(500,10,juego);
 		
 		mundo.posicionBaseJugador2();
 	}
@@ -158,7 +190,9 @@ public class MundoTest {
 	@Test
 	public void posicionBaseJugador1NoVacia() 
 	{
-		Mundo mundo = new Mundo(500,10);
+		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+        
+		Mundo mundo = new Mundo(500,10,juego);
 		
 		mundo.generar();
 		
@@ -168,7 +202,9 @@ public class MundoTest {
 	@Test
 	public void posicionBaseJugador2NoVacia() 
 	{
-		Mundo mundo = new Mundo(500,10);
+		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+        
+		Mundo mundo = new Mundo(500,10,juego);
 		
 		mundo.generar();
 		
@@ -178,7 +214,9 @@ public class MundoTest {
 	@Test
 	public void posicionDondeNoHayMineral() 
 	{
-		Mundo mundo = new Mundo(500,10);
+		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+        
+		Mundo mundo = new Mundo(500,10,juego);
 		
 		mundo.generar();
 		
@@ -188,7 +226,9 @@ public class MundoTest {
 	@Test
 	public void posicionDondeSiHayMineral() 
 	{
-		Mundo mundo = new Mundo(500,10);
+		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+        
+		Mundo mundo = new Mundo(500,10,juego);
 		
 		mundo.generar();
 		
@@ -200,7 +240,9 @@ public class MundoTest {
 	@Test
 	public void posicionDondeNoHayGas() 
 	{
-		Mundo mundo = new Mundo(500,10);
+		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+        
+		Mundo mundo = new Mundo(500,10,juego);
 		
 		mundo.generar();
 		
@@ -210,7 +252,9 @@ public class MundoTest {
 	@Test
 	public void posicionDondeSiHayGas() 
 	{
-		Mundo mundo = new Mundo(500,10);
+		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+        
+		Mundo mundo = new Mundo(500,10,juego);
 		
 		mundo.generar();
 		
@@ -222,7 +266,9 @@ public class MundoTest {
 	@Test
 	public void posicionDondeNoHayEspacio() 
 	{
-		Mundo mundo = new Mundo(500,10);
+		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+        
+		Mundo mundo = new Mundo(500,10,juego);
 		
 		mundo.generar();
 		
@@ -232,7 +278,9 @@ public class MundoTest {
 	@Test
 	public void pixelAGrilla() 
 	{
-		Mundo mundo = new Mundo(500,10);
+		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+        
+		Mundo mundo = new Mundo(500,10,juego);
 		
 		Vector2D grilla = mundo.pixelAGrilla(new Vector2D(1,1));
 		

@@ -36,8 +36,9 @@ public abstract class Jugador {
 	protected CreadorUnidades creadorUnidades;
 	private int poblacionMaxima;
 	
-	public Jugador(String nombreJugador) {
+	public Jugador(String nombreJugador, String colorJugador) {
 		
+		color = colorJugador;
 		this.nombre = nombreJugador;
 		this.minerales = 200;
 		this.gas = 0;

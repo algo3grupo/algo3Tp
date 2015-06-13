@@ -2,6 +2,9 @@ package fiuba.algo3.algocraft.mundo;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+
+import fiuba.algo3.algocraft.Juego;
+import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
 import fiuba.algo3.algocraft.excepciones.DivisionDeGrillaNoEsMultiploDeResolucion;
 import fiuba.algo3.algocraft.excepciones.ParametroNegativo;
 import fiuba.algo3.algocraft.excepciones.ParametroNulo;
@@ -18,6 +21,8 @@ public class Mundo {
 	private ArrayList<Espacio> espacio;
 	private Vector2D baseJugador1;
 	private Vector2D baseJugador2;
+	private Juego juego;
+	
 	
 	public void generar()
 	{
@@ -48,7 +53,7 @@ public class Mundo {
 		return new Vector2D(posicionX,posicionY);		
 	}
 
-	public Mundo(int resolucion, int divisionGrilla)
+	public Mundo(int resolucion, int divisionGrilla, Juego juego)
 	{
 		
 		if(resolucion < 0 || divisionGrilla < 0)
@@ -60,6 +65,7 @@ public class Mundo {
 		if(resolucion % divisionGrilla != 0)
 			throw new DivisionDeGrillaNoEsMultiploDeResolucion();
 		
+		this.juego = juego;		
 		this.resolucion = resolucion;
 		this.divisionGrilla = divisionGrilla;
 		divisionGrillaParaAnalisis = 10;
@@ -218,6 +224,40 @@ public class Mundo {
 		
 		if(a > 2)
 			return true;
+		return false;
+	}
+	
+	public ArrayList<Unidad> obtenerUnidadesEnZona(Vector2D centro, int radio)
+	{
+		
+		ArrayList<Unidad> unidadesJugador1 = juego.obtenerUnidadesDeJugador1(), unidadesJugador2 = juego.obtenerUnidadesDeJugador2(), resultado = new ArrayList<Unidad>();
+		
+		for(int i=0;i<unidadesJugador1.size();i++)
+			if(unidadesJugador1.get(i).obtenerPosicion().distanciaA(centro) <= radio)
+				resultado.add(unidadesJugador1.get(i));
+		
+		for(int i=0;i<unidadesJugador2.size();i++)
+			if(unidadesJugador2.get(i).obtenerPosicion().distanciaA(centro) <= radio)
+				resultado.add(unidadesJugador2.get(i));
+		
+		return resultado;
+		
+	}
+	
+	public ArrayList<Vector2D> obtenerRutaSeguraEntre(Vector2D inicio, Vector2D fin)
+	{
+		ArrayList<Vector2D> camino = new ArrayList<Vector2D>();
+		
+		
+		
+		
+		
+		
+		return camino;
+	}
+
+	public boolean estaLibre(Vector2D posicionLibre) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 }

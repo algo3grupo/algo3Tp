@@ -6,6 +6,7 @@ import junit.framework.Assert;
 
 import org.junit.Test;
 
+import fiuba.algo3.algocraft.Juego;
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.Interfaces.IEstructura;
 import fiuba.algo3.algocraft.excepciones.ErrorAlHacerCopia;
@@ -24,11 +25,13 @@ public class AsimiladorTest {
 	public void crearAsimiladorEnUnLugarConGas() throws NoEsDeSuRazaLaEstructuraException, 
 												NoTieneLaEstructuraCreadaException,	NoTieneRecursosSuficientesException, 
 												NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia{
+		
+		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
         
-		Mundo mundo = new Mundo(500,10);
+		Mundo mundo = new Mundo(500,10,juego);
 		mundo.generar();
 		
-        Protoss jugadorProtoss = new Protoss(null);
+        Protoss jugadorProtoss = new Protoss(null,null);
         
         Vector2D posicionBaseDeJugador = mundo.posicionBaseJugador1();
         
@@ -45,10 +48,12 @@ public class AsimiladorTest {
 																NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 																NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia{
 
-		Mundo mundo = new Mundo(500,10);
+		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+        
+		Mundo mundo = new Mundo(500,10,juego);
 		mundo.generar();
 
-		Protoss jugadorProtoss = new Protoss(null);
+		Protoss jugadorProtoss = new Protoss(null,null);
         
 		/*Busco una posicion que no tenga gas*/
         int i=1;

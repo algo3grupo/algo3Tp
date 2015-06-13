@@ -29,7 +29,7 @@ public class UnidadesNaveTestTerran {
 	public void crearNaveYCargarUnaUnidad() throws NoEsDeSuRazaLaEstructuraException, NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 					NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoEsDeSuRazaLaUnidadException,
 					NoEsPosibleCargarEstaUnidad, NoSeEncontroLaEstructura {
-		Jugador jugador = new Terran("PEpe");
+		Jugador jugador = new Terran("PEpe","#FF0000");
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
 		jugador.agregarEstructura("Deposito Suministro", null, null);
@@ -53,7 +53,7 @@ public class UnidadesNaveTestTerran {
 	public void crearNaveYLaUnaUnidadQueQuiereCargarEsVoladora() throws NoEsDeSuRazaLaEstructuraException, NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 					NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoEsDeSuRazaLaUnidadException,
 					NoSeEncontroLaEstructura {
-		Jugador jugador = new Terran("PEpe");
+		Jugador jugador = new Terran("PEpe","#FF0000");
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
 		jugador.agregarEstructura("Deposito Suministro", null, null);
@@ -80,7 +80,7 @@ public class UnidadesNaveTestTerran {
 	public void crearNaveYQuiereSobreCargarLaNave() throws NoEsDeSuRazaLaEstructuraException, NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 					NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoEsDeSuRazaLaUnidadException,
 					NoSeEncontroLaEstructura {
-		Jugador jugador = new Terran("PEpe");
+		Jugador jugador = new Terran("PEpe","#FF0000");
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
 		jugador.agregarEstructura("Deposito Suministro", null, null);

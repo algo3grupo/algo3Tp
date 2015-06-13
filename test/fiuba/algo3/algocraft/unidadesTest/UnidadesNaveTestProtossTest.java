@@ -29,7 +29,7 @@ public class UnidadesNaveTestProtossTest {
 	public void crearNaveYCargarUnaUnidad() throws NoEsDeSuRazaLaEstructuraException, NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 					NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoEsDeSuRazaLaUnidadException,
 					NoEsPosibleCargarEstaUnidad, NoSeEncontroLaEstructura {
-		Jugador jugador = new Protoss("PEpe");
+		Jugador jugador = new Protoss("Pepe","#FF0000");
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
 		jugador.agregarEstructura("Pilon", null, null);
@@ -52,7 +52,7 @@ public class UnidadesNaveTestProtossTest {
 	public void crearNaveYLaUnaUnidadQueQuiereCargarEsVoladora() throws NoEsDeSuRazaLaEstructuraException, NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 					NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoEsDeSuRazaLaUnidadException, 
 					NoSeEncontroLaEstructura {
-		Jugador jugador = new Protoss("PEpe");
+		Jugador jugador = new Protoss("Pepe","#FF0000");
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
 		jugador.agregarEstructura("Pilon", null, null);
@@ -77,7 +77,7 @@ public class UnidadesNaveTestProtossTest {
 	public void crearNaveYQuiereSobreCargarLaNave() throws NoEsDeSuRazaLaEstructuraException, NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 					NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoEsDeSuRazaLaUnidadException,
 					 NoSeEncontroLaEstructura {
-		Jugador jugador = new Protoss("PEpe");
+		Jugador jugador = new Protoss("Pepe","#FF0000");
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
 		jugador.agregarEstructura("Pilon", null, null);

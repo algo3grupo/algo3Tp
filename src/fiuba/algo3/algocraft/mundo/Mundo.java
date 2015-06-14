@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 import fiuba.algo3.algocraft.Juego;
+import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
 import fiuba.algo3.algocraft.excepciones.DivisionDeGrillaNoEsMultiploDeResolucion;
 import fiuba.algo3.algocraft.excepciones.ParametroNegativo;
@@ -256,8 +257,41 @@ public class Mundo {
 		return camino;
 	}
 
-	public boolean estaLibre(Vector2D posicionLibre) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean estaLibre(Vector2D posicion)
+	{
+		if(hayMineral(posicion))
+			return false;
+		
+		if(hayGas(posicion))
+			return false;
+		
+		if(hayEspacio(posicion))
+			return false;
+		
+		ArrayList<Unidad> unidades = juego.obtenerUnidadesDeJugador1();
+		ArrayList<Estructura> estructuras = juego.obtenerEstructurasDeJugador1();
+		
+		for(int i=0;i<unidades.size();i++)
+			if(unidades.get(i).incluyeA(posicion))
+				return false;
+		
+		unidades = juego.obtenerUnidadesDeJugador2();
+		
+		for(int i=0;i<unidades.size();i++)
+			if(unidades.get(i).incluyeA(posicion))
+				return false;
+		
+		for(int i=0;i<estructuras.size();i++)
+			if(estructuras.get(i).incluyeA(posicion))
+				return false;
+		
+		estructuras = juego.obtenerEstructurasDeJugador2();
+		
+		for(int i=0;i<estructuras.size();i++)
+			if(estructuras.get(i).incluyeA(posicion))
+				return false;
+		
+		return true;
+		
 	}
 }

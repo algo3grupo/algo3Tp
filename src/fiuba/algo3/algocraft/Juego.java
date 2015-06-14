@@ -31,6 +31,9 @@ public class Juego {
 		
 		turno = jugador1;
 		
+		mundo = new Mundo(1000,25,this);
+		mundo.generar();
+		
 	}
 
 	public ArrayList<Unidad> obtenerUnidadesDeJugador1() {
@@ -55,6 +58,9 @@ public class Juego {
 			turno = jugador2;
 		else
 			turno = jugador1;
+		
+		jugador1.terminarTurno();
+		jugador2.terminarTurno();
 	}
 	
 	public ArrayList<Unidad> obtenerUnidadesContrarias()

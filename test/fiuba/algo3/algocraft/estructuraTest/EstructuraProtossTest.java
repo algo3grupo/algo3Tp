@@ -13,6 +13,7 @@ import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.jugador.Protoss;
 import fiuba.algo3.algocraft.pasaTurnos.PasaTurnos;
+import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class EstructuraProtossTest {
 
@@ -24,7 +25,7 @@ public class EstructuraProtossTest {
 		jugador.agregarGas(300);
 		try {
 	
-				jugador.agregarEstructura("Puerto Estelar", null, null);
+				jugador.agregarEstructura("Puerto Estelar", new Vector2D(), null);
 		
 		} catch (NoEsDeSuRazaLaEstructuraException
 				| NoTieneRecursosSuficientesException
@@ -42,8 +43,8 @@ public class EstructuraProtossTest {
 		jugador.agregarMineral(250);
 		jugador.agregarGas(350);
 		try {
-			jugador.agregarEstructura("Acceso", null, null);
-			jugador.agregarEstructura("Archivos Templarios", null, null);
+			jugador.agregarEstructura("Acceso", new Vector2D(), null);
+			jugador.agregarEstructura("Archivos Templarios", new Vector2D(), null);
 		} catch (NoEsDeSuRazaLaEstructuraException
 				| NoTieneRecursosSuficientesException
 				|NoHayMineralEnElLugarACrear 
@@ -60,8 +61,8 @@ public class EstructuraProtossTest {
 		jugador.agregarMineral(250);
 		jugador.agregarGas(350);
 		try {
-			jugador.agregarEstructura("Puerto Estelar", null, null);
-			jugador.agregarEstructura("Archivos Templarios", null, null);
+			jugador.agregarEstructura("Puerto Estelar", new Vector2D(), null);
+			jugador.agregarEstructura("Archivos Templarios", new Vector2D(), null);
 		} catch (NoEsDeSuRazaLaEstructuraException
 				| NoTieneRecursosSuficientesException
 				|NoHayMineralEnElLugarACrear 
@@ -78,11 +79,11 @@ public class EstructuraProtossTest {
 		jugador.agregarMineral(250);
 		jugador.agregarGas(350);
 		try {
-			jugador.agregarEstructura("Acceso", null, null);
+			jugador.agregarEstructura("Acceso", new Vector2D(), null);
 			PasaTurnos.pasarTurnos(jugador, 8);
-			jugador.agregarEstructura("Puerto Estelar", null, null);
+			jugador.agregarEstructura("Puerto Estelar", new Vector2D(), null);
 			PasaTurnos.pasarTurnos(jugador, 10);
-			jugador.agregarEstructura("Archivos Templarios", null, null);
+			jugador.agregarEstructura("Archivos Templarios", new Vector2D(), null);
 		} catch (NoEsDeSuRazaLaEstructuraException
 				| NoTieneRecursosSuficientesException
 				|NoHayMineralEnElLugarACrear 

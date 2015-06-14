@@ -5,6 +5,7 @@ import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
+import fiuba.algo3.algocraft.vector2D.Vector2D;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
 import fiuba.algo3.algocraft.excepciones.ErrorAlHacerCopia;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
@@ -25,7 +26,7 @@ public class UnidadesTerranTest {
 	@Test
 	public void instaciarMarine(){
 		Jugador jugador= new Terran("Pepe","#FF0000");
-		Unidad marine = new Marine(jugador);
+		Unidad marine = new Marine(new Vector2D(), jugador);
 		assertEquals("Marine",marine.nombre());
 	}
 	
@@ -54,8 +55,8 @@ public class UnidadesTerranTest {
 		jugador.agregarGas(100);
 		try {
 			
-			jugador.agregarEstructura("Deposito Suministro", null, null);
-			jugador.agregarEstructura("Barraca", null, null);
+			jugador.agregarEstructura("Deposito Suministro", new Vector2D(), null);
+			jugador.agregarEstructura("Barraca", new Vector2D(), null);
 			PasaTurnos.pasarTurnos(jugador, 15);
 			jugador.agregarUnidad("Marine");
 			
@@ -77,8 +78,8 @@ public class UnidadesTerranTest {
 		jugador.agregarMineral(10);
 		jugador.agregarGas(100);
 		try {
-			jugador.agregarEstructura("Deposito Suministro", null, null);
-			jugador.agregarEstructura("Barraca", null, null);
+			jugador.agregarEstructura("Deposito Suministro", new Vector2D(), null);
+			jugador.agregarEstructura("Barraca", new Vector2D(), null);
 			PasaTurnos.pasarTurnos(jugador, 10);
 			jugador.agregarUnidad("Marine");
 		} catch (NoEsDeSuRazaLaUnidadException
@@ -98,10 +99,10 @@ public class UnidadesTerranTest {
 		jugador.agregarMineral(450);
 		jugador.agregarGas(110);
 		try {
-			jugador.agregarEstructura("Deposito Suministro", null, null);
-			jugador.agregarEstructura("Barraca", null, null);
+			jugador.agregarEstructura("Deposito Suministro", new Vector2D(), null);
+			jugador.agregarEstructura("Barraca", new Vector2D(), null);
 			PasaTurnos.pasarTurnos(jugador, 12);
-			jugador.agregarEstructura("Fabrica", null, null);
+			jugador.agregarEstructura("Fabrica", new Vector2D(), null);
 			PasaTurnos.pasarTurnos(jugador, 12);
 			jugador.agregarUnidad("Golliat");
 			fail("No deberia llegar a esta parte");
@@ -123,7 +124,7 @@ public class UnidadesTerranTest {
 		jugador.agregarMineral(180);
 		jugador.agregarGas(60);
 	try {
-		jugador.agregarEstructura("Barraca", null, null);
+		jugador.agregarEstructura("Barraca", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 15);
 		jugador.agregarUnidad("Marine");
 		

@@ -12,6 +12,7 @@ import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
 import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.jugador.Terran;
+import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class EstructuraTerranTest {
 
@@ -22,9 +23,9 @@ public class EstructuraTerranTest {
 		jugador.agregarMineral(2300);
 		jugador.agregarGas(2500);
 		try {
-			jugador.agregarEstructura("Deposito Suministro", null, null);
-			jugador.agregarEstructura("Barraca", null, null);
-			jugador.agregarEstructura("Puerto Estelar", null, null);
+			jugador.agregarEstructura("Deposito Suministro", new Vector2D(), null);
+			jugador.agregarEstructura("Barraca", new Vector2D(), null);
+			jugador.agregarEstructura("Puerto Estelar", new Vector2D(), null);
 		} catch (NoEsDeSuRazaLaEstructuraException
 				| NoTieneRecursosSuficientesException
 				| NoHayMineralEnElLugarACrear 
@@ -41,8 +42,8 @@ public class EstructuraTerranTest {
 		jugador.agregarMineral(2300);
 		jugador.agregarGas(2500);
 		try {
-			jugador.agregarEstructura("Deposito Suministro", null, null);
-			jugador.agregarEstructura("Fabrica", null, null);
+			jugador.agregarEstructura("Deposito Suministro", new Vector2D(), null);
+			jugador.agregarEstructura("Fabrica", new Vector2D(), null);
 		} catch (NoEsDeSuRazaLaEstructuraException
 				| NoTieneRecursosSuficientesException
 				| NoHayMineralEnElLugarACrear 

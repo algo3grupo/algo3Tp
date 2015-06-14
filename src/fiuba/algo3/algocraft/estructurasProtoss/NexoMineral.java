@@ -5,12 +5,13 @@ import fiuba.algo3.algocraft.Interfaces.IRecolectores;
 import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.entidadesAbstractas.Protegidas;
 import fiuba.algo3.algocraft.jugador.Jugador;
+import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class NexoMineral extends Protegidas implements IRecolectores{
 
-	public NexoMineral(Jugador jugador) 
+	public NexoMineral(Vector2D posicion, Jugador jugador) 
 	{
-		super( 250, 0, jugador, "Nexo Mineral", new Costo(50,0), "", 4);
+		super(posicion, 250, 0, jugador, "Nexo Mineral", new Costo(50,0), "", 4);
 		
 		agregarAccion(new RecogerSuministro(this));
 	}

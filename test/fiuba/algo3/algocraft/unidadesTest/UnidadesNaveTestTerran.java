@@ -21,6 +21,7 @@ import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.jugador.Terran;
 import fiuba.algo3.algocraft.pasaTurnos.PasaTurnos;
+import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 
 public class UnidadesNaveTestTerran {
@@ -32,12 +33,12 @@ public class UnidadesNaveTestTerran {
 		Jugador jugador = new Terran("PEpe","#FF0000");
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
-		jugador.agregarEstructura("Deposito Suministro", null, null);
-		jugador.agregarEstructura("Barraca", null, null);
+		jugador.agregarEstructura("Deposito Suministro", new Vector2D(), null);
+		jugador.agregarEstructura("Barraca", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 12);
-		jugador.agregarEstructura("Fabrica", null, null);
+		jugador.agregarEstructura("Fabrica", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 12);
-		jugador.agregarEstructura("Puerto Estelar", null, null);
+		jugador.agregarEstructura("Puerto Estelar", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 10);
 		jugador.agregarUnidad("Nave Transporte");
 		jugador.agregarUnidad("Marine");
@@ -56,12 +57,12 @@ public class UnidadesNaveTestTerran {
 		Jugador jugador = new Terran("PEpe","#FF0000");
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
-		jugador.agregarEstructura("Deposito Suministro", null, null);
-		jugador.agregarEstructura("Barraca", null, null);
+		jugador.agregarEstructura("Deposito Suministro", new Vector2D(), null);
+		jugador.agregarEstructura("Barraca", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 12);
-		jugador.agregarEstructura("Fabrica", null, null);
+		jugador.agregarEstructura("Fabrica", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 12);
-		jugador.agregarEstructura("Puerto Estelar", null, null);
+		jugador.agregarEstructura("Puerto Estelar", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 10);
 		jugador.agregarUnidad("Nave Transporte");
 		jugador.agregarUnidad("Espectro");
@@ -83,14 +84,14 @@ public class UnidadesNaveTestTerran {
 		Jugador jugador = new Terran("PEpe","#FF0000");
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
-		jugador.agregarEstructura("Deposito Suministro", null, null);
-		jugador.agregarEstructura("Deposito Suministro", null, null);
-		jugador.agregarEstructura("Deposito Suministro", null, null);
-		jugador.agregarEstructura("Barraca", null, null);
+		jugador.agregarEstructura("Deposito Suministro", new Vector2D(), null);
+		jugador.agregarEstructura("Deposito Suministro", new Vector2D(), null);
+		jugador.agregarEstructura("Deposito Suministro", new Vector2D(), null);
+		jugador.agregarEstructura("Barraca", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 12);
-		jugador.agregarEstructura("Fabrica", null, null);
+		jugador.agregarEstructura("Fabrica", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 12);
-		jugador.agregarEstructura("Puerto Estelar", null, null);
+		jugador.agregarEstructura("Puerto Estelar", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 10);
 		jugador.agregarUnidad("Nave Transporte");
 		for (int i=1; i < 6; i++){

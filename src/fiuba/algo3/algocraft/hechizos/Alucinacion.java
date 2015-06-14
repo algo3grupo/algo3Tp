@@ -1,6 +1,7 @@
 package fiuba.algo3.algocraft.hechizos;
 
 import fiuba.algo3.algocraft.atributos.HechizoCopiaUnidades;
+import fiuba.algo3.algocraft.vector2D.Vector2D;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
 import fiuba.algo3.algocraft.unidadesProtoss.UnidadCopia;
 
@@ -11,7 +12,7 @@ public class Alucinacion extends HechizoCopiaUnidades {
 		}
 	
 	public Unidad nuevaUnidadCopia(Unidad unidad){
-		Unidad copia = new UnidadCopia( unidad );
+		Unidad copia = new UnidadCopia(new Vector2D(),  unidad );
 		return copia;
 	}
 	

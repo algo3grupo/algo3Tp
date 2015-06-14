@@ -9,6 +9,7 @@ import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEntidadException;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaUnidadException;
 import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
 import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
+import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public abstract class CreadorUnidades extends Creador {
 	
@@ -18,7 +19,7 @@ public abstract class CreadorUnidades extends Creador {
 																					ErrorAlHacerCopia{
 		try {
 			
-			return (Unidad)crearEntidad(string, null, null);
+			return (Unidad)crearEntidad(string, new Vector2D(), null);
 			
 		} catch (NoEsDeSuRazaLaEntidadException e) {
 			throw new NoEsDeSuRazaLaUnidadException();

@@ -6,16 +6,17 @@ import fiuba.algo3.algocraft.unidadesProtoss.Dragon;
 import fiuba.algo3.algocraft.unidadesProtoss.NaveTransporteProtoss;
 import fiuba.algo3.algocraft.unidadesProtoss.Scout;
 import fiuba.algo3.algocraft.unidadesProtoss.Zealot;
+import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class CreadorUnidadesProtoss extends CreadorUnidades {
 	
 	public CreadorUnidadesProtoss(Jugador jugador){
 		super();
-		this.entidades.add(new Zealot(jugador));
-		this.entidades.add(new Dragon(jugador));
-		this.entidades.add(new Scout(jugador));
-		this.entidades.add(new AltoTemplario(jugador));
-		this.entidades.add(new NaveTransporteProtoss(jugador));
+		this.entidades.add(new Zealot(new Vector2D(), jugador));
+		this.entidades.add(new Dragon(new Vector2D(), jugador));
+		this.entidades.add(new Scout(new Vector2D(), jugador));
+		this.entidades.add(new AltoTemplario(new Vector2D(), jugador));
+		this.entidades.add(new NaveTransporteProtoss(new Vector2D(), jugador));
 	}
 	
 }

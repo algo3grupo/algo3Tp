@@ -5,14 +5,15 @@ import java.util.ArrayList;
 import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.excepciones.NoEsPosibleCargarEstaUnidad;
 import fiuba.algo3.algocraft.jugador.Jugador;
+import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public abstract class UnidadNave extends Unidad {
 	private int capacidad;
 	private int cargado;
 	private ArrayList<Unidad> unidadesCargadas;
 
-	public UnidadNave( int vida, int rangoDeVision, Jugador jugador,  Costo costo, int suministro, int turnos) {
-		super( vida, rangoDeVision, jugador, "Nave Transporte" , costo, "Puerto Estelar", suministro, 0, turnos);
+	public UnidadNave( Vector2D posicion, int vida, int rangoDeVision, Jugador jugador,  Costo costo, int suministro, int turnos) {
+		super( posicion, vida, rangoDeVision, jugador, "Nave Transporte" , costo, "Puerto Estelar", suministro, 0, turnos);
 		capacidad = 8;
 		cargado = 0;
 		unidadesCargadas = new ArrayList<Unidad>();

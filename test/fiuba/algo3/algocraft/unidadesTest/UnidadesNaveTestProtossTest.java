@@ -22,6 +22,7 @@ import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.jugador.Protoss;
 import fiuba.algo3.algocraft.jugador.Terran;
 import fiuba.algo3.algocraft.pasaTurnos.PasaTurnos;
+import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class UnidadesNaveTestProtossTest {
 
@@ -32,11 +33,11 @@ public class UnidadesNaveTestProtossTest {
 		Jugador jugador = new Protoss("Pepe","#FF0000");
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
-		jugador.agregarEstructura("Pilon", null, null);
+		jugador.agregarEstructura("Pilon", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 15);
-		jugador.agregarEstructura("Acceso", null, null);
+		jugador.agregarEstructura("Acceso", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 8);
-		jugador.agregarEstructura("Puerto Estelar", null, null);
+		jugador.agregarEstructura("Puerto Estelar", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 10);
 		jugador.agregarUnidad("Nave Transporte");
 		jugador.agregarUnidad("Zealot");
@@ -55,10 +56,10 @@ public class UnidadesNaveTestProtossTest {
 		Jugador jugador = new Protoss("Pepe","#FF0000");
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
-		jugador.agregarEstructura("Pilon", null, null);
-		jugador.agregarEstructura("Acceso", null, null);
+		jugador.agregarEstructura("Pilon", new Vector2D(), null);
+		jugador.agregarEstructura("Acceso", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 8);
-		jugador.agregarEstructura("Puerto Estelar", null, null);
+		jugador.agregarEstructura("Puerto Estelar", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 10);
 		jugador.agregarUnidad("Nave Transporte");
 		jugador.agregarUnidad("Scout");
@@ -80,12 +81,12 @@ public class UnidadesNaveTestProtossTest {
 		Jugador jugador = new Protoss("Pepe","#FF0000");
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
-		jugador.agregarEstructura("Pilon", null, null);
-		jugador.agregarEstructura("Pilon", null, null);
-		jugador.agregarEstructura("Pilon", null, null);
-		jugador.agregarEstructura("Acceso", null, null);
+		jugador.agregarEstructura("Pilon", new Vector2D(), null);
+		jugador.agregarEstructura("Pilon", new Vector2D(), null);
+		jugador.agregarEstructura("Pilon", new Vector2D(), null);
+		jugador.agregarEstructura("Acceso", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 8);
-		jugador.agregarEstructura("Puerto Estelar", null, null);
+		jugador.agregarEstructura("Puerto Estelar", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 10);
 		jugador.agregarUnidad("Nave Transporte");
 		for (int i=1; i < 6; i++){

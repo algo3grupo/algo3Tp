@@ -3,11 +3,12 @@ package fiuba.algo3.algocraft.unidadesTerran;
 import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.entidadesAbstractas.UnidadNave;
 import fiuba.algo3.algocraft.jugador.Jugador;
+import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class NaveTransporteTerran extends UnidadNave {
 
-	public NaveTransporteTerran(Jugador jugador) {
-		super( 150, 8, jugador,  new Costo(125,50),  2, 7);
+	public NaveTransporteTerran(Vector2D posicion, Jugador jugador) {
+		super(posicion, 150, 8, jugador,  new Costo(125,50),  2, 7);
 	}
 
 }

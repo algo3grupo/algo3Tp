@@ -18,10 +18,9 @@ public abstract class Entidad {
 	private Costo costo;
 	private String requiere;
 	private Vector2D posicion;
-	private int dimensionX;
-	private int dimensionY;
+	private int dimension;
 	
-	public Entidad( int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int turnos){
+	public Entidad( Vector2D posicion, int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int turnos){
 		this.ID = new ID().getIdNuevo();
 		this.vida = vida;
 		this.rangoDeVision = rangoDeVision;
@@ -30,6 +29,8 @@ public abstract class Entidad {
 		this.costo = costo;
 		this.requiere = requiere;
 		this.turnos = turnos;
+		this.posicion = new Vector2D(posicion);
+		dimension = 25;
 	}
 	
 
@@ -37,8 +38,8 @@ public abstract class Entidad {
 	public boolean incluyeA(Vector2D posicion)
 	{		
 		
-		if( this.posicion.obtenerCoordenadaX() <= posicion.obtenerCoordenadaX() && posicion.obtenerCoordenadaX() <= (this.posicion.obtenerCoordenadaX()+dimensionX))
-			if( this.posicion.obtenerCoordenadaY() <= posicion.obtenerCoordenadaY() && posicion.obtenerCoordenadaY() <= (this.posicion.obtenerCoordenadaY()+dimensionY))
+		if( this.posicion.obtenerCoordenadaX() <= posicion.obtenerCoordenadaX() && posicion.obtenerCoordenadaX() <= (this.posicion.obtenerCoordenadaX()+dimension))
+			if( this.posicion.obtenerCoordenadaY() <= posicion.obtenerCoordenadaY() && posicion.obtenerCoordenadaY() <= (this.posicion.obtenerCoordenadaY()+dimension))
 				return true;
 		return false;
 	}
@@ -48,21 +49,10 @@ public abstract class Entidad {
 		return new Vector2D(posicion);
 	}
 	
-	
-	public Entidad(Vector2D posicion, int dimensionX, int dimensionY)
-	{
-		this.posicion = new Vector2D(posicion);
-		this.dimensionX = dimensionX;
-		this.dimensionY = dimensionY;
-
-	}
-
-	
 	public Entidad(Entidad entidad) 
 	{
 		posicion = new Vector2D(entidad.posicion);
-		dimensionX = entidad.dimensionX;
-		dimensionY = entidad.dimensionY;		
+		dimension = entidad.dimension;		
 	}
 	
 	public String nombre(){

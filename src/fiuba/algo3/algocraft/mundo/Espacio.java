@@ -13,7 +13,7 @@ public class Espacio extends Entidad{
 
 	public Espacio(Vector2D posicionEspacio, int dimension) 
 	{
-		super(posicionEspacio,dimension,dimension);			
+		super(posicionEspacio, 0, 0, null, null, null, null, 0);		
 	}
 
 	@Override

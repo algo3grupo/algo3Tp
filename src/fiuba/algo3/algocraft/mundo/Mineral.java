@@ -13,7 +13,7 @@ public class Mineral extends Entidad {
 
 	public Mineral(Vector2D posicionMineral, int dimension) 
 	{
-		super(posicionMineral,dimension,dimension);			
+		super(posicionMineral,0,0, null, null, null, null, 0);			
 	}
 
 	@Override

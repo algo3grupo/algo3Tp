@@ -13,7 +13,7 @@ public class Gas extends Entidad{
 
 	public Gas(Vector2D posicionGas, int dimension) 
 	{
-		super(posicionGas,dimension,dimension);			
+		super(posicionGas,0,0, null, null, null, null, 0);			
 	}
 
 	@Override

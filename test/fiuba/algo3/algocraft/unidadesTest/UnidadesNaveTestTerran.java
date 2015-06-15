@@ -30,15 +30,15 @@ public class UnidadesNaveTestTerran {
 	public void crearNaveYCargarUnaUnidad() throws NoEsDeSuRazaLaEstructuraException, NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 					NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoEsDeSuRazaLaUnidadException,
 					NoEsPosibleCargarEstaUnidad, NoSeEncontroLaEstructura {
-		Jugador jugador = new Terran("PEpe","#FF0000");
+		Jugador jugador = new Terran(null,"PEpe","#FF0000");
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
-		jugador.agregarEstructura("Deposito Suministro", new Vector2D(), null);
-		jugador.agregarEstructura("Barraca", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Deposito Suministro", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Barraca", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 12);
-		jugador.agregarEstructura("Fabrica", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Fabrica", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 12);
-		jugador.agregarEstructura("Puerto Estelar", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Puerto Estelar", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 10);
 		jugador.agregarUnidad("Nave Transporte");
 		jugador.agregarUnidad("Marine");
@@ -54,15 +54,15 @@ public class UnidadesNaveTestTerran {
 	public void crearNaveYLaUnaUnidadQueQuiereCargarEsVoladora() throws NoEsDeSuRazaLaEstructuraException, NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 					NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoEsDeSuRazaLaUnidadException,
 					NoSeEncontroLaEstructura {
-		Jugador jugador = new Terran("PEpe","#FF0000");
+		Jugador jugador = new Terran(null,"PEpe","#FF0000");
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
-		jugador.agregarEstructura("Deposito Suministro", new Vector2D(), null);
-		jugador.agregarEstructura("Barraca", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Deposito Suministro", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Barraca", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 12);
-		jugador.agregarEstructura("Fabrica", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Fabrica", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 12);
-		jugador.agregarEstructura("Puerto Estelar", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Puerto Estelar", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 10);
 		jugador.agregarUnidad("Nave Transporte");
 		jugador.agregarUnidad("Espectro");
@@ -81,17 +81,17 @@ public class UnidadesNaveTestTerran {
 	public void crearNaveYQuiereSobreCargarLaNave() throws NoEsDeSuRazaLaEstructuraException, NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 					NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoEsDeSuRazaLaUnidadException,
 					NoSeEncontroLaEstructura {
-		Jugador jugador = new Terran("PEpe","#FF0000");
+		Jugador jugador = new Terran(null,"PEpe","#FF0000");
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
-		jugador.agregarEstructura("Deposito Suministro", new Vector2D(), null);
-		jugador.agregarEstructura("Deposito Suministro", new Vector2D(), null);
-		jugador.agregarEstructura("Deposito Suministro", new Vector2D(), null);
-		jugador.agregarEstructura("Barraca", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Deposito Suministro", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Deposito Suministro", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Deposito Suministro", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Barraca", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 12);
-		jugador.agregarEstructura("Fabrica", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Fabrica", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 12);
-		jugador.agregarEstructura("Puerto Estelar", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Puerto Estelar", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 10);
 		jugador.agregarUnidad("Nave Transporte");
 		for (int i=1; i < 6; i++){

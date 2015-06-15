@@ -19,13 +19,13 @@ public class EstructuraTerranTest {
 	@Test
 	public void correlacionPuertoEstelarNecesitaFabrica() throws ErrorAlHacerCopia {
 		
-		Jugador jugador= new Terran("Pepe","#FF0000");
+		Jugador jugador= new Terran(null,"Pepe","#FF0000");
 		jugador.agregarMineral(2300);
 		jugador.agregarGas(2500);
 		try {
-			jugador.agregarEstructura("Deposito Suministro", new Vector2D(), null);
-			jugador.agregarEstructura("Barraca", new Vector2D(), null);
-			jugador.agregarEstructura("Puerto Estelar", new Vector2D(), null);
+			jugador.agregarEstructura(null,"Deposito Suministro", new Vector2D(), null);
+			jugador.agregarEstructura(null,"Barraca", new Vector2D(), null);
+			jugador.agregarEstructura(null,"Puerto Estelar", new Vector2D(), null);
 		} catch (NoEsDeSuRazaLaEstructuraException
 				| NoTieneRecursosSuficientesException
 				| NoHayMineralEnElLugarACrear 
@@ -38,12 +38,12 @@ public class EstructuraTerranTest {
 	@Test
 	public void correlacionFabricaNecesitaBarraca() throws ErrorAlHacerCopia {
 		
-		Jugador jugador= new Terran("Pepe","#FF0000");
+		Jugador jugador= new Terran(null,"Pepe","#FF0000");
 		jugador.agregarMineral(2300);
 		jugador.agregarGas(2500);
 		try {
-			jugador.agregarEstructura("Deposito Suministro", new Vector2D(), null);
-			jugador.agregarEstructura("Fabrica", new Vector2D(), null);
+			jugador.agregarEstructura(null,"Deposito Suministro", new Vector2D(), null);
+			jugador.agregarEstructura(null,"Fabrica", new Vector2D(), null);
 		} catch (NoEsDeSuRazaLaEstructuraException
 				| NoTieneRecursosSuficientesException
 				| NoHayMineralEnElLugarACrear 

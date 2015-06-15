@@ -2,6 +2,8 @@ package fiuba.algo3.algocraft.entidadesAbstractas;
 
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+
 import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.excepciones.NoEsPosibleCargarEstaUnidad;
 import fiuba.algo3.algocraft.jugador.Jugador;
@@ -12,8 +14,8 @@ public abstract class UnidadNave extends Unidad {
 	private int cargado;
 	private ArrayList<Unidad> unidadesCargadas;
 
-	public UnidadNave( Vector2D posicion, int vida, int rangoDeVision, Jugador jugador,  Costo costo, int suministro, int turnos) {
-		super( posicion, vida, rangoDeVision, jugador, "Nave Transporte" , costo, "Puerto Estelar", suministro, 0, turnos);
+	public UnidadNave(JFrame ventana,  Vector2D posicion, int vida, int rangoDeVision, Jugador jugador,  Costo costo, int suministro, int turnos) {
+		super( ventana, posicion, vida, rangoDeVision, jugador, "Nave Transporte" , costo, "Puerto Estelar", suministro, 0, turnos);
 		capacidad = 8;
 		cargado = 0;
 		unidadesCargadas = new ArrayList<Unidad>();

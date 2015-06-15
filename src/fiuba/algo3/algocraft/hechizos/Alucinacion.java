@@ -12,7 +12,7 @@ public class Alucinacion extends HechizoCopiaUnidades {
 		}
 	
 	public Unidad nuevaUnidadCopia(Unidad unidad){
-		Unidad copia = new UnidadCopia(new Vector2D(),  unidad );
+		Unidad copia = new UnidadCopia( new Vector2D(),  unidad );
 		return copia;
 	}
 	

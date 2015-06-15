@@ -24,7 +24,7 @@ public class MundoTest {
 	{
 		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
         
-		Mundo mundo = new Mundo(500,10,juego);
+		Mundo mundo = new Mundo(null,500,10,juego);
 
 	}
 	
@@ -34,7 +34,7 @@ public class MundoTest {
 		
 		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");        
 	
-		new Mundo(500,10,juego).generar();
+		new Mundo(null,500,10,juego).generar();
 	}
 	
 	@Test(expected = ParametroNegativo.class)
@@ -42,7 +42,7 @@ public class MundoTest {
 	{
 		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
         
-		Mundo mundo = new Mundo(-500,10,juego);	
+		Mundo mundo = new Mundo(null,-500,10,juego);	
 	}
 	
 	@Test(expected = ParametroNegativo.class)
@@ -50,7 +50,7 @@ public class MundoTest {
 	{
 		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
         
-		Mundo mundo = new Mundo(500,-10,juego);
+		Mundo mundo = new Mundo(null,500,-10,juego);
 	}
 	
 	@Test(expected = ParametroNulo.class)
@@ -58,7 +58,7 @@ public class MundoTest {
 	{
 		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
         
-		Mundo mundo = new Mundo(500,0,juego);
+		Mundo mundo = new Mundo(null,500,0,juego);
 	}
 	
 	@Test(expected = ParametroNulo.class)
@@ -66,7 +66,7 @@ public class MundoTest {
 	{
 		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
         
-		Mundo mundo = new Mundo(0,10,juego);	
+		Mundo mundo = new Mundo(null,0,10,juego);	
 	}
 	
 	@Test(expected = DivisionDeGrillaNoEsMultiploDeResolucion.class)
@@ -74,7 +74,7 @@ public class MundoTest {
 	{
 		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
         
-		Mundo mundo = new Mundo(500,3,juego);
+		Mundo mundo = new Mundo(null,500,3,juego);
 	}
 
 
@@ -83,7 +83,7 @@ public class MundoTest {
 	{
 		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
         
-		Mundo mundo = new Mundo(500,10,juego);
+		Mundo mundo = new Mundo(null,500,10,juego);
 		
 		mundo.generar();
 		
@@ -102,7 +102,7 @@ public class MundoTest {
 	{
 		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
         
-		Mundo mundo = new Mundo(500,10,juego);
+		Mundo mundo = new Mundo(null,500,10,juego);
 		
 		mundo.generar();
 		
@@ -116,7 +116,7 @@ public class MundoTest {
 	{
 		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
         
-		Mundo mundo = new Mundo(500,10,juego);
+		Mundo mundo = new Mundo(null,500,10,juego);
 		
 		mundo.generar();
 		
@@ -136,7 +136,7 @@ public class MundoTest {
 
 		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
         
-		Mundo mundo = new Mundo(500,10,juego);
+		Mundo mundo = new Mundo(null,500,10,juego);
 		
 		mundo.generar();
 		
@@ -148,7 +148,7 @@ public class MundoTest {
 	{
 		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
         
-		Mundo mundo = new Mundo(500,10,juego);
+		Mundo mundo = new Mundo(null,500,10,juego);
 		
 		mundo.generar();
 		
@@ -160,7 +160,7 @@ public class MundoTest {
 	{
 		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
         
-		Mundo mundo = new Mundo(500,10,juego);
+		Mundo mundo = new Mundo(null,500,10,juego);
 		
 		mundo.generar();
 		
@@ -172,7 +172,7 @@ public class MundoTest {
 	{
 		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
         
-		Mundo mundo = new Mundo(500,10,juego);
+		Mundo mundo = new Mundo(null,500,10,juego);
 		
 		mundo.posicionBaseJugador1();
 	}
@@ -182,7 +182,7 @@ public class MundoTest {
 	{
 		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
         
-		Mundo mundo = new Mundo(500,10,juego);
+		Mundo mundo = new Mundo(null,500,10,juego);
 		
 		mundo.posicionBaseJugador2();
 	}
@@ -192,7 +192,7 @@ public class MundoTest {
 	{
 		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
         
-		Mundo mundo = new Mundo(500,10,juego);
+		Mundo mundo = new Mundo(null,500,10,juego);
 		
 		mundo.generar();
 		
@@ -204,7 +204,7 @@ public class MundoTest {
 	{
 		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
         
-		Mundo mundo = new Mundo(500,10,juego);
+		Mundo mundo = new Mundo(null,500,10,juego);
 		
 		mundo.generar();
 		
@@ -216,7 +216,7 @@ public class MundoTest {
 	{
 		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
         
-		Mundo mundo = new Mundo(500,10,juego);
+		Mundo mundo = new Mundo(null,500,10,juego);
 		
 		mundo.generar();
 		
@@ -228,7 +228,7 @@ public class MundoTest {
 	{
 		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
         
-		Mundo mundo = new Mundo(500,10,juego);
+		Mundo mundo = new Mundo(null,500,10,juego);
 		
 		mundo.generar();
 		
@@ -242,7 +242,7 @@ public class MundoTest {
 	{
 		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
         
-		Mundo mundo = new Mundo(500,10,juego);
+		Mundo mundo = new Mundo(null,500,10,juego);
 		
 		mundo.generar();
 		
@@ -254,7 +254,7 @@ public class MundoTest {
 	{
 		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
         
-		Mundo mundo = new Mundo(500,10,juego);
+		Mundo mundo = new Mundo(null,500,10,juego);
 		
 		mundo.generar();
 		
@@ -268,7 +268,7 @@ public class MundoTest {
 	{
 		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
         
-		Mundo mundo = new Mundo(500,10,juego);
+		Mundo mundo = new Mundo(null,500,10,juego);
 		
 		mundo.generar();
 		
@@ -280,7 +280,7 @@ public class MundoTest {
 	{
 		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
         
-		Mundo mundo = new Mundo(500,10,juego);
+		Mundo mundo = new Mundo(null,500,10,juego);
 		
 		Vector2D grilla = mundo.pixelAGrilla(new Vector2D(1,1));
 		

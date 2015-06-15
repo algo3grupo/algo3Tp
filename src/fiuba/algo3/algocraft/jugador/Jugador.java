@@ -2,6 +2,8 @@ package fiuba.algo3.algocraft.jugador;
 
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+
 import fiuba.algo3.algocraft.IModo;
 import fiuba.algo3.algocraft.ModoNombre;
 import fiuba.algo3.algocraft.Acciones.CrearUnidad;
@@ -32,11 +34,12 @@ public abstract class Jugador {
 	private int minerales;
 	private int gas;
 	private int poblacionActual;
+	private JFrame ventana;
 	protected CreadorEstructuras creadorEstructuras;
 	protected CreadorUnidades creadorUnidades;
 	private int poblacionMaxima;
 	
-	public Jugador(String nombreJugador, String colorJugador) {
+	public Jugador(JFrame ventana, String nombreJugador, String colorJugador) {
 		
 		color = colorJugador;
 		this.nombre = nombreJugador;
@@ -45,16 +48,17 @@ public abstract class Jugador {
 		this.poblacionActual = 0;
 		this.unidades = new ArrayList<Unidad>();
 		this.estructuras = new ArrayList<Estructura>();
+		this.ventana = ventana;
 		
 	}
 
-	public void agregarEstructura(String string, Vector2D posicion, Mundo mundo) throws NoEsDeSuRazaLaEstructuraException,
+	public void agregarEstructura(JFrame ventana, String string, Vector2D posicion, Mundo mundo) throws NoEsDeSuRazaLaEstructuraException,
 																				NoTieneLaEstructuraCreadaException,
 																				NoTieneRecursosSuficientesException,
 																				NoHayMineralEnElLugarACrear, 
 																				NoHayGasEnElLugarACrear, ErrorAlHacerCopia{
 		
-		Estructura estructura = creadorEstructuras.crearEstructura(string, posicion, mundo);
+		Estructura estructura = creadorEstructuras.crearEstructura(ventana, string, posicion, mundo);
 		incorporarEstructura(estructura);
 		
 		
@@ -75,7 +79,7 @@ public abstract class Jugador {
 								NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 								ErrorAlHacerCopia, NoSeEncontroLaEstructura{
 		//crea la unidad
-		Unidad unidad = creadorUnidades.crearUnidad(nombre);
+		Unidad unidad = creadorUnidades.crearUnidad(ventana, nombre);
 		//si puede crearla la agrega a la cola de acciones de la estructura que la crea
 		//el buscador de listas, devuelve entidades habilitadas
 		Estructura estructura = (Estructura) BuscadorLista.obtenerEntidad( (ArrayList)estructuras, (IModo)new ModoNombre(unidad.requiere()));

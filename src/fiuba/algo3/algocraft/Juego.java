@@ -2,6 +2,8 @@ package fiuba.algo3.algocraft;
 
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
 import fiuba.algo3.algocraft.jugador.Jugador;
@@ -15,25 +17,42 @@ public class Juego {
 	
 	private Jugador jugador1, jugador2, turno;
 	private Mundo mundo;
+	private JFrame ventana;
 	
 	public Juego(String razaJugador1, String nombreJugador1, String colorJugador1, String razaJugador2, String nombreJugador2, String colorJugador2)
 	{
+		ventana = crearVentana();
 		
 		if(razaJugador1=="Protoss")
-			jugador1 = new Protoss(nombreJugador1,colorJugador1);
+			jugador1 = new Protoss(ventana,nombreJugador1,colorJugador1);
 		else
-			jugador1 = new Terran(nombreJugador1,colorJugador1);
+			jugador1 = new Terran(ventana,nombreJugador1,colorJugador1);
 		
 		if(razaJugador2=="Protoss")
-			jugador2 = new Protoss(nombreJugador2,colorJugador2);
+			jugador2 = new Protoss(ventana,nombreJugador2,colorJugador2);
 		else
-			jugador2 = new Terran(nombreJugador2,colorJugador2);
+			jugador2 = new Terran(ventana,nombreJugador2,colorJugador2);
 		
 		turno = jugador1;
 		
-		mundo = new Mundo(1000,25,this);
+		
+		
+		mundo = new Mundo(ventana,ventana.getSize().height,50,this);
 		mundo.generar();
 		
+	}
+
+	private JFrame crearVentana() 
+	{
+		JFrame ventana = new JFrame("Algocraft");
+		
+		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		ventana.setSize(1000,1000);
+		
+		ventana.setVisible(true);
+		
+		return ventana;
 	}
 
 	public ArrayList<Unidad> obtenerUnidadesDeJugador1() {

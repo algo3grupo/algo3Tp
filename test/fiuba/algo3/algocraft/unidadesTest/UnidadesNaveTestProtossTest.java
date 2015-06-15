@@ -30,14 +30,14 @@ public class UnidadesNaveTestProtossTest {
 	public void crearNaveYCargarUnaUnidad() throws NoEsDeSuRazaLaEstructuraException, NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 					NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoEsDeSuRazaLaUnidadException,
 					NoEsPosibleCargarEstaUnidad, NoSeEncontroLaEstructura {
-		Jugador jugador = new Protoss("Pepe","#FF0000");
+		Jugador jugador = new Protoss(null,"Pepe","#FF0000");
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
-		jugador.agregarEstructura("Pilon", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Pilon", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 15);
-		jugador.agregarEstructura("Acceso", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Acceso", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 8);
-		jugador.agregarEstructura("Puerto Estelar", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Puerto Estelar", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 10);
 		jugador.agregarUnidad("Nave Transporte");
 		jugador.agregarUnidad("Zealot");
@@ -53,13 +53,13 @@ public class UnidadesNaveTestProtossTest {
 	public void crearNaveYLaUnaUnidadQueQuiereCargarEsVoladora() throws NoEsDeSuRazaLaEstructuraException, NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 					NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoEsDeSuRazaLaUnidadException, 
 					NoSeEncontroLaEstructura {
-		Jugador jugador = new Protoss("Pepe","#FF0000");
+		Jugador jugador = new Protoss(null,"Pepe","#FF0000");
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
-		jugador.agregarEstructura("Pilon", new Vector2D(), null);
-		jugador.agregarEstructura("Acceso", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Pilon", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Acceso", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 8);
-		jugador.agregarEstructura("Puerto Estelar", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Puerto Estelar", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 10);
 		jugador.agregarUnidad("Nave Transporte");
 		jugador.agregarUnidad("Scout");
@@ -78,15 +78,15 @@ public class UnidadesNaveTestProtossTest {
 	public void crearNaveYQuiereSobreCargarLaNave() throws NoEsDeSuRazaLaEstructuraException, NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 					NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoEsDeSuRazaLaUnidadException,
 					 NoSeEncontroLaEstructura {
-		Jugador jugador = new Protoss("Pepe","#FF0000");
+		Jugador jugador = new Protoss(null,"Pepe","#FF0000");
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
-		jugador.agregarEstructura("Pilon", new Vector2D(), null);
-		jugador.agregarEstructura("Pilon", new Vector2D(), null);
-		jugador.agregarEstructura("Pilon", new Vector2D(), null);
-		jugador.agregarEstructura("Acceso", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Pilon", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Pilon", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Pilon", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Acceso", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 8);
-		jugador.agregarEstructura("Puerto Estelar", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Puerto Estelar", new Vector2D(), null);
 		PasaTurnos.pasarTurnos(jugador, 10);
 		jugador.agregarUnidad("Nave Transporte");
 		for (int i=1; i < 6; i++){

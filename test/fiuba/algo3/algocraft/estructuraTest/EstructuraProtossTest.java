@@ -20,12 +20,12 @@ public class EstructuraProtossTest {
 	@Test
 	public void correlacionPuertoEstelarNecesitaAcceso() throws ErrorAlHacerCopia {
 		
-		Jugador jugador= new Protoss("Pepe","#FF0000");
+		Jugador jugador= new Protoss(null,"Pepe","#FF0000");
 		jugador.agregarMineral(100);
 		jugador.agregarGas(300);
 		try {
 	
-				jugador.agregarEstructura("Puerto Estelar", new Vector2D(), null);
+				jugador.agregarEstructura(null,"Puerto Estelar", new Vector2D(), null);
 		
 		} catch (NoEsDeSuRazaLaEstructuraException
 				| NoTieneRecursosSuficientesException
@@ -39,12 +39,12 @@ public class EstructuraProtossTest {
 	@Test
 	public void correlacionArchivosTemplariosNecesitaPuertoEstelarYNoLaTiene() throws ErrorAlHacerCopia {
 		
-		Jugador jugador= new Protoss("Pepe","#FF0000");
+		Jugador jugador= new Protoss(null,"Pepe","#FF0000");
 		jugador.agregarMineral(250);
 		jugador.agregarGas(350);
 		try {
-			jugador.agregarEstructura("Acceso", new Vector2D(), null);
-			jugador.agregarEstructura("Archivos Templarios", new Vector2D(), null);
+			jugador.agregarEstructura(null,"Acceso", new Vector2D(), null);
+			jugador.agregarEstructura(null,"Archivos Templarios", new Vector2D(), null);
 		} catch (NoEsDeSuRazaLaEstructuraException
 				| NoTieneRecursosSuficientesException
 				|NoHayMineralEnElLugarACrear 
@@ -57,12 +57,12 @@ public class EstructuraProtossTest {
 	@Test
 	public void correlacionArchivosTemplariosNecesitaPuertoEstelarQueNoSeTerminoDeConstruir() throws ErrorAlHacerCopia {
 		
-		Jugador jugador= new Protoss("Pepe","#FF0000");
+		Jugador jugador= new Protoss(null,"Pepe","#FF0000");
 		jugador.agregarMineral(250);
 		jugador.agregarGas(350);
 		try {
-			jugador.agregarEstructura("Puerto Estelar", new Vector2D(), null);
-			jugador.agregarEstructura("Archivos Templarios", new Vector2D(), null);
+			jugador.agregarEstructura(null,"Puerto Estelar", new Vector2D(), null);
+			jugador.agregarEstructura(null,"Archivos Templarios", new Vector2D(), null);
 		} catch (NoEsDeSuRazaLaEstructuraException
 				| NoTieneRecursosSuficientesException
 				|NoHayMineralEnElLugarACrear 
@@ -75,15 +75,15 @@ public class EstructuraProtossTest {
 	@Test
 	public void correlacionArchivosTemplariosNecesitaPuertoEstelarYLoTiene() throws Exception {
 		
-		Jugador jugador= new Protoss("Pepe","#FF0000");
+		Jugador jugador= new Protoss(null,"Pepe","#FF0000");
 		jugador.agregarMineral(250);
 		jugador.agregarGas(350);
 		try {
-			jugador.agregarEstructura("Acceso", new Vector2D(), null);
+			jugador.agregarEstructura(null,"Acceso", new Vector2D(), null);
 			PasaTurnos.pasarTurnos(jugador, 8);
-			jugador.agregarEstructura("Puerto Estelar", new Vector2D(), null);
+			jugador.agregarEstructura(null,"Puerto Estelar", new Vector2D(), null);
 			PasaTurnos.pasarTurnos(jugador, 10);
-			jugador.agregarEstructura("Archivos Templarios", new Vector2D(), null);
+			jugador.agregarEstructura(null,"Archivos Templarios", new Vector2D(), null);
 		} catch (NoEsDeSuRazaLaEstructuraException
 				| NoTieneRecursosSuficientesException
 				|NoHayMineralEnElLugarACrear 

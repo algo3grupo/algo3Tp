@@ -2,13 +2,15 @@ package fiuba.algo3.algocraft.entidadesAbstractas;
 
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+
 import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 import fiuba.algo3.algocraft.ID;
 
-public abstract class Entidad {
+public abstract class Entidad extends Dibujable {
 	private int turnos;
 	private int ID;
 	private int vida;
@@ -20,7 +22,8 @@ public abstract class Entidad {
 	private Vector2D posicion;
 	private int dimension;
 	
-	public Entidad( Vector2D posicion, int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int turnos){
+	public Entidad( JFrame ventana, Vector2D posicion, int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int turnos){
+		super(ventana);
 		this.ID = new ID().getIdNuevo();
 		this.vida = vida;
 		this.rangoDeVision = rangoDeVision;
@@ -30,7 +33,7 @@ public abstract class Entidad {
 		this.requiere = requiere;
 		this.turnos = turnos;
 		this.posicion = new Vector2D(posicion);
-		dimension = 25;
+		dimension = 50;
 	}
 	
 
@@ -51,10 +54,11 @@ public abstract class Entidad {
 	
 	public Entidad(Entidad entidad) 
 	{
+		super(entidad.obtenerVentana());
 		posicion = new Vector2D(entidad.posicion);
 		dimension = entidad.dimension;		
 	}
-	
+
 	public String nombre(){
 		
 		return this.nombre;
@@ -153,5 +157,10 @@ public abstract class Entidad {
 			return;
 		hacerMisAcciones();
 		
+	}
+	
+	public int obtenerDimension()
+	{
+		return dimension;
 	}
 }

@@ -4,6 +4,8 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+
 import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
 import fiuba.algo3.algocraft.excepciones.ErrorAlHacerCopia;
@@ -26,7 +28,7 @@ public abstract class Creador {
 		this.entidades = new ArrayList<Entidad>(); 
 	}
 	
-	public Entidad crearEntidad(String string,Vector2D posicion,Mundo mundo) throws NoEsDeSuRazaLaEntidadException, 
+	public Entidad crearEntidad(JFrame ventana, String string,Vector2D posicion,Mundo mundo) throws NoEsDeSuRazaLaEntidadException, 
 																					NoTieneLaEstructuraCreadaException, 
 																					NoTieneRecursosSuficientesException,
 																					ErrorAlHacerCopia
@@ -41,8 +43,8 @@ public abstract class Creador {
 				gastar(entidad);
 				try {
 					//La copia es realizada por medio de reflexion
-					Constructor constructor = entidad.getClass().getConstructor(Vector2D.class, Jugador.class);
-					Entidad copia = (Entidad)constructor.newInstance(posicion, entidad.getJugador());
+					Constructor constructor = entidad.getClass().getConstructor(JFrame.class, Vector2D.class, Jugador.class);
+					Entidad copia = (Entidad)constructor.newInstance(ventana, posicion, entidad.getJugador());
 					return copia;
 				} catch (NoSuchMethodException | SecurityException
 						|InstantiationException 

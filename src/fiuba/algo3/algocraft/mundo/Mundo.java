@@ -3,7 +3,10 @@ package fiuba.algo3.algocraft.mundo;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+import javax.swing.JFrame;
+
 import fiuba.algo3.algocraft.Juego;
+import fiuba.algo3.algocraft.entidadesAbstractas.Dibujable;
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
 import fiuba.algo3.algocraft.excepciones.DivisionDeGrillaNoEsMultiploDeResolucion;
@@ -12,7 +15,7 @@ import fiuba.algo3.algocraft.excepciones.ParametroNulo;
 import fiuba.algo3.algocraft.excepciones.posicionDeJugadorIndefinida;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 
-public class Mundo {
+public class Mundo extends Dibujable{
 	
 	private int divisionGrillaParaAnalisis;
 	private int resolucion;
@@ -34,15 +37,23 @@ public class Mundo {
 		
 		for(int i=0;i<divisionGrillaParaAnalisis;i++)
 			for(int a=0;a<divisionGrillaParaAnalisis;a++)
+				for(int j=0;j<10;j++)
+				{
+					Vector2D posicionMineral = pixelAGrilla(new Vector2D().aleatorio(tamañoDivision*i,tamañoDivision*(i+1)-divisionGrilla,tamañoDivision*a,tamañoDivision*(a+1)-divisionGrilla));
+					
+					if(!hayMineral(posicionMineral) && !hayGas(posicionMineral) && baseJugador1.distintoA(posicionMineral) && baseJugador2.distintoA(posicionMineral))
+						mineral.add(new Mineral(obtenerVentana(),posicionMineral,divisionGrilla));	
+
+				}
+		
+		for(int i=0;i<divisionGrillaParaAnalisis;i++)
+			for(int a=0;a<divisionGrillaParaAnalisis;a++)
 				for(int j=0;j<5;j++)
 				{
-					Vector2D posicionMineral = new Vector2D().aleatorio(tamañoDivision*i,tamañoDivision*(i+1)-divisionGrilla,tamañoDivision*a,tamañoDivision*(a+1)-divisionGrilla), posicionGas = new Vector2D().aleatorio(tamañoDivision*i,tamañoDivision*(i+1)-divisionGrilla,tamañoDivision*a,tamañoDivision*(a+1)-divisionGrilla);
+					Vector2D posicionGas = pixelAGrilla(new Vector2D().aleatorio(tamañoDivision*i,tamañoDivision*(i+1)-divisionGrilla,tamañoDivision*a,tamañoDivision*(a+1)-divisionGrilla));
 					
-					if(!hayMineral(posicionMineral) && !hayGas(posicionMineral) && baseJugador1.distintoA(pixelAGrilla(posicionMineral)) && baseJugador2.distintoA(pixelAGrilla(posicionMineral)))
-						mineral.add(new Mineral(posicionMineral,divisionGrilla));	
-					
-					if(!hayMineral(posicionGas) && !hayGas(posicionGas) && baseJugador1.distintoA(pixelAGrilla(posicionGas)) && baseJugador2.distintoA(pixelAGrilla(posicionGas)))
-						gas.add(new Gas(posicionGas,divisionGrilla));	
+					if(!hayMineral(posicionGas) && !hayGas(posicionGas) && baseJugador1.distintoA(posicionGas) && baseJugador2.distintoA(posicionGas))
+						gas.add(new Gas(obtenerVentana(),posicionGas,divisionGrilla));	
 				}
 		
 	}
@@ -54,8 +65,9 @@ public class Mundo {
 		return new Vector2D(posicionX,posicionY);		
 	}
 
-	public Mundo(int resolucion, int divisionGrilla, Juego juego)
+	public Mundo(JFrame ventana, int resolucion, int divisionGrilla, Juego juego)
 	{
+		super(ventana);
 		
 		if(resolucion < 0 || divisionGrilla < 0)
 			throw new ParametroNegativo();
@@ -69,7 +81,7 @@ public class Mundo {
 		this.juego = juego;		
 		this.resolucion = resolucion;
 		this.divisionGrilla = divisionGrilla;
-		divisionGrillaParaAnalisis = 10;
+		divisionGrillaParaAnalisis = 2;
 		
 		this.baseJugador1 = null;
 		this.baseJugador2 = null;
@@ -293,5 +305,20 @@ public class Mundo {
 		
 		return true;
 		
+	}
+	
+	public void dibujar()
+	{
+		
+		dibujarImagenEnMosaico("terreno.jpg",new Vector2D(0,0),resolucion,resolucion);
+		
+		for(int i=0;i<mineral.size();i++)
+			mineral.get(i).dibujar();
+		
+		for(int i=0;i<gas.size();i++)
+			gas.get(i).dibujar();
+		
+		for(int i=0;i<espacio.size();i++)
+			espacio.get(i).dibujar();
 	}
 }

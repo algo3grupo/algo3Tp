@@ -1,6 +1,8 @@
 package fiuba.algo3.algocraft.creadores;
 
 
+import javax.swing.JFrame;
+
 import fiuba.algo3.algocraft.Acciones.HabilitacionEstructura;
 import fiuba.algo3.algocraft.Interfaces.IRecolectores;
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
@@ -16,7 +18,7 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public abstract class CreadorEstructuras extends Creador {
 		
-	public Estructura crearEstructura(String string,Vector2D posicion, Mundo mundo) throws NoEsDeSuRazaLaEstructuraException, 
+	public Estructura crearEstructura(JFrame ventana, String string,Vector2D posicion, Mundo mundo) throws NoEsDeSuRazaLaEstructuraException, 
 																					NoTieneLaEstructuraCreadaException, 
 																					NoTieneRecursosSuficientesException,
 																					NoHayMineralEnElLugarACrear,
@@ -24,7 +26,7 @@ public abstract class CreadorEstructuras extends Creador {
 																					ErrorAlHacerCopia{
 		
 		try {
-			Estructura estructura = (Estructura)crearEntidad(string, posicion, null) ;
+			Estructura estructura = (Estructura)crearEntidad(ventana, string, posicion, null) ;
 			
 			if (estructura instanceof IRecolectores){
 				

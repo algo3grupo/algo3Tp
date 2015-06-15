@@ -12,6 +12,7 @@ import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
 import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.jugador.Terran;
+import fiuba.algo3.algocraft.mundo.Mundo;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class EstructuraTerranTest {
@@ -19,13 +20,13 @@ public class EstructuraTerranTest {
 	@Test
 	public void correlacionPuertoEstelarNecesitaFabrica() throws ErrorAlHacerCopia {
 		
-		Jugador jugador= new Terran(null,"Pepe","#FF0000");
+		Jugador jugador= new Terran(0,new Vector2D(100,100),null,"Pepe","#FF0000");
 		jugador.agregarMineral(2300);
 		jugador.agregarGas(2500);
 		try {
-			jugador.agregarEstructura(null,"Deposito Suministro", new Vector2D(), null);
-			jugador.agregarEstructura(null,"Barraca", new Vector2D(), null);
-			jugador.agregarEstructura(null,"Puerto Estelar", new Vector2D(), null);
+			jugador.agregarEstructura(null,"Deposito Suministro", new Vector2D(), new Mundo(null, 1000, 1000, null));
+			jugador.agregarEstructura(null,"Barraca", new Vector2D(), new Mundo(null, 1000, 1000, null));
+			jugador.agregarEstructura(null,"Puerto Estelar", new Vector2D(), new Mundo(null, 1000, 1000, null));
 		} catch (NoEsDeSuRazaLaEstructuraException
 				| NoTieneRecursosSuficientesException
 				| NoHayMineralEnElLugarACrear 
@@ -38,12 +39,12 @@ public class EstructuraTerranTest {
 	@Test
 	public void correlacionFabricaNecesitaBarraca() throws ErrorAlHacerCopia {
 		
-		Jugador jugador= new Terran(null,"Pepe","#FF0000");
+		Jugador jugador= new Terran(0,new Vector2D(100,100),null,"Pepe","#FF0000");
 		jugador.agregarMineral(2300);
 		jugador.agregarGas(2500);
 		try {
-			jugador.agregarEstructura(null,"Deposito Suministro", new Vector2D(), null);
-			jugador.agregarEstructura(null,"Fabrica", new Vector2D(), null);
+			jugador.agregarEstructura(null,"Deposito Suministro", new Vector2D(), new Mundo(null, 1000, 1000, null));
+			jugador.agregarEstructura(null,"Fabrica", new Vector2D(), new Mundo(null, 1000, 1000, null));
 		} catch (NoEsDeSuRazaLaEstructuraException
 				| NoTieneRecursosSuficientesException
 				| NoHayMineralEnElLugarACrear 

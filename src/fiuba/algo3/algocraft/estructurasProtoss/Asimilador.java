@@ -11,8 +11,8 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class Asimilador extends Protegidas implements IRecolectores {
 	
-	public Asimilador(JFrame ventana, Vector2D posicion, Jugador jugador) {
-		super(ventana, posicion, 450, 0, jugador, "Asimilador", new Costo(50,0), "", 8);
+	public Asimilador(int dimension, JFrame ventana, Vector2D posicion, Jugador jugador) {
+		super(dimension, ventana, posicion, 450, 0, jugador, "Asimilador", new Costo(50,0), "", 8);
 		
 		agregarAccion(new RecogerSuministro(this));
 	}
@@ -23,10 +23,10 @@ public class Asimilador extends Protegidas implements IRecolectores {
 		getJugador().agregarMineral(10);
 	}
 
-	@Override
-	public void dibujar() {
-		// TODO Auto-generated method stub
-		
+
+	public void dibujar() 
+	{
+		dibujarImagen("recursos/asimilador (protoss).png", obtenerPosicion(),obtenerDimension(),obtenerDimension());		
 	}
 
 	

@@ -13,9 +13,9 @@ public class Mineral extends Entidad {
 		super(mineral);
 	}
 
-	public Mineral(JFrame ventana, Vector2D posicionMineral, int dimension) 
+	public Mineral(int dimension, JFrame ventana, Vector2D posicionMineral) 
 	{
-		super(ventana, posicionMineral,0,0, null, null, null, null, 0);			
+		super(dimension, ventana, posicionMineral,0,0, null, null, null, null, 0);			
 	}
 
 	@Override
@@ -26,7 +26,7 @@ public class Mineral extends Entidad {
 
 	public void dibujar() 
 	{
-		dibujarImagen("cristal.png",obtenerPosicion());		
+		dibujarImagen("recursos/cristal.png",obtenerPosicion(),obtenerDimension(),obtenerDimension());				
 	}
 
 }

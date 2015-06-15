@@ -11,9 +11,9 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class UnidadCopia extends Unidad{
 
-	public UnidadCopia(Vector2D posicion, Unidad unidad) {
+	public UnidadCopia(int dimension, Vector2D posicion, Unidad unidad) {
 		
-		super(unidad.obtenerVentana(), posicion, 0, 5, unidad.getJugador(), unidad.nombre(), new Costo(0,0), "", 0, unidad.transporte(), 0 );
+		super(dimension, unidad.obtenerVentana(), posicion, 0, 5, unidad.getJugador(), unidad.nombre(), new Costo(0,0), "", 0, unidad.transporte(), 0 );
 
 	}
 

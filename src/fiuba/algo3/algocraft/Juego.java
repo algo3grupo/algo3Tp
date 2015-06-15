@@ -1,5 +1,9 @@
 package fiuba.algo3.algocraft;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -13,7 +17,7 @@ import fiuba.algo3.algocraft.mundo.Mineral;
 import fiuba.algo3.algocraft.mundo.Mundo;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 
-public class Juego {
+public class Juego{
 	
 	private Jugador jugador1, jugador2, turno;
 	private Mundo mundo;
@@ -23,22 +27,24 @@ public class Juego {
 	{
 		ventana = crearVentana();
 		
+		mundo = new Mundo(ventana,ventana.getSize().height,50,this);
+		mundo.generar();
+		
 		if(razaJugador1=="Protoss")
-			jugador1 = new Protoss(ventana,nombreJugador1,colorJugador1);
+			jugador1 = new Protoss(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),ventana,nombreJugador1,colorJugador1);
 		else
-			jugador1 = new Terran(ventana,nombreJugador1,colorJugador1);
+			jugador1 = new Terran(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),ventana,nombreJugador1,colorJugador1);
 		
 		if(razaJugador2=="Protoss")
-			jugador2 = new Protoss(ventana,nombreJugador2,colorJugador2);
+			jugador2 = new Protoss(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador2(),ventana,nombreJugador2,colorJugador2);
 		else
-			jugador2 = new Terran(ventana,nombreJugador2,colorJugador2);
+			jugador2 = new Terran(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador2(),ventana,nombreJugador2,colorJugador2);
 		
 		turno = jugador1;
 		
 		
 		
-		mundo = new Mundo(ventana,ventana.getSize().height,50,this);
-		mundo.generar();
+		
 		
 	}
 
@@ -97,6 +103,13 @@ public class Juego {
 	public void construirEstructura(String string, Vector2D vector2d) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void actualizarVista()
+	{
+		mundo.dibujar();
+		jugador1.actualizarVista();
+		jugador2.actualizarVista();
 	}
 
 }

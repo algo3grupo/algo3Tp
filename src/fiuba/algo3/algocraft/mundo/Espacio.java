@@ -13,9 +13,9 @@ public class Espacio extends Entidad{
 		super(gas);
 	}
 
-	public Espacio(JFrame ventana, Vector2D posicionEspacio, int dimension) 
+	public Espacio(int dimension, JFrame ventana, Vector2D posicionEspacio) 
 	{
-		super(ventana, posicionEspacio, 0, 0, null, null, null, null, 0);		
+		super(dimension, ventana, posicionEspacio, 0, 0, null, null, null, null, 0);		
 	}
 
 	@Override

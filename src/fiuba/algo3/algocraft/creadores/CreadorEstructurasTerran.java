@@ -13,11 +13,11 @@ public class CreadorEstructurasTerran extends CreadorEstructuras {
 	
 	public CreadorEstructurasTerran(Jugador jugador){
 		super();
-		entidades.add( new Barraca(null,new Vector2D(), jugador) );
-		entidades.add( new CentroDeMineral(null,new Vector2D(), jugador) );
-		entidades.add( new DepositoSuministro(null, new Vector2D(), jugador) );
-		entidades.add( new Fabrica(null, new Vector2D(), jugador) );
-		entidades.add( new Refineria(null, new Vector2D(), jugador) );
-		entidades.add( new PuertoEstelarT(null, new Vector2D(), jugador) );
+		entidades.add( new Barraca(0,null,new Vector2D(), jugador) );
+		entidades.add( new CentroDeMineral(0,null,new Vector2D(), jugador) );
+		entidades.add( new DepositoSuministro(0,null, new Vector2D(), jugador) );
+		entidades.add( new Fabrica(0,null, new Vector2D(), jugador) );
+		entidades.add( new Refineria(0,null, new Vector2D(), jugador) );
+		entidades.add( new PuertoEstelarT(0,null, new Vector2D(), jugador) );
 	}
 }

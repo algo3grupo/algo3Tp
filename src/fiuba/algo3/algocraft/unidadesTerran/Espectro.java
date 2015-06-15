@@ -10,9 +10,9 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class Espectro extends UnidadAtaqueBasico {
 
-	public Espectro(JFrame ventana, Vector2D posicion, Jugador jugador) {
+	public Espectro(int dimension, JFrame ventana, Vector2D posicion, Jugador jugador) {
 		
-		super(ventana, posicion, 120, 7, jugador, "Espectro", new Costo(150,100), "Puerto Estelar", 2, 0, 8,new Ataque( 8, 20, 5, 5));
+		super(dimension, ventana, posicion, 120, 7, jugador, "Espectro", new Costo(150,100), "Puerto Estelar", 2, 0, 8,new Ataque( 8, 20, 5, 5));
 	}
 
 	@Override

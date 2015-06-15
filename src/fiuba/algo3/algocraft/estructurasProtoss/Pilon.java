@@ -9,8 +9,8 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class Pilon extends Protegidas {
 
-	public Pilon(JFrame ventana, Vector2D posicion, Jugador jugador) {
-		super(ventana, posicion, 300, 0, jugador, "Pilon", new Costo(100,0), "", 5);
+	public Pilon(int dimension, JFrame ventana, Vector2D posicion, Jugador jugador) {
+		super(dimension, ventana, posicion, 300, 0, jugador, "Pilon", new Costo(100,0), "", 5);
 	}
 	
 	public void actualizarPoblacion(){
@@ -19,9 +19,9 @@ public class Pilon extends Protegidas {
 		
 	}
 
-	@Override
-	public void dibujar() {
-		// TODO Auto-generated method stub
-		
+	
+	public void dibujar() 
+	{
+		dibujarImagen("recursos/pilon (protoss).png", obtenerPosicion(),obtenerDimension(),obtenerDimension());		
 	}
 }

@@ -9,14 +9,14 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class Fabrica extends Estructura {
 
-	public Fabrica(JFrame ventana, Vector2D posicion, Jugador jugador) {
-		super(ventana, posicion, 1250, 0, jugador, "Fabrica", new Costo(200,100), "Barraca", 12);
+	public Fabrica(int dimension, JFrame ventana, Vector2D posicion, Jugador jugador) {
+		super(dimension, ventana, posicion, 1250, 0, jugador, "Fabrica", new Costo(200,100), "Barraca", 12);
 	}
 
-	@Override
-	public void dibujar() {
-		// TODO Auto-generated method stub
-		
+	
+	public void dibujar()
+	{
+		dibujarImagen("recursos/fabrica (terran).png", obtenerPosicion(),obtenerDimension(),obtenerDimension());		
 	}
 
 }

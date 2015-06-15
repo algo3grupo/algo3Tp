@@ -13,9 +13,9 @@ public class Gas extends Entidad{
 		super(gas);
 	}
 
-	public Gas(JFrame ventana, Vector2D posicionGas, int dimension) 
+	public Gas(int dimension, JFrame ventana, Vector2D posicionGas) 
 	{
-		super(ventana, posicionGas,0,0, null, null, null, null, 0);			
+		super(dimension, ventana, posicionGas,0,0, null, null, null, null, 0);			
 	}
 
 	@Override
@@ -27,7 +27,7 @@ public class Gas extends Entidad{
 	
 	public void dibujar() 
 	{
-		dibujarImagen("gas.png",obtenerPosicion());		
+		dibujarImagen("recursos/gas.png",obtenerPosicion(),obtenerDimension(),obtenerDimension());		
 	}	
 
 }

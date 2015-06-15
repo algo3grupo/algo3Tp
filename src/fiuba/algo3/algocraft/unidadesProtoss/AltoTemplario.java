@@ -9,8 +9,8 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class AltoTemplario extends UnidadEnergia {
 
-	public AltoTemplario(JFrame ventana, Vector2D posicion, Jugador jugador) {
-		super(ventana, posicion, 40, 7, jugador, "Alto Templario", new Costo(100,0), "Archivos Templarios", 2, 2, 7);
+	public AltoTemplario(int dimension, JFrame ventana, Vector2D posicion, Jugador jugador) {
+		super(dimension, ventana, posicion, 40, 7, jugador, "Alto Templario", new Costo(100,0), "Archivos Templarios", 2, 2, 7);
 	}
 
 	@Override

@@ -42,7 +42,7 @@ public abstract class Dibujable
 		
 	}
 	
-	public void dibujarImagen(String ruta, Vector2D posicion)
+	public void dibujarImagen(String ruta, Vector2D posicion, int ancho, int alto)
 	{
 		Graphics contexto = ventana.getGraphics();
 		BufferedImage imagen = null;
@@ -56,11 +56,13 @@ public abstract class Dibujable
 			
 		}
 		
-		contexto.drawImage(imagen, (int)posicion.obtenerCoordenadaX()+origenAreaClienteX, (int)posicion.obtenerCoordenadaY()+origenAreaClienteY, null);
+		contexto.drawImage(imagen, (int)posicion.obtenerCoordenadaX()+origenAreaClienteX, (int)posicion.obtenerCoordenadaY()+origenAreaClienteY, ancho, alto, null);
 	}
 	
 	public void dibujarImagenEnMosaico(String ruta, Vector2D posicion, int ancho, int alto)
 	{
+		
+		System.out.println(ancho + "   " + alto);
 		Graphics contexto = ventana.getGraphics();
 		BufferedImage imagen = null;
 		

@@ -11,8 +11,8 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class Refineria extends Estructura implements IRecolectores {
 
-	public Refineria(JFrame ventana, Vector2D posicion, Jugador jugador) {
-		super(ventana, posicion, 750, 0, jugador, "Refineria", new Costo(100,0), "", 6);
+	public Refineria(int dimension, JFrame ventana, Vector2D posicion, Jugador jugador) {
+		super(dimension, ventana, posicion, 750, 0, jugador, "Refineria", new Costo(100,0), "", 6);
 		
 		agregarAccion(new RecogerSuministro(this));
 	}
@@ -22,10 +22,10 @@ public class Refineria extends Estructura implements IRecolectores {
 		getJugador().agregarGas(10);
 	}
 
-	@Override
-	public void dibujar() {
-		// TODO Auto-generated method stub
-		
+	
+	public void dibujar() 
+	{
+		dibujarImagen("recursos/refineria (terran).png", obtenerPosicion(),obtenerDimension(),obtenerDimension());
 	}
 
 }

@@ -11,9 +11,9 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class NexoMineral extends Protegidas implements IRecolectores{
 
-	public NexoMineral(JFrame ventana, Vector2D posicion, Jugador jugador) 
+	public NexoMineral(int dimension, JFrame ventana, Vector2D posicion, Jugador jugador) 
 	{
-		super(ventana, posicion, 250, 0, jugador, "Nexo Mineral", new Costo(50,0), "", 4);
+		super(dimension, ventana, posicion, 250, 0, jugador, "Nexo Mineral", new Costo(50,0), "", 4);
 		
 		agregarAccion(new RecogerSuministro(this));
 	}
@@ -23,10 +23,10 @@ public class NexoMineral extends Protegidas implements IRecolectores{
 		getJugador().agregarGas(10);
 	}
 
-	@Override
-	public void dibujar() {
-		// TODO Auto-generated method stub
-		
+	
+	public void dibujar()
+	{
+		dibujarImagen("recursos/nexo mineral (protoss).png", obtenerPosicion(),obtenerDimension(),obtenerDimension());		
 	}
 
 }

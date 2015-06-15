@@ -10,8 +10,8 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class Zealot extends UnidadAtaqueBasico {
 
-	public Zealot(JFrame ventana, Vector2D posicion, Jugador jugador) {
-		super(ventana, posicion, 100, 1, jugador, "Zealot", new Costo(100,0), "Acceso",2, 2, 4, new Ataque(8, 0, 1, 0));
+	public Zealot(int dimension, JFrame ventana, Vector2D posicion, Jugador jugador) {
+		super(dimension, ventana, posicion, 100, 1, jugador, "Zealot", new Costo(100,0), "Acceso",2, 2, 4, new Ataque(8, 0, 1, 0));
 	}
 
 	@Override

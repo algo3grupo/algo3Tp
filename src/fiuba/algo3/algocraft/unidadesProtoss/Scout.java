@@ -10,9 +10,9 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class Scout extends UnidadAtaqueBasico {
 
-	public Scout(JFrame ventana, Vector2D posicion, Jugador jugador) {
+	public Scout(int dimension, JFrame ventana, Vector2D posicion, Jugador jugador) {
 		
-		super(ventana, posicion, 150, 7, jugador, "Scout", new Costo(100,0), "Puerto Estelar", 3, 0, 9,new Ataque(8, 14, 4, 4));
+		super(dimension, ventana, posicion, 150, 7, jugador, "Scout", new Costo(100,0), "Puerto Estelar", 3, 0, 9,new Ataque(8, 14, 4, 4));
 	}
 
 	@Override

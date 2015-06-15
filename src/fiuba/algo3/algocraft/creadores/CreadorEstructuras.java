@@ -26,7 +26,7 @@ public abstract class CreadorEstructuras extends Creador {
 																					ErrorAlHacerCopia{
 		
 		try {
-			Estructura estructura = (Estructura)crearEntidad(ventana, string, posicion, null) ;
+			Estructura estructura = (Estructura)crearEntidad(ventana, string, posicion, mundo) ;
 			
 			if (estructura instanceof IRecolectores){
 				

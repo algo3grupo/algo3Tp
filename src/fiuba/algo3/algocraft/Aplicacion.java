@@ -13,7 +13,7 @@ public  class Aplicacion {
 		
 		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
         
-		juego.obtenerMundo().dibujar();
+		juego.actualizarVista();
 		
 	}
 

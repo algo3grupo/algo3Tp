@@ -42,7 +42,7 @@ public class Mundo extends Dibujable{
 					Vector2D posicionMineral = pixelAGrilla(new Vector2D().aleatorio(tamañoDivision*i,tamañoDivision*(i+1)-divisionGrilla,tamañoDivision*a,tamañoDivision*(a+1)-divisionGrilla));
 					
 					if(!hayMineral(posicionMineral) && !hayGas(posicionMineral) && baseJugador1.distintoA(posicionMineral) && baseJugador2.distintoA(posicionMineral))
-						mineral.add(new Mineral(obtenerVentana(),posicionMineral,divisionGrilla));	
+						mineral.add(new Mineral(divisionGrilla,obtenerVentana(),posicionMineral));	
 
 				}
 		
@@ -53,7 +53,7 @@ public class Mundo extends Dibujable{
 					Vector2D posicionGas = pixelAGrilla(new Vector2D().aleatorio(tamañoDivision*i,tamañoDivision*(i+1)-divisionGrilla,tamañoDivision*a,tamañoDivision*(a+1)-divisionGrilla));
 					
 					if(!hayMineral(posicionGas) && !hayGas(posicionGas) && baseJugador1.distintoA(posicionGas) && baseJugador2.distintoA(posicionGas))
-						gas.add(new Gas(obtenerVentana(),posicionGas,divisionGrilla));	
+						gas.add(new Gas(divisionGrilla,obtenerVentana(),posicionGas));	
 				}
 		
 	}
@@ -161,7 +161,14 @@ public class Mundo extends Dibujable{
 		
 		mineralOrdenadosPorDistancia.sort(new ClaseComparadoraLocal(posicion));
 		
-		for(int i=0;i<5;i++)
+		int limite;
+		
+		if(mineralOrdenadosPorDistancia.size() >= 5)
+			limite = 5;
+		else
+			limite = mineralOrdenadosPorDistancia.size();
+		
+		for(int i=0;i<limite;i++)
 			mineralesMasCercanos.add(new Mineral(mineralOrdenadosPorDistancia.get(i)));	
 		
 		return mineralesMasCercanos;
@@ -200,7 +207,14 @@ public class Mundo extends Dibujable{
 		
 		GasOrdenadosPorDistancia.sort(new ClaseComparadoraLocal(posicion));
 		
-		for(int i=0;i<5;i++)
+		int limite;
+		
+		if(GasOrdenadosPorDistancia.size() >= 5)
+			limite = 5;
+		else
+			limite = GasOrdenadosPorDistancia.size();
+		
+		for(int i=0;i<limite;i++)
 			gasesMasCercanos.add(new Gas(GasOrdenadosPorDistancia.get(i)));	
 		
 		return gasesMasCercanos;
@@ -310,7 +324,7 @@ public class Mundo extends Dibujable{
 	public void dibujar()
 	{
 		
-		dibujarImagenEnMosaico("terreno.jpg",new Vector2D(0,0),resolucion,resolucion);
+		dibujarImagenEnMosaico("recursos/terreno.jpg",new Vector2D(0,0),resolucion,resolucion);
 		
 		for(int i=0;i<mineral.size();i++)
 			mineral.get(i).dibujar();
@@ -320,5 +334,10 @@ public class Mundo extends Dibujable{
 		
 		for(int i=0;i<espacio.size();i++)
 			espacio.get(i).dibujar();
+	}
+
+	public int obtenerDivisionDeGrilla() 
+	{
+		return divisionGrilla;
 	}
 }

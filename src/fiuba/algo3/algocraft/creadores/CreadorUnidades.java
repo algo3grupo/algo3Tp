@@ -11,17 +11,18 @@ import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEntidadException;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaUnidadException;
 import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
 import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
+import fiuba.algo3.algocraft.mundo.Mundo;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public abstract class CreadorUnidades extends Creador {
 	
-	public Unidad crearUnidad(JFrame ventana, String string) throws NoEsDeSuRazaLaUnidadException,
+	public Unidad crearUnidad(JFrame ventana, String string, Mundo mundo) throws NoEsDeSuRazaLaUnidadException,
 																					NoTieneLaEstructuraCreadaException,
 																					NoTieneRecursosSuficientesException,
 																					ErrorAlHacerCopia{
 		try {
 			
-			return (Unidad)crearEntidad(ventana, string, new Vector2D(), null);
+			return (Unidad)crearEntidad(ventana, string, new Vector2D(), mundo);
 			
 		} catch (NoEsDeSuRazaLaEntidadException e) {
 			throw new NoEsDeSuRazaLaUnidadException();

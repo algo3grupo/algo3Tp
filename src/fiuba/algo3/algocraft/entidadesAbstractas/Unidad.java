@@ -13,9 +13,9 @@ public abstract class Unidad extends ColaDeAcciones {
 	private int suministro;
 	private int transporte;
 
-	public Unidad(JFrame ventana, Vector2D posicion, int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, 
+	public Unidad(int dimension, JFrame ventana, Vector2D posicion, int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, 
 			int suministro, int transporte, int turnos) {
-		super(ventana, posicion, vida, rangoDeVision, jugador, nombre, costo, requiere, turnos);
+		super(dimension, ventana, posicion, vida, rangoDeVision, jugador, nombre, costo, requiere, turnos);
 		this.suministro = suministro;
 		this.transporte = transporte;
 	}

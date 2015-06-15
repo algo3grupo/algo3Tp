@@ -31,7 +31,7 @@ public class AsimiladorTest {
 		Mundo mundo = new Mundo(null,500,10,juego);
 		mundo.generar();
 		
-        Protoss jugadorProtoss = new Protoss(null,null,null);
+        Protoss jugadorProtoss = new Protoss(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),null,null,null);
         
         Vector2D posicionBaseDeJugador = mundo.posicionBaseJugador1();
         
@@ -40,7 +40,7 @@ public class AsimiladorTest {
         
         ArrayList<Estructura> estructurasDeJugadorProtoss = jugadorProtoss.obtenerEstructuras();
         
-        Assert.assertEquals(estructurasDeJugadorProtoss.size(), 1);    
+        Assert.assertEquals(estructurasDeJugadorProtoss.size(), 2);    
 	}
 	
 	@Test
@@ -53,7 +53,7 @@ public class AsimiladorTest {
 		Mundo mundo = new Mundo(null,500,10,juego);
 		mundo.generar();
 
-		Protoss jugadorProtoss = new Protoss(null,null,null);
+		Protoss jugadorProtoss = new Protoss(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),null,null,null);
         
 		/*Busco una posicion que no tenga gas*/
         int i=1;

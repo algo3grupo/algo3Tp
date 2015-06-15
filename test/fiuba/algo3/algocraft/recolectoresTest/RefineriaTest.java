@@ -30,7 +30,7 @@ public class RefineriaTest {
 		Mundo mundo = new Mundo(null,500,10,juego);
 		mundo.generar();
 		
-        Terran jugadorTerran = new Terran(null,null,null);
+        Terran jugadorTerran = new Terran(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),null,null,null);
         
         Vector2D posicionBaseDeJugador = mundo.posicionBaseJugador1();
         
@@ -39,7 +39,7 @@ public class RefineriaTest {
         
         ArrayList<Estructura> estructurasDeJugadorTerran = jugadorTerran.obtenerEstructuras();
         
-        Assert.assertEquals(estructurasDeJugadorTerran.size(), 1);    
+        Assert.assertEquals(estructurasDeJugadorTerran.size(), 2);    
 	}
 	
 	@Test
@@ -52,7 +52,7 @@ public class RefineriaTest {
 		Mundo mundo = new Mundo(null,500,10,juego);
 		mundo.generar();
 
-		Terran jugadorTerran = new Terran(null,null,null);
+		Terran jugadorTerran = new Terran(mundo.obtenerDivisionDeGrilla(),new Vector2D(100,100),null,null,null);
         
 		/*Busco una posicion que no tenga gas*/
         int i=1;

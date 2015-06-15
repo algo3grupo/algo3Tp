@@ -21,6 +21,7 @@ import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.jugador.Protoss;
 import fiuba.algo3.algocraft.jugador.Terran;
+import fiuba.algo3.algocraft.mundo.Mundo;
 import fiuba.algo3.algocraft.pasaTurnos.PasaTurnos;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 
@@ -30,17 +31,17 @@ public class UnidadesNaveTestProtossTest {
 	public void crearNaveYCargarUnaUnidad() throws NoEsDeSuRazaLaEstructuraException, NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 					NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoEsDeSuRazaLaUnidadException,
 					NoEsPosibleCargarEstaUnidad, NoSeEncontroLaEstructura {
-		Jugador jugador = new Protoss(null,"Pepe","#FF0000");
+		Jugador jugador = new Protoss(0,new Vector2D(100,100),null,"Pepe","#FF0000");
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
-		jugador.agregarEstructura(null,"Pilon", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Pilon", new Vector2D(), new Mundo(null, 1000, 1000, null));
 		PasaTurnos.pasarTurnos(jugador, 15);
-		jugador.agregarEstructura(null,"Acceso", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Acceso", new Vector2D(), new Mundo(null, 1000, 1000, null));
 		PasaTurnos.pasarTurnos(jugador, 8);
-		jugador.agregarEstructura(null,"Puerto Estelar", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Puerto Estelar", new Vector2D(), new Mundo(null, 1000, 1000, null));
 		PasaTurnos.pasarTurnos(jugador, 10);
-		jugador.agregarUnidad("Nave Transporte");
-		jugador.agregarUnidad("Zealot");
+		jugador.agregarUnidad("Nave Transporte", new Mundo(null, 1000, 1000, null));
+		jugador.agregarUnidad("Zealot", new Mundo(null, 1000, 1000, null));
 		PasaTurnos.pasarTurnos(jugador, 15);
 		ArrayList<Unidad> unidades = jugador.ObtenerUnidades();
 		UnidadNave nave = (UnidadNave) unidades.get(1);
@@ -53,16 +54,16 @@ public class UnidadesNaveTestProtossTest {
 	public void crearNaveYLaUnaUnidadQueQuiereCargarEsVoladora() throws NoEsDeSuRazaLaEstructuraException, NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 					NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoEsDeSuRazaLaUnidadException, 
 					NoSeEncontroLaEstructura {
-		Jugador jugador = new Protoss(null,"Pepe","#FF0000");
+		Jugador jugador = new Protoss(0,new Vector2D(100,100),null,"Pepe","#FF0000");
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
-		jugador.agregarEstructura(null,"Pilon", new Vector2D(), null);
-		jugador.agregarEstructura(null,"Acceso", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Pilon", new Vector2D(), new Mundo(null, 1000, 1000, null));
+		jugador.agregarEstructura(null,"Acceso", new Vector2D(), new Mundo(null, 1000, 1000, null));
 		PasaTurnos.pasarTurnos(jugador, 8);
-		jugador.agregarEstructura(null,"Puerto Estelar", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Puerto Estelar", new Vector2D(), new Mundo(null, 1000, 1000, null));
 		PasaTurnos.pasarTurnos(jugador, 10);
-		jugador.agregarUnidad("Nave Transporte");
-		jugador.agregarUnidad("Scout");
+		jugador.agregarUnidad("Nave Transporte", new Mundo(null, 1000, 1000, null));
+		jugador.agregarUnidad("Scout", new Mundo(null, 1000, 1000, null));
 		PasaTurnos.pasarTurnos(jugador, 15);
 		ArrayList<Unidad> unidades = jugador.ObtenerUnidades();
 		UnidadNave nave = (UnidadNave) unidades.get(0);
@@ -78,19 +79,19 @@ public class UnidadesNaveTestProtossTest {
 	public void crearNaveYQuiereSobreCargarLaNave() throws NoEsDeSuRazaLaEstructuraException, NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 					NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoEsDeSuRazaLaUnidadException,
 					 NoSeEncontroLaEstructura {
-		Jugador jugador = new Protoss(null,"Pepe","#FF0000");
+		Jugador jugador = new Protoss(0,new Vector2D(100,100),null,"Pepe","#FF0000");
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
-		jugador.agregarEstructura(null,"Pilon", new Vector2D(), null);
-		jugador.agregarEstructura(null,"Pilon", new Vector2D(), null);
-		jugador.agregarEstructura(null,"Pilon", new Vector2D(), null);
-		jugador.agregarEstructura(null,"Acceso", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Pilon", new Vector2D(), new Mundo(null, 1000, 1000, null));
+		jugador.agregarEstructura(null,"Pilon", new Vector2D(), new Mundo(null, 1000, 1000, null));
+		jugador.agregarEstructura(null,"Pilon", new Vector2D(), new Mundo(null, 1000, 1000, null));
+		jugador.agregarEstructura(null,"Acceso", new Vector2D(), new Mundo(null, 1000, 1000, null));
 		PasaTurnos.pasarTurnos(jugador, 8);
-		jugador.agregarEstructura(null,"Puerto Estelar", new Vector2D(), null);
+		jugador.agregarEstructura(null,"Puerto Estelar", new Vector2D(), new Mundo(null, 1000, 1000, null));
 		PasaTurnos.pasarTurnos(jugador, 10);
-		jugador.agregarUnidad("Nave Transporte");
+		jugador.agregarUnidad("Nave Transporte", new Mundo(null, 1000, 1000, null));
 		for (int i=1; i < 6; i++){
-			jugador.agregarUnidad("Zealot");
+			jugador.agregarUnidad("Zealot", new Mundo(null, 1000, 1000, null));
 		}
 		PasaTurnos.pasarTurnos(jugador, 17);
 		ArrayList<Unidad> unidades = jugador.ObtenerUnidades();

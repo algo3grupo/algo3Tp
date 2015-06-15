@@ -10,9 +10,9 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class Dragon extends UnidadAtaqueBasico {
 
-	public Dragon(JFrame ventana, Vector2D posicion, Jugador jugador) {
+	public Dragon(int dimension, JFrame ventana, Vector2D posicion, Jugador jugador) {
 		
-		super(ventana, posicion, 100, 1, jugador, "Dragon", new Costo(125,50), "Acceso", 2 , 4, 6 ,new Ataque(20, 20, 4, 4));
+		super(dimension, ventana, posicion, 100, 1, jugador, "Dragon", new Costo(125,50), "Acceso", 2 , 4, 6 ,new Ataque(20, 20, 4, 4));
 		
 	}
 

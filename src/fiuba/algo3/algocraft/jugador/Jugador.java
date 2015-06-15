@@ -38,8 +38,9 @@ public abstract class Jugador {
 	protected CreadorEstructuras creadorEstructuras;
 	protected CreadorUnidades creadorUnidades;
 	private int poblacionMaxima;
+	private int dimension;
 	
-	public Jugador(JFrame ventana, String nombreJugador, String colorJugador) {
+	public Jugador(int dimension, Vector2D base, JFrame ventana, String nombreJugador, String colorJugador) {
 		
 		color = colorJugador;
 		this.nombre = nombreJugador;
@@ -49,6 +50,8 @@ public abstract class Jugador {
 		this.unidades = new ArrayList<Unidad>();
 		this.estructuras = new ArrayList<Estructura>();
 		this.ventana = ventana;
+		poblacionMaxima = 5;
+		this.dimension = dimension;
 		
 	}
 
@@ -65,21 +68,21 @@ public abstract class Jugador {
 	}
 
 
-	public void agregarUnidad(String string) throws NoEsDeSuRazaLaUnidadException,
+	public void agregarUnidad(String string, Mundo mundo) throws NoEsDeSuRazaLaUnidadException,
 													NoTieneLaEstructuraCreadaException,
 													NoTieneRecursosSuficientesException,  
 													NoSeEncontroLaEstructura, ErrorAlHacerCopia {
 		
-		estructuraEmpiezaACrearUnidad(string);
+		estructuraEmpiezaACrearUnidad(string, mundo);
 		
 		
 	}
 	
-	public void estructuraEmpiezaACrearUnidad(String nombre) throws NoEsDeSuRazaLaUnidadException, 
+	public void estructuraEmpiezaACrearUnidad(String nombre, Mundo mundo) throws NoEsDeSuRazaLaUnidadException, 
 								NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 								ErrorAlHacerCopia, NoSeEncontroLaEstructura{
 		//crea la unidad
-		Unidad unidad = creadorUnidades.crearUnidad(ventana, nombre);
+		Unidad unidad = creadorUnidades.crearUnidad(ventana, nombre, mundo);
 		//si puede crearla la agrega a la cola de acciones de la estructura que la crea
 		//el buscador de listas, devuelve entidades habilitadas
 		Estructura estructura = (Estructura) BuscadorLista.obtenerEntidad( (ArrayList)estructuras, (IModo)new ModoNombre(unidad.requiere()));
@@ -195,6 +198,16 @@ public abstract class Jugador {
 
 	public void eliminar(Entidad entidad) {
 		//sacar de la lista, 
+	}
+
+	public void actualizarVista() 
+	{
+		for(int i=0;i<estructuras.size();i++)
+			estructuras.get(i).dibujar();
+		
+		for(int i=0;i<unidades.size();i++)
+			unidades.get(i).dibujar();
+		
 	}
 	
 }

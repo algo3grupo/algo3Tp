@@ -21,9 +21,9 @@ public abstract class ColaDeAcciones extends Entidad implements IColaDeAcciones{
 		colaDeAcciones = new ArrayList<IAccion>();
 	}
 	
-	public ColaDeAcciones(JFrame ventana, Vector2D posicion, int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int turnos) {
+	public ColaDeAcciones(int dimension, JFrame ventana, Vector2D posicion, int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int turnos) {
 
-		super(ventana, posicion, vida, rangoDeVision, jugador, nombre, costo, requiere, turnos);
+		super(dimension,ventana, posicion, vida, rangoDeVision, jugador, nombre, costo, requiere, turnos);
 		
 		colaDeAcciones = new ArrayList<IAccion>();
 	}

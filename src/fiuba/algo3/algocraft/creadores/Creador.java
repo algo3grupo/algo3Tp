@@ -43,8 +43,8 @@ public abstract class Creador {
 				gastar(entidad);
 				try {
 					//La copia es realizada por medio de reflexion
-					Constructor constructor = entidad.getClass().getConstructor(JFrame.class, Vector2D.class, Jugador.class);
-					Entidad copia = (Entidad)constructor.newInstance(ventana, posicion, entidad.getJugador());
+					Constructor constructor = entidad.getClass().getConstructor(int.class, JFrame.class, Vector2D.class, Jugador.class);
+					Entidad copia = (Entidad)constructor.newInstance(mundo.obtenerDivisionDeGrilla(),ventana, posicion, entidad.getJugador());
 					return copia;
 				} catch (NoSuchMethodException | SecurityException
 						|InstantiationException 

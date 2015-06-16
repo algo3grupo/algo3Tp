@@ -1,15 +1,25 @@
 package fiuba.algo3.algocraft;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 
-import javax.swing.JFrame;
 
+
+
+
+
+
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
+import fiuba.algo3.algocraft.entidadesAbstractas.Dibujable;
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
+import fiuba.algo3.algocraft.graficos.Lienzo;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.jugador.Protoss;
 import fiuba.algo3.algocraft.jugador.Terran;
@@ -27,36 +37,43 @@ public class Juego{
 	{
 		ventana = crearVentana();
 		
-		mundo = new Mundo(ventana,ventana.getSize().height,50,this);
+		mundo = new Mundo(800,50,this);
 		mundo.generar();
 		
 		if(razaJugador1=="Protoss")
-			jugador1 = new Protoss(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),ventana,nombreJugador1,colorJugador1);
+			jugador1 = new Protoss(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),nombreJugador1,colorJugador1);
 		else
-			jugador1 = new Terran(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),ventana,nombreJugador1,colorJugador1);
+			jugador1 = new Terran(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),nombreJugador1,colorJugador1);
 		
 		if(razaJugador2=="Protoss")
-			jugador2 = new Protoss(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador2(),ventana,nombreJugador2,colorJugador2);
+			jugador2 = new Protoss(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador2(),nombreJugador2,colorJugador2);
 		else
-			jugador2 = new Terran(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador2(),ventana,nombreJugador2,colorJugador2);
+			jugador2 = new Terran(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador2(),nombreJugador2,colorJugador2);
 		
 		turno = jugador1;
 		
 		
-		
+	
 		
 		
 	}
 
 	private JFrame crearVentana() 
 	{
-		JFrame ventana = new JFrame("Algocraft");
-		
+		JFrame ventana = new JFrame("Algocraft"); 
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		ventana.setSize(1000,1000);
-		
+		ventana.setSize(800,800);
 		ventana.setVisible(true);
+		
+		Lienzo lienzo = new Lienzo(this);
+		
+		JScrollPane camara = new JScrollPane(lienzo);
+		camara.setPreferredSize(new Dimension(400,400));
+		camara.revalidate();
+		
+		ventana.add(camara);
+		
+
 		
 		return ventana;
 	}
@@ -100,16 +117,21 @@ public class Juego{
 		return mundo;
 	}
 
-	public void construirEstructura(String string, Vector2D vector2d) {
-		// TODO Auto-generated method stub
+	public void construirEstructura(String nombre, Vector2D posicion) 
+	{
+				
+	}
+	
+	public void crearUnidad(Estructura estructura, String Nombre) 
+	{
 		
 	}
 	
-	public void actualizarVista()
+	public void actualizarVista(Graphics contexto)
 	{
-		mundo.dibujar();
-		jugador1.actualizarVista();
-		jugador2.actualizarVista();
+		mundo.dibujar(contexto);
+		jugador1.actualizarVista(contexto);
+		jugador2.actualizarVista(contexto);
 	}
 
 }

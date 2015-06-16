@@ -1,5 +1,7 @@
 package fiuba.algo3.algocraft.mundo;
 
+import java.awt.Graphics;
+
 import javax.swing.JFrame;
 
 import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
@@ -13,9 +15,9 @@ public class Gas extends Entidad{
 		super(gas);
 	}
 
-	public Gas(int dimension, JFrame ventana, Vector2D posicionGas) 
+	public Gas(int dimension, Vector2D posicionGas) 
 	{
-		super(dimension, ventana, posicionGas,0,0, null, null, null, null, 0);			
+		super(dimension, posicionGas,0,0, null, null, null, null, 0);			
 	}
 
 	@Override
@@ -25,9 +27,9 @@ public class Gas extends Entidad{
 	}
 
 	
-	public void dibujar() 
+	public void dibujar(Graphics contexto) 
 	{
-		dibujarImagen("recursos/gas.png",obtenerPosicion(),obtenerDimension(),obtenerDimension());		
+		dibujarImagen(contexto,"recursos/gas.png",obtenerPosicion(),obtenerDimension(),obtenerDimension());		
 	}	
 
 }

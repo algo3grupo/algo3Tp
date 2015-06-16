@@ -27,15 +27,15 @@ public class CentroMineralTest {
         
 		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
         
-		Mundo mundo = new Mundo(null,500,10,juego);	
+		Mundo mundo = new Mundo(500,10,juego);	
 		mundo.generar();
 		
-        Terran jugadorTerran = new Terran(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),null,null,null);
+        Terran jugadorTerran = new Terran(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),null,null);
         
         Vector2D posicionBaseDeJugador = mundo.posicionBaseJugador1();
         
         ArrayList<Mineral> lugaresConMinerales = mundo.mineralesCercanos(posicionBaseDeJugador);
-        jugadorTerran.agregarEstructura(null,"Centro De Minerales", lugaresConMinerales.get(0).obtenerPosicion(), mundo);
+        jugadorTerran.agregarEstructura("Centro De Minerales", lugaresConMinerales.get(0).obtenerPosicion(), mundo);
         
         ArrayList<Estructura> estructurasDeJugadorTerran = jugadorTerran.obtenerEstructuras();
         
@@ -49,10 +49,10 @@ public class CentroMineralTest {
 
 		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
         
-		Mundo mundo = new Mundo(null,500,10,juego);
+		Mundo mundo = new Mundo(500,10,juego);
 		mundo.generar();
 
-		Terran jugadorTerran = new Terran(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),null,null,null);
+		Terran jugadorTerran = new Terran(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),null,null);
         
 		/*Busco una posicion que no tenga minerales*/
         int i=1;
@@ -64,7 +64,7 @@ public class CentroMineralTest {
         	posicionSinMinerales = new Vector2D(i,j);
         }
         try{
-        jugadorTerran.agregarEstructura(null,"Centro De Minerales", posicionSinMinerales, mundo);                
+        jugadorTerran.agregarEstructura("Centro De Minerales", posicionSinMinerales, mundo);                
         
         ArrayList<Estructura> estructurasDeJugadorTerran = jugadorTerran.obtenerEstructuras();
         } catch (NoHayMineralEnElLugarACrear e) {} 

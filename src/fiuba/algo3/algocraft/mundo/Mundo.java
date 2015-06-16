@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.mundo;
 
+import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -42,7 +43,7 @@ public class Mundo extends Dibujable{
 					Vector2D posicionMineral = pixelAGrilla(new Vector2D().aleatorio(tamañoDivision*i,tamañoDivision*(i+1)-divisionGrilla,tamañoDivision*a,tamañoDivision*(a+1)-divisionGrilla));
 					
 					if(!hayMineral(posicionMineral) && !hayGas(posicionMineral) && baseJugador1.distintoA(posicionMineral) && baseJugador2.distintoA(posicionMineral))
-						mineral.add(new Mineral(divisionGrilla,obtenerVentana(),posicionMineral));	
+						mineral.add(new Mineral(divisionGrilla,posicionMineral));	
 
 				}
 		
@@ -53,7 +54,7 @@ public class Mundo extends Dibujable{
 					Vector2D posicionGas = pixelAGrilla(new Vector2D().aleatorio(tamañoDivision*i,tamañoDivision*(i+1)-divisionGrilla,tamañoDivision*a,tamañoDivision*(a+1)-divisionGrilla));
 					
 					if(!hayMineral(posicionGas) && !hayGas(posicionGas) && baseJugador1.distintoA(posicionGas) && baseJugador2.distintoA(posicionGas))
-						gas.add(new Gas(divisionGrilla,obtenerVentana(),posicionGas));	
+						gas.add(new Gas(divisionGrilla,posicionGas));	
 				}
 		
 	}
@@ -65,9 +66,8 @@ public class Mundo extends Dibujable{
 		return new Vector2D(posicionX,posicionY);		
 	}
 
-	public Mundo(JFrame ventana, int resolucion, int divisionGrilla, Juego juego)
+	public Mundo(int resolucion, int divisionGrilla, Juego juego)
 	{
-		super(ventana);
 		
 		if(resolucion < 0 || divisionGrilla < 0)
 			throw new ParametroNegativo();
@@ -321,19 +321,19 @@ public class Mundo extends Dibujable{
 		
 	}
 	
-	public void dibujar()
+	public void dibujar(Graphics contexto)
 	{
 		
-		dibujarImagenEnMosaico("recursos/terreno.jpg",new Vector2D(0,0),resolucion,resolucion);
+		dibujarImagenEnMosaico(contexto,"recursos/terreno.jpg",new Vector2D(0,0),resolucion,resolucion);
 		
 		for(int i=0;i<mineral.size();i++)
-			mineral.get(i).dibujar();
+			mineral.get(i).dibujar(contexto);
 		
 		for(int i=0;i<gas.size();i++)
-			gas.get(i).dibujar();
+			gas.get(i).dibujar(contexto);
 		
 		for(int i=0;i<espacio.size();i++)
-			espacio.get(i).dibujar();
+			espacio.get(i).dibujar(contexto);
 	}
 
 	public int obtenerDivisionDeGrilla() 

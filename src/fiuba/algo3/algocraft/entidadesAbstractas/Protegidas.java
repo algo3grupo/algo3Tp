@@ -19,8 +19,8 @@ public abstract class Protegidas extends Estructura
 		this.agregarAccion(new RecuperarCampo(this));
 	}
 
-	public Protegidas(int dimension, JFrame ventana,  Vector2D posicion, int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int turnos) {
-		super(dimension, ventana, posicion, vida, rangoDeVision, jugador, nombre, costo, requiere, turnos);
+	public Protegidas(int dimension, Vector2D posicion, int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int turnos) {
+		super(dimension, posicion, vida, rangoDeVision, jugador, nombre, costo, requiere, turnos);
 		this.campo = vida;
 		this.limiteCampo = vida;
 	}

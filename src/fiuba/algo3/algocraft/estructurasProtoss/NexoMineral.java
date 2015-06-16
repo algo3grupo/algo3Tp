@@ -1,5 +1,7 @@
 package fiuba.algo3.algocraft.estructurasProtoss;
 
+import java.awt.Graphics;
+
 import javax.swing.JFrame;
 
 import fiuba.algo3.algocraft.Acciones.RecogerSuministro;
@@ -11,9 +13,9 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class NexoMineral extends Protegidas implements IRecolectores{
 
-	public NexoMineral(int dimension, JFrame ventana, Vector2D posicion, Jugador jugador) 
+	public NexoMineral(int dimension, Vector2D posicion, Jugador jugador) 
 	{
-		super(dimension, ventana, posicion, 250, 0, jugador, "Nexo Mineral", new Costo(50,0), "", 4);
+		super(dimension, posicion, 250, 0, jugador, "Nexo Mineral", new Costo(50,0), "", 4);
 		
 		agregarAccion(new RecogerSuministro(this));
 	}
@@ -24,9 +26,9 @@ public class NexoMineral extends Protegidas implements IRecolectores{
 	}
 
 	
-	public void dibujar()
+	public void dibujar(Graphics contexto)
 	{
-		dibujarImagen("recursos/nexo mineral (protoss).png", obtenerPosicion(),obtenerDimension(),obtenerDimension());		
+		dibujarImagen(contexto,"recursos/nexo mineral (protoss).png", obtenerPosicion(),obtenerDimension(),obtenerDimension());		
 	}
 
 }

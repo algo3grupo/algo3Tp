@@ -9,12 +9,12 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class Terran extends Jugador {
 
-	public Terran(int dimension, Vector2D base, JFrame ventana, String nombreJugador, String colorJugador) {
-		super(dimension, base, ventana, nombreJugador,colorJugador);
+	public Terran(int dimension, Vector2D base, String nombreJugador, String colorJugador) {
+		super(dimension, base, nombreJugador,colorJugador);
 		this.creadorEstructuras = new CreadorEstructurasTerran(this);
 		this.creadorUnidades =new CreadorUnidadesTerran(this);
 		
-		incorporarEstructura(new DepositoSuministro(dimension, ventana, base, this));
+		incorporarEstructura(new DepositoSuministro(dimension, base, this));
 	}
 
 }

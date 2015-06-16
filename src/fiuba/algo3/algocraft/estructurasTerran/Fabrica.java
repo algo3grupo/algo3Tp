@@ -1,5 +1,7 @@
 package fiuba.algo3.algocraft.estructurasTerran;
 
+import java.awt.Graphics;
+
 import javax.swing.JFrame;
 
 import fiuba.algo3.algocraft.atributos.Costo;
@@ -9,14 +11,14 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class Fabrica extends Estructura {
 
-	public Fabrica(int dimension, JFrame ventana, Vector2D posicion, Jugador jugador) {
-		super(dimension, ventana, posicion, 1250, 0, jugador, "Fabrica", new Costo(200,100), "Barraca", 12);
+	public Fabrica(int dimension, Vector2D posicion, Jugador jugador) {
+		super(dimension, posicion, 1250, 0, jugador, "Fabrica", new Costo(200,100), "Barraca", 12);
 	}
 
 	
-	public void dibujar()
+	public void dibujar(Graphics contexto)
 	{
-		dibujarImagen("recursos/fabrica (terran).png", obtenerPosicion(),obtenerDimension(),obtenerDimension());		
+		dibujarImagen(contexto,"recursos/fabrica (terran).png", obtenerPosicion(),obtenerDimension(),obtenerDimension());		
 	}
 
 }

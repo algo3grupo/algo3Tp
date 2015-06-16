@@ -1,5 +1,7 @@
 package fiuba.algo3.algocraft.mundo;
 
+import java.awt.Graphics;
+
 import javax.swing.JFrame;
 
 import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
@@ -13,9 +15,9 @@ public class Mineral extends Entidad {
 		super(mineral);
 	}
 
-	public Mineral(int dimension, JFrame ventana, Vector2D posicionMineral) 
+	public Mineral(int dimension, Vector2D posicionMineral) 
 	{
-		super(dimension, ventana, posicionMineral,0,0, null, null, null, null, 0);			
+		super(dimension, posicionMineral,0,0, null, null, null, null, 0);			
 	}
 
 	@Override
@@ -24,9 +26,9 @@ public class Mineral extends Entidad {
 		
 	}
 
-	public void dibujar() 
+	public void dibujar(Graphics contexto) 
 	{
-		dibujarImagen("recursos/cristal.png",obtenerPosicion(),obtenerDimension(),obtenerDimension());				
+		dibujarImagen(contexto,"recursos/cristal.png",obtenerPosicion(),obtenerDimension(),obtenerDimension());				
 	}
 
 }

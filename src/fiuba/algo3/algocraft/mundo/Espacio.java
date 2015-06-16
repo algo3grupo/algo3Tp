@@ -1,6 +1,8 @@
 package fiuba.algo3.algocraft.mundo;
 
 
+import java.awt.Graphics;
+
 import javax.swing.JFrame;
 
 import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
@@ -15,7 +17,7 @@ public class Espacio extends Entidad{
 
 	public Espacio(int dimension, JFrame ventana, Vector2D posicionEspacio) 
 	{
-		super(dimension, ventana, posicionEspacio, 0, 0, null, null, null, null, 0);		
+		super(dimension, posicionEspacio, 0, 0, null, null, null, null, 0);		
 	}
 
 	@Override
@@ -24,9 +26,9 @@ public class Espacio extends Entidad{
 		
 	}
 
-	public void dibujar() 
+	public void dibujar(Graphics contexto) 
 	{
-		dibujarRectangulo(26,18,95,obtenerPosicion(),obtenerDimension(),obtenerDimension());				
+		dibujarRectangulo(contexto,26,18,95,obtenerPosicion(),obtenerDimension(),obtenerDimension());				
 	}
 
 	

@@ -1,5 +1,7 @@
 package fiuba.algo3.algocraft.estructurasTerran;
 
+import java.awt.Graphics;
+
 import javax.swing.JFrame;
 
 import fiuba.algo3.algocraft.Acciones.RecogerSuministro;
@@ -11,8 +13,8 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class Refineria extends Estructura implements IRecolectores {
 
-	public Refineria(int dimension, JFrame ventana, Vector2D posicion, Jugador jugador) {
-		super(dimension, ventana, posicion, 750, 0, jugador, "Refineria", new Costo(100,0), "", 6);
+	public Refineria(int dimension, Vector2D posicion, Jugador jugador) {
+		super(dimension, posicion, 750, 0, jugador, "Refineria", new Costo(100,0), "", 6);
 		
 		agregarAccion(new RecogerSuministro(this));
 	}
@@ -23,9 +25,9 @@ public class Refineria extends Estructura implements IRecolectores {
 	}
 
 	
-	public void dibujar() 
+	public void dibujar(Graphics contexto) 
 	{
-		dibujarImagen("recursos/refineria (terran).png", obtenerPosicion(),obtenerDimension(),obtenerDimension());
+		dibujarImagen(contexto,"recursos/refineria (terran).png", obtenerPosicion(),obtenerDimension(),obtenerDimension());
 	}
 
 }

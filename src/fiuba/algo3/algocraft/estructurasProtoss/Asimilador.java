@@ -1,5 +1,7 @@
 package fiuba.algo3.algocraft.estructurasProtoss;
 
+import java.awt.Graphics;
+
 import javax.swing.JFrame;
 
 import fiuba.algo3.algocraft.Acciones.RecogerSuministro;
@@ -11,8 +13,8 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class Asimilador extends Protegidas implements IRecolectores {
 	
-	public Asimilador(int dimension, JFrame ventana, Vector2D posicion, Jugador jugador) {
-		super(dimension, ventana, posicion, 450, 0, jugador, "Asimilador", new Costo(50,0), "", 8);
+	public Asimilador(int dimension, Vector2D posicion, Jugador jugador) {
+		super(dimension, posicion, 450, 0, jugador, "Asimilador", new Costo(50,0), "", 8);
 		
 		agregarAccion(new RecogerSuministro(this));
 	}
@@ -24,9 +26,9 @@ public class Asimilador extends Protegidas implements IRecolectores {
 	}
 
 
-	public void dibujar() 
+	public void dibujar(Graphics contexto) 
 	{
-		dibujarImagen("recursos/asimilador (protoss).png", obtenerPosicion(),obtenerDimension(),obtenerDimension());		
+		dibujarImagen(contexto,"recursos/asimilador (protoss).png", obtenerPosicion(),obtenerDimension(),obtenerDimension());		
 	}
 
 	

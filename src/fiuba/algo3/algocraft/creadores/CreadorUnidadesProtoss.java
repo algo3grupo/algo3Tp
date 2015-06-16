@@ -12,11 +12,11 @@ public class CreadorUnidadesProtoss extends CreadorUnidades {
 	
 	public CreadorUnidadesProtoss(Jugador jugador){
 		super();
-		this.entidades.add(new Zealot(0,null,new Vector2D(), jugador));
-		this.entidades.add(new Dragon(0,null,new Vector2D(), jugador));
-		this.entidades.add(new Scout(0,null,new Vector2D(), jugador));
-		this.entidades.add(new AltoTemplario(0,null,new Vector2D(), jugador));
-		this.entidades.add(new NaveTransporteProtoss(0,null,new Vector2D(), jugador));
+		this.entidades.add(new Zealot(0,new Vector2D(), jugador));
+		this.entidades.add(new Dragon(0,new Vector2D(), jugador));
+		this.entidades.add(new Scout(0,new Vector2D(), jugador));
+		this.entidades.add(new AltoTemplario(0,new Vector2D(), jugador));
+		this.entidades.add(new NaveTransporteProtoss(0,new Vector2D(), jugador));
 	}
 	
 }

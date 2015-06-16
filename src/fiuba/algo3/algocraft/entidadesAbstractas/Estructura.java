@@ -9,8 +9,8 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public abstract class Estructura extends ColaDeAcciones implements IEstructura{
 
-	public Estructura(int dimension, JFrame ventana, Vector2D posicion, int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int turnos) {
-		super(dimension, ventana, posicion, vida, rangoDeVision, jugador, nombre, costo, requiere, turnos);
+	public Estructura(int dimension, Vector2D posicion, int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int turnos) {
+		super(dimension, posicion, vida, rangoDeVision, jugador, nombre, costo, requiere, turnos);
 	}
 	
 	

@@ -1,5 +1,7 @@
 package fiuba.algo3.algocraft.estructurasTerran;
 
+import java.awt.Graphics;
+
 import javax.swing.JFrame;
 
 import fiuba.algo3.algocraft.Acciones.RecogerSuministro;
@@ -11,8 +13,8 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class CentroDeMineral extends Estructura implements IRecolectores {
 
-	public CentroDeMineral(int dimension, JFrame ventana, Vector2D posicion, Jugador jugador) {
-		super(dimension, ventana, posicion, 500, 0, jugador, "Centro De Minerales", new Costo(50,0), "", 4);
+	public CentroDeMineral(int dimension, Vector2D posicion, Jugador jugador) {
+		super(dimension, posicion, 500, 0, jugador, "Centro De Minerales", new Costo(50,0), "", 4);
 		
 		agregarAccion(new RecogerSuministro(this));
 	}
@@ -23,9 +25,9 @@ public class CentroDeMineral extends Estructura implements IRecolectores {
 	}
 
 
-	public void dibujar() 
+	public void dibujar(Graphics contexto) 
 	{
-		dibujarImagen("recursos/centro de mineral (terran).png", obtenerPosicion(),obtenerDimension(),obtenerDimension());
+		dibujarImagen(contexto,"recursos/centro de mineral (terran).png", obtenerPosicion(),obtenerDimension(),obtenerDimension());
 		
 	}
 }

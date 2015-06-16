@@ -1,5 +1,7 @@
 package fiuba.algo3.algocraft.estructurasProtoss;
 
+import java.awt.Graphics;
+
 import javax.swing.JFrame;
 
 import fiuba.algo3.algocraft.atributos.Costo;
@@ -9,8 +11,8 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class Pilon extends Protegidas {
 
-	public Pilon(int dimension, JFrame ventana, Vector2D posicion, Jugador jugador) {
-		super(dimension, ventana, posicion, 300, 0, jugador, "Pilon", new Costo(100,0), "", 5);
+	public Pilon(int dimension, Vector2D posicion, Jugador jugador) {
+		super(dimension, posicion, 300, 0, jugador, "Pilon", new Costo(100,0), "", 5);
 	}
 	
 	public void actualizarPoblacion(){
@@ -20,8 +22,8 @@ public class Pilon extends Protegidas {
 	}
 
 	
-	public void dibujar() 
+	public void dibujar(Graphics contexto) 
 	{
-		dibujarImagen("recursos/pilon (protoss).png", obtenerPosicion(),obtenerDimension(),obtenerDimension());		
+		dibujarImagen(contexto,"recursos/pilon (protoss).png", obtenerPosicion(),obtenerDimension(),obtenerDimension());		
 	}
 }

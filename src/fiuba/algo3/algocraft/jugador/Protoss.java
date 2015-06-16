@@ -10,12 +10,12 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class Protoss extends Jugador {
 
-	public Protoss(int dimension, Vector2D base, JFrame ventana, String nombreJugador, String colorJugador) {
-		super(dimension, base, ventana, nombreJugador, colorJugador);
+	public Protoss(int dimension, Vector2D base, String nombreJugador, String colorJugador) {
+		super(dimension, base, nombreJugador, colorJugador);
 		this.creadorEstructuras = new CreadorEstructurasProtoss(this);
 		this.creadorUnidades =new CreadorUnidadesProtoss(this);
 		
-		incorporarEstructura(new Pilon(dimension,ventana, base, this));
+		incorporarEstructura(new Pilon(dimension, base, this));
 	}
 
 	

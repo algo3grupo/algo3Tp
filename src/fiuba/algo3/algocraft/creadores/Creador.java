@@ -28,7 +28,7 @@ public abstract class Creador {
 		this.entidades = new ArrayList<Entidad>(); 
 	}
 	
-	public Entidad crearEntidad(JFrame ventana, String string,Vector2D posicion,Mundo mundo) throws NoEsDeSuRazaLaEntidadException, 
+	public Entidad crearEntidad(String string,Vector2D posicion,Mundo mundo) throws NoEsDeSuRazaLaEntidadException, 
 																					NoTieneLaEstructuraCreadaException, 
 																					NoTieneRecursosSuficientesException,
 																					ErrorAlHacerCopia
@@ -43,8 +43,8 @@ public abstract class Creador {
 				gastar(entidad);
 				try {
 					//La copia es realizada por medio de reflexion
-					Constructor constructor = entidad.getClass().getConstructor(int.class, JFrame.class, Vector2D.class, Jugador.class);
-					Entidad copia = (Entidad)constructor.newInstance(mundo.obtenerDivisionDeGrilla(),ventana, posicion, entidad.getJugador());
+					Constructor constructor = entidad.getClass().getConstructor(int.class, Vector2D.class, Jugador.class);
+					Entidad copia = (Entidad)constructor.newInstance(mundo.obtenerDivisionDeGrilla(), posicion, entidad.getJugador());
 					return copia;
 				} catch (NoSuchMethodException | SecurityException
 						|InstantiationException 

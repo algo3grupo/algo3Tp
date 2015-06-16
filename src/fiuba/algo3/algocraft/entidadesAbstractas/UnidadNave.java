@@ -14,8 +14,8 @@ public abstract class UnidadNave extends Unidad {
 	private int cargado;
 	private ArrayList<Unidad> unidadesCargadas;
 
-	public UnidadNave(int dimension, JFrame ventana,  Vector2D posicion, int vida, int rangoDeVision, Jugador jugador,  Costo costo, int suministro, int turnos) {
-		super(dimension, ventana, posicion, vida, rangoDeVision, jugador, "Nave Transporte" , costo, "Puerto Estelar", suministro, 0, turnos);
+	public UnidadNave(int dimension, Vector2D posicion, int vida, int rangoDeVision, Jugador jugador,  Costo costo, int suministro, int turnos) {
+		super(dimension, posicion, vida, rangoDeVision, jugador, "Nave Transporte" , costo, "Puerto Estelar", suministro, 0, turnos);
 		capacidad = 8;
 		cargado = 0;
 		unidadesCargadas = new ArrayList<Unidad>();

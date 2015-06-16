@@ -22,8 +22,7 @@ public abstract class Entidad extends Dibujable {
 	private Vector2D posicion;
 	private int dimension;
 	
-	public Entidad(int dimension, JFrame ventana, Vector2D posicion, int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int turnos){
-		super(ventana);
+	public Entidad(int dimension, Vector2D posicion, int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int turnos){
 		this.ID = new ID().getIdNuevo();
 		this.vida = vida;
 		this.rangoDeVision = rangoDeVision;
@@ -54,7 +53,6 @@ public abstract class Entidad extends Dibujable {
 	
 	public Entidad(Entidad entidad) 
 	{
-		super(entidad.obtenerVentana());
 		posicion = new Vector2D(entidad.posicion);
 		dimension = entidad.dimension;		
 	}

@@ -1,5 +1,7 @@
 package fiuba.algo3.algocraft.unidadesProtoss;
 
+import java.awt.Graphics;
+
 import javax.swing.JFrame;
 
 import fiuba.algo3.algocraft.atributos.Ataque;
@@ -10,12 +12,12 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class Zealot extends UnidadAtaqueBasico {
 
-	public Zealot(int dimension, JFrame ventana, Vector2D posicion, Jugador jugador) {
-		super(dimension, ventana, posicion, 100, 1, jugador, "Zealot", new Costo(100,0), "Acceso",2, 2, 4, new Ataque(8, 0, 1, 0));
+	public Zealot(int dimension, Vector2D posicion, Jugador jugador) {
+		super(dimension, posicion, 100, 1, jugador, "Zealot", new Costo(100,0), "Acceso",2, 2, 4, new Ataque(8, 0, 1, 0));
 	}
 
 	@Override
-	public void dibujar() {
+	public void dibujar(Graphics contexto) {
 		// TODO Auto-generated method stub
 		
 	}

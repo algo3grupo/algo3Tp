@@ -1,5 +1,7 @@
 package fiuba.algo3.algocraft.unidadesProtoss;
 
+import java.awt.Graphics;
+
 import javax.swing.JFrame;
 
 import fiuba.algo3.algocraft.atributos.Ataque;
@@ -13,12 +15,12 @@ public class UnidadCopia extends Unidad{
 
 	public UnidadCopia(int dimension, Vector2D posicion, Unidad unidad) {
 		
-		super(dimension, unidad.obtenerVentana(), posicion, 0, 5, unidad.getJugador(), unidad.nombre(), new Costo(0,0), "", 0, unidad.transporte(), 0 );
+		super(dimension, posicion, 0, 5, unidad.getJugador(), unidad.nombre(), new Costo(0,0), "", 0, unidad.transporte(), 0 );
 
 	}
 
 	@Override
-	public void dibujar() {
+	public void dibujar(Graphics contexto) {
 		// TODO Auto-generated method stub
 		
 	}

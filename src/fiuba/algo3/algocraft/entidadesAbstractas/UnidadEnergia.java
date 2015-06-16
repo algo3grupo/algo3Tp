@@ -13,9 +13,9 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 public abstract class UnidadEnergia extends Unidad implements IEfectoEMP{
 	private int energia;
 	
-	public UnidadEnergia(int dimension, JFrame ventana, Vector2D posicion, int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int suministro,
+	public UnidadEnergia(int dimension, Vector2D posicion, int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int suministro,
 			int transporte, int turnos) {
-		super(dimension, ventana, posicion, vida, rangoDeVision, jugador, nombre, costo, requiere, suministro, transporte, turnos);
+		super(dimension, posicion, vida, rangoDeVision, jugador, nombre, costo, requiere, suministro, transporte, turnos);
 		this.energia = 50;
 	}
 	

@@ -4,7 +4,11 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
+import fiuba.algo3.algocraft.atributos.Ataque;
 import fiuba.algo3.algocraft.atributos.Costo;
+import fiuba.algo3.algocraft.excepciones.NoPuedeAtacarUnidadesAereas;
+import fiuba.algo3.algocraft.excepciones.NoPuedeAtacarUnidadesEnTierra;
+import fiuba.algo3.algocraft.excepciones.NoSePuedeAtacarEstaFueraDeRango;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 
@@ -59,8 +63,29 @@ public abstract class Unidad extends ColaDeAcciones {
 	}
 
 
+	public void atacado(Ataque ataque, int distancia) throws NoSePuedeAtacarEstaFueraDeRango,
+																NoPuedeAtacarUnidadesEnTierra, NoPuedeAtacarUnidadesAereas{
+		
+		if (esVoladora()){
+			
+			if ( ataque.estaEnRangoAire(distancia) ){
+				herir(ataque.danioAereo());
+			}
+			else{
+				throw new NoSePuedeAtacarEstaFueraDeRango();
+			}
+		}
+		
+		else{
+			super.atacado(ataque, distancia);
+		}
+		
+	}
 	
-
+	public void mover(Vector2D posicion) {
+		//bien simple, que cambia la posicion directo
+		posicionarEn(posicion);
+	}
 
 	
 }

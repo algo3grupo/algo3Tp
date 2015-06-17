@@ -12,14 +12,11 @@ public abstract class HechizoSingular extends Hechizo {
 	}
 	
 
-	public void lanzarHechizoA(Vector2D posicion, Mundo mundo){
-		//si hay una unidad en el lugar
-		//la unidad q se hechiza es la q estaba en esa posicion
-		//sino no tira el hechizo
+	public void lanzarHechizoA(Unidad unidad){
+		hechizar(unidad);
 				
 	}
 	
-	public void hechizar(Unidad unidad){
-		
-	}
+	public abstract void hechizar(Unidad unidad);
+	
 }

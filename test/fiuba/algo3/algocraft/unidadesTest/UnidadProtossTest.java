@@ -11,7 +11,7 @@ import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaUnidadException;
 import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
-import fiuba.algo3.algocraft.excepciones.NoSeEncontroLaEstructura;
+import fiuba.algo3.algocraft.excepciones.NoSeEncontroLaEntidad;
 import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
 import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
 import fiuba.algo3.algocraft.jugador.Jugador;
@@ -32,7 +32,7 @@ public class UnidadProtossTest {
 	}
 	
 	@Test
-	public void intentaCrearUnidadSinLaEstructura() throws ErrorAlHacerCopia, NoSeEncontroLaEstructura{
+	public void intentaCrearUnidadSinLaEstructura() throws ErrorAlHacerCopia, NoSeEncontroLaEntidad{
 		Jugador jugador= new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000");
 		jugador.agregarMineral(50);
 		jugador.agregarGas(100);
@@ -48,7 +48,7 @@ public class UnidadProtossTest {
 	}
 	
 	@Test
-	public void creaUnidadDespuesDeCrearEstructura() throws ErrorAlHacerCopia, NoSeEncontroLaEstructura{
+	public void creaUnidadDespuesDeCrearEstructura() throws ErrorAlHacerCopia, NoSeEncontroLaEntidad{
 		Jugador jugador= new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000");
 		jugador.agregarMineral(250);
 		jugador.agregarGas(100);
@@ -72,7 +72,7 @@ public class UnidadProtossTest {
 	}
 	
 	@Test
-	public void creaUnidadYNoTieneMineralesSuficientes() throws ErrorAlHacerCopia, NoSeEncontroLaEstructura{
+	public void creaUnidadYNoTieneMineralesSuficientes() throws ErrorAlHacerCopia, NoSeEncontroLaEntidad{
 		Jugador jugador= new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000");
 		jugador.agregarMineral(100);
 		jugador.agregarGas(100);
@@ -93,7 +93,7 @@ public class UnidadProtossTest {
 	}
 	
 	@Test
-	public void creaUnidadYNoTieneGasSuficiente() throws ErrorAlHacerCopia, NoSeEncontroLaEstructura{
+	public void creaUnidadYNoTieneGasSuficiente() throws ErrorAlHacerCopia, NoSeEncontroLaEntidad{
 		Jugador jugador= new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000");
 		jugador.agregarMineral(180);
 		jugador.agregarGas(30);
@@ -116,7 +116,7 @@ public class UnidadProtossTest {
 
 
 	@Test
-	public void creaUnidadYNoTieneEspacioSuficienteParaCrearla() throws ErrorAlHacerCopia, NoSeEncontroLaEstructura{
+	public void creaUnidadYNoTieneEspacioSuficienteParaCrearla() throws ErrorAlHacerCopia, NoSeEncontroLaEntidad{
 		Jugador jugador= new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000");
 		jugador.agregarMineral(380);
 		jugador.agregarGas(60);

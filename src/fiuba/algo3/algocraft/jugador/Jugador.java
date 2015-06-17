@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 
 import fiuba.algo3.algocraft.IModo;
+import fiuba.algo3.algocraft.ModoID;
 import fiuba.algo3.algocraft.ModoNombre;
 import fiuba.algo3.algocraft.Acciones.CrearUnidad;
 import fiuba.algo3.algocraft.atributos.Costo;
@@ -20,7 +21,7 @@ import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaUnidadException;
 import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
-import fiuba.algo3.algocraft.excepciones.NoSeEncontroLaEstructura;
+import fiuba.algo3.algocraft.excepciones.NoSeEncontroLaEntidad;
 import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
 import fiuba.algo3.algocraft.excepciones.NoTienePoblacionSuficienteException;
 import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
@@ -70,7 +71,7 @@ public abstract class Jugador {
 	public void agregarUnidad(String string, Mundo mundo) throws NoEsDeSuRazaLaUnidadException,
 													NoTieneLaEstructuraCreadaException,
 													NoTieneRecursosSuficientesException,  
-													NoSeEncontroLaEstructura, ErrorAlHacerCopia {
+													NoSeEncontroLaEntidad, ErrorAlHacerCopia {
 		
 		estructuraEmpiezaACrearUnidad(string, mundo);
 		
@@ -79,7 +80,7 @@ public abstract class Jugador {
 	
 	public void estructuraEmpiezaACrearUnidad(String nombre, Mundo mundo) throws NoEsDeSuRazaLaUnidadException, 
 								NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
-								ErrorAlHacerCopia, NoSeEncontroLaEstructura{
+								ErrorAlHacerCopia, NoSeEncontroLaEntidad{
 		//crea la unidad
 		Unidad unidad = creadorUnidades.crearUnidad(nombre, mundo);
 		//si puede crearla la agrega a la cola de acciones de la estructura que la crea
@@ -196,7 +197,10 @@ public abstract class Jugador {
 	}
 
 	public void eliminar(Entidad entidad) {
-		//sacar de la lista, 
+		//sacar de la lista
+		estructuras.remove((Object) entidad);
+		unidades.remove((Object) entidad);
+		
 	}
 
 	public void actualizarVista(Graphics contexto) 

@@ -11,6 +11,7 @@ import fiuba.algo3.algocraft.entidadesAbstractas.Dibujable;
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
 import fiuba.algo3.algocraft.excepciones.DivisionDeGrillaNoEsMultiploDeResolucion;
+import fiuba.algo3.algocraft.excepciones.NoHayUnidadEnEsaPosicion;
 import fiuba.algo3.algocraft.excepciones.ParametroNegativo;
 import fiuba.algo3.algocraft.excepciones.ParametroNulo;
 import fiuba.algo3.algocraft.excepciones.posicionDeJugadorIndefinida;
@@ -339,5 +340,23 @@ public class Mundo extends Dibujable{
 	public int obtenerDivisionDeGrilla() 
 	{
 		return divisionGrilla;
+	}
+
+	public Unidad obtenerUnidadEn(Vector2D posicion) throws NoHayUnidadEnEsaPosicion {
+		
+		ArrayList<Unidad> unidades = juego.obtenerUnidadesDeJugador1();
+		
+		for(int i=0;i<unidades.size();i++){
+			if(unidades.get(i).incluyeA(posicion)){
+				return unidades.get(i);
+			}
+		}
+		unidades = juego.obtenerUnidadesDeJugador2();
+		for(int i=0;i<unidades.size();i++){
+			if(unidades.get(i).incluyeA(posicion)){
+				return unidades.get(i);
+			}
+		}
+		throw new NoHayUnidadEnEsaPosicion();
 	}
 }

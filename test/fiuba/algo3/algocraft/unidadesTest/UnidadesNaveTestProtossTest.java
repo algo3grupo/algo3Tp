@@ -14,7 +14,7 @@ import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaUnidadException;
 import fiuba.algo3.algocraft.excepciones.NoEsPosibleCargarEstaUnidad;
 import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
-import fiuba.algo3.algocraft.excepciones.NoSeEncontroLaEstructura;
+import fiuba.algo3.algocraft.excepciones.NoSeEncontroLaEntidad;
 import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
 import fiuba.algo3.algocraft.excepciones.NoTienePoblacionSuficienteException;
 import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
@@ -30,7 +30,7 @@ public class UnidadesNaveTestProtossTest {
 	@Test
 	public void crearNaveYCargarUnaUnidad() throws NoEsDeSuRazaLaEstructuraException, NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 					NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoEsDeSuRazaLaUnidadException,
-					NoEsPosibleCargarEstaUnidad, NoSeEncontroLaEstructura {
+					NoEsPosibleCargarEstaUnidad, NoSeEncontroLaEntidad {
 		Jugador jugador = new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000");
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
@@ -53,7 +53,7 @@ public class UnidadesNaveTestProtossTest {
 	@Test
 	public void crearNaveYLaUnaUnidadQueQuiereCargarEsVoladora() throws NoEsDeSuRazaLaEstructuraException, NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 					NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoEsDeSuRazaLaUnidadException, 
-					NoSeEncontroLaEstructura {
+					NoSeEncontroLaEntidad {
 		Jugador jugador = new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000");
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
@@ -78,7 +78,7 @@ public class UnidadesNaveTestProtossTest {
 	@Test
 	public void crearNaveYQuiereSobreCargarLaNave() throws NoEsDeSuRazaLaEstructuraException, NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 					NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoEsDeSuRazaLaUnidadException,
-					 NoSeEncontroLaEstructura {
+					 NoSeEncontroLaEntidad {
 		Jugador jugador = new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000");
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);

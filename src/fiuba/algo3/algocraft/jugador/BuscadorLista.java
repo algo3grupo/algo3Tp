@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 import fiuba.algo3.algocraft.IModo;
 import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
-import fiuba.algo3.algocraft.excepciones.NoSeEncontroLaEstructura;
+import fiuba.algo3.algocraft.excepciones.NoSeEncontroLaEntidad;
 
 public abstract class BuscadorLista {
 	
-	public static Entidad obtenerEntidad(ArrayList entidades, IModo modo) throws NoSeEncontroLaEstructura{
+	public static Entidad obtenerEntidad(ArrayList entidades, IModo modo) throws NoSeEncontroLaEntidad{
 		for (int i=0; i < entidades.size(); i++){
 			//devuelve la entidad si esta existe y esta habilitada(turnos=0)
 			if (modo.compara((Entidad)entidades.get(i)) && (((Entidad) entidades.get(i)).estaHabilitada())){
@@ -16,6 +16,6 @@ public abstract class BuscadorLista {
 				return (Entidad) entidades.get(i);
 			}
 		}
-		throw new NoSeEncontroLaEstructura();
+		throw new NoSeEncontroLaEntidad();
 	}
 }

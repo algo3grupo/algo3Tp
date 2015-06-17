@@ -4,7 +4,11 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
+import fiuba.algo3.algocraft.atributos.Ataque;
 import fiuba.algo3.algocraft.atributos.Costo;
+import fiuba.algo3.algocraft.excepciones.NoPuedeAtacarUnidadesAereas;
+import fiuba.algo3.algocraft.excepciones.NoPuedeAtacarUnidadesEnTierra;
+import fiuba.algo3.algocraft.excepciones.NoSePuedeAtacarEstaFueraDeRango;
 import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
@@ -109,13 +113,7 @@ public abstract class Entidad extends Dibujable {
 		return this.jugador;
 	}
 	
-	public void atacadoVida(int danio){
-		
-		if (vida - danio <= 0){
-			eliminar();
-		}
-			this.vida -= danio;
-	}
+	
 
 	public int turnosEnCrear(){
 		return turnos;
@@ -164,4 +162,40 @@ public abstract class Entidad extends Dibujable {
 	{
 		return dimension;
 	}
+
+
+
+	public void atacado(Ataque ataque, int distancia) throws NoSePuedeAtacarEstaFueraDeRango, NoPuedeAtacarUnidadesEnTierra, NoPuedeAtacarUnidadesAereas {
+		//en principio las entidades son terrenas salvo q se el caso de una unidad voladora
+		if (ataque.estaEnRangoTierra(distancia)){
+			herir(ataque.danioTierra());
+		}
+		else{
+			throw new NoSePuedeAtacarEstaFueraDeRango();
+		}
+		
+		
+		
+	}
+
+
+	public void herir(int danio) {
+		
+		if (vida - danio <= 0){
+			eliminar();
+		}
+			this.vida -= danio;
+		
+	}
+	
+	public void posicionarEn(Vector2D posicion){
+		
+		this.posicion = posicion;
+	}
+	public boolean equals(Object comparado){
+		//compara por ID, q es unico en cada entidad
+		return ( ID() == ( ( (Entidad) comparado ).ID()) );
+	}
+	
+	
 }

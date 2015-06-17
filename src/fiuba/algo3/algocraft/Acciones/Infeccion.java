@@ -24,7 +24,7 @@ public class Infeccion implements IAccion {
 		
 		ArrayList<Unidad> unidades= (ArrayList<Unidad>)unidad.obtenerUnidadesAliadasEnRango( rango );
 		for ( int i = 0; i < unidades.size() ; i++){
-			unidades.get(i).atacadoVida(danio);
+			unidades.get(i).herir(danio);
 		}
 		
 	}

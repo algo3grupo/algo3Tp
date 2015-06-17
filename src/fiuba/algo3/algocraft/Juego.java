@@ -35,10 +35,12 @@ public class Juego{
 	
 	public Juego(String razaJugador1, String nombreJugador1, String colorJugador1, String razaJugador2, String nombreJugador2, String colorJugador2)
 	{
+		
+		mundo = new Mundo(5000,100,this);
+		mundo.generar();
+		
 		ventana = crearVentana();
 		
-		mundo = new Mundo(800,50,this);
-		mundo.generar();
 		
 		if(razaJugador1=="Protoss")
 			jugador1 = new Protoss(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),nombreJugador1,colorJugador1);
@@ -65,14 +67,13 @@ public class Juego{
 		ventana.setSize(800,800);
 		ventana.setVisible(true);
 		
-		Lienzo lienzo = new Lienzo(this);
+		Lienzo lienzo = new Lienzo(this,mundo.obtenerResolucion());
 		
 		JScrollPane camara = new JScrollPane(lienzo);
 		camara.setPreferredSize(new Dimension(400,400));
-		camara.revalidate();
+
 		
-		ventana.add(camara);
-		
+		ventana.add(camara);		
 
 		
 		return ventana;
@@ -128,10 +129,16 @@ public class Juego{
 	}
 	
 	public void actualizarVista(Graphics contexto)
-	{
-		mundo.dibujar(contexto);
+	{		
+		
+		 mundo.dibujar(contexto);
+		 
 		jugador1.actualizarVista(contexto);
 		jugador2.actualizarVista(contexto);
+		
+		
+		
+		
 	}
 
 }

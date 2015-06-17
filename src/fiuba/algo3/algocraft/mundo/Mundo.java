@@ -33,12 +33,12 @@ public class Mundo extends Dibujable{
 	{
 		double tamañoDivision = (double)resolucion/divisionGrillaParaAnalisis;
 		
-		baseJugador1 = new Vector2D(4*divisionGrilla,4*divisionGrilla);
-		baseJugador2 = new Vector2D(resolucion-4*divisionGrilla,resolucion-4*divisionGrilla);
+		baseJugador1 = pixelAGrilla(new Vector2D(4*divisionGrilla,4*divisionGrilla));
+		baseJugador2 = pixelAGrilla(new Vector2D(resolucion-4*divisionGrilla,resolucion-4*divisionGrilla));
 		
 		for(int i=0;i<divisionGrillaParaAnalisis;i++)
 			for(int a=0;a<divisionGrillaParaAnalisis;a++)
-				for(int j=0;j<10;j++)
+				for(int j=0;j<50;j++)
 				{
 					Vector2D posicionMineral = pixelAGrilla(new Vector2D().aleatorio(tamañoDivision*i,tamañoDivision*(i+1)-divisionGrilla,tamañoDivision*a,tamañoDivision*(a+1)-divisionGrilla));
 					
@@ -49,7 +49,7 @@ public class Mundo extends Dibujable{
 		
 		for(int i=0;i<divisionGrillaParaAnalisis;i++)
 			for(int a=0;a<divisionGrillaParaAnalisis;a++)
-				for(int j=0;j<5;j++)
+				for(int j=0;j<10;j++)
 				{
 					Vector2D posicionGas = pixelAGrilla(new Vector2D().aleatorio(tamañoDivision*i,tamañoDivision*(i+1)-divisionGrilla,tamañoDivision*a,tamañoDivision*(a+1)-divisionGrilla));
 					
@@ -96,7 +96,7 @@ public class Mundo extends Dibujable{
 		for(int i=0;i<mineral.size();i++)
 			if(mineral.get(i).incluyeA(posicion))
 				return true;
-		return false;			
+		return false;
 	}
 	
 	public boolean hayGas(Vector2D posicion)
@@ -104,7 +104,7 @@ public class Mundo extends Dibujable{
 		for(int i=0;i<gas.size();i++)
 			if(gas.get(i).incluyeA(posicion))
 				return true;
-		return false;	
+		return false;
 	}
 	
 	public boolean hayEspacio(Vector2D posicion)

@@ -221,6 +221,7 @@ public class MundoTest {
 		mundo.generar();
 		
 		Assert.assertFalse(mundo.hayMineral(mundo.posicionBaseJugador1()));
+		
 	}
 	
 	@Test

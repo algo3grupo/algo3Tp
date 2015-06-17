@@ -70,7 +70,7 @@ public class Vector2D {
 	
 	public boolean distintoA(Vector2D vector)
 	{
-		if(x != vector.x && y != vector.y && norma != vector.norma)
+		if(x != vector.x || y != vector.y || norma != vector.norma)
 			return true;
 		return false;
 		

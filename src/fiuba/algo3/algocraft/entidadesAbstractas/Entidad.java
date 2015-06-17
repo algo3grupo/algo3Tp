@@ -40,8 +40,11 @@ public abstract class Entidad extends Dibujable {
 	public boolean incluyeA(Vector2D posicion)
 	{		
 		
-		if( this.posicion.obtenerCoordenadaX() <= posicion.obtenerCoordenadaX() && posicion.obtenerCoordenadaX() <= (this.posicion.obtenerCoordenadaX()+dimension))
-			if( this.posicion.obtenerCoordenadaY() <= posicion.obtenerCoordenadaY() && posicion.obtenerCoordenadaY() <= (this.posicion.obtenerCoordenadaY()+dimension))
+		if(!this.posicion.distintoA(posicion))
+			return true;
+		
+		if( this.posicion.obtenerCoordenadaX() < posicion.obtenerCoordenadaX() && posicion.obtenerCoordenadaX() < (this.posicion.obtenerCoordenadaX()+dimension))
+			if( this.posicion.obtenerCoordenadaY() < posicion.obtenerCoordenadaY() && posicion.obtenerCoordenadaY() < (this.posicion.obtenerCoordenadaY()+dimension))
 				return true;
 		return false;
 	}

@@ -3,7 +3,7 @@ package fiuba.algo3.algocraft.creadores;
 
 import javax.swing.JFrame;
 
-import fiuba.algo3.algocraft.Acciones.HabilitacionEstructura;
+import fiuba.algo3.algocraft.Acciones.AumentarPoblacion;
 import fiuba.algo3.algocraft.Interfaces.IRecolectores;
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.excepciones.ErrorAlHacerCopia;
@@ -41,7 +41,6 @@ public abstract class CreadorEstructuras extends Creador {
 					throw new NoHayGasEnElLugarACrear();
 				}
 			}
-			estructura.agregarAccion(new HabilitacionEstructura(estructura));
 			return estructura;
 			
 		} catch (NoEsDeSuRazaLaEntidadException e) {

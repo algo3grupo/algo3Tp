@@ -21,6 +21,9 @@ import java.util.ArrayList;
 
 
 
+
+import java.util.Observable;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -43,29 +46,25 @@ import fiuba.algo3.algocraft.excepciones.NoSeEncontroLaEntidad;
 import fiuba.algo3.algocraft.excepciones.NoSePuedeAtacarEstaFueraDeRango;
 import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
 import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
-import fiuba.algo3.algocraft.graficos.Lienzo;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.jugador.Protoss;
 import fiuba.algo3.algocraft.jugador.Terran;
 import fiuba.algo3.algocraft.mundo.Mineral;
 import fiuba.algo3.algocraft.mundo.Mundo;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
+import fiuba.algo3.algocraft.vista.Lienzo;
 import fiuba.algo3.excepciones.NoLePerteneceLaEntidad;
 
-public class Juego{
+public class Juego extends Observable{
 	
 	private Jugador jugador1, jugador2, turno;
 	private Mundo mundo;
-	private JFrame ventana;
 	
 	public Juego(String razaJugador1, String nombreJugador1, String colorJugador1, String razaJugador2, String nombreJugador2, String colorJugador2)
 	{
 		
 		mundo = new Mundo(5000,100,this);
-		mundo.generar();
-		
-		ventana = crearVentana();
-		
+		mundo.generar();		
 		
 		if(razaJugador1=="Protoss")
 			jugador1 = new Protoss(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),nombreJugador1,colorJugador1,mundo);
@@ -83,25 +82,6 @@ public class Juego{
 	
 		
 		
-	}
-
-	private JFrame crearVentana() 
-	{
-		JFrame ventana = new JFrame("Algocraft"); 
-		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		ventana.setSize(800,800);
-		ventana.setVisible(true);
-		
-		Lienzo lienzo = new Lienzo(this,mundo.obtenerResolucion());
-		
-		JScrollPane camara = new JScrollPane(lienzo);
-		camara.setPreferredSize(new Dimension(400,400));
-
-		
-		ventana.add(camara);		
-
-		
-		return ventana;
 	}
 
 	public ArrayList<Unidad> obtenerUnidadesDeJugador1() {
@@ -175,7 +155,7 @@ public class Juego{
 				}
 	}
 	
-	public void crearUnidad( String nombre) 
+	public void crearUnidad(String nombre) 
 	{
 		try {
 			turno.agregarUnidad(nombre);
@@ -185,19 +165,6 @@ public class Juego{
 				| ErrorAlHacerCopia e) {
 			e.printStackTrace();
 		}
-		
-	}
-	
-	public void actualizarVista(Graphics contexto)
-	{		
-		
-		 mundo.dibujar(contexto);
-		 
-		jugador1.actualizarVista(contexto);
-		jugador2.actualizarVista(contexto);
-		
-		
-		
 		
 	}
 
@@ -250,5 +217,11 @@ public class Juego{
 	
 	public ArrayList<String> verUnidadesDeLaRaza(){
 		return turno.obtenerNombreUnidadesDeRaza();
+	}
+
+	public void actualizarObservadores() 
+	{
+		setChanged();
+		notifyObservers();
 	}
 }

@@ -205,17 +205,7 @@ public abstract class Jugador {
 		unidades.remove((Object) entidad);
 		
 	}
-
-	public void actualizarVista(Graphics contexto) 
-	{
-		for(int i=0;i<estructuras.size();i++)
-			estructuras.get(i).dibujar(contexto);
-		
-		for(int i=0;i<unidades.size();i++)
-			unidades.get(i).dibujar(contexto);
-		
-	}
-
+	
 	public boolean estaVivo() {
 		if (estructuras.size()==0 & unidades.size()==0){
 			return false;

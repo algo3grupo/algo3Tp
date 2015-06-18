@@ -12,8 +12,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
-import fiuba.algo3.algocraft.graficos.Lienzo;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
+import fiuba.algo3.algocraft.vista.Lienzo;
 
 public abstract class Dibujable 
 {

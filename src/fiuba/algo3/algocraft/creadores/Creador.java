@@ -71,5 +71,13 @@ public abstract class Creador {
 		throw new NoTieneRecursosSuficientesException();
 	}
 	
-	
+	public ArrayList<String> obtenerNombres(){
+		
+		ArrayList<String> nombres = new ArrayList<String>();
+		
+		for(int i = 0; i < entidades.size(); i++ ){
+			nombres.add( entidades.get(i).nombre() );
+		}
+		return nombres;
+	}
 }

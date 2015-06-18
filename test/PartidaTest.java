@@ -116,7 +116,7 @@ public class PartidaTest {
 		for (int i=0; i<2; i++){
 			juego.finalizarTurno();
 		}
-		//Turno 223 en adelante: Los Zealot se acercan a las 3 estructuras y la destruyen
+		//Turno 223 en adelante: Los Zealot se acercan a las 4 estructuras y las destruyen una a una
 		//al moverse se posicionan en el mismo lugar pero si mover lo mueve lo mas cerca posible deberia poder atacarlo
 		
 		for ( int l = 0; l< 4; l++){

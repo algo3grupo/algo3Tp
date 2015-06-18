@@ -222,4 +222,13 @@ public abstract class Jugador {
 		}
 	}
 	
+	public ArrayList<String> obtenerNombreUnidadesCreables(){
+		
+		return creadorUnidades.obtenerNombres();
+	}
+	
+	public ArrayList<String> obtenerNombreEstructurasCreables(){
+		
+		return creadorEstructuras.obtenerNombres();
+	}
 }

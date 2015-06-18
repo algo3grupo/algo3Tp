@@ -23,6 +23,7 @@ public class AltoTemplario extends UnidadEnergia {
 
 	public AltoTemplario(int dimension, Vector2D posicion, Jugador jugador) {
 		super(dimension, posicion, 40, 7, jugador, "Alto Templario", new Costo(100,0), "Archivos Templarios", 2, 2, 7);
+		construirEscudo(40);
 	}
 
 	public void lanzarTormentaPsiconica(Vector2D posicion, Mundo mundo) throws NoTieneEnergiaSuficiente{

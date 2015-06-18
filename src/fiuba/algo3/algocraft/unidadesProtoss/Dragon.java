@@ -15,7 +15,7 @@ public class Dragon extends UnidadAtaqueBasico {
 	public Dragon(int dimension, Vector2D posicion, Jugador jugador) {
 		
 		super(dimension, posicion, 100, 1, jugador, "Dragon", new Costo(125,50), "Acceso", 2 , 4, 6 ,new Ataque(20, 20, 4, 4));
-		
+		construirEscudo(80);
 	}
 
 	@Override

@@ -120,7 +120,7 @@ public abstract class Entidad extends Dibujable {
 		
 	}
 	
-	private void eliminar() {
+	protected void eliminar() {
 		
 		jugador.eliminar(this);
 		
@@ -181,11 +181,12 @@ public abstract class Entidad extends Dibujable {
 
 	public void herir(int danio) {
 		
-		if (vida - danio <= 0){
+		if (loMata(danio)){
 			eliminar();
 		}
+		else{
 			this.vida -= danio;
-		
+		}
 	}
 	
 	public void posicionarEn(Vector2D posicion){
@@ -205,5 +206,9 @@ public abstract class Entidad extends Dibujable {
 		return ( ID() == ( ( (Entidad) comparado ).ID()) );
 	}
 	
-	
+	public boolean loMata(int danio){
+		
+		return (vida - danio <= 0);
+		
+	}
 }

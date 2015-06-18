@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
+import fiuba.algo3.algocraft.Acciones.RecuperarEscudo;
 import fiuba.algo3.algocraft.Interfaces.IUnidad;
 import fiuba.algo3.algocraft.atributos.Ataque;
 import fiuba.algo3.algocraft.atributos.Costo;
+import fiuba.algo3.algocraft.atributos.Escudo;
 import fiuba.algo3.algocraft.excepciones.NoPuedeAtacarUnidadesAereas;
 import fiuba.algo3.algocraft.excepciones.NoPuedeAtacarUnidadesEnTierra;
 import fiuba.algo3.algocraft.excepciones.NoPuedeRealizarEsaAccion;
@@ -19,13 +21,17 @@ public abstract class Unidad extends ColaDeAcciones implements IUnidad {
 	
 	private int suministro;
 	private int transporte;
+	private Escudo escudo;
 
 	public Unidad(int dimension, Vector2D posicion, int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, 
 			int suministro, int transporte, int turnos) {
 		super(dimension, posicion, vida, rangoDeVision, jugador, nombre, costo, requiere, turnos);
 		this.suministro = suministro;
 		this.transporte = transporte;
-	}
+		this.escudo = new Escudo(0);
+		//
+		this.agregarAccion(new RecuperarEscudo(this));
+ 	}
 
 
 	public int suministro() {
@@ -106,6 +112,37 @@ public abstract class Unidad extends ColaDeAcciones implements IUnidad {
 			throw new NoPuedeRealizarEsaAccion(); 
 		}
 		
+	}
+	
+	public void herir(int danio){
+		
+		int danioSobrante = herirEscudo(danio);
+		
+		if ( this.suministro() != 0 ){
+			super.herir(danioSobrante);
+			
+		 }
+		//en Caso de Que sea Una unidadCopia
+		else if (escudo.valorCampo() == 0){
+			eliminar();
+		}
+	 }
+
+
+	private int herirEscudo(int danio) {
+		return escudo.herirCampo(danio);
+	}
+
+
+	public void recuperarEscudo() {
+		
+		if (escudo.util()){
+			escudo.recuperarCampo();
+		}
+	}
+	
+	public void construirEscudo(int valor){
+		escudo.tomarValor(valor);
 	}
 
 	

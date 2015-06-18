@@ -23,7 +23,7 @@ public abstract class Estructura extends ColaDeAcciones implements IEstructura{
 	}
 	
 	public void eliminar(){
-		
+		super.eliminar();
 	}
 
 }

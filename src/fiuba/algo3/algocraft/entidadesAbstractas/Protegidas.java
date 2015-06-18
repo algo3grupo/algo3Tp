@@ -32,6 +32,17 @@ public abstract class Protegidas extends Estructura
 			campo += 10;	
 		}
 	}
-	
+	 public void herir(int danio){
+		 int danioSobrante = herirCampo(danio);
+		 super.herir(danioSobrante);
+		 
+	 }
+
+	private int herirCampo(int danio) {
+		if (campo - danio < 0 ){
+			return danio-campo;
+		}
+		return 0;
+	}
 	
 }

@@ -30,12 +30,12 @@ public class CentroMineralTest {
 		Mundo mundo = new Mundo(500,10,juego);	
 		mundo.generar();
 		
-        Terran jugadorTerran = new Terran(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),null,null);
+        Terran jugadorTerran = new Terran(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),null,null, mundo);
         
         Vector2D posicionBaseDeJugador = mundo.posicionBaseJugador1();
         
         ArrayList<Mineral> lugaresConMinerales = mundo.mineralesCercanos(posicionBaseDeJugador);
-        jugadorTerran.agregarEstructura("Centro De Minerales", lugaresConMinerales.get(0).obtenerPosicion(), mundo);
+        jugadorTerran.agregarEstructura("Centro De Minerales", lugaresConMinerales.get(0).obtenerPosicion());
         
         ArrayList<Estructura> estructurasDeJugadorTerran = jugadorTerran.obtenerEstructuras();
         
@@ -52,7 +52,7 @@ public class CentroMineralTest {
 		Mundo mundo = new Mundo(500,10,juego);
 		mundo.generar();
 
-		Terran jugadorTerran = new Terran(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),null,null);
+		Terran jugadorTerran = new Terran(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),null,null,mundo);
         
 		/*Busco una posicion que no tenga minerales*/
         int i=1;
@@ -64,7 +64,7 @@ public class CentroMineralTest {
         	posicionSinMinerales = new Vector2D(i,j);
         }
         try{
-        jugadorTerran.agregarEstructura("Centro De Minerales", posicionSinMinerales, mundo);                
+        jugadorTerran.agregarEstructura("Centro De Minerales", posicionSinMinerales);                
         
         ArrayList<Estructura> estructurasDeJugadorTerran = jugadorTerran.obtenerEstructuras();
         } catch (NoHayMineralEnElLugarACrear e) {} 

@@ -8,10 +8,13 @@ import fiuba.algo3.algocraft.atributos.Hechizo;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.UnidadAtaqueBasico;
+import fiuba.algo3.algocraft.excepciones.NoHayUnidadEnEsaPosicion;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.mundo.Mundo;
+import fiuba.algo3.excepciones.NoLePerteneceLaEntidad;
 
 public class Alucinacion extends Hechizo {
+	// copia la unidad en la misma posicion que la copiada
 	
 	public Alucinacion() {
 		super(100);
@@ -33,6 +36,29 @@ public class Alucinacion extends Hechizo {
 		
 		
 	}
+
+	@Override
+	public void lanzarHechizoA(Jugador jugador,Vector2D posicion, Mundo mundo) {
+		Unidad unidad;
+		try {
+			
+			unidad = mundo.obtenerUnidadEn(posicion);
+			if ( unidad.getJugador()==jugador ){
+			nuevaUnidadCopia(unidad,posicion,mundo);
+			}
+			else throw new NoLePerteneceLaEntidad();
+			
+		} catch (NoHayUnidadEnEsaPosicion
+				|NoSuchMethodException | SecurityException
+				| InstantiationException | IllegalAccessException
+				| IllegalArgumentException | InvocationTargetException
+				| NoSuchFieldException | NoLePerteneceLaEntidad e) {
+			
+			e.printStackTrace();
+		}
+		
+	}
+	
 	
 
 }

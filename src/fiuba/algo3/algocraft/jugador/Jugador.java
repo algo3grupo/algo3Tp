@@ -31,6 +31,8 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 public abstract class Jugador {
 	private ArrayList<Unidad> unidades;
 	private ArrayList<Estructura> estructuras;
+	
+	private Mundo mundo;
 	private String nombre;
 	private String color;
 	private int minerales;
@@ -41,7 +43,7 @@ public abstract class Jugador {
 	private int poblacionMaxima;
 	private int dimension;
 	
-	public Jugador(int dimension, Vector2D base, String nombreJugador, String colorJugador) {
+	public Jugador(int dimension, Vector2D base, String nombreJugador, String colorJugador, Mundo mundo) {
 		
 		color = colorJugador;
 		this.nombre = nombreJugador;
@@ -52,10 +54,11 @@ public abstract class Jugador {
 		this.estructuras = new ArrayList<Estructura>();
 		poblacionMaxima = 5;
 		this.dimension = dimension;
+		this.mundo = mundo;
 		
 	}
 
-	public void agregarEstructura(String string, Vector2D posicion, Mundo mundo) throws NoEsDeSuRazaLaEstructuraException,
+	public void agregarEstructura(String string, Vector2D posicion) throws NoEsDeSuRazaLaEstructuraException,
 																				NoTieneLaEstructuraCreadaException,
 																				NoTieneRecursosSuficientesException,
 																				NoHayMineralEnElLugarACrear, 
@@ -68,17 +71,17 @@ public abstract class Jugador {
 	}
 
 
-	public void agregarUnidad(String string, Mundo mundo) throws NoEsDeSuRazaLaUnidadException,
+	public void agregarUnidad(String string) throws NoEsDeSuRazaLaUnidadException,
 													NoTieneLaEstructuraCreadaException,
 													NoTieneRecursosSuficientesException,  
 													NoSeEncontroLaEntidad, ErrorAlHacerCopia {
 		//una estructura ha habiliada comienza a crear la unidad
-		estructuraEmpiezaACrearUnidad(string, mundo);
+		estructuraEmpiezaACrearUnidad(string);
 		
 		
 	}
 	
-	public void estructuraEmpiezaACrearUnidad( String nombre, Mundo mundo) throws NoEsDeSuRazaLaUnidadException, 
+	public void estructuraEmpiezaACrearUnidad( String nombre) throws NoEsDeSuRazaLaUnidadException, 
 								NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 								ErrorAlHacerCopia, NoSeEncontroLaEntidad{
 		//crea la unidad
@@ -222,13 +225,17 @@ public abstract class Jugador {
 		}
 	}
 	
-	public ArrayList<String> obtenerNombreUnidadesCreables(){
+	public ArrayList<String> obtenerNombreUnidadesDeRaza(){
 		
 		return creadorUnidades.obtenerNombres();
 	}
 	
-	public ArrayList<String> obtenerNombreEstructurasCreables(){
+	public ArrayList<String> obtenerNombreEstructurasDeRaza(){
 		
 		return creadorEstructuras.obtenerNombres();
+	}
+	
+	public Mundo getMundo(){
+		return mundo;
 	}
 }

@@ -4,13 +4,14 @@ import java.awt.Graphics;
 
 import javax.swing.JFrame;
 
+import fiuba.algo3.algocraft.Interfaces.IEfectoEMP;
 import fiuba.algo3.algocraft.atributos.Ataque;
 import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.entidadesAbstractas.UnidadAtaqueBasico;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 
-public class Scout extends UnidadAtaqueBasico {
+public class Scout extends UnidadAtaqueBasico implements IEfectoEMP{
 
 	public Scout(int dimension, Vector2D posicion, Jugador jugador) {
 		
@@ -21,6 +22,12 @@ public class Scout extends UnidadAtaqueBasico {
 	@Override
 	public void dibujar(Graphics contexto) {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void atacadoPorEMP() {
+		desactivarEscudo();
 		
 	}
 }

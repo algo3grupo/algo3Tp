@@ -6,12 +6,13 @@ import fiuba.algo3.algocraft.creadores.CreadorEstructurasProtoss;
 import fiuba.algo3.algocraft.creadores.CreadorUnidadesProtoss;
 import fiuba.algo3.algocraft.estructurasProtoss.Pilon;
 import fiuba.algo3.algocraft.estructurasTerran.DepositoSuministro;
+import fiuba.algo3.algocraft.mundo.Mundo;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class Protoss extends Jugador {
 
-	public Protoss(int dimension, Vector2D base, String nombreJugador, String colorJugador) {
-		super(dimension, base, nombreJugador, colorJugador);
+	public Protoss(int dimension, Vector2D base, String nombreJugador, String colorJugador, Mundo mundo) {
+		super(dimension, base, nombreJugador, colorJugador, mundo);
 		this.creadorEstructuras = new CreadorEstructurasProtoss(this);
 		this.creadorUnidades =new CreadorUnidadesProtoss(this);
 		

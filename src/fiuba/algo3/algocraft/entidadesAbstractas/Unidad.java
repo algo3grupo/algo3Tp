@@ -144,6 +144,9 @@ public abstract class Unidad extends ColaDeAcciones implements IUnidad {
 	public void construirEscudo(int valor){
 		escudo.tomarValor(valor);
 	}
-
+	
+	public void desactivarEscudo(){
+		escudo.herirCampo(escudo.valorCampo());
+	}
 	
 }

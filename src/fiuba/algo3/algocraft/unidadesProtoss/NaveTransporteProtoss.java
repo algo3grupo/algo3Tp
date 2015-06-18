@@ -4,12 +4,13 @@ import java.awt.Graphics;
 
 import javax.swing.JFrame;
 
+import fiuba.algo3.algocraft.Interfaces.IEfectoEMP;
 import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.entidadesAbstractas.UnidadNave;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 
-public class NaveTransporteProtoss extends UnidadNave {
+public class NaveTransporteProtoss extends UnidadNave implements IEfectoEMP {
 
 	public NaveTransporteProtoss(int dimension, Vector2D posicion, Jugador jugador) {
 		super(dimension, posicion, 80, 8, jugador, new Costo(100,0), 2, 8);
@@ -21,5 +22,11 @@ public class NaveTransporteProtoss extends UnidadNave {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void atacadoPorEMP() {
+		desactivarEscudo();
+	}
+	
 
 }

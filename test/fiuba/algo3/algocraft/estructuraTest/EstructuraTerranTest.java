@@ -20,13 +20,13 @@ public class EstructuraTerranTest {
 	@Test
 	public void correlacionPuertoEstelarNecesitaFabrica() throws ErrorAlHacerCopia {
 		
-		Jugador jugador= new Terran(0,new Vector2D(100,100),"Pepe","#FF0000");
+		Jugador jugador= new Terran(0,new Vector2D(100,100),"Pepe","#FF0000",new Mundo(1000, 1000, null));
 		jugador.agregarMineral(2300);
 		jugador.agregarGas(2500);
 		try {
-			jugador.agregarEstructura("Deposito Suministro", new Vector2D(), new Mundo(1000, 1000, null));
-			jugador.agregarEstructura("Barraca", new Vector2D(), new Mundo(1000, 1000, null));
-			jugador.agregarEstructura("Puerto Estelar", new Vector2D(), new Mundo(1000, 1000, null));
+			jugador.agregarEstructura("Deposito Suministro", new Vector2D());
+			jugador.agregarEstructura("Barraca", new Vector2D());
+			jugador.agregarEstructura("Puerto Estelar", new Vector2D());
 		} catch (NoEsDeSuRazaLaEstructuraException
 				| NoTieneRecursosSuficientesException
 				| NoHayMineralEnElLugarACrear 
@@ -39,12 +39,12 @@ public class EstructuraTerranTest {
 	@Test
 	public void correlacionFabricaNecesitaBarraca() throws ErrorAlHacerCopia {
 		
-		Jugador jugador= new Terran(0,new Vector2D(100,100),"Pepe","#FF0000");
+		Jugador jugador= new Terran(0,new Vector2D(100,100),"Pepe","#FF0000",new Mundo(1000, 1000, null));
 		jugador.agregarMineral(2300);
 		jugador.agregarGas(2500);
 		try {
-			jugador.agregarEstructura("Deposito Suministro", new Vector2D(), new Mundo(1000, 1000, null));
-			jugador.agregarEstructura("Fabrica", new Vector2D(), new Mundo(1000, 1000, null));
+			jugador.agregarEstructura("Deposito Suministro", new Vector2D());
+			jugador.agregarEstructura("Fabrica", new Vector2D());
 		} catch (NoEsDeSuRazaLaEstructuraException
 				| NoTieneRecursosSuficientesException
 				| NoHayMineralEnElLugarACrear 

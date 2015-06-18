@@ -9,11 +9,12 @@ import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.UnidadAtaqueBasico;
 import fiuba.algo3.algocraft.excepciones.FinDeLaPartida;
+import fiuba.algo3.excepciones.NoLePerteneceLaEntidad;
 
 public class PartidaTest {
 
 	@Test(expected = FinDeLaPartida.class)
-	public void unaPartidaCompleta() {
+	public void unaPartidaCompleta() throws NoLePerteneceLaEntidad {
 		
 		Juego juego = new Juego("Protoss","Martin","#FF0000","Terran","Damian","#0000FF");
 		
@@ -95,7 +96,7 @@ public class PartidaTest {
 		}
 		juego.finalizarTurno();
 		
-		//Turno 212-221: Cada Marine ataca a un Zealot, cada Zealot ataca a un Marine Matando a los marines en el 5 turno.
+		//Turno 212-222: Cada Marine ataca a un Zealot, cada Zealot ataca a un Marine Matando a los marines en el 5 turno.
 		for (int k=0; k<9; k++){
 			for (int j= 0; j< 5; j++){
 				Unidad enemiga = juego.obtenerUnidadesContrarias().get(j);

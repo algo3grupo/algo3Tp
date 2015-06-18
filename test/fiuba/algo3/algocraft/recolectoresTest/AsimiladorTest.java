@@ -31,12 +31,12 @@ public class AsimiladorTest {
 		Mundo mundo = new Mundo(500,10,juego);
 		mundo.generar();
 		
-        Protoss jugadorProtoss = new Protoss(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),null,null);
+        Protoss jugadorProtoss = new Protoss(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),null,null,mundo);
         
         Vector2D posicionBaseDeJugador = mundo.posicionBaseJugador1();
         
         ArrayList<Gas> lugaresConGas = mundo.gasCercano(posicionBaseDeJugador);
-        jugadorProtoss.agregarEstructura("Asimilador", lugaresConGas.get(0).obtenerPosicion(), mundo);
+        jugadorProtoss.agregarEstructura("Asimilador", lugaresConGas.get(0).obtenerPosicion());
         
         ArrayList<Estructura> estructurasDeJugadorProtoss = jugadorProtoss.obtenerEstructuras();
         
@@ -53,7 +53,7 @@ public class AsimiladorTest {
 		Mundo mundo = new Mundo(500,10,juego);
 		mundo.generar();
 
-		Protoss jugadorProtoss = new Protoss(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),null,null);
+		Protoss jugadorProtoss = new Protoss(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),null,null, mundo);
         
 		/*Busco una posicion que no tenga gas*/
         int i=1;
@@ -65,7 +65,7 @@ public class AsimiladorTest {
         	posicionSinGas = new Vector2D(i,j);
         }
         try{
-        jugadorProtoss.agregarEstructura("Asimilador", posicionSinGas, mundo);                
+        jugadorProtoss.agregarEstructura("Asimilador", posicionSinGas);                
         
         ArrayList<Estructura> estructurasDeJugadorProtoss = jugadorProtoss.obtenerEstructuras();
         }catch (NoHayGasEnElLugarACrear e) {}

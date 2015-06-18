@@ -30,12 +30,12 @@ public class NexoMineralTest {
 		Mundo mundo = new Mundo(500,10,juego);
 		mundo.generar();
 		
-        Protoss jugadorProtoss = new Protoss(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),null,null);
+        Protoss jugadorProtoss = new Protoss(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),null,null, mundo);
         
         Vector2D posicionBaseDeJugador = mundo.posicionBaseJugador1();
         
         ArrayList<Mineral> lugaresConMinerales = mundo.mineralesCercanos(posicionBaseDeJugador);
-        jugadorProtoss.agregarEstructura("Nexo Mineral", lugaresConMinerales.get(0).obtenerPosicion(), mundo);
+        jugadorProtoss.agregarEstructura("Nexo Mineral", lugaresConMinerales.get(0).obtenerPosicion());
         
         ArrayList<Estructura> estructurasDeJugadorProtoss = jugadorProtoss.obtenerEstructuras();
         
@@ -52,7 +52,7 @@ public class NexoMineralTest {
 		Mundo mundo = new Mundo(500,10,juego);
 		mundo.generar();
 
-		Protoss jugadorProtoss = new Protoss(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),null,null);
+		Protoss jugadorProtoss = new Protoss(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),null,null,mundo);
         
 		/*Busco una posicion que no tenga minerales*/
         int i=1;
@@ -64,7 +64,7 @@ public class NexoMineralTest {
         	posicionSinMinerales = new Vector2D(i,j);
         }
         try{
-        jugadorProtoss.agregarEstructura("Nexo Mineral", posicionSinMinerales, mundo);                
+        jugadorProtoss.agregarEstructura("Nexo Mineral", posicionSinMinerales);                
         
         ArrayList<Estructura> estructurasDeJugadorProtoss = jugadorProtoss.obtenerEstructuras();
         } catch (NoHayMineralEnElLugarACrear e) {}    

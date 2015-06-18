@@ -7,6 +7,7 @@ import org.junit.Test;
 import fiuba.algo3.algocraft.excepciones.ErrorAlHacerCopia;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaUnidadException;
+import fiuba.algo3.algocraft.excepciones.NoEsPosibleLanzarElHechizoAlli;
 import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoSeEncontroLaEntidad;
@@ -28,18 +29,18 @@ public class UnidadesEnergiaTest {
 												NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, 
 												NoEsDeSuRazaLaUnidadException, NoSeEncontroLaEntidad{
 		
-		Jugador jugador = new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000");
+		Jugador jugador = new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000", new Mundo(1000, 1000, null));
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
-		jugador.agregarEstructura("Pilon", new Vector2D(), new Mundo(1000, 1000, null));
+		jugador.agregarEstructura("Pilon", new Vector2D());
 		PasaTurnos.pasarTurnos(jugador, 15);
-		jugador.agregarEstructura("Acceso", new Vector2D(), new Mundo(1000, 1000, null));
+		jugador.agregarEstructura("Acceso", new Vector2D());
 		PasaTurnos.pasarTurnos(jugador, 8);
-		jugador.agregarEstructura("Puerto Estelar", new Vector2D(), new Mundo(1000, 1000, null));
+		jugador.agregarEstructura("Puerto Estelar", new Vector2D());
 		PasaTurnos.pasarTurnos(jugador, 10);
-		jugador.agregarEstructura("Archivos Templarios", new Vector2D(), new Mundo(1000, 1000, null));
+		jugador.agregarEstructura("Archivos Templarios", new Vector2D());
 		PasaTurnos.pasarTurnos(jugador, 10);
-		jugador.agregarUnidad("Alto Templario", new Mundo(1000, 1000, null));
+		jugador.agregarUnidad("Alto Templario");
 		PasaTurnos.pasarTurnos(jugador, 7); // en el turno que se crea se carga energia
 		
 		int energiaActual = ((UnidadEnergia) jugador.ObtenerUnidades().get(0)).obtenerEnergia();
@@ -51,18 +52,18 @@ public class UnidadesEnergiaTest {
 														NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 														NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, 
 														NoEsDeSuRazaLaUnidadException, NoSeEncontroLaEntidad {
-		Jugador jugador = new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000");
+		Jugador jugador = new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000", new Mundo(1000, 1000, null));
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
-		jugador.agregarEstructura("Pilon", new Vector2D(), new Mundo(1000, 1000, null));
+		jugador.agregarEstructura("Pilon", new Vector2D());
 		PasaTurnos.pasarTurnos(jugador, 15);
-		jugador.agregarEstructura("Acceso", new Vector2D(), new Mundo(1000, 1000, null));
+		jugador.agregarEstructura("Acceso", new Vector2D());
 		PasaTurnos.pasarTurnos(jugador, 8);
-		jugador.agregarEstructura("Puerto Estelar", new Vector2D(), new Mundo(1000, 1000, null));
+		jugador.agregarEstructura("Puerto Estelar", new Vector2D());
 		PasaTurnos.pasarTurnos(jugador, 10);
-		jugador.agregarEstructura("Archivos Templarios", new Vector2D(), new Mundo(1000, 1000, null));
+		jugador.agregarEstructura("Archivos Templarios", new Vector2D());
 		PasaTurnos.pasarTurnos(jugador, 10);
-		jugador.agregarUnidad("Alto Templario", new Mundo(1000, 1000, null));
+		jugador.agregarUnidad("Alto Templario");
 		PasaTurnos.pasarTurnos(jugador, 30); //turnos de sobra
 		
 		int energiaActual = ((UnidadEnergia) jugador.ObtenerUnidades().get(0)).obtenerEnergia();
@@ -73,19 +74,19 @@ public class UnidadesEnergiaTest {
 	public void NoTieneSuficienteEnergiaComoParaLanzarElHechizo() throws NoEsDeSuRazaLaEstructuraException,
 											NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 											NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia,
-											NoEsDeSuRazaLaUnidadException, NoSeEncontroLaEntidad{
-		Jugador jugador = new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000");
+											NoEsDeSuRazaLaUnidadException, NoSeEncontroLaEntidad, NoEsPosibleLanzarElHechizoAlli{
+		Jugador jugador = new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000",new Mundo(1000, 1000, null));
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
-		jugador.agregarEstructura("Pilon", new Vector2D(), new Mundo(1000, 1000, null));
+		jugador.agregarEstructura("Pilon", new Vector2D());
 		PasaTurnos.pasarTurnos(jugador, 15);
-		jugador.agregarEstructura("Acceso", new Vector2D(), new Mundo(1000, 1000, null));
+		jugador.agregarEstructura("Acceso", new Vector2D());
 		PasaTurnos.pasarTurnos(jugador, 8);
-		jugador.agregarEstructura("Puerto Estelar", new Vector2D(), new Mundo(1000, 1000, null));
+		jugador.agregarEstructura("Puerto Estelar", new Vector2D());
 		PasaTurnos.pasarTurnos(jugador, 10);
-		jugador.agregarEstructura("Archivos Templarios", new Vector2D(), new Mundo(1000, 1000, null));
+		jugador.agregarEstructura("Archivos Templarios", new Vector2D());
 		PasaTurnos.pasarTurnos(jugador, 10);
-		jugador.agregarUnidad("Alto Templario", new Mundo(1000, 1000, null));
+		jugador.agregarUnidad("Alto Templario");
 		PasaTurnos.pasarTurnos(jugador, 8);
 		AltoTemplario altoTemplario = (AltoTemplario) jugador.ObtenerUnidades().get(0);
 		try {
@@ -94,4 +95,6 @@ public class UnidadesEnergiaTest {
 			assert(true);
 		}
 	}
+	
+	
 }

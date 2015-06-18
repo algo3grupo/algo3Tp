@@ -30,12 +30,12 @@ public class RefineriaTest {
 		Mundo mundo = new Mundo(500,10,juego);
 		mundo.generar();
 		
-        Terran jugadorTerran = new Terran(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),null,null);
+        Terran jugadorTerran = new Terran(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),null,null, mundo);
         
         Vector2D posicionBaseDeJugador = mundo.posicionBaseJugador1();
         
         ArrayList<Gas> lugaresConGas = mundo.gasCercano(posicionBaseDeJugador);
-        jugadorTerran.agregarEstructura("Refineria", lugaresConGas.get(0).obtenerPosicion(), mundo);
+        jugadorTerran.agregarEstructura("Refineria", lugaresConGas.get(0).obtenerPosicion());
         
         ArrayList<Estructura> estructurasDeJugadorTerran = jugadorTerran.obtenerEstructuras();
         
@@ -52,7 +52,7 @@ public class RefineriaTest {
 		Mundo mundo = new Mundo(500,10,juego);
 		mundo.generar();
 
-		Terran jugadorTerran = new Terran(mundo.obtenerDivisionDeGrilla(),new Vector2D(100,100),null,null);
+		Terran jugadorTerran = new Terran(mundo.obtenerDivisionDeGrilla(),new Vector2D(100,100),null,null,mundo);
         
 		/*Busco una posicion que no tenga gas*/
         int i=1;
@@ -64,7 +64,7 @@ public class RefineriaTest {
         	posicionSinGas = new Vector2D(i,j);
         }
         try{
-        jugadorTerran.agregarEstructura("Refineria", posicionSinGas, mundo);                
+        jugadorTerran.agregarEstructura("Refineria", posicionSinGas);                
         
         ArrayList<Estructura> estructurasDeJugadorTerran = jugadorTerran.obtenerEstructuras();
 		}catch (NoHayGasEnElLugarACrear e) {} 

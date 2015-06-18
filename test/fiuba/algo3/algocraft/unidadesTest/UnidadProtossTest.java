@@ -26,18 +26,18 @@ public class UnidadProtossTest {
 	
 	@Test
 	public void instaciarZealot(){
-		Jugador jugador= new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000");
+		Jugador jugador= new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000", new Mundo(1000, 1000, null));
 		Unidad zealot = new Zealot(0,new Vector2D(), jugador);
 		assertEquals("Zealot",zealot.nombre());
 	}
 	
 	@Test
 	public void intentaCrearUnidadSinLaEstructura() throws ErrorAlHacerCopia, NoSeEncontroLaEntidad{
-		Jugador jugador= new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000");
+		Jugador jugador= new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000", new Mundo(1000, 1000, null));
 		jugador.agregarMineral(50);
 		jugador.agregarGas(100);
 		try {
-			jugador.agregarUnidad("Zealot", new Mundo(1000, 1000, null));
+			jugador.agregarUnidad("Zealot");
 			fail("Deberia lanzar que no esta la estructura creada");
 		} catch (NoEsDeSuRazaLaUnidadException
 				|NoTieneRecursosSuficientesException e) {
@@ -49,15 +49,15 @@ public class UnidadProtossTest {
 	
 	@Test
 	public void creaUnidadDespuesDeCrearEstructura() throws ErrorAlHacerCopia, NoSeEncontroLaEntidad{
-		Jugador jugador= new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000");
+		Jugador jugador= new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000", new Mundo(1000, 1000, null));
 		jugador.agregarMineral(250);
 		jugador.agregarGas(100);
 		try {
 			
-			jugador.agregarEstructura("Acceso", new Vector2D(), new Mundo(1000, 1000, null));
-			jugador.agregarEstructura("Pilon", new Vector2D(), new Mundo(1000, 1000, null));
+			jugador.agregarEstructura("Acceso", new Vector2D());
+			jugador.agregarEstructura("Pilon", new Vector2D());
 			PasaTurnos.pasarTurnos(jugador, 15);
-			jugador.agregarUnidad("Zealot", new Mundo(1000, 1000, null));
+			jugador.agregarUnidad("Zealot");
 			
 		} catch (NoEsDeSuRazaLaUnidadException
 				| NoEsDeSuRazaLaEstructuraException
@@ -73,14 +73,14 @@ public class UnidadProtossTest {
 	
 	@Test
 	public void creaUnidadYNoTieneMineralesSuficientes() throws ErrorAlHacerCopia, NoSeEncontroLaEntidad{
-		Jugador jugador= new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000");
+		Jugador jugador= new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000", new Mundo(1000, 1000, null));
 		jugador.agregarMineral(100);
 		jugador.agregarGas(100);
 		try {
-			jugador.agregarEstructura("Acceso", new Vector2D(), new Mundo(1000, 1000, null));
-			jugador.agregarEstructura("Pilon", new Vector2D(), new Mundo(1000, 1000, null));
+			jugador.agregarEstructura("Acceso", new Vector2D());
+			jugador.agregarEstructura("Pilon", new Vector2D());
 			PasaTurnos.pasarTurnos(jugador, 10);
-			jugador.agregarUnidad("Zealot", new Mundo(1000, 1000, null));
+			jugador.agregarUnidad("Zealot");
 		} catch (NoEsDeSuRazaLaUnidadException
 				| NoEsDeSuRazaLaEstructuraException
 				| NoTieneLaEstructuraCreadaException
@@ -94,14 +94,14 @@ public class UnidadProtossTest {
 	
 	@Test
 	public void creaUnidadYNoTieneGasSuficiente() throws ErrorAlHacerCopia, NoSeEncontroLaEntidad{
-		Jugador jugador= new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000");
+		Jugador jugador= new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000", new Mundo(1000, 1000, null));
 		jugador.agregarMineral(180);
 		jugador.agregarGas(30);
 		try {
-			jugador.agregarEstructura("Acceso", new Vector2D(), new Mundo(1000, 1000, null));
-			jugador.agregarEstructura("Pilon", new Vector2D(), new Mundo(1000, 1000, null));
+			jugador.agregarEstructura("Acceso", new Vector2D());
+			jugador.agregarEstructura("Pilon", new Vector2D());
 			PasaTurnos.pasarTurnos(jugador, 15);
-			jugador.agregarUnidad("Dragon", new Mundo(1000, 1000, null));
+			jugador.agregarUnidad("Dragon");
 			fail("No deberia llegar a esta parte");
 		} catch (NoEsDeSuRazaLaUnidadException
 				| NoEsDeSuRazaLaEstructuraException
@@ -117,13 +117,13 @@ public class UnidadProtossTest {
 
 	@Test
 	public void creaUnidadYNoTieneEspacioSuficienteParaCrearla() throws ErrorAlHacerCopia, NoSeEncontroLaEntidad{
-		Jugador jugador= new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000");
+		Jugador jugador= new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000", new Mundo(1000, 1000, null));
 		jugador.agregarMineral(380);
 		jugador.agregarGas(60);
 	try {
-		jugador.agregarEstructura("Acceso", new Vector2D(), new Mundo(1000, 1000, null));
+		jugador.agregarEstructura("Acceso", new Vector2D());
 		PasaTurnos.pasarTurnos(jugador, 15);
-		jugador.agregarUnidad("Dragon", new Mundo(1000, 1000, null));
+		jugador.agregarUnidad("Dragon");
 	} catch (NoEsDeSuRazaLaUnidadException
 			| NoEsDeSuRazaLaEstructuraException
 			| NoTieneLaEstructuraCreadaException

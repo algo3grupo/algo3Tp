@@ -6,11 +6,13 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 
 import fiuba.algo3.algocraft.Acciones.PerduracionTormenta;
+import fiuba.algo3.algocraft.Interfaces.IEfectoEMP;
 import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.UnidadEnergia;
 import fiuba.algo3.algocraft.excepciones.NoEsPosibleCargarEstaUnidad;
+import fiuba.algo3.algocraft.excepciones.NoEsPosibleLanzarElHechizoAlli;
 import fiuba.algo3.algocraft.excepciones.NoPuedeRealizarEsaAccion;
 import fiuba.algo3.algocraft.excepciones.NoTieneEnergiaSuficiente;
 import fiuba.algo3.algocraft.hechizos.Alucinacion;
@@ -26,7 +28,8 @@ public class AltoTemplario extends UnidadEnergia {
 		construirEscudo(40);
 	}
 
-	public void lanzarTormentaPsiconica(Vector2D posicion, Mundo mundo) throws NoTieneEnergiaSuficiente{
+	public void lanzarTormentaPsiconica(Vector2D posicion, Mundo mundo) throws NoTieneEnergiaSuficiente,
+																	NoEsPosibleLanzarElHechizoAlli{
 		
 		
 		lanzarHechizo(new TormentaPsiconica(), posicion, mundo);
@@ -34,7 +37,7 @@ public class AltoTemplario extends UnidadEnergia {
 		
 	}
 	
-	public void lanzarAlucinacion(Vector2D posicion, Mundo mundo) throws NoTieneEnergiaSuficiente{
+	public void lanzarAlucinacion(Vector2D posicion, Mundo mundo) throws NoTieneEnergiaSuficiente, NoEsPosibleLanzarElHechizoAlli{
 		lanzarHechizo(new Alucinacion(), posicion, mundo);
 		
 	}
@@ -48,14 +51,25 @@ public class AltoTemplario extends UnidadEnergia {
 		
 	}
 	
-	public void realizarAccion(String accion, Entidad destino) throws NoPuedeRealizarEsaAccion{
+	public void realizarAccion(String accion, Entidad destino) throws NoPuedeRealizarEsaAccion {
 		switch (accion){
-			case "LanzarTormentaPsiconica": //hay que solucionar tema de parametros.
-				
-							break;
+			case "LanzarTormentaPsiconica": 
+					try {
+						lanzarTormentaPsiconica(destino.obtenerPosicion(),destino.getJugador().getMundo());
+					} catch (NoTieneEnergiaSuficiente | NoEsPosibleLanzarElHechizoAlli e) {
+					
+						throw new NoPuedeRealizarEsaAccion();
+					}
+					break;
 							
-			case "LanzarAlucinacion": 
-							break;
+			case "LanzarAlucinacion":
+					try {
+						lanzarAlucinacion(destino.obtenerPosicion(),destino.getJugador().getMundo());
+					} catch (NoTieneEnergiaSuficiente | NoEsPosibleLanzarElHechizoAlli e) {
+						
+						throw new NoPuedeRealizarEsaAccion();
+					}
+					break;
 							
 			default:	super.realizarAccion(accion, destino);
 						break;

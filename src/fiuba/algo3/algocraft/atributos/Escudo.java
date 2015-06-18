@@ -20,6 +20,7 @@ public class Escudo {
 	 
 
 	public int herirCampo(int danio) {
+		//devuelve el danio restante
 		if (campo - danio < 0 ){
 			campo = 0;
 			return danio - campo;

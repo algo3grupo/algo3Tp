@@ -18,6 +18,9 @@ import java.util.ArrayList;
 
 
 
+
+
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -27,6 +30,7 @@ import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.UnidadAtaqueBasico;
+import fiuba.algo3.algocraft.entidadesAbstractas.UnidadEnergia;
 import fiuba.algo3.algocraft.excepciones.ErrorAlHacerCopia;
 import fiuba.algo3.algocraft.excepciones.FinDeLaPartida;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
@@ -46,6 +50,7 @@ import fiuba.algo3.algocraft.jugador.Terran;
 import fiuba.algo3.algocraft.mundo.Mineral;
 import fiuba.algo3.algocraft.mundo.Mundo;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
+import fiuba.algo3.excepciones.NoLePerteneceLaEntidad;
 
 public class Juego{
 	
@@ -63,14 +68,14 @@ public class Juego{
 		
 		
 		if(razaJugador1=="Protoss")
-			jugador1 = new Protoss(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),nombreJugador1,colorJugador1);
+			jugador1 = new Protoss(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),nombreJugador1,colorJugador1,mundo);
 		else
-			jugador1 = new Terran(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),nombreJugador1,colorJugador1);
+			jugador1 = new Terran(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),nombreJugador1,colorJugador1, mundo);
 		
 		if(razaJugador2=="Protoss")
-			jugador2 = new Protoss(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador2(),nombreJugador2,colorJugador2);
+			jugador2 = new Protoss(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador2(),nombreJugador2,colorJugador2, mundo);
 		else
-			jugador2 = new Terran(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador2(),nombreJugador2,colorJugador2);
+			jugador2 = new Terran(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador2(),nombreJugador2,colorJugador2, mundo);
 		
 		turno = jugador1;
 		
@@ -159,7 +164,7 @@ public class Juego{
 	public void construirEstructura(String nombre, Vector2D posicion) 
 	{
 				try {
-					turno.agregarEstructura(nombre, posicion, mundo);
+					turno.agregarEstructura(nombre, posicion);
 				} catch (NoEsDeSuRazaLaEstructuraException
 						| NoTieneLaEstructuraCreadaException
 						| NoTieneRecursosSuficientesException
@@ -173,7 +178,7 @@ public class Juego{
 	public void crearUnidad( String nombre) 
 	{
 		try {
-			turno.agregarUnidad(nombre, mundo);
+			turno.agregarUnidad(nombre);
 		} catch (NoEsDeSuRazaLaUnidadException
 				| NoTieneLaEstructuraCreadaException
 				| NoTieneRecursosSuficientesException | NoSeEncontroLaEntidad
@@ -201,20 +206,24 @@ public class Juego{
 		return turno.ObtenerUnidades();
 	}
 
-	public void moverUnidad(Unidad unidad, Vector2D posicion) {
+	public void moverUnidad(Unidad unidad, Vector2D posicion) throws NoLePerteneceLaEntidad {
+		if (entidadPertenceAJugador(unidad)){
 		
 		unidad.moverA(posicion);
 		
+		}
+		else throw new NoLePerteneceLaEntidad();
 	}
 
-	public void unidadAtaqueAtacaA(UnidadAtaqueBasico turno, Entidad enemiga) {
-		
-		try {
-			turno.atacar(enemiga);
-		} catch (NoSePuedeAtacarEstaFueraDeRango
-				| NoPuedeAtacarUnidadesEnTierra | NoPuedeAtacarUnidadesAereas e) {
-			e.printStackTrace();
-		}
+	public void unidadAtaqueAtacaA(UnidadAtaqueBasico turno, Entidad enemiga) throws NoLePerteneceLaEntidad {
+		if (entidadPertenceAJugador(turno)){
+			try {
+				turno.atacar(enemiga);
+			} catch (NoSePuedeAtacarEstaFueraDeRango
+					| NoPuedeAtacarUnidadesEnTierra | NoPuedeAtacarUnidadesAereas e) {
+				e.printStackTrace();
+			}
+		}else throw new NoLePerteneceLaEntidad();
 	}
 
 	public Vector2D obtenerPosicion(Entidad entidad) {
@@ -222,4 +231,24 @@ public class Juego{
 		return entidad.obtenerPosicion();
 	}
 
+	
+	private boolean entidadPertenceAJugador(Entidad entidad){
+		if (entidad.getJugador()==turno){
+			return true;
+		}
+		return false;
+	}
+	
+	public ArrayList<String> pedirAccionesPosibles(Unidad unidad){
+		return unidad.mostrarAcciones();
+		
+	}
+	
+	public ArrayList<String> verEstrcturasDeLaRaza(){
+		return turno.obtenerNombreEstructurasDeRaza();
+	}
+	
+	public ArrayList<String> verUnidadesDeLaRaza(){
+		return turno.obtenerNombreUnidadesDeRaza();
+	}
 }

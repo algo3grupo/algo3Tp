@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.UnidadEnergia;
+import fiuba.algo3.algocraft.excepciones.NoEsPosibleLanzarElHechizoAlli;
 import fiuba.algo3.algocraft.excepciones.NoPuedeRealizarEsaAccion;
 import fiuba.algo3.algocraft.excepciones.NoTieneEnergiaSuficiente;
 import fiuba.algo3.algocraft.hechizos.EMP;
@@ -22,11 +23,11 @@ public class NaveCiencia extends UnidadEnergia {
 		super(dimension, posicion, 200, 10, jugador, "Nave Ciencia", new Costo(125,50), "Puerto Estelar", 2, 0, 10);
 	}
 
-	public void lanzarEMP(Vector2D posicion, Mundo mundo) throws NoTieneEnergiaSuficiente{
+	public void lanzarEMP(Vector2D posicion, Mundo mundo) throws NoTieneEnergiaSuficiente, NoEsPosibleLanzarElHechizoAlli{
 		lanzarHechizo(new EMP(), posicion, mundo);
 	}
 	
-	public void lanzarRadiacion(Vector2D posicion, Mundo mundo) throws NoTieneEnergiaSuficiente{
+	public void lanzarRadiacion(Vector2D posicion, Mundo mundo) throws NoTieneEnergiaSuficiente, NoEsPosibleLanzarElHechizoAlli{
 		lanzarHechizo(new Radiacion(), posicion, mundo);
 	}
 	
@@ -41,12 +42,25 @@ public class NaveCiencia extends UnidadEnergia {
 	
 	public void realizarAccion(String accion, Entidad destino) throws NoPuedeRealizarEsaAccion{
 		switch (accion){
-			case "LanzarRadiacion": //hay que solucionar tema de parametros.
+			case "LanzarRadiacion": 
+					
+					try {
+						lanzarRadiacion(destino.obtenerPosicion(),destino.getJugador().getMundo());
+					} catch (NoTieneEnergiaSuficiente | NoEsPosibleLanzarElHechizoAlli e) {
+					
+						throw new NoPuedeRealizarEsaAccion();
+					}
+					break;
 				
-							break;
-							
+				
 			case "LanzarEMP": 
-							break;
+					try {
+						lanzarEMP(destino.obtenerPosicion(),destino.getJugador().getMundo());
+					} catch (NoTieneEnergiaSuficiente | NoEsPosibleLanzarElHechizoAlli e) {
+					
+						throw new NoPuedeRealizarEsaAccion();
+					}
+					break;
 							
 			default:	super.realizarAccion(accion, destino);
 						break;

@@ -1,11 +1,14 @@
 package fiuba.algo3.algocraft.entidadesAbstractas;
 
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
 
 import fiuba.algo3.algocraft.Acciones.CargarEnergia;
 import fiuba.algo3.algocraft.Interfaces.IEfectoEMP;
 import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.atributos.Hechizo;
+import fiuba.algo3.algocraft.excepciones.NoPuedeRealizarEsaAccion;
 import fiuba.algo3.algocraft.excepciones.NoTieneEnergiaSuficiente;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.mundo.Mundo;
@@ -61,4 +64,6 @@ public abstract class UnidadEnergia extends Unidad implements IEfectoEMP{
 	public int obtenerEnergia(){
 		return energia;
 	}
+	
+	
 }

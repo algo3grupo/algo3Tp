@@ -22,7 +22,7 @@ public class NexoMineral extends Protegidas implements IRecolectores{
 	
 	public void recolectarSuministro()
 	{
-		getJugador().agregarGas(10);
+		getJugador().agregarMineral(10);
 	}
 
 	

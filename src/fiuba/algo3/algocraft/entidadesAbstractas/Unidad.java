@@ -4,16 +4,19 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
+import fiuba.algo3.algocraft.Interfaces.IUnidad;
 import fiuba.algo3.algocraft.atributos.Ataque;
 import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.excepciones.NoPuedeAtacarUnidadesAereas;
 import fiuba.algo3.algocraft.excepciones.NoPuedeAtacarUnidadesEnTierra;
+import fiuba.algo3.algocraft.excepciones.NoPuedeRealizarEsaAccion;
 import fiuba.algo3.algocraft.excepciones.NoSePuedeAtacarEstaFueraDeRango;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 
-public abstract class Unidad extends ColaDeAcciones {
+public abstract class Unidad extends ColaDeAcciones implements IUnidad {
+	
 	private int suministro;
 	private int transporte;
 
@@ -82,9 +85,27 @@ public abstract class Unidad extends ColaDeAcciones {
 		
 	}
 	
-	public void mover(Vector2D posicion) {
+	public void moverA(Vector2D posicion) {
 		//bien simple, que cambia la posicion directo
 		posicionarEn(posicion);
+	}
+	
+	public ArrayList<String> mostrarAcciones(){
+		ArrayList<String> listaAcciones = new ArrayList<String>();
+		listaAcciones.add("Mover");
+		
+		return listaAcciones;
+		
+	}
+	
+	public void realizarAccion(String accion, Entidad destino) throws NoPuedeRealizarEsaAccion{
+		if ( accion.matches("Mover") ){
+			moverA(destino.obtenerPosicion());
+		}
+		else{
+			throw new NoPuedeRealizarEsaAccion(); 
+		}
+		
 	}
 
 	

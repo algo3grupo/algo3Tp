@@ -1,5 +1,7 @@
 package fiuba.algo3.algocraft.entidadesAbstractas;
 
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
 
 import fiuba.algo3.algocraft.Interfaces.IAtacar;
@@ -7,6 +9,7 @@ import fiuba.algo3.algocraft.atributos.Ataque;
 import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.excepciones.NoPuedeAtacarUnidadesAereas;
 import fiuba.algo3.algocraft.excepciones.NoPuedeAtacarUnidadesEnTierra;
+import fiuba.algo3.algocraft.excepciones.NoPuedeRealizarEsaAccion;
 import fiuba.algo3.algocraft.excepciones.NoSePuedeAtacarEstaFueraDeRango;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
@@ -34,6 +37,26 @@ public abstract class UnidadAtaqueBasico extends Unidad implements IAtacar {
 		
 		return ataque;
 	}
+	
+	public ArrayList<String> mostrarAcciones(){
+		ArrayList<String> listaAcciones = super.mostrarAcciones();
+		listaAcciones.add("Atacar");
+		return listaAcciones;
+	}
 
-
+	public void realizarAccion(String accion, Entidad destino) throws NoPuedeRealizarEsaAccion{
+		
+		switch (accion){
+			case "Atacar": try {
+								atacar(destino);
+							} catch (NoSePuedeAtacarEstaFueraDeRango
+									| NoPuedeAtacarUnidadesEnTierra
+									| NoPuedeAtacarUnidadesAereas e) {
+								e.printStackTrace();
+							}
+							break;
+			default: super.realizarAccion(accion, destino); 
+		}
+		
+	}
 }

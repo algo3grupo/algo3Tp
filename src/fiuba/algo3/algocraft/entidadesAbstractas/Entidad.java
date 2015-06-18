@@ -192,6 +192,14 @@ public abstract class Entidad extends Dibujable {
 		
 		this.posicion = posicion;
 	}
+	
+	public boolean esDelMismoJugador(Entidad entidad){
+		
+		if (entidad.getJugador()== jugador){
+			return true;
+		}
+		return false;
+	}
 	public boolean equals(Object comparado){
 		//compara por ID, q es unico en cada entidad
 		return ( ID() == ( ( (Entidad) comparado ).ID()) );

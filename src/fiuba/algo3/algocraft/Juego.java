@@ -12,13 +12,33 @@ import java.util.ArrayList;
 
 
 
+
+
+
+
+
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import fiuba.algo3.algocraft.entidadesAbstractas.Dibujable;
+import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
+import fiuba.algo3.algocraft.entidadesAbstractas.UnidadAtaqueBasico;
+import fiuba.algo3.algocraft.excepciones.ErrorAlHacerCopia;
+import fiuba.algo3.algocraft.excepciones.FinDeLaPartida;
+import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
+import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaUnidadException;
+import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
+import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
+import fiuba.algo3.algocraft.excepciones.NoPuedeAtacarUnidadesAereas;
+import fiuba.algo3.algocraft.excepciones.NoPuedeAtacarUnidadesEnTierra;
+import fiuba.algo3.algocraft.excepciones.NoSeEncontroLaEntidad;
+import fiuba.algo3.algocraft.excepciones.NoSePuedeAtacarEstaFueraDeRango;
+import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
+import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
 import fiuba.algo3.algocraft.graficos.Lienzo;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.jugador.Protoss;
@@ -97,6 +117,10 @@ public class Juego{
 	
 	public void finalizarTurno()
 	{
+		if ( alguienPerdio()){
+			throw new FinDeLaPartida();
+		}
+		
 		if(turno == jugador1)
 			turno = jugador2;
 		else
@@ -106,6 +130,13 @@ public class Juego{
 		jugador2.terminarTurno();
 	}
 	
+	private boolean alguienPerdio() {
+		if (( jugador1.estaVivo() ) & ( jugador2.estaVivo() )){
+			return false;
+		}
+		return true;
+	}
+
 	public ArrayList<Unidad> obtenerUnidadesContrarias()
 	{
 		if(turno == jugador1)
@@ -113,18 +144,42 @@ public class Juego{
 		else
 			return obtenerUnidadesDeJugador1();
 	}
-
+	
+	public ArrayList<Estructura> obtenerEstructurasContrarias(){
+		if(turno == jugador1)
+			return obtenerEstructurasDeJugador2();
+		else
+			return obtenerEstructurasDeJugador1();
+	}
+	
 	public Mundo obtenerMundo() {
 		return mundo;
 	}
 
 	public void construirEstructura(String nombre, Vector2D posicion) 
 	{
-				
+				try {
+					turno.agregarEstructura(nombre, posicion, mundo);
+				} catch (NoEsDeSuRazaLaEstructuraException
+						| NoTieneLaEstructuraCreadaException
+						| NoTieneRecursosSuficientesException
+						| NoHayMineralEnElLugarACrear | NoHayGasEnElLugarACrear
+						| ErrorAlHacerCopia e) {
+					
+					e.printStackTrace();
+				}
 	}
 	
-	public void crearUnidad(Estructura estructura, String Nombre) 
+	public void crearUnidad( String nombre) 
 	{
+		try {
+			turno.agregarUnidad(nombre, mundo);
+		} catch (NoEsDeSuRazaLaUnidadException
+				| NoTieneLaEstructuraCreadaException
+				| NoTieneRecursosSuficientesException | NoSeEncontroLaEntidad
+				| ErrorAlHacerCopia e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -139,6 +194,32 @@ public class Juego{
 		
 		
 		
+	}
+
+	public ArrayList<Unidad> obtenerUnidadesTurno() {
+		
+		return turno.ObtenerUnidades();
+	}
+
+	public void moverUnidad(Unidad unidad, Vector2D posicion) {
+		
+		unidad.moverA(posicion);
+		
+	}
+
+	public void unidadAtaqueAtacaA(UnidadAtaqueBasico turno, Entidad enemiga) {
+		
+		try {
+			turno.atacar(enemiga);
+		} catch (NoSePuedeAtacarEstaFueraDeRango
+				| NoPuedeAtacarUnidadesEnTierra | NoPuedeAtacarUnidadesAereas e) {
+			e.printStackTrace();
+		}
+	}
+
+	public Vector2D obtenerPosicion(Entidad entidad) {
+		
+		return entidad.obtenerPosicion();
 	}
 
 }

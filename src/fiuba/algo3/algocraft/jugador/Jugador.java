@@ -72,13 +72,13 @@ public abstract class Jugador {
 													NoTieneLaEstructuraCreadaException,
 													NoTieneRecursosSuficientesException,  
 													NoSeEncontroLaEntidad, ErrorAlHacerCopia {
-		
+		//una estructura ha habiliada comienza a crear la unidad
 		estructuraEmpiezaACrearUnidad(string, mundo);
 		
 		
 	}
 	
-	public void estructuraEmpiezaACrearUnidad(String nombre, Mundo mundo) throws NoEsDeSuRazaLaUnidadException, 
+	public void estructuraEmpiezaACrearUnidad( String nombre, Mundo mundo) throws NoEsDeSuRazaLaUnidadException, 
 								NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 								ErrorAlHacerCopia, NoSeEncontroLaEntidad{
 		//crea la unidad
@@ -211,6 +211,15 @@ public abstract class Jugador {
 		for(int i=0;i<unidades.size();i++)
 			unidades.get(i).dibujar(contexto);
 		
+	}
+
+	public boolean estaVivo() {
+		if (estructuras.size()==0 & unidades.size()==0){
+			return false;
+		}
+		else{
+			return true;
+		}
 	}
 	
 }

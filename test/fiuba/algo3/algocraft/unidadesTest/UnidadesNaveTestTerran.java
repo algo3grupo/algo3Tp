@@ -47,7 +47,7 @@ public class UnidadesNaveTestTerran {
 		ArrayList<Unidad> unidades = jugador.ObtenerUnidades();
 		UnidadNave nave = (UnidadNave) unidades.get(1);
 		nave.cargarUnidad(unidades.get(0));
-		assertEquals(nave.cantidadCarga(), 1);
+		assertEquals(nave.cantidadCargado(), 1);
 
 	}
 

@@ -1,11 +1,14 @@
 package fiuba.algo3.algocraft.unidadesTerran;
 
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
 import fiuba.algo3.algocraft.atributos.Costo;
+import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.UnidadEnergia;
+import fiuba.algo3.algocraft.excepciones.NoPuedeRealizarEsaAccion;
 import fiuba.algo3.algocraft.excepciones.NoTieneEnergiaSuficiente;
 import fiuba.algo3.algocraft.hechizos.EMP;
 import fiuba.algo3.algocraft.hechizos.Radiacion;
@@ -26,6 +29,30 @@ public class NaveCiencia extends UnidadEnergia {
 	public void lanzarRadiacion(Vector2D posicion, Mundo mundo) throws NoTieneEnergiaSuficiente{
 		lanzarHechizo(new Radiacion(), posicion, mundo);
 	}
+	
+	public ArrayList<String> mostrarAcciones(){
+		ArrayList<String> listaAcciones = super.mostrarAcciones();
+		listaAcciones.add("LanzarRadiacion");
+		listaAcciones.add("LanzarEMP");
+		
+		return listaAcciones;
+		
+	}
+	
+	public void realizarAccion(String accion, Entidad destino) throws NoPuedeRealizarEsaAccion{
+		switch (accion){
+			case "LanzarRadiacion": //hay que solucionar tema de parametros.
+				
+							break;
+							
+			case "LanzarEMP": 
+							break;
+							
+			default:	super.realizarAccion(accion, destino);
+						break;
+		}
+	}
+	
 	
 	@Override
 	public void dibujar(Graphics contexto) {

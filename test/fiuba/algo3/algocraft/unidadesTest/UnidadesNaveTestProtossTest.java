@@ -46,7 +46,7 @@ public class UnidadesNaveTestProtossTest {
 		ArrayList<Unidad> unidades = jugador.ObtenerUnidades();
 		UnidadNave nave = (UnidadNave) unidades.get(1);
 		nave.cargarUnidad(unidades.get(0));
-		assertEquals(nave.cantidadCarga(), 2);
+		assertEquals(nave.cantidadCargado(), 2);
 
 	}
 

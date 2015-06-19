@@ -24,13 +24,6 @@ public class Espacio extends Entidad{
 	public void hacerMisAcciones() {
 		// TODO Auto-generated method stub
 		
-	}
-
-	public void dibujar(Graphics contexto) 
-	{
-		dibujarRectangulo(contexto,26,18,95,obtenerPosicion(),obtenerDimension(),obtenerDimension());				
-	}
-
-	
+	}	
 
 }

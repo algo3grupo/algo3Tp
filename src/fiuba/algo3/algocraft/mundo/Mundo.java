@@ -1,13 +1,9 @@
 package fiuba.algo3.algocraft.mundo;
 
-import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-import javax.swing.JFrame;
-
 import fiuba.algo3.algocraft.Juego;
-import fiuba.algo3.algocraft.entidadesAbstractas.Dibujable;
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
 import fiuba.algo3.algocraft.excepciones.DivisionDeGrillaNoEsMultiploDeResolucion;
@@ -17,7 +13,7 @@ import fiuba.algo3.algocraft.excepciones.ParametroNulo;
 import fiuba.algo3.algocraft.excepciones.posicionDeJugadorIndefinida;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 
-public class Mundo extends Dibujable{
+public class Mundo{
 	
 	private int divisionGrillaParaAnalisis;
 	private int resolucion;
@@ -321,21 +317,6 @@ public class Mundo extends Dibujable{
 		return true;
 		
 	}
-	
-	public void dibujar(Graphics contexto)
-	{
-		
-		dibujarImagenEnMosaico(contexto,"recursos/terreno.jpg",new Vector2D(0,0),resolucion,resolucion);
-		
-		for(int i=0;i<mineral.size();i++)
-			mineral.get(i).dibujar(contexto);
-		
-		for(int i=0;i<gas.size();i++)
-			gas.get(i).dibujar(contexto);
-		
-		for(int i=0;i<espacio.size();i++)
-			espacio.get(i).dibujar(contexto);
-	}
 
 	public int obtenerDivisionDeGrilla() 
 	{
@@ -358,5 +339,15 @@ public class Mundo extends Dibujable{
 			}
 		}
 		throw new NoHayUnidadEnEsaPosicion();
+	}
+
+	public ArrayList<Gas> obtenerGas() 
+	{
+		return gas;
+	}
+
+	public ArrayList<Mineral> obtenerMinerales() 
+	{
+		return mineral;
 	}
 }

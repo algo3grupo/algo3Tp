@@ -26,10 +26,4 @@ public class Gas extends Entidad{
 		
 	}
 
-	
-	public void dibujar(Graphics contexto) 
-	{
-		dibujarImagen(contexto,"recursos/gas.png",obtenerPosicion(),obtenerDimension(),obtenerDimension());		
-	}	
-
 }

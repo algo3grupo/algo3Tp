@@ -21,11 +21,4 @@ public class DepositoSuministro extends Estructura {
 		
 		getJugador().aumentarPoblacion(5);
 	}
-
-	
-	public void dibujar(Graphics contexto) 
-	{
-		dibujarImagen(contexto,"recursos/deposito de suministros (terran).png", obtenerPosicion(),obtenerDimension(),obtenerDimension());
-		
-	}
 }

@@ -14,11 +14,4 @@ public class NaveTransporteTerran extends UnidadNave {
 	public NaveTransporteTerran(int dimension, Vector2D posicion, Jugador jugador) {
 		super(dimension,posicion, 150, 8, jugador,  new Costo(125,50),  2, 7);
 	}
-
-	@Override
-	public void dibujar(Graphics contexto) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

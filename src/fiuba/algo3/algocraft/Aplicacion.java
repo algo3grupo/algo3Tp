@@ -14,6 +14,8 @@ public  class Aplicacion {
 		
 		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
 		Vista vista  = new Vista(juego);
+		
+		juego.actualizarObservadores();
 
 	}
 

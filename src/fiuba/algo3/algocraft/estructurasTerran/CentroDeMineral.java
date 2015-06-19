@@ -23,11 +23,4 @@ public class CentroDeMineral extends Estructura implements IRecolectores {
 	{
 		getJugador().agregarMineral(10);
 	}
-
-
-	public void dibujar(Graphics contexto) 
-	{
-		dibujarImagen(contexto,"recursos/centro de mineral (terran).png", obtenerPosicion(),obtenerDimension(),obtenerDimension());
-		
-	}
 }

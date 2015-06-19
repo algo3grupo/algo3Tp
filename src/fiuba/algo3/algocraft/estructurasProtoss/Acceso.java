@@ -17,10 +17,4 @@ public class Acceso extends Protegidas{
 		
 	}
 
-	
-	public void dibujar(Graphics contexto) 
-	{
-		dibujarImagen(contexto,"recursos/acceso (protoss).png", obtenerPosicion(),obtenerDimension(),obtenerDimension());
-	}
-
 }

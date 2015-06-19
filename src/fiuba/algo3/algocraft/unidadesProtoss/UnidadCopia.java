@@ -19,10 +19,4 @@ public class UnidadCopia extends Unidad{
 
 	}
 
-	@Override
-	public void dibujar(Graphics contexto) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

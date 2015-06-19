@@ -14,11 +14,4 @@ public class Fabrica extends Estructura {
 	public Fabrica(int dimension, Vector2D posicion, Jugador jugador) {
 		super(dimension, posicion, 1250, 0, jugador, "Fabrica", new Costo(200,100), "Barraca", 12);
 	}
-
-	
-	public void dibujar(Graphics contexto)
-	{
-		dibujarImagen(contexto,"recursos/fabrica (terran).png", obtenerPosicion(),obtenerDimension(),obtenerDimension());		
-	}
-
 }

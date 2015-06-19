@@ -15,10 +15,4 @@ public class ArchivosTemplarios extends Protegidas {
 		super(dimension, posicion, 500, 0, jugador, "Archivos Templarios", new Costo(150,200), "Puerto Estelar", 9);
 	}
 
-	
-	public void dibujar(Graphics contexto) 
-	{
-		dibujarImagen(contexto,"recursos/archivos templarios (protoss).png", obtenerPosicion(),obtenerDimension(),obtenerDimension());		
-	}
-
 }

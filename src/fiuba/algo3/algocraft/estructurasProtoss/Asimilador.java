@@ -24,13 +24,5 @@ public class Asimilador extends Protegidas implements IRecolectores {
 		
 		getJugador().agregarMineral(10);
 	}
-
-
-	public void dibujar(Graphics contexto) 
-	{
-		dibujarImagen(contexto,"recursos/asimilador (protoss).png", obtenerPosicion(),obtenerDimension(),obtenerDimension());		
-	}
-
-	
 	
 }

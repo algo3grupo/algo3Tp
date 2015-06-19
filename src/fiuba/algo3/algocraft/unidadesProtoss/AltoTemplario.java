@@ -75,11 +75,5 @@ public class AltoTemplario extends UnidadEnergia {
 						break;
 		}
 	}
-	
-	@Override
-	public void dibujar(Graphics contexto) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

@@ -23,11 +23,4 @@ public class Refineria extends Estructura implements IRecolectores {
 	{
 		getJugador().agregarGas(10);
 	}
-
-	
-	public void dibujar(Graphics contexto) 
-	{
-		dibujarImagen(contexto,"recursos/refineria (terran).png", obtenerPosicion(),obtenerDimension(),obtenerDimension());
-	}
-
 }

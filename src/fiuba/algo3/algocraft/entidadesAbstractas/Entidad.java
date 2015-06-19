@@ -14,7 +14,7 @@ import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 import fiuba.algo3.algocraft.ID;
 
-public abstract class Entidad extends Dibujable {
+public abstract class Entidad {
 	private int turnos;
 	private int ID;
 	private int vida;

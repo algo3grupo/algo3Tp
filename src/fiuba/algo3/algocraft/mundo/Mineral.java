@@ -26,9 +26,4 @@ public class Mineral extends Entidad {
 		
 	}
 
-	public void dibujar(Graphics contexto) 
-	{
-		dibujarImagen(contexto,"recursos/cristal.png",obtenerPosicion(),obtenerDimension(),obtenerDimension());				
-	}
-
 }

@@ -20,12 +20,6 @@ public class Dragon extends UnidadAtaqueBasico implements IEfectoEMP {
 	}
 
 	@Override
-	public void dibujar(Graphics contexto) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void atacadoPorEMP() {
 		desactivarEscudo();
 	}

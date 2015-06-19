@@ -22,10 +22,4 @@ public class Pilon extends Protegidas {
 		getJugador().aumentarPoblacion(5);
 		
 	}
-
-	
-	public void dibujar(Graphics contexto) 
-	{
-		dibujarImagen(contexto,"recursos/pilon (protoss).png", obtenerPosicion(),obtenerDimension(),obtenerDimension());		
-	}
 }

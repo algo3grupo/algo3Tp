@@ -24,11 +24,4 @@ public class NexoMineral extends Protegidas implements IRecolectores{
 	{
 		getJugador().agregarMineral(10);
 	}
-
-	
-	public void dibujar(Graphics contexto)
-	{
-		dibujarImagen(contexto,"recursos/nexo mineral (protoss).png", obtenerPosicion(),obtenerDimension(),obtenerDimension());		
-	}
-
 }

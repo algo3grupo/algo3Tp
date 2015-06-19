@@ -28,7 +28,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import fiuba.algo3.algocraft.entidadesAbstractas.Dibujable;
 import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
@@ -52,6 +51,7 @@ import fiuba.algo3.algocraft.jugador.Terran;
 import fiuba.algo3.algocraft.mundo.Mineral;
 import fiuba.algo3.algocraft.mundo.Mundo;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
+import fiuba.algo3.algocraft.vista.Dibujable;
 import fiuba.algo3.algocraft.vista.Lienzo;
 import fiuba.algo3.excepciones.NoLePerteneceLaEntidad;
 

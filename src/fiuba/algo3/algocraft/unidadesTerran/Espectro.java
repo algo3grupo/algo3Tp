@@ -17,10 +17,4 @@ public class Espectro extends UnidadAtaqueBasico {
 		super(dimension, posicion, 120, 7, jugador, "Espectro", new Costo(150,100), "Puerto Estelar", 2, 0, 8,new Ataque( 8, 20, 5, 5));
 	}
 
-	@Override
-	public void dibujar(Graphics contexto) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

@@ -14,12 +14,4 @@ public class PuertoEstelarT extends Estructura {
 	public PuertoEstelarT(int dimension, Vector2D posicion, Jugador jugador) {
 		super(dimension, posicion, 1300, 0, jugador, "Puerto Estelar", new Costo(150,100), "Fabrica", 10);
 	}
-
-	
-	public void dibujar(Graphics contexto) 
-	{
-		dibujarImagen(contexto,"recursos/puerto estelar (terran).png", obtenerPosicion(),obtenerDimension(),obtenerDimension());
-		
-	}
-
 }

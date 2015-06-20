@@ -1,6 +1,7 @@
 package fiuba.algo3.algocraft.estructurasTerran;
 
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
@@ -13,5 +14,16 @@ public class PuertoEstelarT extends Estructura {
 
 	public PuertoEstelarT(int dimension, Vector2D posicion, Jugador jugador) {
 		super(dimension, posicion, 1300, 0, jugador, "Puerto Estelar", new Costo(150,100), "Fabrica", 10);
+	}
+
+
+	public ArrayList<String> obtenerUnidadesCreables() 
+	{
+		ArrayList<String> unidades = new ArrayList<String>();
+		unidades.add("Espectro");
+		unidades.add("NaveTransporteTerran");
+		unidades.add("NaveCiencia");
+		
+		return unidades;
 	}
 }

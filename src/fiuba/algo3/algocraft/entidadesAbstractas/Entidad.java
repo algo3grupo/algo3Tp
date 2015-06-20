@@ -18,6 +18,7 @@ public abstract class Entidad {
 	private int turnos;
 	private int ID;
 	private int vida;
+	private int vidaMaxima;
 	private int rangoDeVision;
 	private Jugador jugador;
 	private String nombre;
@@ -29,6 +30,7 @@ public abstract class Entidad {
 	public Entidad(int dimension, Vector2D posicion, int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int turnos){
 		this.ID = new ID().getIdNuevo();
 		this.vida = vida;
+		this.vidaMaxima = vida;
 		this.rangoDeVision = rangoDeVision;
 		this.jugador = jugador;
 		this.nombre = nombre;
@@ -39,7 +41,16 @@ public abstract class Entidad {
 		this.dimension = dimension;
 	}
 	
-
+	public int obtenerVidaMaxima()
+	{
+		return vidaMaxima;
+	}
+	
+	
+	public void setNombre(String nombre)
+	{
+		this.nombre = nombre;
+	}
 	
 	public boolean incluyeA(Vector2D posicion)
 	{		

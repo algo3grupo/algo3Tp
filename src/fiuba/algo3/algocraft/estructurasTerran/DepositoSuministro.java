@@ -1,6 +1,7 @@
 package fiuba.algo3.algocraft.estructurasTerran;
 
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
@@ -20,5 +21,13 @@ public class DepositoSuministro extends Estructura {
 	public void actualizarPoblacion(){
 		
 		getJugador().aumentarPoblacion(5);
+	}
+
+	
+	public ArrayList<String> obtenerUnidadesCreables() 
+	{
+		ArrayList<String> unidades = new ArrayList<String>();
+		
+		return unidades;
 	}
 }

@@ -1,6 +1,7 @@
 package fiuba.algo3.algocraft.estructurasProtoss;
 
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
@@ -13,5 +14,15 @@ public class PuertoEstelar extends Protegidas {
 
 	public PuertoEstelar(int dimension, Vector2D posicion, Jugador jugador) {
 		super(dimension, posicion, 600, 0, jugador, "Puerto Estelar", new Costo(150,150), "Acceso", 10);
+	}
+
+	
+	public ArrayList<String> obtenerUnidadesCreables() 
+	{
+		ArrayList<String> unidades = new ArrayList<String>();
+		unidades.add("Scout");
+		unidades.add("NaveTransporteProtoss");
+		
+		return unidades;
 	}
 }

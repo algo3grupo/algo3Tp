@@ -1,5 +1,7 @@
 package fiuba.algo3.algocraft.entidadesAbstractas;
 
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
 
 import fiuba.algo3.algocraft.Interfaces.IEstructura;
@@ -24,6 +26,20 @@ public abstract class Estructura extends ColaDeAcciones implements IEstructura{
 	
 	public void eliminar(){
 		super.eliminar();
+	}
+
+
+	public abstract ArrayList<String> obtenerUnidadesCreables();
+
+
+	public Vector2D obtenerPuntoDeCreacion() 
+	{
+		
+		Vector2D posicion = new Vector2D();
+		
+		posicion.aleatorio(obtenerPosicion().obtenerCoordenadaX(), obtenerPosicion().obtenerCoordenadaX()+obtenerDimension(), obtenerPosicion().obtenerCoordenadaY(), obtenerPosicion().obtenerCoordenadaY()+obtenerDimension());
+		
+		return posicion;
 	}
 
 }

@@ -1,6 +1,7 @@
 package fiuba.algo3.algocraft.estructurasProtoss;
 
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
@@ -13,6 +14,14 @@ public class ArchivosTemplarios extends Protegidas {
 
 	public ArchivosTemplarios(int dimension, Vector2D posicion, Jugador jugador) {
 		super(dimension, posicion, 500, 0, jugador, "Archivos Templarios", new Costo(150,200), "Puerto Estelar", 9);
+	}
+
+	public ArrayList<String> obtenerUnidadesCreables() 
+	{
+		ArrayList<String> unidades = new ArrayList<String>();
+		unidades.add("AltoTemplario");
+		
+		return unidades;
 	}
 
 }

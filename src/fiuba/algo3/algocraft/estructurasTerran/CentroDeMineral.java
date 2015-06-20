@@ -1,6 +1,7 @@
 package fiuba.algo3.algocraft.estructurasTerran;
 
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
@@ -22,5 +23,13 @@ public class CentroDeMineral extends Estructura implements IRecolectores {
 	public void recolectarSuministro()
 	{
 		getJugador().agregarMineral(10);
+	}
+
+	
+	public ArrayList<String> obtenerUnidadesCreables() 
+	{
+		ArrayList<String> unidades = new ArrayList<String>();
+		
+		return unidades;
 	}
 }

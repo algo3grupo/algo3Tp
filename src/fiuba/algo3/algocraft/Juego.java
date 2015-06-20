@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Toolkit;
@@ -22,6 +23,7 @@ import java.util.ArrayList;
 
 
 
+import java.util.Iterator;
 import java.util.Observable;
 
 import javax.swing.JFrame;
@@ -41,6 +43,7 @@ import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoPuedeAtacarUnidadesAereas;
 import fiuba.algo3.algocraft.excepciones.NoPuedeAtacarUnidadesEnTierra;
+import fiuba.algo3.algocraft.excepciones.NoPuedeRealizarEsaAccion;
 import fiuba.algo3.algocraft.excepciones.NoSeEncontroLaEntidad;
 import fiuba.algo3.algocraft.excepciones.NoSePuedeAtacarEstaFueraDeRango;
 import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
@@ -60,7 +63,7 @@ public class Juego extends Observable{
 	private Jugador jugador1, jugador2, turno;
 	private Mundo mundo;
 	
-	public Juego(String razaJugador1, String nombreJugador1, String colorJugador1, String razaJugador2, String nombreJugador2, String colorJugador2)
+	public Juego(String razaJugador1, String nombreJugador1, Color colorJugador1, String razaJugador2, String nombreJugador2, Color colorJugador2)
 	{
 		
 		mundo = new Mundo(5000,100,this);
@@ -113,6 +116,8 @@ public class Juego extends Observable{
 		
 		jugador1.terminarTurno();
 		jugador2.terminarTurno();
+		
+		actualizarObservadores();
 	}
 	
 	private boolean alguienPerdio() {
@@ -143,6 +148,7 @@ public class Juego extends Observable{
 
 	public void construirEstructura(String nombre, Vector2D posicion) 
 	{
+		posicion = mundo.pixelAGrilla(posicion);
 				try {
 					turno.agregarEstructura(nombre, posicion);
 				} catch (NoEsDeSuRazaLaEstructuraException
@@ -155,10 +161,10 @@ public class Juego extends Observable{
 				}
 	}
 	
-	public void crearUnidad(String nombre) 
+	public void crearUnidad(String nombre, Estructura estructura) 
 	{
 		try {
-			turno.agregarUnidad(nombre);
+			turno.agregarUnidad(nombre, estructura);
 		} catch (NoEsDeSuRazaLaUnidadException
 				| NoTieneLaEstructuraCreadaException
 				| NoTieneRecursosSuficientesException | NoSeEncontroLaEntidad
@@ -211,7 +217,7 @@ public class Juego extends Observable{
 		
 	}
 	
-	public ArrayList<String> verEstrcturasDeLaRaza(){
+	public ArrayList<String> verEstructurasDeLaRaza(){
 		return turno.obtenerNombreEstructurasDeRaza();
 	}
 	
@@ -223,5 +229,95 @@ public class Juego extends Observable{
 	{
 		setChanged();
 		notifyObservers();
+	}
+
+	public int obtenerGasJugadorActual() 
+	{
+		return turno.obtenerGas();
+	}
+
+	public int obtenerMineralJugadorActual()
+	{
+		return turno.obtenerMineral();
+	}
+
+	public int obtenerPoblacionActualJugador() 
+	{
+		return turno.obtenerPoblacionActual();
+	}
+
+	public int obtenerPoblacionlimiteJugador() 
+	{
+		return turno.obtenerPoblacionLimite();
+	}
+	
+	public String obtenerRaza()
+	{
+		return turno.obtenerRaza();
+	}
+
+	public Estructura obtenerEstructura(Vector2D posicion)
+	{
+		ArrayList<Estructura> e = turno.obtenerEstructuras();
+		Estructura estructura;
+		
+		Iterator i = e.iterator();
+		
+		while(i.hasNext())
+		{
+			estructura = (Estructura)i.next();
+			if(estructura.incluyeA(posicion))
+				return estructura;
+		}
+		return null;
+	}
+
+	public Unidad obtenerUnidad(Vector2D posicion) 
+	{
+		ArrayList<Unidad> e = turno.ObtenerUnidades();
+		Unidad unidad;
+		
+		Iterator i = e.iterator();
+		
+		while(i.hasNext())
+		{
+			unidad = (Unidad)i.next();
+			if(unidad.incluyeA(posicion))
+				return unidad;
+		}
+		return null;
+	}
+
+	public ArrayList<String> verUnidadesDeEstructura(Estructura estructura)
+	{
+		return estructura.obtenerUnidadesCreables();
+	}
+
+	public boolean hayEstructurasEnemigas(Vector2D posicion) 
+	{
+		ArrayList<Estructura> e = obtenerEstructurasContrarias();
+		Estructura estructura;
+		
+		Iterator i = e.iterator();
+		
+		while(i.hasNext())
+		{
+			estructura = (Estructura)i.next();
+			if(estructura.incluyeA(posicion))
+				return true;
+		}
+		return false;
+	}
+
+	public void indicarAccion(String string, Unidad unidad, Entidad entidad) 
+	{
+		try
+		{
+			unidad.realizarAccion(string, entidad);		
+		}
+		catch(NoPuedeRealizarEsaAccion e)
+		{
+			
+		}
 	}
 }

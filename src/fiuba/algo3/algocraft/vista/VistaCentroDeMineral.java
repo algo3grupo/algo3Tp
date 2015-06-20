@@ -7,9 +7,9 @@ import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
 public class VistaCentroDeMineral extends VistaEntidad {
 	
 	
-	public void dibujar(Graphics contexto, Entidad entidad) 
+	public void dibujarApariencia(Graphics contexto, Entidad entidad) 
 	{
-		dibujarImagen(contexto,"recursos/centro de mineral (terran).png", entidad.obtenerPosicion(), entidad.obtenerDimension(),entidad.obtenerDimension());
+		dibujarImagen(contexto,"recursos/centro de minerales (terran).png", entidad.obtenerPosicion(), entidad.obtenerDimension(),entidad.obtenerDimension());
 	}
 
 

@@ -4,11 +4,12 @@ import java.awt.Graphics;
 
 import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
 
-public class VistaPuertoEstelarT extends VistaEntidad {
+public class VistaAltoTemplario extends VistaEntidad
+{
 	
 	public void dibujarApariencia(Graphics contexto, Entidad entidad) 
 	{
-		dibujarImagen(contexto,"recursos/puerto estelar (terran).png", entidad.obtenerPosicion(), entidad.obtenerDimension(),entidad.obtenerDimension());
+		dibujarImagen(contexto,"recursos/alto templario (protoss).png", entidad.obtenerPosicion(), entidad.obtenerDimension(),entidad.obtenerDimension());
 	}
 
 

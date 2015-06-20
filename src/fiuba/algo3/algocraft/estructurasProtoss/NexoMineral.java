@@ -1,6 +1,7 @@
 package fiuba.algo3.algocraft.estructurasProtoss;
 
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
@@ -23,5 +24,10 @@ public class NexoMineral extends Protegidas implements IRecolectores{
 	public void recolectarSuministro()
 	{
 		getJugador().agregarMineral(10);
+	}
+
+	public ArrayList<String> obtenerUnidadesCreables() 
+	{
+		return new ArrayList<String>();
 	}
 }

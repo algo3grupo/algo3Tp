@@ -1,21 +1,21 @@
 package fiuba.algo3.algocraft.vista;
 
-import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.imageio.ImageIO;
-import javax.swing.JFrame;
 
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public abstract class Dibujable 
 {
+	
+	private static HashMap<String,BufferedImage> cacheImagenes = new HashMap<String,BufferedImage>();
 	
 	public Dibujable()
 	{
@@ -33,15 +33,21 @@ public abstract class Dibujable
 	
 	public void dibujarImagen(Graphics contexto, String ruta, Vector2D posicion, int ancho, int alto)
 	{
-		BufferedImage imagen = null;
+		BufferedImage imagen = cacheImagenes.get(ruta);		
 		
-		try
+		if(imagen == null)
 		{
-			imagen = ImageIO.read(new File(ruta));
-		}
-		catch(IOException e)
-		{
+			try
+			{
+				imagen = ImageIO.read(new File(ruta));
+				
+			}
+			catch(IOException e)
+			{
 			
+			}
+			
+			cacheImagenes.put(ruta,imagen);
 		}
 		
 		contexto.drawImage(imagen, (int)posicion.obtenerCoordenadaX(), (int)posicion.obtenerCoordenadaY(), ancho, alto, null);

@@ -20,7 +20,7 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 public class NaveCiencia extends UnidadEnergia {
 
 	public NaveCiencia(int dimension, Vector2D posicion, Jugador jugador) {
-		super(dimension, posicion, 200, 10, jugador, "Nave Ciencia", new Costo(125,50), "Puerto Estelar", 2, 0, 10);
+		super(dimension, posicion, 200, 10, jugador, "NaveCiencia", new Costo(125,50), "Puerto Estelar", 2, 0, 10);
 	}
 
 	public void lanzarEMP(Vector2D posicion, Mundo mundo) throws NoTieneEnergiaSuficiente, NoEsPosibleLanzarElHechizoAlli{

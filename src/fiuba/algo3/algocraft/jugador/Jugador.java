@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.jugador;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
@@ -34,7 +35,7 @@ public abstract class Jugador {
 	
 	private Mundo mundo;
 	private String nombre;
-	private String color;
+	private Color color;
 	private int minerales;
 	private int gas;
 	private int poblacionActual;
@@ -43,7 +44,7 @@ public abstract class Jugador {
 	private int poblacionMaxima;
 	private int dimension;
 	
-	public Jugador(int dimension, Vector2D base, String nombreJugador, String colorJugador, Mundo mundo) {
+	public Jugador(int dimension, Vector2D base, String nombreJugador, Color colorJugador, Mundo mundo) {
 		
 		color = colorJugador;
 		this.nombre = nombreJugador;
@@ -71,24 +72,22 @@ public abstract class Jugador {
 	}
 
 
-	public void agregarUnidad(String string) throws NoEsDeSuRazaLaUnidadException,
+	public void agregarUnidad(String string, Estructura estructura) throws NoEsDeSuRazaLaUnidadException,
 													NoTieneLaEstructuraCreadaException,
 													NoTieneRecursosSuficientesException,  
 													NoSeEncontroLaEntidad, ErrorAlHacerCopia {
 		//una estructura ha habiliada comienza a crear la unidad
-		estructuraEmpiezaACrearUnidad(string);
+		estructuraEmpiezaACrearUnidad(string, estructura);
 		
 		
 	}
 	
-	public void estructuraEmpiezaACrearUnidad( String nombre) throws NoEsDeSuRazaLaUnidadException, 
+	public void estructuraEmpiezaACrearUnidad( String nombre, Estructura estructura) throws NoEsDeSuRazaLaUnidadException, 
 								NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 								ErrorAlHacerCopia, NoSeEncontroLaEntidad{
 		//crea la unidad
-		Unidad unidad = creadorUnidades.crearUnidad(nombre, mundo);
+		Unidad unidad = creadorUnidades.crearUnidad(nombre, mundo, estructura);
 		//si puede crearla la agrega a la cola de acciones de la estructura que la crea
-		//el buscador de listas, devuelve entidades habilitadas
-		Estructura estructura = (Estructura) BuscadorLista.obtenerEntidad( (ArrayList)estructuras, (IModo)new ModoNombre(unidad.requiere()));
 		estructura.agregarAccion(new CrearUnidad( estructura, unidad ));
 		
 	}
@@ -228,4 +227,32 @@ public abstract class Jugador {
 	public Mundo getMundo(){
 		return mundo;
 	}
+
+	public int obtenerGas() 
+	{
+		return gas;
+	}
+
+	public int obtenerMineral() 
+	{
+		return minerales;
+	}
+
+	public int obtenerPoblacionActual() 
+	{
+		return poblacionActual;
+	}
+
+	public int obtenerPoblacionLimite() 
+	{
+		return poblacionMaxima;
+	}
+	
+	public abstract String obtenerRaza();
+
+	public Color obtenerColor() 
+	{
+		return color;
+	}
+	
 }

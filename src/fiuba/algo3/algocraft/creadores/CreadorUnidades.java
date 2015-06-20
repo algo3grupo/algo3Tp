@@ -16,13 +16,13 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public abstract class CreadorUnidades extends Creador {
 	
-	public Unidad crearUnidad(String string, Mundo mundo) throws NoEsDeSuRazaLaUnidadException,
+	public Unidad crearUnidad(String string, Mundo mundo, Estructura estructura) throws NoEsDeSuRazaLaUnidadException,
 																					NoTieneLaEstructuraCreadaException,
 																					NoTieneRecursosSuficientesException,
 																					ErrorAlHacerCopia{
 		try {
 			
-			return (Unidad)crearEntidad(string, new Vector2D(), mundo);
+			return (Unidad)crearEntidad(string, estructura.obtenerPuntoDeCreacion(), mundo);
 			
 		} catch (NoEsDeSuRazaLaEntidadException e) {
 			throw new NoEsDeSuRazaLaUnidadException();

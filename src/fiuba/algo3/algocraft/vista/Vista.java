@@ -1,20 +1,28 @@
 package fiuba.algo3.algocraft.vista;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 
 import fiuba.algo3.algocraft.Juego;
+import fiuba.algo3.algocraft.atributos.Costo;
+import fiuba.algo3.algocraft.controlador.Controlador;
 import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
-import fiuba.algo3.algocraft.estructurasProtoss.PuertoEstelar;
-import fiuba.algo3.algocraft.jugador.Jugador;
-import fiuba.algo3.algocraft.jugador.Terran;
+import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
+import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
 import fiuba.algo3.algocraft.mundo.Mundo;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 
@@ -24,11 +32,19 @@ public class Vista implements Observer {
 	private JFrame ventana;
 	private Lienzo lienzo;
 	private HashMap<String,VistaEntidad> Vistas; 
+	private Controlador controlador;
+	private JPopupMenu menuContextual;
+	private JLabel datosJugador;
+	private Unidad seleccion;
 	
 	
 	public Vista(Juego juego)
 	{
+		menuContextual = new JPopupMenu();
+		seleccion = null;
 		this.juego = juego;
+		this.controlador = new Controlador(juego, this);
+		
 		ventana = crearVentana(juego);
 		
 		this.juego.addObserver(this);
@@ -45,10 +61,21 @@ public class Vista implements Observer {
 		Vistas.put("NexoMineral", new VistaNexoMineral());
 		Vistas.put("Pilon", new VistaPilon());
 		Vistas.put("PuertoEstelar", new VistaPuertoEstelar());
-		Vistas.put("PuertiEstelarT", new VistaPuertoEstelarT());
+		Vistas.put("PuertoEstelarT", new VistaPuertoEstelarT());
 		Vistas.put("Refineria", new VistaRefineria());		
 		Vistas.put("Gas", new VistaGas());	
 		Vistas.put("Mineral", new VistaMineral());	
+		
+		Vistas.put("AltoTemplario", new VistaAltoTemplario());
+		Vistas.put("Dragon", new VistaDragon());
+		Vistas.put("NaveTransporteProtoss", new VistaNaveTransporteProtoss());
+		Vistas.put("Scout", new VistaScout());
+		Vistas.put("Zealot", new VistaZealot());
+		Vistas.put("Espectro", new VistaEspectro());
+		Vistas.put("Golliat", new VistaGolliat());
+		Vistas.put("Marine", new VistaMarine());
+		Vistas.put("NaveCiencia", new VistaNaveCiencia());
+		Vistas.put("NaveTransporteTerran", new VistaNaveTransporteTerran());
 		
 	}
 	
@@ -69,14 +96,24 @@ public class Vista implements Observer {
 		ventana.setSize(800,800);
 		ventana.setVisible(true);
 		
+		JMenuBar menu = new JMenuBar();
+		JMenuItem pasarTurno = new JMenuItem("Pasar Turno");
+		datosJugador = new JLabel();
+		menu.add(pasarTurno);
+		menu.add(datosJugador);
+		
+		pasarTurno.addActionListener(controlador.obtenerListenerPasarTurno());
+		
+		ventana.setJMenuBar(menu);
+		
 		lienzo = new Lienzo(juego,juego.obtenerMundo().obtenerResolucion());
+		lienzo.addMouseListener(controlador.obtenerListenerMouse(menuContextual));
+		
 		
 		JScrollPane camara = new JScrollPane(lienzo);
 		camara.setPreferredSize(new Dimension(400,400));
 
-		ventana.add(camara);		
-		
-		
+		ventana.add(camara);				
 		
 		return ventana;
 	}
@@ -84,8 +121,11 @@ public class Vista implements Observer {
 	public void update(Observable arg0, Object arg1) 
 	{
 		
+				
 		Entidad e;
 		Graphics g = lienzo.getGraphics();
+		
+		datosJugador.setText("Jugador de Turno: Raza: "+juego.obtenerRaza()+" Gas: "+juego.obtenerGasJugadorActual()+" Mineral "+juego.obtenerMineralJugadorActual()+" Poblacion: "+juego.obtenerPoblacionActualJugador()+"/"+juego.obtenerPoblacionlimiteJugador());
 		
 		dibujar(g,juego.obtenerMundo());
 		
@@ -123,6 +163,87 @@ public class Vista implements Observer {
 		while(i.hasNext())
 			dibujar(g,(Entidad)i.next());		
 				
+	}
+	
+	public void dibujarMenuCreadorEstructuras(Vector2D posicion, ArrayList<String> estructuras)
+	{
+		menuContextual.removeAll();
+		
+		JLabel rotulo = new JLabel("Crear estructura aca");
+		rotulo.setBackground(new Color(255,0,0));
+		rotulo.setOpaque(true);
+		
+		menuContextual.add(rotulo);
+		
+		for(int i=0; i<estructuras.size();i++)
+		{
+			JMenuItem item = new JMenuItem(estructuras.get(i));
+			item.addActionListener(controlador.obtenerListenerCreadorEstructuras(estructuras.get(i),posicion));
+			menuContextual.add(item);
+		}
+		
+		menuContextual.show(lienzo, (int)posicion.obtenerCoordenadaX(), (int)posicion.obtenerCoordenadaY());	
+	}
+
+	public boolean noHaySeleccion() 
+	{
+		if(seleccion == null)
+			return true;
+		return false;
+	}
+
+	public void dibujarMenuCreadorDeUnidades(Vector2D posicion,	ArrayList<String> unidades, Estructura estructura) 
+	{
+		menuContextual.removeAll();
+		
+		JLabel rotulo = new JLabel("Crear unidad");
+		rotulo.setBackground(new Color(255,0,0));
+		rotulo.setOpaque(true);
+		
+		menuContextual.add(rotulo);
+		
+		for(int i=0; i<unidades.size();i++)
+		{
+			JMenuItem item = new JMenuItem(unidades.get(i));
+			item.addActionListener(controlador.obtenerListenerCreadorDeUnidades(unidades.get(i),estructura));
+			menuContextual.add(item);
+		}
+		
+		menuContextual.show(lienzo, (int)posicion.obtenerCoordenadaX(), (int)posicion.obtenerCoordenadaY());	
+		menuContextual.setVisible(true);		
+	}
+
+	public void seleccionarUnidad(Unidad unidad) 
+	{
+		seleccion = unidad;		
+	}
+
+	public void deseleccionarUnidad() 
+	{
+		seleccion = null;		
+	}
+
+	public void dibujarMenuAccionesUnidad(Vector2D posicion) 
+	{
+		menuContextual.removeAll();
+		
+		JLabel rotulo = new JLabel("Accion");
+		rotulo.setBackground(new Color(255,0,0));
+		rotulo.setOpaque(true);
+		
+		ArrayList<String> acciones = seleccion.mostrarAcciones();
+		
+		menuContextual.add(rotulo);
+		
+		for(int i=0; i<acciones.size();i++)
+		{
+			JMenuItem item = new JMenuItem(acciones.get(i));
+			item.addActionListener(controlador.obtenerListenerAccionesDeUnidad(acciones.get(i),seleccion,posicion));
+			menuContextual.add(item);
+		}
+		
+		menuContextual.show(lienzo, (int)posicion.obtenerCoordenadaX(), (int)posicion.obtenerCoordenadaY());	
+		menuContextual.setVisible(true);		
 	}
 
 }

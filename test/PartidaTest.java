@@ -67,14 +67,14 @@ public class PartidaTest {
 		//Turno 201: Comienza la creacion de unidades y la batalla.
 		
 		for (int j = 0; j < 5; j++){
-			juego.crearUnidad("Zealot");
+			juego.crearUnidad("Zealot",null);
 		}
 		juego.finalizarTurno();
 		
 		//Turno 202:Crea UnidadesElJugadorTerran
 		
 		for (int j = 0; j < 5; j++){
-			juego.crearUnidad("Marine");
+			juego.crearUnidad("Marine",null);
 		}
 		
 		for(int i=202;i<=209;i++)

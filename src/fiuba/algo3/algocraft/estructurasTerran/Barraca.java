@@ -1,6 +1,7 @@
 package fiuba.algo3.algocraft.estructurasTerran;
 
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
@@ -13,5 +14,13 @@ public class Barraca extends Estructura {
 
 	public Barraca(int dimension,  Vector2D posicion, Jugador jugador) {
 		super(dimension, posicion, 1000, 0, jugador, "Barraca", new Costo(150,0), "", 12);
+	}
+
+	public ArrayList<String> obtenerUnidadesCreables() 
+	{
+		ArrayList<String> unidades = new ArrayList<String>();
+		unidades.add("Marine");
+		
+		return unidades;
 	}
 }

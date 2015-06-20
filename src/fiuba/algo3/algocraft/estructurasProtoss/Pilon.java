@@ -1,6 +1,7 @@
 package fiuba.algo3.algocraft.estructurasProtoss;
 
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
@@ -21,5 +22,13 @@ public class Pilon extends Protegidas {
 		
 		getJugador().aumentarPoblacion(5);
 		
+	}
+
+	
+	public ArrayList<String> obtenerUnidadesCreables() 
+	{
+		ArrayList<String> unidades = new ArrayList<String>();
+		
+		return unidades;
 	}
 }

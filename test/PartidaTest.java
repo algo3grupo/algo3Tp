@@ -1,5 +1,7 @@
 import static org.junit.Assert.*;
 
+import java.awt.Color;
+
 import org.junit.Test;
 
 import fiuba.algo3.algocraft.Juego;
@@ -16,7 +18,7 @@ public class PartidaTest {
 	@Test(expected = FinDeLaPartida.class)
 	public void unaPartidaCompleta() throws NoLePerteneceLaEntidad {
 		
-		Juego juego = new Juego("Protoss","Martin","#FF0000","Terran","Damian","#0000FF");
+		Juego juego = new Juego("Protoss","DSRKLI",new Color(1),"Terran","YTREJS",new Color(0));
 		
 		Mundo mundo = juego.obtenerMundo();
 		
@@ -65,16 +67,16 @@ public class PartidaTest {
 			juego.finalizarTurno();
 		
 		//Turno 201: Comienza la creacion de unidades y la batalla.
-		
+		Estructura acceso = juego.obtenerEstructurasDeJugador1().get(3);
 		for (int j = 0; j < 5; j++){
-			juego.crearUnidad("Zealot",null);
+			juego.crearUnidad("Zealot", acceso);
 		}
 		juego.finalizarTurno();
 		
 		//Turno 202:Crea UnidadesElJugadorTerran
-		
+		Estructura barraca = juego.obtenerEstructurasDeJugador2().get(3);
 		for (int j = 0; j < 5; j++){
-			juego.crearUnidad("Marine",null);
+			juego.crearUnidad("Marine", barraca);
 		}
 		
 		for(int i=202;i<=209;i++)

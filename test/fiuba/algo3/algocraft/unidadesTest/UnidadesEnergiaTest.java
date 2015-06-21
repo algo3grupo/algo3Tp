@@ -2,6 +2,8 @@ package fiuba.algo3.algocraft.unidadesTest;
 
 import static org.junit.Assert.*;
 
+import java.awt.Color;
+
 import org.junit.Test;
 
 import fiuba.algo3.algocraft.excepciones.ErrorAlHacerCopia;
@@ -15,6 +17,7 @@ import fiuba.algo3.algocraft.excepciones.NoTieneEnergiaSuficiente;
 import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
 import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
 import fiuba.algo3.algocraft.jugador.Jugador;
+import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.entidadesAbstractas.UnidadEnergia;
 import fiuba.algo3.algocraft.jugador.Protoss;
 import fiuba.algo3.algocraft.mundo.Mundo;
@@ -29,7 +32,7 @@ public class UnidadesEnergiaTest {
 												NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, 
 												NoEsDeSuRazaLaUnidadException, NoSeEncontroLaEntidad{
 		
-		Jugador jugador = new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000", new Mundo(1000, 1000, null));
+		Jugador jugador = new Protoss(0,new Vector2D(100,100),"Pepe",new Color(0), new Mundo(1000, 1000, null));
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
 		jugador.agregarEstructura("Pilon", new Vector2D());
@@ -39,8 +42,9 @@ public class UnidadesEnergiaTest {
 		jugador.agregarEstructura("Puerto Estelar", new Vector2D());
 		PasaTurnos.pasarTurnos(jugador, 10);
 		jugador.agregarEstructura("Archivos Templarios", new Vector2D());
-		PasaTurnos.pasarTurnos(jugador, 10);
-		jugador.agregarUnidad("Alto Templario");
+		PasaTurnos.pasarTurnos(jugador, 12);
+		Estructura archivos = jugador.obtenerEstructuras().get(4);
+		jugador.agregarUnidad("AltoTemplario", archivos);
 		PasaTurnos.pasarTurnos(jugador, 7); // en el turno que se crea se carga energia
 		
 		int energiaActual = ((UnidadEnergia) jugador.ObtenerUnidades().get(0)).obtenerEnergia();
@@ -52,7 +56,7 @@ public class UnidadesEnergiaTest {
 														NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 														NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, 
 														NoEsDeSuRazaLaUnidadException, NoSeEncontroLaEntidad {
-		Jugador jugador = new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000", new Mundo(1000, 1000, null));
+		Jugador jugador = new Protoss(0,new Vector2D(100,100),"Pepe",new Color(0), new Mundo(1000, 1000, null));
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
 		jugador.agregarEstructura("Pilon", new Vector2D());
@@ -63,7 +67,8 @@ public class UnidadesEnergiaTest {
 		PasaTurnos.pasarTurnos(jugador, 10);
 		jugador.agregarEstructura("Archivos Templarios", new Vector2D());
 		PasaTurnos.pasarTurnos(jugador, 10);
-		jugador.agregarUnidad("Alto Templario");
+		Estructura archivos = jugador.obtenerEstructuras().get(4);
+		jugador.agregarUnidad("AltoTemplario", archivos);
 		PasaTurnos.pasarTurnos(jugador, 30); //turnos de sobra
 		
 		int energiaActual = ((UnidadEnergia) jugador.ObtenerUnidades().get(0)).obtenerEnergia();
@@ -75,7 +80,7 @@ public class UnidadesEnergiaTest {
 											NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 											NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia,
 											NoEsDeSuRazaLaUnidadException, NoSeEncontroLaEntidad, NoEsPosibleLanzarElHechizoAlli{
-		Jugador jugador = new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000",new Mundo(1000, 1000, null));
+		Jugador jugador = new Protoss(0,new Vector2D(100,100),"Pepe",new Color(0),new Mundo(1000, 1000, null));
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
 		jugador.agregarEstructura("Pilon", new Vector2D());
@@ -86,7 +91,8 @@ public class UnidadesEnergiaTest {
 		PasaTurnos.pasarTurnos(jugador, 10);
 		jugador.agregarEstructura("Archivos Templarios", new Vector2D());
 		PasaTurnos.pasarTurnos(jugador, 10);
-		jugador.agregarUnidad("Alto Templario");
+		Estructura archivos = jugador.obtenerEstructuras().get(4);
+		jugador.agregarUnidad("AltoTemplario", archivos);
 		PasaTurnos.pasarTurnos(jugador, 8);
 		AltoTemplario altoTemplario = (AltoTemplario) jugador.ObtenerUnidades().get(0);
 		try {

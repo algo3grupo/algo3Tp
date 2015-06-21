@@ -2,6 +2,7 @@ package fiuba.algo3.algocraft.mundoTest;
 
 import static org.junit.Assert.*;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 import org.junit.Assert;
@@ -22,7 +23,7 @@ public class MundoTest {
 	@Test
 	public void crearMundo() 
 	{
-		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+		Juego juego = new Juego("Protoss","DSRKLI",new Color(1),"Terran","YTREJS",new Color(0));
         
 		Mundo mundo = new Mundo(500,10,juego);
 
@@ -32,7 +33,7 @@ public class MundoTest {
 	public void generarMundo() 
 	{
 		
-		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");        
+		Juego juego = new Juego("Protoss","DSRKLI",new Color(1),"Terran","YTREJS",new Color(0));        
 	
 		new Mundo(500,10,juego).generar();
 	}
@@ -40,7 +41,7 @@ public class MundoTest {
 	@Test(expected = ParametroNegativo.class)
 	public void resolucionNegativa() 
 	{
-		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+		Juego juego = new Juego("Protoss","DSRKLI",new Color(1),"Terran","YTREJS",new Color(0));
         
 		Mundo mundo = new Mundo(-500,10,juego);	
 	}
@@ -48,7 +49,7 @@ public class MundoTest {
 	@Test(expected = ParametroNegativo.class)
 	public void divisionDeGrillaNegativa() 
 	{
-		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+		Juego juego = new Juego("Protoss","DSRKLI",new Color(1),"Terran","YTREJS",new Color(0));
         
 		Mundo mundo = new Mundo(500,-10,juego);
 	}
@@ -56,7 +57,7 @@ public class MundoTest {
 	@Test(expected = ParametroNulo.class)
 	public void divisionDeGrillaCero()
 	{
-		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+		Juego juego = new Juego("Protoss","DSRKLI",new Color(1),"Terran","YTREJS",new Color(0));
         
 		Mundo mundo = new Mundo(500,0,juego);
 	}
@@ -64,7 +65,7 @@ public class MundoTest {
 	@Test(expected = ParametroNulo.class)
 	public void resolucionCero() 
 	{
-		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+		Juego juego = new Juego("Protoss","DSRKLI",new Color(1),"Terran","YTREJS",new Color(0));
         
 		Mundo mundo = new Mundo(0,10,juego);	
 	}
@@ -72,7 +73,7 @@ public class MundoTest {
 	@Test(expected = DivisionDeGrillaNoEsMultiploDeResolucion.class)
 	public void divisionDeGrillaDistintoAMultiploDeResolucion() 
 	{
-		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+		Juego juego = new Juego("Protoss","DSRKLI",new Color(1),"Terran","YTREJS",new Color(0));
         
 		Mundo mundo = new Mundo(500,3,juego);
 	}
@@ -81,7 +82,7 @@ public class MundoTest {
 	@Test
 	public void posicionValidaBaseJugadores() 
 	{
-		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+		Juego juego = new Juego("Protoss","DSRKLI",new Color(1),"Terran","YTREJS",new Color(0));
         
 		Mundo mundo = new Mundo(500,10,juego);
 		
@@ -100,7 +101,7 @@ public class MundoTest {
 	@Test
 	public void distanciaEntreBasesDeJugadoresGrande() 
 	{
-		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+		Juego juego = new Juego("Protoss","DSRKLI",new Color(1),"Terran","YTREJS",new Color(0));
         
 		Mundo mundo = new Mundo(500,10,juego);
 		
@@ -114,7 +115,7 @@ public class MundoTest {
 	@Test
 	public void recursosCercanosALasBasesDeLosJugares() 
 	{
-		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+		Juego juego = new Juego("Protoss","DSRKLI",new Color(1),"Terran","YTREJS",new Color(0));
         
 		Mundo mundo = new Mundo(500,10,juego);
 		
@@ -134,7 +135,7 @@ public class MundoTest {
 	public void listaDeMineralesCercanos() 
 	{
 
-		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+		Juego juego = new Juego("Protoss","DSRKLI",new Color(1),"Terran","YTREJS",new Color(0));
         
 		Mundo mundo = new Mundo(500,10,juego);
 		
@@ -146,7 +147,7 @@ public class MundoTest {
 	@Test
 	public void listaDeGasesCercanos() 
 	{
-		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+		Juego juego = new Juego("Protoss","DSRKLI",new Color(1),"Terran","YTREJS",new Color(0));
         
 		Mundo mundo = new Mundo(500,10,juego);
 		
@@ -158,7 +159,7 @@ public class MundoTest {
 	@Test
 	public void obtenerResolucion() 
 	{
-		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+		Juego juego = new Juego("Protoss","DSRKLI",new Color(1),"Terran","YTREJS",new Color(0));
         
 		Mundo mundo = new Mundo(500,10,juego);
 		
@@ -170,7 +171,7 @@ public class MundoTest {
 	@Test(expected = posicionDeJugadorIndefinida.class)
 	public void posicionBaseJugador1Vacia() 
 	{
-		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+		Juego juego = new Juego("Protoss","DSRKLI",new Color(1),"Terran","YTREJS",new Color(0));
         
 		Mundo mundo = new Mundo(500,10,juego);
 		
@@ -180,7 +181,7 @@ public class MundoTest {
 	@Test(expected = posicionDeJugadorIndefinida.class)
 	public void posicionBaseJugador2Vacia()
 	{
-		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+		Juego juego = new Juego("Protoss","DSRKLI",new Color(1),"Terran","YTREJS",new Color(0));
         
 		Mundo mundo = new Mundo(500,10,juego);
 		
@@ -190,7 +191,7 @@ public class MundoTest {
 	@Test
 	public void posicionBaseJugador1NoVacia() 
 	{
-		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+		Juego juego = new Juego("Protoss","DSRKLI",new Color(1),"Terran","YTREJS",new Color(0));
         
 		Mundo mundo = new Mundo(500,10,juego);
 		
@@ -202,7 +203,7 @@ public class MundoTest {
 	@Test
 	public void posicionBaseJugador2NoVacia() 
 	{
-		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+		Juego juego = new Juego("Protoss","DSRKLI",new Color(1),"Terran","YTREJS",new Color(0));
         
 		Mundo mundo = new Mundo(500,10,juego);
 		
@@ -214,7 +215,7 @@ public class MundoTest {
 	@Test
 	public void posicionDondeNoHayMineral() 
 	{
-		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+		Juego juego = new Juego("Protoss","DSRKLI",new Color(1),"Terran","YTREJS",new Color(0));
         
 		Mundo mundo = new Mundo(500,10,juego);
 		
@@ -227,7 +228,7 @@ public class MundoTest {
 	@Test
 	public void posicionDondeSiHayMineral() 
 	{
-		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+		Juego juego = new Juego("Protoss","DSRKLI",new Color(1),"Terran","YTREJS",new Color(0));
         
 		Mundo mundo = new Mundo(500,10,juego);
 		
@@ -241,7 +242,7 @@ public class MundoTest {
 	@Test
 	public void posicionDondeNoHayGas() 
 	{
-		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+		Juego juego = new Juego("Protoss","DSRKLI",new Color(1),"Terran","YTREJS",new Color(0));
         
 		Mundo mundo = new Mundo(500,10,juego);
 		
@@ -253,7 +254,7 @@ public class MundoTest {
 	@Test
 	public void posicionDondeSiHayGas() 
 	{
-		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+		Juego juego = new Juego("Protoss","DSRKLI",new Color(1),"Terran","YTREJS",new Color(0));
         
 		Mundo mundo = new Mundo(500,10,juego);
 		
@@ -267,7 +268,7 @@ public class MundoTest {
 	@Test
 	public void posicionDondeNoHayEspacio() 
 	{
-		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+		Juego juego = new Juego("Protoss","DSRKLI",new Color(1),"Terran","YTREJS",new Color(0));
         
 		Mundo mundo = new Mundo(500,10,juego);
 		
@@ -279,7 +280,7 @@ public class MundoTest {
 	@Test
 	public void pixelAGrilla() 
 	{
-		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+		Juego juego = new Juego("Protoss","DSRKLI",new Color(1),"Terran","YTREJS",new Color(0));
         
 		Mundo mundo = new Mundo(500,10,juego);
 		

@@ -2,10 +2,12 @@ package fiuba.algo3.algocraft.unidadesTest;
 
 import static org.junit.Assert.*;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 import org.junit.Test;
 
+import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.UnidadNave;
 import fiuba.algo3.algocraft.excepciones.ErrorAlHacerCopia;
@@ -31,7 +33,7 @@ public class UnidadesNaveTestProtossTest {
 	public void crearNaveYCargarUnaUnidad() throws NoEsDeSuRazaLaEstructuraException, NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 					NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoEsDeSuRazaLaUnidadException,
 					NoEsPosibleCargarEstaUnidad, NoSeEncontroLaEntidad {
-		Jugador jugador = new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000", new Mundo(1000, 1000, null));
+		Jugador jugador = new Protoss(0,new Vector2D(100,100),"Pepe",new Color(0), new Mundo(1000, 1000, null));
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
 		jugador.agregarEstructura("Pilon", new Vector2D());
@@ -40,8 +42,10 @@ public class UnidadesNaveTestProtossTest {
 		PasaTurnos.pasarTurnos(jugador, 8);
 		jugador.agregarEstructura("Puerto Estelar", new Vector2D());
 		PasaTurnos.pasarTurnos(jugador, 10);
-		jugador.agregarUnidad("Nave Transporte");
-		jugador.agregarUnidad("Zealot");
+		Estructura puerto = jugador.obtenerEstructuras().get(3);
+		Estructura acceso = jugador.obtenerEstructuras().get(2);
+		jugador.agregarUnidad("Nave Transporte", puerto);
+		jugador.agregarUnidad("Zealot", acceso);
 		PasaTurnos.pasarTurnos(jugador, 15);
 		ArrayList<Unidad> unidades = jugador.ObtenerUnidades();
 		UnidadNave nave = (UnidadNave) unidades.get(1);
@@ -54,7 +58,7 @@ public class UnidadesNaveTestProtossTest {
 	public void crearNaveYLaUnaUnidadQueQuiereCargarEsVoladora() throws NoEsDeSuRazaLaEstructuraException, NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 					NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoEsDeSuRazaLaUnidadException, 
 					NoSeEncontroLaEntidad {
-		Jugador jugador = new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000", new Mundo(1000, 1000, null));
+		Jugador jugador = new Protoss(0,new Vector2D(100,100),"Pepe",new Color(0), new Mundo(1000, 1000, null));
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
 		jugador.agregarEstructura("Pilon", new Vector2D());
@@ -62,8 +66,10 @@ public class UnidadesNaveTestProtossTest {
 		PasaTurnos.pasarTurnos(jugador, 8);
 		jugador.agregarEstructura("Puerto Estelar", new Vector2D());
 		PasaTurnos.pasarTurnos(jugador, 10);
-		jugador.agregarUnidad("Nave Transporte");
-		jugador.agregarUnidad("Scout");
+		Estructura puerto = jugador.obtenerEstructuras().get(3);
+		Estructura acceso = jugador.obtenerEstructuras().get(2);
+		jugador.agregarUnidad("Nave Transporte", puerto);
+		jugador.agregarUnidad("Scout", acceso);
 		PasaTurnos.pasarTurnos(jugador, 15);
 		ArrayList<Unidad> unidades = jugador.ObtenerUnidades();
 		UnidadNave nave = (UnidadNave) unidades.get(0);
@@ -79,7 +85,7 @@ public class UnidadesNaveTestProtossTest {
 	public void crearNaveYQuiereSobreCargarLaNave() throws NoEsDeSuRazaLaEstructuraException, NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 					NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoEsDeSuRazaLaUnidadException,
 					 NoSeEncontroLaEntidad {
-		Jugador jugador = new Protoss(0,new Vector2D(100,100),"Pepe","#FF0000", new Mundo(1000, 1000, null));
+		Jugador jugador = new Protoss(0,new Vector2D(100,100),"Pepe",new Color(0), new Mundo(1000, 1000, null));
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
 		jugador.agregarEstructura("Pilon", new Vector2D());
@@ -89,9 +95,11 @@ public class UnidadesNaveTestProtossTest {
 		PasaTurnos.pasarTurnos(jugador, 8);
 		jugador.agregarEstructura("Puerto Estelar", new Vector2D());
 		PasaTurnos.pasarTurnos(jugador, 10);
-		jugador.agregarUnidad("Nave Transporte");
+		Estructura puerto = jugador.obtenerEstructuras().get(5);
+		Estructura acceso = jugador.obtenerEstructuras().get(4);
+		jugador.agregarUnidad("Nave Transporte", puerto);
 		for (int i=1; i < 6; i++){
-			jugador.agregarUnidad("Zealot");
+			jugador.agregarUnidad("Zealot", acceso);
 		}
 		PasaTurnos.pasarTurnos(jugador, 17);
 		ArrayList<Unidad> unidades = jugador.ObtenerUnidades();

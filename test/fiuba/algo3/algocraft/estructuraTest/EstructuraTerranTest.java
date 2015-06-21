@@ -2,6 +2,8 @@ package fiuba.algo3.algocraft.estructuraTest;
 
 import static org.junit.Assert.*;
 
+import java.awt.Color;
+
 import org.junit.Test;
 
 import fiuba.algo3.algocraft.excepciones.ErrorAlHacerCopia;
@@ -20,7 +22,7 @@ public class EstructuraTerranTest {
 	@Test
 	public void correlacionPuertoEstelarNecesitaFabrica() throws ErrorAlHacerCopia {
 		
-		Jugador jugador= new Terran(0,new Vector2D(100,100),"Pepe","#FF0000",new Mundo(1000, 1000, null));
+		Jugador jugador= new Terran(0,new Vector2D(100,100),"Pepe",new Color(0),new Mundo(1000, 1000, null));
 		jugador.agregarMineral(2300);
 		jugador.agregarGas(2500);
 		try {
@@ -39,7 +41,7 @@ public class EstructuraTerranTest {
 	@Test
 	public void correlacionFabricaNecesitaBarraca() throws ErrorAlHacerCopia {
 		
-		Jugador jugador= new Terran(0,new Vector2D(100,100),"Pepe","#FF0000",new Mundo(1000, 1000, null));
+		Jugador jugador= new Terran(0,new Vector2D(100,100),"Pepe",new Color(0),new Mundo(1000, 1000, null));
 		jugador.agregarMineral(2300);
 		jugador.agregarGas(2500);
 		try {

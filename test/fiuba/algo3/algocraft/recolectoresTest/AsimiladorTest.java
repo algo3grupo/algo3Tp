@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.recolectoresTest;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 import junit.framework.Assert;
@@ -26,7 +27,7 @@ public class AsimiladorTest {
 												NoTieneLaEstructuraCreadaException,	NoTieneRecursosSuficientesException, 
 												NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia{
 		
-		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+		Juego juego = new Juego("Protoss","DSRKLI",new Color(1),"Terran","YTREJS",new Color(0));
         
 		Mundo mundo = new Mundo(500,10,juego);
 		mundo.generar();
@@ -48,7 +49,7 @@ public class AsimiladorTest {
 																NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 																NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia{
 
-		Juego juego = new Juego("Protoss","DSRKLI","#FF0000","Terran","YTREJS","#0000FF");
+		Juego juego = new Juego("Protoss","DSRKLI",new Color(1),"Terran","YTREJS",new Color(0));
         
 		Mundo mundo = new Mundo(500,10,juego);
 		mundo.generar();

@@ -3,11 +3,15 @@ package fiuba.algo3.algocraft.unidadesTest;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
+import java.awt.Color;
+
 import org.junit.Test;
 
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 import fiuba.algo3.algocraft.atributos.Ataque;
+import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
+import fiuba.algo3.algocraft.estructurasTerran.CentroDeMineral;
 import fiuba.algo3.algocraft.excepciones.ErrorAlHacerCopia;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaUnidadException;
@@ -30,18 +34,19 @@ public class UnidadesTerranTest {
 
 	@Test
 	public void instaciarMarine(){
-		Jugador jugador= new Terran(10,new Vector2D(100,100),"Pepe","#FF0000", new Mundo(1000, 1000, null));
+		Jugador jugador= new Terran(10,new Vector2D(100,100),"Pepe",new Color(0), new Mundo(1000, 1000, null));
 		Unidad marine = new Marine(10,new Vector2D(), jugador);
 		assertEquals("Marine",marine.nombre());
 	}
 	
 	@Test
 	public void intentaCrearUnidadSinLaEstructura() throws ErrorAlHacerCopia, NoSeEncontroLaEntidad{
-		Jugador jugador= new Terran(10,new Vector2D(100,100),"Pepe","#FF0000", new Mundo(1000, 1000, null));
+		Jugador jugador= new Terran(10,new Vector2D(100,100),"Pepe",new Color(0), new Mundo(1000, 1000, null));
 		jugador.agregarMineral(50);
 		jugador.agregarGas(100);
+		Estructura algo = new CentroDeMineral(0, new Vector2D(10,10), jugador);
 		try {
-			jugador.agregarUnidad("Marine");
+			jugador.agregarUnidad("Marine", algo);
 			fail("Deberia lanzar que no esta la estructura creada");
 			
 		} catch (NoEsDeSuRazaLaUnidadException
@@ -55,7 +60,7 @@ public class UnidadesTerranTest {
 	
 	@Test
 	public void creaUnidadDespuesDeCrearEstructura() throws ErrorAlHacerCopia, NoSeEncontroLaEntidad{
-		Jugador jugador= new Terran(10,new Vector2D(100,100),"Pepe","#FF0000",new Mundo(1000, 1000, null));
+		Jugador jugador= new Terran(10,new Vector2D(100,100),"Pepe",new Color(0),new Mundo(1000, 1000, null));
 		jugador.agregarMineral(150);
 		jugador.agregarGas(100);
 		try {
@@ -63,7 +68,8 @@ public class UnidadesTerranTest {
 			jugador.agregarEstructura("Deposito Suministro", new Vector2D());
 			jugador.agregarEstructura("Barraca", new Vector2D());
 			PasaTurnos.pasarTurnos(jugador, 15);
-			jugador.agregarUnidad("Marine");
+			Estructura barraca = jugador.obtenerEstructuras().get(2);
+			jugador.agregarUnidad("Marine", barraca);
 			
 		} catch (NoEsDeSuRazaLaUnidadException
 				| NoEsDeSuRazaLaEstructuraException
@@ -79,14 +85,15 @@ public class UnidadesTerranTest {
 	
 	@Test
 	public void creaUnidadYNoTieneMineralesSuficientes() throws ErrorAlHacerCopia, NoSeEncontroLaEntidad{
-		Jugador jugador= new Terran(10,new Vector2D(100,100),"Pepe","#FF0000", new Mundo(1000, 1000, null));
+		Jugador jugador= new Terran(10,new Vector2D(100,100),"Pepe",new Color(0), new Mundo(1000, 1000, null));
 		jugador.agregarMineral(10);
 		jugador.agregarGas(100);
 		try {
 			jugador.agregarEstructura("Deposito Suministro", new Vector2D());
 			jugador.agregarEstructura("Barraca", new Vector2D());
 			PasaTurnos.pasarTurnos(jugador, 10);
-			jugador.agregarUnidad("Marine");
+			Estructura barraca = jugador.obtenerEstructuras().get(2);
+			jugador.agregarUnidad("Marine", barraca);
 		} catch (NoEsDeSuRazaLaUnidadException
 				| NoEsDeSuRazaLaEstructuraException
 				| NoTieneLaEstructuraCreadaException
@@ -100,7 +107,7 @@ public class UnidadesTerranTest {
 	
 	@Test
 	public void creaUnidadYNoTieneGasSuficiente() throws ErrorAlHacerCopia, NoSeEncontroLaEntidad{
-		Jugador jugador= new Terran(10,new Vector2D(100,100),"Pepe","#FF0000",new Mundo(1000, 1000, null));
+		Jugador jugador= new Terran(10,new Vector2D(100,100),"Pepe",new Color(0),new Mundo(1000, 1000, null));
 		jugador.agregarMineral(450);
 		jugador.agregarGas(110);
 		try {
@@ -109,7 +116,8 @@ public class UnidadesTerranTest {
 			PasaTurnos.pasarTurnos(jugador, 12);
 			jugador.agregarEstructura("Fabrica", new Vector2D());
 			PasaTurnos.pasarTurnos(jugador, 12);
-			jugador.agregarUnidad("Golliat");
+			Estructura fabrica = jugador.obtenerEstructuras().get(3);
+			jugador.agregarUnidad("Golliat", fabrica);
 			fail("No deberia llegar a esta parte");
 		} catch (NoEsDeSuRazaLaUnidadException
 				| NoEsDeSuRazaLaEstructuraException
@@ -125,13 +133,14 @@ public class UnidadesTerranTest {
 
 	@Test
 	public void creaUnidadYNoTieneEspacioSuficienteParaCrearla() throws ErrorAlHacerCopia, NoSeEncontroLaEntidad{
-		Jugador jugador= new Terran(10,new Vector2D(100,100),"Pepe","#FF0000", new Mundo(1000, 1000, null));
+		Jugador jugador= new Terran(10,new Vector2D(100,100),"Pepe",new Color(0), new Mundo(1000, 1000, null));
 		jugador.agregarMineral(180);
 		jugador.agregarGas(60);
 	try {
 		jugador.agregarEstructura("Barraca", new Vector2D());
 		PasaTurnos.pasarTurnos(jugador, 15);
-		jugador.agregarUnidad("Marine");
+		Estructura barraca = jugador.obtenerEstructuras().get(1);
+		jugador.agregarUnidad("Marine", barraca);
 		
 	} catch (NoEsDeSuRazaLaUnidadException
 			| NoEsDeSuRazaLaEstructuraException
@@ -151,13 +160,14 @@ public class UnidadesTerranTest {
 																		NoSePuedeAtacarEstaFueraDeRango, 
 																		NoPuedeAtacarUnidadesEnTierra,
 																		NoPuedeAtacarUnidadesAereas{
-		Jugador jugador= new Terran(10,new Vector2D(100,100),"Pepe","#FF0000", new Mundo(1000, 1000, null));
+		Jugador jugador= new Terran(10,new Vector2D(100,100),"Pepe",new Color(0), new Mundo(1000, 1000, null));
 		jugador.agregarMineral(180);
 		jugador.agregarGas(60);
 		try {
 			jugador.agregarEstructura("Barraca", new Vector2D());
 			PasaTurnos.pasarTurnos(jugador, 15);
-			jugador.agregarUnidad("Marine");
+			Estructura barraca = jugador.obtenerEstructuras().get(1);
+			jugador.agregarUnidad("Marine", barraca);
 			
 		}catch (NoEsDeSuRazaLaUnidadException
 				| NoEsDeSuRazaLaEstructuraException
@@ -175,9 +185,9 @@ public class UnidadesTerranTest {
 	}
 	
 	@Test
-	public void NaveEsFuliminadaPorUnAtaqueYEsEliminadaDelJugador() throws NoSeEncontroLaEntidad, ErrorAlHacerCopia, 
+	public void SeIntentaAtacarConUnAtaqueSoloTerrenoAUnaUnidadAerea() throws NoSeEncontroLaEntidad, ErrorAlHacerCopia, 
 																		NoSePuedeAtacarEstaFueraDeRango{
-		Jugador jugador= new Terran(10,new Vector2D(100,100),"Pepe","#FF0000", new Mundo(1000, 1000, null));
+		Jugador jugador= new Terran(10,new Vector2D(100,100),"Pepe",new Color(0), new Mundo(1000, 1000, null));
 		jugador.agregarMineral(500);
 		jugador.agregarGas(300);
 		try {
@@ -187,8 +197,8 @@ public class UnidadesTerranTest {
 			PasaTurnos.pasarTurnos(jugador, 15);
 			jugador.agregarEstructura("Puerto Estelar", new Vector2D());
 			PasaTurnos.pasarTurnos(jugador, 15);
-			
-			jugador.agregarUnidad("Espectro");
+			Estructura puerto = jugador.obtenerEstructuras().get(3);
+			jugador.agregarUnidad("Espectro", puerto);
 			
 		}catch (NoEsDeSuRazaLaUnidadException
 				| NoEsDeSuRazaLaEstructuraException

@@ -156,6 +156,7 @@ public class Juego extends Observable{
 					e.printStackTrace();
 					throw new NoPuedeRealizarEsaAccion();
 				}
+				actualizarObservadores();
 	}
 	
 	public void crearUnidad(String nombre, Estructura estructura) 
@@ -169,6 +170,7 @@ public class Juego extends Observable{
 			e.printStackTrace();
 		}
 		
+		actualizarObservadores();
 	}
 
 	public ArrayList<Unidad> obtenerUnidadesTurno() {
@@ -227,6 +229,12 @@ public class Juego extends Observable{
 		setChanged();
 		notifyObservers();
 	}
+	
+	public void actualizarObservadores(Entidad e) 
+	{
+		setChanged();
+		notifyObservers(e);		
+	}
 
 	public int obtenerGasJugadorActual() 
 	{
@@ -269,10 +277,11 @@ public class Juego extends Observable{
 		return null;
 	}
 
-	public Unidad obtenerUnidad(Vector2D posicion) 
+	public ArrayList<Unidad> obtenerUnidad(Vector2D posicion) 
 	{
 		ArrayList<Unidad> e = turno.ObtenerUnidades();
 		Unidad unidad;
+		ArrayList<Unidad> unidades = new ArrayList<Unidad>();
 		
 		Iterator i = e.iterator();
 		
@@ -280,9 +289,9 @@ public class Juego extends Observable{
 		{
 			unidad = (Unidad)i.next();
 			if(unidad.incluyeA(posicion))
-				return unidad;
+				unidades.add(unidad);
 		}
-		return null;
+		return unidades;
 	}
 
 	public ArrayList<String> verUnidadesDeEstructura(Estructura estructura)
@@ -326,5 +335,52 @@ public class Juego extends Observable{
 	public ArrayList<Ceguera> obtenerCegueras()
 	{
 		return turno.obtenerCegueras();
+	}
+	
+	public Color obtenerColorJugador()
+	{
+		return turno.obtenerColor();
+	}
+
+	public ArrayList<Entidad> entidadesEnRectangulo(Vector2D supizq, int dimension) 
+	{
+		ArrayList<Entidad> aux = new ArrayList<Entidad>(), cosasDeMundo;
+		ArrayList<Unidad> unidades;
+		ArrayList<Estructura> estructuras;
+		Entidad e;
+		
+		cosasDeMundo = mundo.entidadesEnRectangulo(supizq,dimension);
+		
+		for(int i=0;i<cosasDeMundo.size();i++)
+			aux.add(cosasDeMundo.get(i));		
+		
+		estructuras = obtenerEstructurasDeJugador1();
+		
+		for(int i=0;i<estructuras.size();i++)
+			if(estructuras.get(i).estaEn(supizq,dimension))
+				aux.add(estructuras.get(i));		
+		
+		estructuras = obtenerEstructurasDeJugador2();
+		
+		for(int i=0;i<estructuras.size();i++)
+			if(estructuras.get(i).estaEn(supizq,dimension))
+				aux.add(estructuras.get(i));	
+		
+		
+		unidades = obtenerUnidadesDeJugador1();
+		
+		for(int i=0;i<unidades.size();i++)
+			if(unidades.get(i).estaEn(supizq,dimension))
+				aux.add(unidades.get(i));		
+		
+		unidades = obtenerUnidadesDeJugador2();
+		
+		for(int i=0;i<unidades.size();i++)
+			if(unidades.get(i).estaEn(supizq,dimension))
+				aux.add(unidades.get(i));		
+		
+
+	
+		return aux;
 	}
 }

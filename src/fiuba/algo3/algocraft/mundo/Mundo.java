@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 import fiuba.algo3.algocraft.Juego;
+import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
 import fiuba.algo3.algocraft.excepciones.DivisionDeGrillaNoEsMultiploDeResolucion;
@@ -361,5 +362,34 @@ public class Mundo{
 	{
 		return juego;
 		
+	}
+	
+	public Entidad obtenerElemento(Vector2D posicion)
+	{
+		for(int i=0;i<mineral.size();i++)
+			if(mineral.get(i).incluyeA(posicion))
+			return mineral.get(i);
+		
+		for(int i=0;i<gas.size();i++)
+			if(gas.get(i).incluyeA(posicion))
+			return gas.get(i);
+		
+		return null;
+		
+	}
+
+	public ArrayList<Entidad> entidadesEnRectangulo(Vector2D supizq, int dimension) 
+	{
+		ArrayList<Entidad> aux = new ArrayList<Entidad>();
+		
+		for(int i=0;i<mineral.size();i++)
+			if(mineral.get(i).estaEn(supizq,dimension))
+				aux.add(mineral.get(i));		
+		
+		for(int i=0;i<gas.size();i++)
+			if(gas.get(i).estaEn(supizq,dimension))
+				aux.add(gas.get(i));		
+		
+		return aux;
 	}
 }

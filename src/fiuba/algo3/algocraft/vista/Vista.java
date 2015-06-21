@@ -14,14 +14,12 @@ import java.util.TimerTask;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 
 import fiuba.algo3.algocraft.Juego;
-import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.controlador.Controlador;
 import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
@@ -40,7 +38,7 @@ public class Vista implements Observer {
 	private JPopupMenu menuContextual;
 	private JLabel datosJugador;
 	private Unidad seleccion;
-	private BufferedImage backBuffer;	
+	private BufferedImage backBuffer;
 	
 	public Vista(Juego juego)
 	{
@@ -82,7 +80,8 @@ public class Vista implements Observer {
 		Vistas.put("Marine", new VistaMarine());
 		Vistas.put("NaveCiencia", new VistaNaveCiencia());
 		Vistas.put("NaveTransporteTerran", new VistaNaveTransporteTerran());
-		Vistas.put("Ceguera", new VistaCeguera());
+		Vistas.put("Ceguera", new VistaCeguera());		
+		
 	}
 	
 	private void dibujar(Graphics g, Entidad e)
@@ -92,7 +91,7 @@ public class Vista implements Observer {
 	
 	private void dibujar(Graphics g, Mundo m)
 	{
-		Dibujable.dibujarImagenEnMosaico(g,"recursos/terreno.jpg",new Vector2D(0,0),m.obtenerResolucion(),m.obtenerResolucion());
+		Dibujable.dibujarImagenEnMosaico(g,"recursos/terreno.jpg",new Vector2D(0,0),m.obtenerResolucion(),m.obtenerResolucion(),m.obtenerDivisionDeGrilla());
 	}
 	
 	private void dibujar(Graphics g, ArrayList<Ceguera> c)
@@ -121,7 +120,7 @@ public class Vista implements Observer {
 		
 		ventana.setJMenuBar(menu);
 		
-		lienzo = new Lienzo(juego,juego.obtenerMundo().obtenerResolucion());
+		lienzo = new Lienzo(this,juego.obtenerMundo().obtenerResolucion());
 		lienzo.addMouseListener(controlador.obtenerListenerMouse(menuContextual));
 		
 		
@@ -133,52 +132,97 @@ public class Vista implements Observer {
 		return ventana;
 	}
 	
-	public void update(Observable arg0, Object arg1) 
+	public void dibujarFrontBuffer()
 	{
+		dibujarFrontBuffer(lienzo.getGraphics());
+	}
+	
+	public void dibujarFrontBuffer(Graphics g)
+	{				
+		
+		g.drawImage(backBuffer.getSubimage(-lienzo.getX(), -lienzo.getY(), ventana.getWidth(), ventana.getHeight()),-lienzo.getX(),-lienzo.getY(),null);
+		
+		if(menuContextual != null)
+			menuContextual.updateUI();
+		
+	}
+	
+	public void update(Observable arg0, Object objeto) 
+	{
+		
+		Graphics g = backBuffer.getGraphics();
+		
+		if(objeto == null)
+		{
+		
+			datosJugador.setText(juego.obtenerNombreJugador()+" Raza: "+juego.obtenerRaza()+" Gas: "+juego.obtenerGasJugadorActual()+" Mineral "+juego.obtenerMineralJugadorActual()+" Poblacion: "+juego.obtenerPoblacionActualJugador()+"/"+juego.obtenerPoblacionlimiteJugador());
+			datosJugador.setForeground(juego.obtenerColorJugador());
+		
+			dibujar(g,juego.obtenerMundo());
+		
+			Iterator i;
+		
+			i = this.juego.obtenerMundo().obtenerMinerales().iterator();
+		
+			while(i.hasNext())
+				dibujar(g,(Entidad)i.next());
+		
+		
+			i = this.juego.obtenerMundo().obtenerGas().iterator();
+		
+			while(i.hasNext())
+				dibujar(g,(Entidad)i.next());
+		
+		
+			i = this.juego.obtenerEstructurasDeJugador1().iterator();
+		
+			while(i.hasNext())
+				dibujar(g,(Entidad)i.next());
+		
+			i = this.juego.obtenerEstructurasDeJugador2().iterator();
+		
+			while(i.hasNext())
+				dibujar(g,(Entidad)i.next());
+		
+			i = this.juego.obtenerUnidadesDeJugador1().iterator();
+		
+			while(i.hasNext())
+				dibujar(g,(Entidad)i.next());
+		
+			i = this.juego.obtenerUnidadesDeJugador2().iterator();
+		
+			while(i.hasNext())
+				dibujar(g,(Entidad)i.next());
+		
+			dibujar(g,juego.obtenerCegueras());
+		
+		}
+		else
+		{
+			Entidad e = (Entidad)objeto;
+			ArrayList<Entidad> entidades;
+			Vector2D posicion;
+			
+			for(int i=0;i<5;i++)
+				for(int a=0;a<5;a++)
+				{
+					
+					posicion = new Vector2D((e.obtenerPosicion().obtenerCoordenadaX()-e.obtenerDimension()*2)+(i*e.obtenerDimension()),(e.obtenerPosicion().obtenerCoordenadaY()-e.obtenerDimension()*2)+(a*e.obtenerDimension()));
+					
+					entidades = juego.entidadesEnRectangulo(posicion,e.obtenerDimension());
+					
+					Dibujable.dibujarImagen(g,"recursos/terreno.jpg", juego.obtenerMundo().pixelAGrilla(posicion), e.obtenerDimension(), e.obtenerDimension());			
+										
+					for(int b=0;b<entidades.size();b++)
+						dibujar(g,entidades.get(b));	
+					
+					dibujar(g,e);
+				}
+			
 				
-		Entidad e;
-		Graphics g = lienzo.getGraphics();
+		}
 		
-		datosJugador.setText(juego.obtenerNombreJugador()+" Raza: "+juego.obtenerRaza()+" Gas: "+juego.obtenerGasJugadorActual()+" Mineral "+juego.obtenerMineralJugadorActual()+" Poblacion: "+juego.obtenerPoblacionActualJugador()+"/"+juego.obtenerPoblacionlimiteJugador());
-		
-		dibujar(g,juego.obtenerMundo());
-		
-		Iterator i;
-		
-		i = this.juego.obtenerMundo().obtenerMinerales().iterator();
-		
-		while(i.hasNext())
-			dibujar(g,(Entidad)i.next());
-		
-		
-		i = this.juego.obtenerMundo().obtenerGas().iterator();
-		
-		while(i.hasNext())
-			dibujar(g,(Entidad)i.next());
-		
-		
-		i = this.juego.obtenerEstructurasDeJugador1().iterator();
-		
-		while(i.hasNext())
-			dibujar(g,(Entidad)i.next());
-		
-		i = this.juego.obtenerEstructurasDeJugador2().iterator();
-		
-		while(i.hasNext())
-			dibujar(g,(Entidad)i.next());
-		
-		i = this.juego.obtenerUnidadesDeJugador1().iterator();
-		
-		while(i.hasNext())
-			dibujar(g,(Entidad)i.next());
-		
-		i = this.juego.obtenerUnidadesDeJugador2().iterator();
-		
-		while(i.hasNext())
-			dibujar(g,(Entidad)i.next());
-		
-		dibujar(g,juego.obtenerCegueras());
-		
+		dibujarFrontBuffer();
 	}
 	
 	public void dibujarMenuCreadorEstructuras(Vector2D posicion, ArrayList<String> estructuras)

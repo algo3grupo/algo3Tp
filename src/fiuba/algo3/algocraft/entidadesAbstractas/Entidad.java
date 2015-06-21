@@ -231,4 +231,31 @@ public abstract class Entidad {
 		return (vida - danio <= 0);
 		
 	}
+	
+	public boolean estaEn(Vector2D supizq, int dimension)
+	{
+		Vector2D vertice = new Vector2D(this.posicion);
+		
+		if(vertice.perteneceA(supizq, dimension))
+			return true;
+		
+		vertice = new Vector2D(this.posicion.obtenerCoordenadaX()+dimension,this.posicion.obtenerCoordenadaY());
+		
+		if(vertice.perteneceA(supizq, dimension))
+			return true;
+		
+		vertice = new Vector2D(this.posicion.obtenerCoordenadaX(),this.posicion.obtenerCoordenadaY()+dimension);
+		
+		if(vertice.perteneceA(supizq, dimension))
+			return true;
+		
+		vertice = new Vector2D(this.posicion.obtenerCoordenadaX()+dimension,this.posicion.obtenerCoordenadaY()+dimension);
+		
+		if(vertice.perteneceA(supizq, dimension))
+			return true;
+		
+		return false;
+		
+		
+	}
 }

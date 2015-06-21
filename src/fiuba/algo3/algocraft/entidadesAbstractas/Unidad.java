@@ -96,24 +96,14 @@ public abstract class Unidad extends ColaDeAcciones implements IUnidad {
 	public void moverA(Vector2D posicion) 
 	{
 		ArrayList<Vector2D> camino = this.getJugador().getMundo().obtenerRutaSeguraEntre(this.obtenerPosicion(), posicion);
-		Timer timer = new Timer();
 		
-		class Movimiento extends TimerTask
+		for(int i=0;i<camino.size();i++)
 		{
-			public void run() 
-			{
-				if(camino.size() > 0)
-				{
-					posicionarEn(camino.remove(0));		
-					despejarZona();
-					getJugador().getMundo().obtenerJuego().actualizarObservadores();
-				}
-				else
-					timer.cancel();
-			}
+			posicionarEn(camino.get(i));		
+			despejarZona();
+			getJugador().getMundo().obtenerJuego().actualizarObservadores(this);
 		}
-		
-		timer.schedule(new Movimiento(), 0, 1000/60);	
+	
 	}
 	
 	public ArrayList<String> mostrarAcciones(){

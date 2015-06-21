@@ -5,21 +5,18 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-import fiuba.algo3.algocraft.Juego;
-
 public class Lienzo extends JPanel {
 	
-	private Juego juego;
+	private Vista vista;
 
-	public Lienzo(Juego juego, int resolucion)
+	public Lienzo(Vista vista, int resolucion)
 	{
-		this.juego = juego;
+		this.vista = vista;
 		this.setPreferredSize(new Dimension(resolucion,resolucion));
 	}
 	
 	public void paintComponent(Graphics g)
 	{
-	
-		juego.actualizarObservadores();
+		vista.dibujarFrontBuffer(g);
 	}
 }

@@ -35,6 +35,8 @@ public class ControladorMenu
 					vista.destruirVentana();
 					
 					Vista vistaJuego = new Vista(juego);
+					juego.actualizarObservadores();
+					vistaJuego.dibujarFrontBuffer();
 				
 				}
 					

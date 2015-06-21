@@ -116,4 +116,12 @@ public class Vector2D {
 	{
 		return new Vector2D(vector.obtenerCoordenadaX()+obtenerCoordenadaX(),vector.obtenerCoordenadaY()+obtenerCoordenadaY()); 		
 	}
+	
+	public boolean perteneceA(Vector2D supizq, int dimension)
+	{
+		if(this.obtenerCoordenadaX() > supizq.obtenerCoordenadaX() &&  this.obtenerCoordenadaX() < supizq.obtenerCoordenadaX() + dimension)
+			if(this.obtenerCoordenadaY() > supizq.obtenerCoordenadaY() &&  this.obtenerCoordenadaY() < supizq.obtenerCoordenadaY() + dimension)
+			return true;
+		return false;
+	}
 }

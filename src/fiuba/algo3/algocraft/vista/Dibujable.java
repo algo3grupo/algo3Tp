@@ -31,7 +31,7 @@ public abstract class Dibujable
 		
 	}
 	
-	public void dibujarImagen(Graphics contexto, String ruta, Vector2D posicion, int ancho, int alto)
+	public static void dibujarImagen(Graphics contexto, String ruta, Vector2D posicion, int ancho, int alto)
 	{
 		BufferedImage imagen = cacheImagenes.get(ruta);		
 		
@@ -53,7 +53,7 @@ public abstract class Dibujable
 		contexto.drawImage(imagen, (int)posicion.obtenerCoordenadaX(), (int)posicion.obtenerCoordenadaY(), ancho, alto, null);
 	}
 	
-	static void dibujarImagenEnMosaico(Graphics contexto,String ruta, Vector2D posicion, int ancho, int alto)
+	static void dibujarImagenEnMosaico(Graphics contexto,String ruta, Vector2D posicion, int ancho, int alto, int dimension)
 	{
 		BufferedImage imagen = null;
 		
@@ -68,7 +68,7 @@ public abstract class Dibujable
 		
 		for(int i=0;i<(double)ancho/imagen.getWidth();i++)
 			for(int a=0;a<(double)alto/imagen.getHeight();a++)
-				contexto.drawImage(imagen, (int)posicion.obtenerCoordenadaX()+i*imagen.getWidth(), (int)posicion.obtenerCoordenadaY()+a*imagen.getHeight(), null);
+				contexto.drawImage(imagen, (int)posicion.obtenerCoordenadaX()+i*dimension, (int)posicion.obtenerCoordenadaY()+a*dimension, dimension ,dimension, null);
 	}
 	
 	

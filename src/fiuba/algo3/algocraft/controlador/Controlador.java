@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -102,7 +103,7 @@ public class Controlador {
 				Vector2D posicion = new Vector2D(e.getPoint().getX(),e.getPoint().getY());
 				Estructura estructura;
 				Unidad unidad;
-				
+				ArrayList<Unidad> aux;				
 				
 				if(e.getButton() == e.BUTTON3)
 					if(vista.noHaySeleccion())
@@ -121,18 +122,19 @@ public class Controlador {
 					}
 						
 				else if(e.getButton() == e.BUTTON1)
-					if((unidad = juego.obtenerUnidad(posicion)) == null)
+				{
+					aux = juego.obtenerUnidad(posicion);
+					if(aux.size() == 0)
 						vista.deseleccionarUnidad();
 					else
-						vista.seleccionarUnidad(unidad);
-				
-				
+						vista.seleccionarUnidad(aux.get(0));
+				}
 			}
-
 
 		}	
 		return new ListenerMouse();
 	}
+		
 
 	public ActionListener obtenerListenerPasarTurno() 
 	{
@@ -141,6 +143,7 @@ public class Controlador {
 
 			public void actionPerformed(ActionEvent arg0)
 			{
+				vista.deseleccionarUnidad();
 				juego.finalizarTurno();
 			}
 			
@@ -156,13 +159,15 @@ public class Controlador {
 			public void actionPerformed(ActionEvent arg0)
 			{
 				Entidad entidad;
+				ArrayList<Unidad> aux;
 				
 				entidad = juego.obtenerEstructura(posicion);
 				
 				if(entidad == null)
 				{
-					entidad = juego.obtenerUnidad(posicion);
-					if(entidad == null)
+					aux = juego.obtenerUnidad(posicion);
+					
+					if(aux.size() == 0)
 					{
 						class Posicion extends Entidad
 						{

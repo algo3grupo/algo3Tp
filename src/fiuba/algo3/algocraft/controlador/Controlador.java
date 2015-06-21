@@ -4,7 +4,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
 import fiuba.algo3.algocraft.Juego;
@@ -12,6 +18,7 @@ import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
+import fiuba.algo3.algocraft.excepciones.NoPuedeRealizarEsaAccion;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.unidadesProtoss.Zealot;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
@@ -35,7 +42,12 @@ public class Controlador {
 
 			public void actionPerformed(ActionEvent arg0)
 			{
-				juego.construirEstructura(nombre, posicion);
+				try{
+					juego.construirEstructura(nombre, posicion);
+					reproducirSonido("/sonidos/new toy.wav");
+				} catch (NoPuedeRealizarEsaAccion e) {
+					reproducirSonido("/sonidos/cant do that.wav");
+				}
 			}
 			
 		}	
@@ -173,10 +185,72 @@ public class Controlador {
 					}
 				}
 								
-				juego.indicarAccion(string,unidad,entidad);
+				try {
+					juego.indicarAccion(string,unidad,entidad);
+					if (string == "Atacar"){
+						reproducirSonido("/sonidos/pew pew.wav");
+					}
+				} catch (NoPuedeRealizarEsaAccion e) {
+					reproducirSonido("/sonidos/cant do that.wav");
+				}
 			}
 			
 		}	
 		return new ListenerCreadorEstructuras();
+	}
+	
+	public ActionListener obtenerListenerMusica(JMenuItem play) 
+	{
+		class ListenerMusica implements ActionListener
+		{
+			Clip clip;
+			int lastFrame;
+			public void actionPerformed(ActionEvent arg0)
+			{
+                if (clip == null) {
+                    try {
+                    	clip = AudioSystem.getClip();
+                		clip.open(AudioSystem.getAudioInputStream(getClass().getResourceAsStream("/sonidos/algocraft theme.wav")));
+                		clip.start();
+                        clip.loop(Clip.LOOP_CONTINUOUSLY);
+                        play.setText("||");
+                    } catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+
+                    if (clip.isRunning()) {
+                        lastFrame = clip.getFramePosition();
+                        clip.stop();
+                        play.setText(">");
+                    } else {
+                        if (lastFrame < clip.getFrameLength()) {
+                            clip.setFramePosition(lastFrame);
+                        } else {
+                            clip.setFramePosition(0);
+                        }
+                        clip.start();
+                        clip.loop(Clip.LOOP_CONTINUOUSLY);
+                        play.setText("||");
+                    }
+
+                }
+			}
+			
+		}	
+		return new ListenerMusica();
+	}
+	
+	public void reproducirSonido(String ruta){
+		Clip clip = null;
+        if (clip == null) {
+            try {
+            	clip = AudioSystem.getClip();
+        		clip.open(AudioSystem.getAudioInputStream(getClass().getResourceAsStream(ruta)));
+            } catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
+                e.printStackTrace();
+            }
+        }
+        clip.start();
 	}
 }

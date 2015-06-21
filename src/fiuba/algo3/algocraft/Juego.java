@@ -142,7 +142,7 @@ public class Juego extends Observable{
 		return mundo;
 	}
 
-	public void construirEstructura(String nombre, Vector2D posicion) 
+	public void construirEstructura(String nombre, Vector2D posicion) throws NoPuedeRealizarEsaAccion 
 	{
 		posicion = mundo.pixelAGrilla(posicion);
 				try {
@@ -154,6 +154,7 @@ public class Juego extends Observable{
 						| ErrorAlHacerCopia e) {
 					
 					e.printStackTrace();
+					throw new NoPuedeRealizarEsaAccion();
 				}
 	}
 	
@@ -305,7 +306,7 @@ public class Juego extends Observable{
 		return false;
 	}
 
-	public void indicarAccion(String string, Unidad unidad, Entidad entidad) 
+	public void indicarAccion(String string, Unidad unidad, Entidad entidad) throws NoPuedeRealizarEsaAccion 
 	{
 		try
 		{
@@ -313,7 +314,7 @@ public class Juego extends Observable{
 		}
 		catch(NoPuedeRealizarEsaAccion e)
 		{
-			
+			throw e;
 		}
 	}
 

@@ -110,11 +110,14 @@ public class Vista implements Observer {
 		
 		JMenuBar menu = new JMenuBar();
 		JMenuItem pasarTurno = new JMenuItem("Pasar Turno");
+		JMenuItem playMusica = new JMenuItem(">");
 		datosJugador = new JLabel();
 		menu.add(pasarTurno);
+		menu.add(playMusica);
 		menu.add(datosJugador);
 		
 		pasarTurno.addActionListener(controlador.obtenerListenerPasarTurno());
+		playMusica.addActionListener(controlador.obtenerListenerMusica(playMusica));
 		
 		ventana.setJMenuBar(menu);
 		

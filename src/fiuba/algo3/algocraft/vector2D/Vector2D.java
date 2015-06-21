@@ -1,5 +1,7 @@
 package fiuba.algo3.algocraft.vector2D;
 
+import java.util.ArrayList;
+
 public class Vector2D {
 	
 	private double x;
@@ -74,5 +76,44 @@ public class Vector2D {
 			return true;
 		return false;
 		
+	}
+
+	public ArrayList<Vector2D> dividirSegunLongitud(int longitud)
+	{
+		ArrayList<Vector2D> resultado = new ArrayList<Vector2D>();
+		Vector2D aux = new Vector2D();
+		int i = 1;
+		
+		while(aux.distintoA(this))
+		{
+			aux = new Vector2D(this);
+			
+			if(getNorma() > i*longitud)
+				aux.setNorma(i++*longitud);
+			
+			resultado.add(aux);			
+		}
+		
+		return resultado;
+	}
+
+	public void setNorma(double norma) 
+	{
+		this.norma = norma;		
+	}
+
+	public double getNorma()
+	{
+		return norma;
+	}
+
+	public Vector2D restarA(Vector2D vector) 
+	{
+		return new Vector2D(obtenerCoordenadaX()-vector.obtenerCoordenadaX(),obtenerCoordenadaY()-vector.obtenerCoordenadaY());
+	}
+
+	public Vector2D sumarA(Vector2D vector) 
+	{
+		return new Vector2D(vector.obtenerCoordenadaX()+obtenerCoordenadaX(),vector.obtenerCoordenadaY()+obtenerCoordenadaY()); 		
 	}
 }

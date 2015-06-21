@@ -19,6 +19,7 @@ public class Lienzo extends JPanel {
 	
 	public void paintComponent(Graphics g)
 	{
+	
 		juego.actualizarObservadores();
 	}
 }

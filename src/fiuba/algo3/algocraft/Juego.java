@@ -51,6 +51,7 @@ import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.jugador.Protoss;
 import fiuba.algo3.algocraft.jugador.Terran;
+import fiuba.algo3.algocraft.mundo.Ceguera;
 import fiuba.algo3.algocraft.mundo.Mineral;
 import fiuba.algo3.algocraft.mundo.Mundo;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
@@ -80,11 +81,6 @@ public class Juego extends Observable{
 			jugador2 = new Terran(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador2(),nombreJugador2,colorJugador2, mundo);
 		
 		turno = jugador1;
-		
-		
-	
-		
-		
 	}
 
 	public ArrayList<Unidad> obtenerUnidadesDeJugador1() {
@@ -319,5 +315,15 @@ public class Juego extends Observable{
 		{
 			
 		}
+	}
+
+	public String obtenerNombreJugador()
+	{
+		return turno.obtenerNombre();
+	}
+	
+	public ArrayList<Ceguera> obtenerCegueras()
+	{
+		return turno.obtenerCegueras();
 	}
 }

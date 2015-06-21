@@ -49,6 +49,7 @@ public class VistaMenu
 		labelClaseJugador1.setText("Raza del jugador 1: ");
 		labelNombreJugador1.setText("Nombre del jugador1: ");
 		nombreJugador1.setColumns(30);
+		nombreJugador1.setText("Jugador 1");
 		
 		
 		panelJugador1.add(labelClaseJugador1);
@@ -67,10 +68,11 @@ public class VistaMenu
 		labelNombreJugador2 = new JLabel();
 		
 		claseJugador2 = new JComboBox<String>(clases);
-		claseJugador2.setSelectedIndex(0);
+		claseJugador2.setSelectedIndex(1);
 		labelClaseJugador2.setText("Raza del jugador 2: ");
 		labelNombreJugador2.setText("Nombre del jugador2: ");
 		nombreJugador2.setColumns(30);
+		nombreJugador2.setText("Jugador 2");
 		
 		
 		panelJugador2.add(labelClaseJugador2);

@@ -3,6 +3,7 @@ package fiuba.algo3.algocraft.jugador;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.JFrame;
 
@@ -26,6 +27,7 @@ import fiuba.algo3.algocraft.excepciones.NoSeEncontroLaEntidad;
 import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
 import fiuba.algo3.algocraft.excepciones.NoTienePoblacionSuficienteException;
 import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
+import fiuba.algo3.algocraft.mundo.Ceguera;
 import fiuba.algo3.algocraft.mundo.Mundo;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 
@@ -43,6 +45,7 @@ public abstract class Jugador {
 	protected CreadorUnidades creadorUnidades;
 	private int poblacionMaxima;
 	private int dimension;
+	private ArrayList<Ceguera> puntosCiegos; 
 	
 	public Jugador(int dimension, Vector2D base, String nombreJugador, Color colorJugador, Mundo mundo) {
 		
@@ -57,6 +60,25 @@ public abstract class Jugador {
 		this.dimension = dimension;
 		this.mundo = mundo;
 		
+		puntosCiegos = new ArrayList<Ceguera>();
+		
+		for(int i=0;i<mundo.obtenerResolucion()/dimension;i++)
+			for(int a=0;a<mundo.obtenerResolucion()/dimension;a++)
+				puntosCiegos.add(new Ceguera(new Vector2D(i*dimension,a*dimension),dimension));
+		
+	}
+	
+	public ArrayList<Ceguera> obtenerCegueras()
+	{
+		return puntosCiegos;
+	}
+	
+	public void verZona(Vector2D posicion)
+	{
+		
+		for(int i=0;i<puntosCiegos.size();i++)
+			if(puntosCiegos.get(i).incluyeA(posicion))
+				puntosCiegos.remove(i);				
 	}
 
 	public void agregarEstructura(String string, Vector2D posicion) throws NoEsDeSuRazaLaEstructuraException,
@@ -253,6 +275,11 @@ public abstract class Jugador {
 	public Color obtenerColor() 
 	{
 		return color;
+	}
+
+	public String obtenerNombre() 
+	{
+		return nombre;
 	}
 	
 }

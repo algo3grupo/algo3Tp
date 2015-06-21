@@ -270,12 +270,18 @@ public class Mundo{
 	
 	public ArrayList<Vector2D> obtenerRutaSeguraEntre(Vector2D inicio, Vector2D fin)
 	{
-		ArrayList<Vector2D> camino = new ArrayList<Vector2D>();
 		
+		Vector2D direccion = new Vector2D();		
+		ArrayList<Vector2D> camino;
 		
+		camino = (fin.restarA(inicio)).dividirSegunLongitud(10); 
 		
-		
-		
+		for(int i=0; i < camino.size();i++)
+		{
+			direccion = camino.get(i);
+			direccion = direccion.sumarA(inicio);
+			camino.set(i,direccion);
+		}		
 		
 		return camino;
 	}
@@ -349,5 +355,11 @@ public class Mundo{
 	public ArrayList<Mineral> obtenerMinerales() 
 	{
 		return mineral;
+	}
+
+	public Juego obtenerJuego() 
+	{
+		return juego;
+		
 	}
 }

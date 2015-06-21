@@ -27,6 +27,15 @@ public abstract class Entidad {
 	private Vector2D posicion;
 	private int dimension;
 	
+	public void despejarZona()
+	{
+		for(int i=0;i<rangoDeVision*2;i++)
+			for(int a=0;a<rangoDeVision*2;a++)
+			{
+				jugador.verZona(new Vector2D((i*dimension)+(posicion.obtenerCoordenadaX()-(rangoDeVision*dimension)),(a*dimension)+(posicion.obtenerCoordenadaY()-(rangoDeVision*dimension))));	
+			}
+	}
+	
 	public Entidad(int dimension, Vector2D posicion, int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int turnos){
 		this.ID = new ID().getIdNuevo();
 		this.vida = vida;

@@ -15,7 +15,7 @@ public class Terran extends Jugador {
 	public Terran(int dimension, Vector2D base, String nombreJugador, Color colorJugador, Mundo mundo) {
 		super(dimension, base, nombreJugador,colorJugador, mundo);
 		this.creadorEstructuras = new CreadorEstructurasTerran(this);
-		this.creadorUnidades =new CreadorUnidadesTerran(this);
+		this.creadorUnidades = new CreadorUnidadesTerran(this);
 		
 		incorporarEstructura(new DepositoSuministro(dimension, base, this));
 	}

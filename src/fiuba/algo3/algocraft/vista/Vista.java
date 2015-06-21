@@ -3,11 +3,14 @@ package fiuba.algo3.algocraft.vista;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -23,6 +26,7 @@ import fiuba.algo3.algocraft.controlador.Controlador;
 import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
+import fiuba.algo3.algocraft.mundo.Ceguera;
 import fiuba.algo3.algocraft.mundo.Mundo;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 
@@ -36,10 +40,12 @@ public class Vista implements Observer {
 	private JPopupMenu menuContextual;
 	private JLabel datosJugador;
 	private Unidad seleccion;
-	
+	private BufferedImage backBuffer;	
 	
 	public Vista(Juego juego)
 	{
+		
+		backBuffer = new BufferedImage(juego.obtenerMundo().obtenerResolucion(),juego.obtenerMundo().obtenerResolucion(),BufferedImage.TYPE_INT_ARGB);
 		menuContextual = new JPopupMenu();
 		seleccion = null;
 		this.juego = juego;
@@ -76,7 +82,7 @@ public class Vista implements Observer {
 		Vistas.put("Marine", new VistaMarine());
 		Vistas.put("NaveCiencia", new VistaNaveCiencia());
 		Vistas.put("NaveTransporteTerran", new VistaNaveTransporteTerran());
-		
+		Vistas.put("Ceguera", new VistaCeguera());
 	}
 	
 	private void dibujar(Graphics g, Entidad e)
@@ -87,6 +93,12 @@ public class Vista implements Observer {
 	private void dibujar(Graphics g, Mundo m)
 	{
 		Dibujable.dibujarImagenEnMosaico(g,"recursos/terreno.jpg",new Vector2D(0,0),m.obtenerResolucion(),m.obtenerResolucion());
+	}
+	
+	private void dibujar(Graphics g, ArrayList<Ceguera> c)
+	{
+		for(int i=0; i<c.size();i++)
+			Vistas.get("Ceguera").dibujar(g, c.get(i));
 	}
 	
 	private JFrame crearVentana(Juego juego) 
@@ -120,12 +132,11 @@ public class Vista implements Observer {
 	
 	public void update(Observable arg0, Object arg1) 
 	{
-		
 				
 		Entidad e;
 		Graphics g = lienzo.getGraphics();
 		
-		datosJugador.setText("Jugador de Turno: Raza: "+juego.obtenerRaza()+" Gas: "+juego.obtenerGasJugadorActual()+" Mineral "+juego.obtenerMineralJugadorActual()+" Poblacion: "+juego.obtenerPoblacionActualJugador()+"/"+juego.obtenerPoblacionlimiteJugador());
+		datosJugador.setText(juego.obtenerNombreJugador()+" Raza: "+juego.obtenerRaza()+" Gas: "+juego.obtenerGasJugadorActual()+" Mineral "+juego.obtenerMineralJugadorActual()+" Poblacion: "+juego.obtenerPoblacionActualJugador()+"/"+juego.obtenerPoblacionlimiteJugador());
 		
 		dibujar(g,juego.obtenerMundo());
 		
@@ -161,8 +172,10 @@ public class Vista implements Observer {
 		i = this.juego.obtenerUnidadesDeJugador2().iterator();
 		
 		while(i.hasNext())
-			dibujar(g,(Entidad)i.next());		
-				
+			dibujar(g,(Entidad)i.next());
+		
+		dibujar(g,juego.obtenerCegueras());
+		
 	}
 	
 	public void dibujarMenuCreadorEstructuras(Vector2D posicion, ArrayList<String> estructuras)

@@ -1,6 +1,8 @@
 package fiuba.algo3.algocraft.entidadesAbstractas;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.JFrame;
 
@@ -25,7 +27,7 @@ public abstract class Unidad extends ColaDeAcciones implements IUnidad {
 
 	public Unidad(int dimension, Vector2D posicion, int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, 
 			int suministro, int transporte, int turnos) {
-		super(dimension, posicion, vida, rangoDeVision, jugador, nombre, costo, requiere, turnos);
+		super(dimension, posicion, vida, 2, jugador, nombre, costo, requiere, turnos);
 		this.suministro = suministro;
 		this.transporte = transporte;
 		this.escudo = new Escudo(0);
@@ -91,9 +93,27 @@ public abstract class Unidad extends ColaDeAcciones implements IUnidad {
 		
 	}
 	
-	public void moverA(Vector2D posicion) {
-		//bien simple, que cambia la posicion directo
-		posicionarEn(posicion);
+	public void moverA(Vector2D posicion) 
+	{
+		ArrayList<Vector2D> camino = this.getJugador().getMundo().obtenerRutaSeguraEntre(this.obtenerPosicion(), posicion);
+		Timer timer = new Timer();
+		
+		class Movimiento extends TimerTask
+		{
+			public void run() 
+			{
+				if(camino.size() > 0)
+				{
+					posicionarEn(camino.remove(0));		
+					despejarZona();
+					getJugador().getMundo().obtenerJuego().actualizarObservadores();
+				}
+				else
+					timer.cancel();
+			}
+		}
+		
+		timer.schedule(new Movimiento(), 0, 1000/60);	
 	}
 	
 	public ArrayList<String> mostrarAcciones(){

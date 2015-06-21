@@ -27,7 +27,7 @@ public abstract class Unidad extends ColaDeAcciones implements IUnidad {
 
 	public Unidad(int dimension, Vector2D posicion, int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, 
 			int suministro, int transporte, int turnos) {
-		super(dimension, posicion, vida, 2, jugador, nombre, costo, requiere, turnos);
+		super(dimension, posicion, vida, rangoDeVision, jugador, nombre, costo, requiere, turnos);
 		this.suministro = suministro;
 		this.transporte = transporte;
 		this.escudo = new Escudo(0);

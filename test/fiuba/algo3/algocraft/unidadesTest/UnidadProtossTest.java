@@ -30,14 +30,14 @@ public class UnidadProtossTest {
 	
 	@Test
 	public void instaciarZealot(){
-		Jugador jugador= new Protoss(0,new Vector2D(100,100),"Pepe",new Color(0), new Mundo(1000, 1000, null));
+		Jugador jugador= new Protoss(100,new Vector2D(100,100),"Pepe",new Color(0), new Mundo(1000, 1000, null));
 		Unidad zealot = new Zealot(0,new Vector2D(), jugador);
 		assertEquals("Zealot",zealot.nombre());
 	}
 	
 	@Test
 	public void intentaCrearUnidadSinLaEstructura() throws ErrorAlHacerCopia, NoSeEncontroLaEntidad{
-		Jugador jugador= new Protoss(0,new Vector2D(100,100),"Pepe",new Color(0), new Mundo(1000, 1000, null));
+		Jugador jugador= new Protoss(100,new Vector2D(100,100),"Pepe",new Color(0), new Mundo(1000, 1000, null));
 		jugador.agregarMineral(50);
 		jugador.agregarGas(100);
 		Estructura algo = new Pilon(0,new Vector2D(10,10),jugador);
@@ -54,7 +54,7 @@ public class UnidadProtossTest {
 	
 	@Test
 	public void creaUnidadDespuesDeCrearEstructura() throws ErrorAlHacerCopia, NoSeEncontroLaEntidad{
-		Jugador jugador= new Protoss(0,new Vector2D(100,100),"Pepe",new Color(0), new Mundo(1000, 1000, null));
+		Jugador jugador= new Protoss(100,new Vector2D(100,100),"Pepe",new Color(0), new Mundo(1000, 1000, null));
 		jugador.agregarMineral(250);
 		jugador.agregarGas(100);
 		try {
@@ -79,7 +79,7 @@ public class UnidadProtossTest {
 	
 	@Test
 	public void creaUnidadYNoTieneMineralesSuficientes() throws ErrorAlHacerCopia, NoSeEncontroLaEntidad{
-		Jugador jugador= new Protoss(0,new Vector2D(100,100),"Pepe",new Color(0), new Mundo(1000, 1000, null));
+		Jugador jugador= new Protoss(100,new Vector2D(100,100),"Pepe",new Color(0), new Mundo(1000, 1000, null));
 		jugador.agregarMineral(100);
 		jugador.agregarGas(100);
 		try {
@@ -101,7 +101,7 @@ public class UnidadProtossTest {
 	
 	@Test
 	public void creaUnidadYNoTieneGasSuficiente() throws ErrorAlHacerCopia, NoSeEncontroLaEntidad{
-		Jugador jugador= new Protoss(0,new Vector2D(100,100),"Pepe",new Color(0), new Mundo(1000, 1000, null));
+		Jugador jugador= new Protoss(100,new Vector2D(100,100),"Pepe",new Color(0), new Mundo(1000, 1000, null));
 		jugador.agregarMineral(180);
 		jugador.agregarGas(30);
 		try {
@@ -125,7 +125,7 @@ public class UnidadProtossTest {
 
 	@Test
 	public void creaUnidadYNoTieneEspacioSuficienteParaCrearla() throws ErrorAlHacerCopia, NoSeEncontroLaEntidad{
-		Jugador jugador= new Protoss(0,new Vector2D(100,100),"Pepe",new Color(0), new Mundo(1000, 1000, null));
+		Jugador jugador= new Protoss(100,new Vector2D(100,100),"Pepe",new Color(0), new Mundo(1000, 1000, null));
 		jugador.agregarMineral(380);
 		jugador.agregarGas(60);
 	try {

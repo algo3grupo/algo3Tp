@@ -32,7 +32,7 @@ public class UnidadesEnergiaTest {
 												NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, 
 												NoEsDeSuRazaLaUnidadException, NoSeEncontroLaEntidad{
 		
-		Jugador jugador = new Protoss(0,new Vector2D(100,100),"Pepe",new Color(0), new Mundo(1000, 1000, null));
+		Jugador jugador = new Protoss(100,new Vector2D(100,100),"Pepe",new Color(0), new Mundo(1000, 1000, null));
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
 		jugador.agregarEstructura("Pilon", new Vector2D());
@@ -56,7 +56,7 @@ public class UnidadesEnergiaTest {
 														NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 														NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, 
 														NoEsDeSuRazaLaUnidadException, NoSeEncontroLaEntidad {
-		Jugador jugador = new Protoss(0,new Vector2D(100,100),"Pepe",new Color(0), new Mundo(1000, 1000, null));
+		Jugador jugador = new Protoss(100,new Vector2D(100,100),"Pepe",new Color(0), new Mundo(1000, 1000, null));
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
 		jugador.agregarEstructura("Pilon", new Vector2D());
@@ -80,7 +80,7 @@ public class UnidadesEnergiaTest {
 											NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 											NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia,
 											NoEsDeSuRazaLaUnidadException, NoSeEncontroLaEntidad, NoEsPosibleLanzarElHechizoAlli{
-		Jugador jugador = new Protoss(0,new Vector2D(100,100),"Pepe",new Color(0),new Mundo(1000, 1000, null));
+		Jugador jugador = new Protoss(100,new Vector2D(100,100),"Pepe",new Color(0),new Mundo(1000, 1000, null));
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
 		jugador.agregarEstructura("Pilon", new Vector2D());

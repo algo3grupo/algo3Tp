@@ -23,7 +23,7 @@ public class EstructuraProtossTest {
 	@Test
 	public void correlacionPuertoEstelarNecesitaAcceso() throws ErrorAlHacerCopia {
 		
-		Jugador jugador= new Protoss(0,new Vector2D(100,100),"Pepe",new Color(0),new Mundo(1000, 1000, null));
+		Jugador jugador= new Protoss(100,new Vector2D(100,100),"Pepe",new Color(0),new Mundo(1000, 1000, null));
 		jugador.agregarMineral(100);
 		jugador.agregarGas(300);
 		try {
@@ -42,7 +42,7 @@ public class EstructuraProtossTest {
 	@Test
 	public void correlacionArchivosTemplariosNecesitaPuertoEstelarYNoLaTiene() throws ErrorAlHacerCopia {
 		
-		Jugador jugador= new Protoss(0,new Vector2D(100,100),"Pepe",new Color(0),new Mundo(1000, 1000, null));
+		Jugador jugador= new Protoss(100,new Vector2D(100,100),"Pepe",new Color(0),new Mundo(1000, 1000, null));
 		jugador.agregarMineral(250);
 		jugador.agregarGas(350);
 		try {
@@ -60,7 +60,7 @@ public class EstructuraProtossTest {
 	@Test
 	public void correlacionArchivosTemplariosNecesitaPuertoEstelarQueNoSeTerminoDeConstruir() throws ErrorAlHacerCopia {
 		
-		Jugador jugador= new Protoss(0,new Vector2D(100,100),"Pepe",new Color(0),new Mundo(1000, 1000, null));
+		Jugador jugador= new Protoss(100,new Vector2D(100,100),"Pepe",new Color(0),new Mundo(1000, 1000, null));
 		jugador.agregarMineral(250);
 		jugador.agregarGas(350);
 		try {
@@ -78,7 +78,7 @@ public class EstructuraProtossTest {
 	@Test
 	public void correlacionArchivosTemplariosNecesitaPuertoEstelarYLoTiene() throws Exception {
 		
-		Jugador jugador= new Protoss(0,new Vector2D(100,100),"Pepe",new Color(0),new Mundo(1000, 1000, null));
+		Jugador jugador= new Protoss(100,new Vector2D(100,100),"Pepe",new Color(0),new Mundo(1000, 1000, null));
 		jugador.agregarMineral(250);
 		jugador.agregarGas(350);
 		try {

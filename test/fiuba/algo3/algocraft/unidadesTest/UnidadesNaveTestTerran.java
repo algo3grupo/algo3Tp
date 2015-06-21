@@ -33,7 +33,7 @@ public class UnidadesNaveTestTerran {
 	public void crearNaveYCargarUnaUnidad() throws NoEsDeSuRazaLaEstructuraException, NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 					NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoEsDeSuRazaLaUnidadException,
 					NoEsPosibleCargarEstaUnidad, NoSeEncontroLaEntidad {
-		Jugador jugador = new Terran(0,new Vector2D(100,100),"PEpe",new Color(0), new Mundo(1000, 1000, null));
+		Jugador jugador = new Terran(100,new Vector2D(100,100),"PEpe",new Color(0), new Mundo(1000, 1000, null));
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
 		jugador.agregarEstructura("Deposito Suministro", new Vector2D());
@@ -45,7 +45,7 @@ public class UnidadesNaveTestTerran {
 		PasaTurnos.pasarTurnos(jugador, 10);
 		Estructura puerto = jugador.obtenerEstructuras().get(4);
 		Estructura barraca = jugador.obtenerEstructuras().get(3);
-		jugador.agregarUnidad("Nave Transporte", puerto);
+		jugador.agregarUnidad("NaveTransporteTerran", puerto);
 		jugador.agregarUnidad("Marine", barraca);
 		PasaTurnos.pasarTurnos(jugador, 15);
 		ArrayList<Unidad> unidades = jugador.ObtenerUnidades();
@@ -59,7 +59,7 @@ public class UnidadesNaveTestTerran {
 	public void crearNaveYLaUnaUnidadQueQuiereCargarEsVoladora() throws NoEsDeSuRazaLaEstructuraException, NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 					NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoEsDeSuRazaLaUnidadException,
 					NoSeEncontroLaEntidad {
-		Jugador jugador = new Terran(0,new Vector2D(100,100),"PEpe",new Color(0), new Mundo(1000, 1000, null));
+		Jugador jugador = new Terran(100,new Vector2D(100,100),"PEpe",new Color(0), new Mundo(1000, 1000, null));
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
 		jugador.agregarEstructura("Deposito Suministro", new Vector2D());
@@ -71,7 +71,7 @@ public class UnidadesNaveTestTerran {
 		PasaTurnos.pasarTurnos(jugador, 10);
 		Estructura puerto = jugador.obtenerEstructuras().get(4);
 		Estructura barraca = jugador.obtenerEstructuras().get(3);
-		jugador.agregarUnidad("Nave Transporte", puerto);
+		jugador.agregarUnidad("NaveTransporteTerran", puerto);
 		jugador.agregarUnidad("Espectro", barraca);
 		PasaTurnos.pasarTurnos(jugador, 15);
 		ArrayList<Unidad> unidades = jugador.ObtenerUnidades();
@@ -88,7 +88,7 @@ public class UnidadesNaveTestTerran {
 	public void crearNaveYQuiereSobreCargarLaNave() throws NoEsDeSuRazaLaEstructuraException, NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 					NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoEsDeSuRazaLaUnidadException,
 					NoSeEncontroLaEntidad {
-		Jugador jugador = new Terran(0,new Vector2D(100,100),"PEpe",new Color(0), new Mundo(1000, 1000, null));
+		Jugador jugador = new Terran(100,new Vector2D(100,100),"PEpe",new Color(0), new Mundo(1000, 1000, null));
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
 		jugador.agregarEstructura("Deposito Suministro", new Vector2D());
@@ -102,7 +102,7 @@ public class UnidadesNaveTestTerran {
 		PasaTurnos.pasarTurnos(jugador, 10);
 		Estructura puerto = jugador.obtenerEstructuras().get(6);
 		Estructura fabrica = jugador.obtenerEstructuras().get(5);
-		jugador.agregarUnidad("Nave Transporte", puerto);
+		jugador.agregarUnidad("NaveTransporteTerran", puerto);
 		for (int i=1; i < 6; i++){
 			jugador.agregarUnidad("Golliat",fabrica);
 		}

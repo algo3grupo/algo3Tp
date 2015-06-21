@@ -41,8 +41,8 @@ public abstract class Jugador {
 	private int minerales;
 	private int gas;
 	private int poblacionActual;
-	protected CreadorEstructuras creadorEstructuras;
-	protected CreadorUnidades creadorUnidades;
+	private CreadorEstructuras creadorEstructuras;
+	private CreadorUnidades creadorUnidades;
 	private int poblacionMaxima;
 	private int dimension;
 	private ArrayList<Ceguera> puntosCiegos; 
@@ -196,7 +196,7 @@ public abstract class Jugador {
 	
 	public void incorporarEstructura(Estructura estructura){
 		estructuras.add(estructura);
-		
+		estructura.despejarZona();
 	}
 	
 	public void incorporarUnidad(Unidad unidad){
@@ -280,6 +280,11 @@ public abstract class Jugador {
 	public String obtenerNombre() 
 	{
 		return nombre;
+	}
+	
+	public void setCreadores(CreadorEstructuras creadorEstructuras, CreadorUnidades creadorUnidades){
+		this.creadorEstructuras = creadorEstructuras;
+		this.creadorUnidades = creadorUnidades;
 	}
 	
 }

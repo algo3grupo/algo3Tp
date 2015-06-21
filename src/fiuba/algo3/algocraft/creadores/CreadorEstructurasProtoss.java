@@ -13,12 +13,12 @@ public class CreadorEstructurasProtoss extends CreadorEstructuras {
 	
 	public CreadorEstructurasProtoss(Jugador jugador){
 		super();
-		entidades.add( new Asimilador(0, new Vector2D(), jugador) );
-		entidades.add( new NexoMineral(0, new Vector2D(), jugador) );
-		entidades.add( new Pilon(0, new Vector2D(), jugador) );
-		entidades.add( new Acceso(0, new Vector2D(), jugador) );
-		entidades.add( new PuertoEstelar(0, new Vector2D(), jugador) );
-		entidades.add( new ArchivosTemplarios(0, new Vector2D(), jugador) );
+		agregarEntidad( new Asimilador(0, new Vector2D(), jugador) );
+		agregarEntidad( new NexoMineral(0, new Vector2D(), jugador) );
+		agregarEntidad( new Pilon(0, new Vector2D(), jugador) );
+		agregarEntidad( new Acceso(0, new Vector2D(), jugador) );
+		agregarEntidad( new PuertoEstelar(0, new Vector2D(), jugador) );
+		agregarEntidad( new ArchivosTemplarios(0, new Vector2D(), jugador) );
 	}
 
 }

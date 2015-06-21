@@ -15,11 +15,9 @@ public class Protoss extends Jugador {
 
 	public Protoss(int dimension, Vector2D base, String nombreJugador, Color colorJugador, Mundo mundo) {
 		super(dimension, base, nombreJugador, colorJugador, mundo);
-		this.creadorEstructuras = new CreadorEstructurasProtoss(this);
-		this.creadorUnidades =new CreadorUnidadesProtoss(this);
+		setCreadores(new CreadorEstructurasProtoss(this), new CreadorUnidadesProtoss(this));
 		
 		incorporarEstructura(new Pilon(dimension, base, this));
-		
 		
 	}
 

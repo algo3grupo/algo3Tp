@@ -12,11 +12,11 @@ public class CreadorUnidadesTerran extends CreadorUnidades {
 	
 	public CreadorUnidadesTerran(Jugador jugador){
 		super();
-		this.entidades.add(new Espectro(0,new Vector2D(), jugador));
-		this.entidades.add(new Golliat(0,new Vector2D(), jugador));
-		this.entidades.add(new Marine(0,new Vector2D(), jugador));
-		this.entidades.add(new NaveCiencia(0,new Vector2D(), jugador));
-		this.entidades.add(new NaveTransporteTerran(0,new Vector2D(), jugador));
+		agregarEntidad(new Espectro(0,new Vector2D(), jugador));
+		agregarEntidad(new Golliat(0,new Vector2D(), jugador));
+		agregarEntidad(new Marine(0,new Vector2D(), jugador));
+		agregarEntidad(new NaveCiencia(0,new Vector2D(), jugador));
+		agregarEntidad(new NaveTransporteTerran(0,new Vector2D(), jugador));
 	}
 
 }

@@ -23,7 +23,7 @@ public abstract class Creador {
 	 * -tiene los recursos necesarios
 	 * -hay gas o mineral en el lugar si se trata de un recolector */
 	
-	protected ArrayList<Entidad> entidades;
+	private ArrayList<Entidad> entidades;
 	protected Creador(){
 		this.entidades = new ArrayList<Entidad>(); 
 	}
@@ -79,5 +79,9 @@ public abstract class Creador {
 			nombres.add( entidades.get(i).nombre() );
 		}
 		return nombres;
+	}
+	
+	public void agregarEntidad(Entidad entidad){
+		entidades.add(entidad);
 	}
 }

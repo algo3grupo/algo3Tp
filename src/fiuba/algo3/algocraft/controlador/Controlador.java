@@ -4,9 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 
+import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
@@ -45,9 +48,9 @@ public class Controlador {
 			{
 				try{
 					juego.construirEstructura(nombre, posicion);
-					reproducirSonido("/sonidos/new toy.wav");
+					reproducirSonido("recursos/new toy.wav");
 				} catch (NoPuedeRealizarEsaAccion e) {
-					reproducirSonido("/sonidos/cant do that.wav");
+					reproducirSonido("recursos/cant do that.wav");
 				}
 			}
 			
@@ -193,10 +196,10 @@ public class Controlador {
 				try {
 					juego.indicarAccion(string,unidad,entidad);
 					if (string == "Atacar"){
-						reproducirSonido("/sonidos/pew pew.wav");
+						reproducirSonido("recursos/pew pew.wav");
 					}
 				} catch (NoPuedeRealizarEsaAccion e) {
-					reproducirSonido("/sonidos/cant do that.wav");
+					reproducirSonido("recursos/cant do that.wav");
 				}
 			}
 			
@@ -213,15 +216,10 @@ public class Controlador {
 			public void actionPerformed(ActionEvent arg0)
 			{
                 if (clip == null) {
-                    try {
-                    	clip = AudioSystem.getClip();
-                		clip.open(AudioSystem.getAudioInputStream(getClass().getResourceAsStream("/sonidos/algocraft theme.wav")));
+                    	clip = abrirClip("recursos/algocraft theme.wav");
                 		clip.start();
                         clip.loop(Clip.LOOP_CONTINUOUSLY);
                         play.setText("||");
-                    } catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
-                        e.printStackTrace();
-                    }
                 } else {
 
                     if (clip.isRunning()) {
@@ -247,15 +245,21 @@ public class Controlador {
 	}
 	
 	public void reproducirSonido(String ruta){
+			Clip clip = abrirClip(ruta);
+	        clip.start();
+	}
+	
+	public Clip abrirClip(String ruta){
 		Clip clip = null;
-        if (clip == null) {
-            try {
-            	clip = AudioSystem.getClip();
-        		clip.open(AudioSystem.getAudioInputStream(getClass().getResourceAsStream(ruta)));
-            } catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
-                e.printStackTrace();
-            }
-        }
-        clip.start();
+		try{
+			File file = new File(ruta);
+
+	        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file.getAbsoluteFile());
+	        clip = AudioSystem.getClip();
+	        clip.open(audioInputStream);
+	    } catch(Exception ex) {
+	        ex.printStackTrace();
+	    }
+		return clip;
 	}
 }

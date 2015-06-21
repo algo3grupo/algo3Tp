@@ -13,7 +13,7 @@ public abstract class Estructura extends ColaDeAcciones implements IEstructura{
 
 	public Estructura(int dimension, Vector2D posicion, int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int turnos) {
 		super(dimension, posicion, vida, 4, jugador, nombre, costo, requiere, turnos);
-		this.despejarZona();
+		
 	}
 	
 	

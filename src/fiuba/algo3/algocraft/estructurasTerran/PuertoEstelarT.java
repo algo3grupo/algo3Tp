@@ -20,10 +20,11 @@ public class PuertoEstelarT extends Estructura {
 	public ArrayList<String> obtenerUnidadesCreables() 
 	{
 		ArrayList<String> unidades = new ArrayList<String>();
-		unidades.add("Espectro");
-		unidades.add("NaveTransporteTerran");
-		unidades.add("NaveCiencia");
-		
+		if (estaHabilitada()){
+			unidades.add("Espectro");
+			unidades.add("NaveTransporteTerran");
+			unidades.add("NaveCiencia");
+		}
 		return unidades;
 	}
 }

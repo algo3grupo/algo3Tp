@@ -19,8 +19,9 @@ public class Barraca extends Estructura {
 	public ArrayList<String> obtenerUnidadesCreables() 
 	{
 		ArrayList<String> unidades = new ArrayList<String>();
-		unidades.add("Marine");
-		
+		if (estaHabilitada()){
+			unidades.add("Marine");
+		}
 		return unidades;
 	}
 }

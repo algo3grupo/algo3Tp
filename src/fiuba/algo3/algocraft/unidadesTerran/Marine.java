@@ -13,6 +13,6 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 public class Marine extends UnidadAtaqueBasico {
 
 	public Marine(int dimension, Vector2D posicion, Jugador jugador) {
-		super(dimension, posicion, 40, 7, jugador, "Marine", new Costo(50,0), "Barraca", 1, 1, 3,new Ataque( 6, 6, 4, 4));
+		super(dimension, posicion, 40, 7, jugador, "Marine", new Costo(50,0), "Barraca", 1, 1, 3,new Ataque( 6, 6, 4*dimension, 4*dimension));
 	}
 }

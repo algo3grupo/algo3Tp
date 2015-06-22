@@ -21,9 +21,10 @@ public class Acceso extends Protegidas{
 	public ArrayList<String> obtenerUnidadesCreables() 
 	{
 		ArrayList<String> unidades = new ArrayList<String>();
-		unidades.add("Zealot");
-		unidades.add("Dragon");
-		
+		if (estaHabilitada()){
+			unidades.add("Zealot");
+			unidades.add("Dragon");
+		}
 		return unidades;
 	}
 

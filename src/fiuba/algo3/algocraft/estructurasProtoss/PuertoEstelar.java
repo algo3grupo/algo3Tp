@@ -20,9 +20,10 @@ public class PuertoEstelar extends Protegidas {
 	public ArrayList<String> obtenerUnidadesCreables() 
 	{
 		ArrayList<String> unidades = new ArrayList<String>();
-		unidades.add("Scout");
-		unidades.add("NaveTransporteProtoss");
-		
+		if (estaHabilitada()){
+			unidades.add("Scout");
+			unidades.add("NaveTransporteProtoss");
+		}
 		return unidades;
 	}
 }

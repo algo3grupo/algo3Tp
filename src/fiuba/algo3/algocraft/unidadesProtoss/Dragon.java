@@ -15,7 +15,7 @@ public class Dragon extends UnidadAtaqueBasico implements IEfectoEMP {
 
 	public Dragon(int dimension, Vector2D posicion, Jugador jugador) {
 		
-		super(dimension, posicion, 100, 1, jugador, "Dragon", new Costo(125,50), "Acceso", 2 , 4, 6 ,new Ataque(20, 20, 4, 4));
+		super(dimension, posicion, 100, 1, jugador, "Dragon", new Costo(125,50), "Acceso", 2 , 4, 6 ,new Ataque(20, 20, 4*dimension, 4*dimension));
 		construirEscudo(80);
 	}
 

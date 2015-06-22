@@ -20,8 +20,9 @@ public class Fabrica extends Estructura {
 	public ArrayList<String> obtenerUnidadesCreables() 
 	{
 		ArrayList<String> unidades = new ArrayList<String>();
-		unidades.add("Golliat");
-		
+		if (estaHabilitada()){
+			unidades.add("Golliat");
+		}
 		return unidades;
 	}
 }

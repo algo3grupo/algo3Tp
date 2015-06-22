@@ -14,7 +14,7 @@ public class Espectro extends UnidadAtaqueBasico {
 
 	public Espectro(int dimension, Vector2D posicion, Jugador jugador) {
 		
-		super(dimension, posicion, 120, 7, jugador, "Espectro", new Costo(150,100), "Puerto Estelar", 2, 0, 8,new Ataque( 8, 20, 5, 5));
+		super(dimension, posicion, 120, 7, jugador, "Espectro", new Costo(150,100), "Puerto Estelar", 2, 0, 8,new Ataque( 8, 20, 5*dimension, 5*dimension));
 	}
 
 }

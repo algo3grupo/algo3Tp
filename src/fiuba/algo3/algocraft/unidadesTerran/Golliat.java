@@ -14,7 +14,7 @@ public class Golliat extends UnidadAtaqueBasico {
 
 	public Golliat(int dimension, Vector2D posicion, Jugador jugador) {
 		
-		super(dimension, posicion, 125, 8, jugador, "Golliat", new Costo(100,50), "Fabrica", 2, 2, 6,new Ataque(12, 10, 6, 5));
+		super(dimension, posicion, 125, 8, jugador, "Golliat", new Costo(100,50), "Fabrica", 2, 2, 6,new Ataque(12, 10, 6*dimension, 5*dimension));
 		
 	}
 

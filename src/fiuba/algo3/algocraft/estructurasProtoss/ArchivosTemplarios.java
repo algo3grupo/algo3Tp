@@ -19,8 +19,9 @@ public class ArchivosTemplarios extends Protegidas {
 	public ArrayList<String> obtenerUnidadesCreables() 
 	{
 		ArrayList<String> unidades = new ArrayList<String>();
-		unidades.add("AltoTemplario");
-		
+		if (estaHabilitada()){
+			unidades.add("AltoTemplario");
+		}
 		return unidades;
 	}
 

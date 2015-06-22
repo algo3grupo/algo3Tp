@@ -15,7 +15,7 @@ public class Scout extends UnidadAtaqueBasico implements IEfectoEMP{
 
 	public Scout(int dimension, Vector2D posicion, Jugador jugador) {
 		
-		super(dimension, posicion, 150, 7, jugador, "Scout", new Costo(100,0), "Puerto Estelar", 3, 0, 9,new Ataque(8, 14, 4, 4));
+		super(dimension, posicion, 150, 7, jugador, "Scout", new Costo(100,0), "Puerto Estelar", 3, 0, 9,new Ataque(8, 14, 4*dimension, 4*dimension));
 		construirEscudo(100);
 	}
 

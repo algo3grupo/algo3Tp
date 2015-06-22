@@ -11,18 +11,20 @@ import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.UnidadAtaqueBasico;
 import fiuba.algo3.algocraft.excepciones.FinDeLaPartida;
+import fiuba.algo3.algocraft.excepciones.NoPuedeRealizarEsaAccion;
+import fiuba.algo3.excepciones.NoExisteLaRaza;
 import fiuba.algo3.excepciones.NoLePerteneceLaEntidad;
 
 public class PartidaTest {
 
 	@Test(expected = FinDeLaPartida.class)
-	public void unaPartidaCompleta() throws NoLePerteneceLaEntidad {
+	public void unaPartidaCompleta() throws NoLePerteneceLaEntidad, NoExisteLaRaza, NoPuedeRealizarEsaAccion {
 		
 		Juego juego = new Juego("Protoss","DSRKLI",new Color(1),"Terran","YTREJS",new Color(0));
 		
 		Mundo mundo = juego.obtenerMundo();
 		
-		try{
+		
 			/*Turno 1: Jugador 1 crea un nexo mineral*/
 			
 			juego.construirEstructura("Nexo Mineral", mundo.mineralesCercanos(mundo.posicionBaseJugador1()).get(0).obtenerPosicion()); 
@@ -147,9 +149,6 @@ public class PartidaTest {
 					}
 				}
 			}
-		} catch (Exception e) {
-			
-		}
 		
 		
 	}

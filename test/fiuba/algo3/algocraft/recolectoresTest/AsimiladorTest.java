@@ -14,6 +14,7 @@ import fiuba.algo3.algocraft.excepciones.ErrorAlHacerCopia;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
 import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
+import fiuba.algo3.algocraft.excepciones.NoHaySuministroEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
 import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
 import fiuba.algo3.algocraft.jugador.Protoss;
@@ -25,7 +26,8 @@ public class AsimiladorTest {
 	@Test
 	public void crearAsimiladorEnUnLugarConGas() throws NoEsDeSuRazaLaEstructuraException, 
 												NoTieneLaEstructuraCreadaException,	NoTieneRecursosSuficientesException, 
-												NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia{
+												NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia,
+												NoHaySuministroEnElLugarACrear{
 		
 		Juego juego = new Juego("Protoss","DSRKLI",new Color(1),"Terran","YTREJS",new Color(0));
         
@@ -69,7 +71,7 @@ public class AsimiladorTest {
         jugadorProtoss.agregarEstructura("Asimilador", posicionSinGas);                
         
         ArrayList<Estructura> estructurasDeJugadorProtoss = jugadorProtoss.obtenerEstructuras();
-        }catch (NoHayGasEnElLugarACrear e) {}
+        }catch (NoHaySuministroEnElLugarACrear e) {}
             
 	}
 }

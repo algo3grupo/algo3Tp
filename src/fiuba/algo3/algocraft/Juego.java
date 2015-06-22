@@ -41,6 +41,7 @@ import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaUnidadException;
 import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
+import fiuba.algo3.algocraft.excepciones.NoHaySuministroEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoPuedeAtacarUnidadesAereas;
 import fiuba.algo3.algocraft.excepciones.NoPuedeAtacarUnidadesEnTierra;
 import fiuba.algo3.algocraft.excepciones.NoPuedeRealizarEsaAccion;
@@ -57,6 +58,7 @@ import fiuba.algo3.algocraft.mundo.Mundo;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 import fiuba.algo3.algocraft.vista.Dibujable;
 import fiuba.algo3.algocraft.vista.Lienzo;
+import fiuba.algo3.excepciones.NoExisteLaRaza;
 import fiuba.algo3.excepciones.NoLePerteneceLaEntidad;
 
 public class Juego extends Observable{
@@ -69,18 +71,25 @@ public class Juego extends Observable{
 		
 		mundo = new Mundo(5000,100,this);
 		mundo.generar();		
-		
-		if(razaJugador1=="Protoss")
-			jugador1 = new Protoss(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),nombreJugador1,colorJugador1,mundo);
-		else
-			jugador1 = new Terran(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador1(),nombreJugador1,colorJugador1, mundo);
-		
-		if(razaJugador2=="Protoss")
-			jugador2 = new Protoss(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador2(),nombreJugador2,colorJugador2, mundo);
-		else
-			jugador2 = new Terran(mundo.obtenerDivisionDeGrilla(),mundo.posicionBaseJugador2(),nombreJugador2,colorJugador2, mundo);
-		
+		try{
+		jugador1 = nuevoJugador("Protoss",nombreJugador1, colorJugador1, mundo.posicionBaseJugador1());
+		jugador2= nuevoJugador("Terran",nombreJugador2, colorJugador2, mundo.posicionBaseJugador2());
+		}catch (NoExisteLaRaza e){
+			return;
+		}
 		turno = jugador1;
+	}
+
+	private Jugador nuevoJugador(String raza, String nombreJugador,
+			Color colorJugador, Vector2D posicionBase) throws NoExisteLaRaza {
+		switch ( raza ) {
+			case "Protoss":
+				return new Protoss(mundo.obtenerDivisionDeGrilla(), posicionBase, nombreJugador, colorJugador, mundo);
+			case "Terran":
+				return new Terran(mundo.obtenerDivisionDeGrilla(), posicionBase, nombreJugador, colorJugador, mundo);
+			default:
+				throw new NoExisteLaRaza();
+		}
 	}
 
 	public ArrayList<Unidad> obtenerUnidadesDeJugador1() {
@@ -151,7 +160,7 @@ public class Juego extends Observable{
 						| NoTieneLaEstructuraCreadaException
 						| NoTieneRecursosSuficientesException
 						| NoHayMineralEnElLugarACrear | NoHayGasEnElLugarACrear
-						| ErrorAlHacerCopia e) {
+						| ErrorAlHacerCopia | NoHaySuministroEnElLugarACrear e) {
 					
 					e.printStackTrace();
 					throw new NoPuedeRealizarEsaAccion();

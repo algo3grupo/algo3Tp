@@ -10,6 +10,7 @@ import fiuba.algo3.algocraft.excepciones.ErrorAlHacerCopia;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
 import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
+import fiuba.algo3.algocraft.excepciones.NoHaySuministroEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
 import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
 import fiuba.algo3.algocraft.jugador.Jugador;
@@ -33,9 +34,12 @@ public class EstructuraProtossTest {
 		} catch (NoEsDeSuRazaLaEstructuraException
 				| NoTieneRecursosSuficientesException
 				| NoHayMineralEnElLugarACrear 
-				| NoHayGasEnElLugarACrear e) {
+				| NoHayGasEnElLugarACrear
+				| NoHaySuministroEnElLugarACrear e) {
 			fail("Deberia tirar error de estructura no creada");
-		} catch ( NoTieneLaEstructuraCreadaException e){}
+		} catch ( NoTieneLaEstructuraCreadaException e){
+			assert (true);
+		}
 		
 	}
 	
@@ -51,7 +55,8 @@ public class EstructuraProtossTest {
 		} catch (NoEsDeSuRazaLaEstructuraException
 				| NoTieneRecursosSuficientesException
 				|NoHayMineralEnElLugarACrear 
-				| NoHayGasEnElLugarACrear e) {
+				| NoHayGasEnElLugarACrear
+				| NoHaySuministroEnElLugarACrear e) {
 			fail("Deberia tirar error de estructura no creada");
 		}  catch ( NoTieneLaEstructuraCreadaException e){}
 		
@@ -69,7 +74,8 @@ public class EstructuraProtossTest {
 		} catch (NoEsDeSuRazaLaEstructuraException
 				| NoTieneRecursosSuficientesException
 				|NoHayMineralEnElLugarACrear 
-				| NoHayGasEnElLugarACrear e) {
+				| NoHayGasEnElLugarACrear
+				| NoHaySuministroEnElLugarACrear e) {
 			fail("Deberia tirar error de estructura no creada");
 		}  catch ( NoTieneLaEstructuraCreadaException e){}
 		

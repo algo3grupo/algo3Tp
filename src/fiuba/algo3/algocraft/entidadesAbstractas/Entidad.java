@@ -155,6 +155,10 @@ public abstract class Entidad {
 		}
 	}
 	
+	public void habilitar(){
+		turnos = 0;
+	}
+	
 	public boolean estaHabilitada(){
 		
 		return (turnos == 0);
@@ -186,7 +190,7 @@ public abstract class Entidad {
 
 
 	public void atacado(Ataque ataque, int distancia) throws NoSePuedeAtacarEstaFueraDeRango, NoPuedeAtacarUnidadesEnTierra, NoPuedeAtacarUnidadesAereas {
-		//en principio las entidades son terrenas salvo q se el caso de una unidad voladora
+		//en principio las entidades son terrenas salvo q sea el caso de una unidad voladora
 		if (ataque.estaEnRangoTierra(distancia)){
 			herir(ataque.danioTierra());
 		}

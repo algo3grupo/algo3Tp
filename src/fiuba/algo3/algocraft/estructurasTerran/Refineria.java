@@ -32,4 +32,9 @@ public class Refineria extends Estructura implements IRecolectores {
 		
 		return unidades;
 	}
+
+	public boolean haySuministroEn(Vector2D posicion) {
+		
+		return getJugador().getMundo().hayGas(posicion);
+	}
 }

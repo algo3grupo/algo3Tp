@@ -32,6 +32,7 @@ public class Alucinacion extends Hechizo {
 		Field suministro = unidad.getClass().getField("suministro");
 		suministro.setAccessible(true);
 		suministro.set( (Object) unidad, 0);
+		copia.habilitar();
 		unidad.getJugador().incorporarUnidad(copia);
 		
 		

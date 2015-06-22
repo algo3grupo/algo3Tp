@@ -50,5 +50,6 @@ public abstract class ColaDeAcciones extends Entidad implements IColaDeAcciones{
 		for(int i=0;i<colaDeAcciones.size();i++)
 			colaDeAcciones.get(i).ejecutar(this);		
 	}
+	
 
 }

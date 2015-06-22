@@ -16,6 +16,7 @@ import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaUnidadException;
 import fiuba.algo3.algocraft.excepciones.NoEsPosibleCargarEstaUnidad;
 import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
+import fiuba.algo3.algocraft.excepciones.NoHaySuministroEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoSeEncontroLaEntidad;
 import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
 import fiuba.algo3.algocraft.excepciones.NoTienePoblacionSuficienteException;
@@ -32,7 +33,7 @@ public class UnidadesNaveTestTerran {
 	@Test
 	public void crearNaveYCargarUnaUnidad() throws NoEsDeSuRazaLaEstructuraException, NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 					NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoEsDeSuRazaLaUnidadException,
-					NoEsPosibleCargarEstaUnidad, NoSeEncontroLaEntidad {
+					NoEsPosibleCargarEstaUnidad, NoSeEncontroLaEntidad, NoHaySuministroEnElLugarACrear {
 		Jugador jugador = new Terran(100,new Vector2D(100,100),"PEpe",new Color(0), new Mundo(1000, 1000, null));
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
@@ -58,7 +59,7 @@ public class UnidadesNaveTestTerran {
 	@Test
 	public void crearNaveYLaUnaUnidadQueQuiereCargarEsVoladora() throws NoEsDeSuRazaLaEstructuraException, NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 					NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoEsDeSuRazaLaUnidadException,
-					NoSeEncontroLaEntidad {
+					NoSeEncontroLaEntidad, NoHaySuministroEnElLugarACrear {
 		Jugador jugador = new Terran(100,new Vector2D(100,100),"PEpe",new Color(0), new Mundo(1000, 1000, null));
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
@@ -87,7 +88,7 @@ public class UnidadesNaveTestTerran {
 	@Test
 	public void crearNaveYQuiereSobreCargarLaNave() throws NoEsDeSuRazaLaEstructuraException, NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 					NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoEsDeSuRazaLaUnidadException,
-					NoSeEncontroLaEntidad {
+					NoSeEncontroLaEntidad, NoHaySuministroEnElLugarACrear {
 		Jugador jugador = new Terran(100,new Vector2D(100,100),"PEpe",new Color(0), new Mundo(1000, 1000, null));
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);

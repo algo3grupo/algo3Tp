@@ -23,6 +23,7 @@ import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaUnidadException;
 import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
+import fiuba.algo3.algocraft.excepciones.NoHaySuministroEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoSeEncontroLaEntidad;
 import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
 import fiuba.algo3.algocraft.excepciones.NoTienePoblacionSuficienteException;
@@ -56,7 +57,7 @@ public abstract class Jugador {
 		this.poblacionActual = 0;
 		this.unidades = new ArrayList<Unidad>();
 		this.estructuras = new ArrayList<Estructura>();
-		poblacionMaxima = 5;
+		poblacionMaxima = 0;
 		this.dimension = dimension;
 		this.mundo = mundo;
 		
@@ -85,7 +86,7 @@ public abstract class Jugador {
 																				NoTieneLaEstructuraCreadaException,
 																				NoTieneRecursosSuficientesException,
 																				NoHayMineralEnElLugarACrear, 
-																				NoHayGasEnElLugarACrear, ErrorAlHacerCopia{
+																				NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoHaySuministroEnElLugarACrear{
 		
 		Estructura estructura = creadorEstructuras.crearEstructura(string, posicion, mundo);
 		incorporarEstructura(estructura);

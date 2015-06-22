@@ -13,6 +13,7 @@ import fiuba.algo3.algocraft.excepciones.ErrorAlHacerCopia;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
 import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
+import fiuba.algo3.algocraft.excepciones.NoHaySuministroEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
 import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
 import fiuba.algo3.algocraft.jugador.Terran;
@@ -24,7 +25,7 @@ public class RefineriaTest {
 	@Test
 	public void crearRefineriaEnUnLugarConGas() throws NoEsDeSuRazaLaEstructuraException, 
 													NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException, 
-													NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia{
+													NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoHaySuministroEnElLugarACrear{
         
 		Juego juego = new Juego("Protoss","DSRKLI",new Color(1),"Terran","YTREJS",new Color(0));
         
@@ -68,7 +69,7 @@ public class RefineriaTest {
         jugadorTerran.agregarEstructura("Refineria", posicionSinGas);                
         
         ArrayList<Estructura> estructurasDeJugadorTerran = jugadorTerran.obtenerEstructuras();
-		}catch (NoHayGasEnElLugarACrear e) {} 
+		}catch ( NoHaySuministroEnElLugarACrear e) {} 
             
 	}
 }

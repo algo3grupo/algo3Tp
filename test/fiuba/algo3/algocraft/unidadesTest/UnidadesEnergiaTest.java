@@ -12,6 +12,7 @@ import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaUnidadException;
 import fiuba.algo3.algocraft.excepciones.NoEsPosibleLanzarElHechizoAlli;
 import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
+import fiuba.algo3.algocraft.excepciones.NoHaySuministroEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoSeEncontroLaEntidad;
 import fiuba.algo3.algocraft.excepciones.NoTieneEnergiaSuficiente;
 import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
@@ -30,7 +31,7 @@ public class UnidadesEnergiaTest {
 	@Test
 	public void UnidadDeEnergiaEnUnTurnoCargaDiezDeEnergia() throws NoEsDeSuRazaLaEstructuraException, NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException, 
 												NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, 
-												NoEsDeSuRazaLaUnidadException, NoSeEncontroLaEntidad{
+												NoEsDeSuRazaLaUnidadException, NoSeEncontroLaEntidad, NoHaySuministroEnElLugarACrear{
 		
 		Jugador jugador = new Protoss(100,new Vector2D(100,100),"Pepe",new Color(0), new Mundo(1000, 1000, null));
 		jugador.agregarMineral(4000);
@@ -55,7 +56,7 @@ public class UnidadesEnergiaTest {
 	public void UnidadDeEnergiaYAunquePasenMuchosTurnosLaEnergiaNoSobrepasaLos200() throws NoEsDeSuRazaLaEstructuraException, 
 														NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 														NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia, 
-														NoEsDeSuRazaLaUnidadException, NoSeEncontroLaEntidad {
+														NoEsDeSuRazaLaUnidadException, NoSeEncontroLaEntidad, NoHaySuministroEnElLugarACrear {
 		Jugador jugador = new Protoss(100,new Vector2D(100,100),"Pepe",new Color(0), new Mundo(1000, 1000, null));
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
@@ -79,7 +80,7 @@ public class UnidadesEnergiaTest {
 	public void NoTieneSuficienteEnergiaComoParaLanzarElHechizo() throws NoEsDeSuRazaLaEstructuraException,
 											NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 											NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia,
-											NoEsDeSuRazaLaUnidadException, NoSeEncontroLaEntidad, NoEsPosibleLanzarElHechizoAlli{
+											NoEsDeSuRazaLaUnidadException, NoSeEncontroLaEntidad, NoEsPosibleLanzarElHechizoAlli, NoHaySuministroEnElLugarACrear{
 		Jugador jugador = new Protoss(100,new Vector2D(100,100),"Pepe",new Color(0),new Mundo(1000, 1000, null));
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);

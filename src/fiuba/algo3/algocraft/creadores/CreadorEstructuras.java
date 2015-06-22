@@ -11,6 +11,7 @@ import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEntidadException;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
 import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
+import fiuba.algo3.algocraft.excepciones.NoHaySuministroEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
 import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
 import fiuba.algo3.algocraft.mundo.Mundo;
@@ -21,24 +22,14 @@ public abstract class CreadorEstructuras extends Creador {
 	public Estructura crearEstructura(String string,Vector2D posicion, Mundo mundo) throws NoEsDeSuRazaLaEstructuraException, 
 																					NoTieneLaEstructuraCreadaException, 
 																					NoTieneRecursosSuficientesException,
-																					NoHayMineralEnElLugarACrear,
-																					NoHayGasEnElLugarACrear, 
-																					ErrorAlHacerCopia{
+																					ErrorAlHacerCopia, NoHaySuministroEnElLugarACrear{
 		
 		try {
 			Estructura estructura = (Estructura)crearEntidad(string, posicion, mundo) ;
 			
 			if (estructura instanceof IRecolectores){
-				
-				if (( (estructura.nombre() == "Centro De Minerales") || (estructura.nombre()  == "Nexo Mineral") ) 
-														& (! mundo.hayMineral(posicion))){
-					estructura.getJugador().reintegroCosto(estructura);
-					throw new NoHayMineralEnElLugarACrear();
-				}
-				else if (((estructura.nombre()  == "Refineria") || (estructura.nombre()  == "Asimilador") ) 	
-												& (! mundo.hayGas(posicion))){
-					estructura.getJugador().reintegroCosto(estructura);
-					throw new NoHayGasEnElLugarACrear();
+				if ( ! ((IRecolectores) estructura).haySuministroEn(posicion) ){
+					throw new NoHaySuministroEnElLugarACrear();
 				}
 			}
 			return estructura;

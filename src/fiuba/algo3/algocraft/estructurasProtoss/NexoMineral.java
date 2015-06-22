@@ -30,4 +30,9 @@ public class NexoMineral extends Protegidas implements IRecolectores{
 	{
 		return new ArrayList<String>();
 	}
+
+	public boolean haySuministroEn(Vector2D posicion) {
+		
+		return getJugador().getMundo().hayMineral(posicion);
+	}
 }

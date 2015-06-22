@@ -17,6 +17,7 @@ import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaUnidadException;
 import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
+import fiuba.algo3.algocraft.excepciones.NoHaySuministroEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoPuedeAtacarUnidadesAereas;
 import fiuba.algo3.algocraft.excepciones.NoPuedeAtacarUnidadesEnTierra;
 import fiuba.algo3.algocraft.excepciones.NoSeEncontroLaEntidad;
@@ -76,7 +77,8 @@ public class UnidadesTerranTest {
 				| NoTieneLaEstructuraCreadaException
 				| NoTieneRecursosSuficientesException
 				| NoHayMineralEnElLugarACrear 
-				| NoHayGasEnElLugarACrear e) {
+				| NoHayGasEnElLugarACrear
+				| NoHaySuministroEnElLugarACrear e) {
 			fail("No deberia tirar este error");
 		}
 		PasaTurnos.pasarTurnos(jugador, 7);
@@ -98,7 +100,8 @@ public class UnidadesTerranTest {
 				| NoEsDeSuRazaLaEstructuraException
 				| NoTieneLaEstructuraCreadaException
 				| NoHayMineralEnElLugarACrear 
-				| NoHayGasEnElLugarACrear e) {
+				| NoHayGasEnElLugarACrear 
+				| NoHaySuministroEnElLugarACrear e) {
 			fail("No deberia tirar este error");
 		} catch (NoTieneRecursosSuficientesException e){
 		}
@@ -123,7 +126,8 @@ public class UnidadesTerranTest {
 				| NoEsDeSuRazaLaEstructuraException
 				| NoTieneLaEstructuraCreadaException
 				| NoHayMineralEnElLugarACrear 
-				| NoHayGasEnElLugarACrear e) {
+				| NoHayGasEnElLugarACrear 
+				| NoHaySuministroEnElLugarACrear e) {
 			fail("No deberia tirar este error");
 		} catch (NoTieneRecursosSuficientesException e){
 		}
@@ -147,7 +151,8 @@ public class UnidadesTerranTest {
 			| NoTieneLaEstructuraCreadaException
 			| NoTieneRecursosSuficientesException
 			| NoHayMineralEnElLugarACrear 
-			| NoHayGasEnElLugarACrear e) {
+			| NoHayGasEnElLugarACrear 
+			| NoHaySuministroEnElLugarACrear e) {
 		fail("No deberia tirar este error");
 	} 
 		
@@ -174,7 +179,8 @@ public class UnidadesTerranTest {
 				| NoTieneLaEstructuraCreadaException
 				| NoTieneRecursosSuficientesException
 				| NoHayMineralEnElLugarACrear 
-				| NoHayGasEnElLugarACrear e) {
+				| NoHayGasEnElLugarACrear 
+				| NoHaySuministroEnElLugarACrear e) {
 			fail("No deberia tirar este error");
 		} 
 		PasaTurnos.pasarTurnos(jugador, 10);
@@ -205,7 +211,8 @@ public class UnidadesTerranTest {
 				| NoTieneLaEstructuraCreadaException
 				| NoTieneRecursosSuficientesException
 				| NoHayMineralEnElLugarACrear 
-				| NoHayGasEnElLugarACrear e) {
+				| NoHayGasEnElLugarACrear 
+				| NoHaySuministroEnElLugarACrear e) {
 			fail("No deberia tirar este error");
 		} 
 		PasaTurnos.pasarTurnos(jugador, 10);

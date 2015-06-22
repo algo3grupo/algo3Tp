@@ -15,6 +15,7 @@ import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaUnidadException;
 import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
+import fiuba.algo3.algocraft.excepciones.NoHaySuministroEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoSeEncontroLaEntidad;
 import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
 import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
@@ -70,7 +71,8 @@ public class UnidadProtossTest {
 				| NoTieneLaEstructuraCreadaException
 				|NoTieneRecursosSuficientesException
 				| NoHayMineralEnElLugarACrear 
-				| NoHayGasEnElLugarACrear e) {
+				| NoHayGasEnElLugarACrear 
+				| NoHaySuministroEnElLugarACrear e) {
 			fail("No deberia tirar este error");
 		}
 		PasaTurnos.pasarTurnos(jugador, 7);
@@ -92,7 +94,8 @@ public class UnidadProtossTest {
 				| NoEsDeSuRazaLaEstructuraException
 				| NoTieneLaEstructuraCreadaException
 				| NoHayMineralEnElLugarACrear 
-				| NoHayGasEnElLugarACrear e) {
+				| NoHayGasEnElLugarACrear 
+				| NoHaySuministroEnElLugarACrear e) {
 			fail("No deberia tirar este error");
 		} catch (NoTieneRecursosSuficientesException e){
 		}
@@ -115,7 +118,8 @@ public class UnidadProtossTest {
 				| NoEsDeSuRazaLaEstructuraException
 				| NoTieneLaEstructuraCreadaException
 				| NoHayMineralEnElLugarACrear 
-				| NoHayGasEnElLugarACrear e) {
+				| NoHayGasEnElLugarACrear 
+				| NoHaySuministroEnElLugarACrear e) {
 			fail("No deberia tirar este error");
 		} catch (NoTieneRecursosSuficientesException e){
 		}
@@ -138,7 +142,8 @@ public class UnidadProtossTest {
 			| NoTieneLaEstructuraCreadaException
 			| NoTieneRecursosSuficientesException
 			| NoHayMineralEnElLugarACrear 
-			| NoHayGasEnElLugarACrear e) {
+			| NoHayGasEnElLugarACrear 
+			| NoHaySuministroEnElLugarACrear e) {
 		fail("No deberia tirar este error");
 	} 
 		assertEquals(jugador.ObtenerUnidades().size(), 0);

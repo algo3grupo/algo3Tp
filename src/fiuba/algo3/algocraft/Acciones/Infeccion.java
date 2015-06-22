@@ -20,9 +20,8 @@ public class Infeccion implements IAccion {
 	
 
 	private void radiacion(Unidad unidad){
-		//ataca directamente la vida de las unidades aliadas
-		
-		ArrayList<Unidad> unidades= (ArrayList<Unidad>)unidad.obtenerUnidadesAliadasEnRango( rango );
+		//busca las unidades a su alrededor y las dania
+		ArrayList<Unidad> unidades= (ArrayList<Unidad>)unidad.getJugador().getMundo().obtenerUnidadesEnZona(unidad.obtenerPosicion(), rango);
 		for ( int i = 0; i < unidades.size() ; i++){
 			unidades.get(i).herir(danio);
 		}

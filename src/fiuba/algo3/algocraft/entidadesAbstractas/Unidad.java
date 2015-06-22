@@ -31,7 +31,7 @@ public abstract class Unidad extends ColaDeAcciones implements IUnidad {
 		this.suministro = suministro;
 		this.transporte = transporte;
 		this.escudo = new Escudo(0);
-		//
+
 		this.agregarAccion(new RecuperarEscudo(this));
  	}
 
@@ -39,22 +39,6 @@ public abstract class Unidad extends ColaDeAcciones implements IUnidad {
 	public int suministro() {
 		
 		return suministro;
-	}
-
-
-	public ArrayList<Unidad> obtenerUnidadesAliadasEnRango(int rango) {
-		//devuelve tmb a la unidad q llama lafuncion
-		ArrayList<Unidad> unidadesTodas = getJugador().ObtenerUnidades();
-		ArrayList<Unidad> unidadesCercanas = new ArrayList<Unidad>();
-		
-		for ( int i= 0; i < unidadesTodas.size(); i++ ){
-			
-			if ( this.obtenerPosicion().distanciaA(unidadesTodas.get(i).obtenerPosicion()) < rango){
-				
-				unidadesCercanas.add(unidadesTodas.get(i));
-			}
-		}
-		return null;
 	}
 
 

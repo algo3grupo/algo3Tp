@@ -23,8 +23,7 @@ public class CrearUnidad implements IAccion{
 			throw new NoTienePoblacionSuficienteException();
 		}
 		
-		estructura.getJugador().incorporarUnidad(unidad);
-		//falta posicionar, incorporar podria hacerlo si unidad ya tiene posicion 
+		estructura.getJugador().incorporarUnidad(unidad); 
 		
 	}
 

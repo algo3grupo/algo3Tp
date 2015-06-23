@@ -53,6 +53,7 @@ public abstract class UnidadAtaqueBasico extends Unidad implements IAtacar {
 									| NoPuedeAtacarUnidadesEnTierra
 									| NoPuedeAtacarUnidadesAereas e) {
 								e.printStackTrace();
+								throw new NoPuedeRealizarEsaAccion();
 							}
 							break;
 			default: super.realizarAccion(accion, destino); 

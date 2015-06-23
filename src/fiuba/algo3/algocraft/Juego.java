@@ -168,7 +168,7 @@ public class Juego extends Observable{
 				actualizarObservadores();
 	}
 	
-	public void crearUnidad(String nombre, Estructura estructura) 
+	public void crearUnidad(String nombre, Estructura estructura) throws NoPuedeRealizarEsaAccion
 	{
 		try {
 			turno.agregarUnidad(nombre, estructura);
@@ -177,6 +177,7 @@ public class Juego extends Observable{
 				| NoTieneRecursosSuficientesException | NoSeEncontroLaEntidad
 				| ErrorAlHacerCopia e) {
 			e.printStackTrace();
+			throw new NoPuedeRealizarEsaAccion();
 		}
 		
 		actualizarObservadores();
@@ -282,6 +283,38 @@ public class Juego extends Observable{
 			estructura = (Estructura)i.next();
 			if(estructura.incluyeA(posicion))
 				return estructura;
+		}
+		return null;
+	}
+	
+	public Estructura obtenerEstructuraContraria(Vector2D posicion) ///////////////agregue
+	{
+		ArrayList<Estructura> e = obtenerEstructurasContrarias();
+		Estructura estructura;
+		
+		Iterator i = e.iterator();
+		
+		while(i.hasNext())
+		{
+			estructura = (Estructura)i.next();
+			if(estructura.incluyeA(posicion))
+				return estructura;
+		}
+		return null;
+	}
+	
+	public Unidad obtenerUnidadContraria(Vector2D posicion) /////////agregue
+	{
+		ArrayList<Unidad> e = obtenerUnidadesContrarias();
+		Unidad unidad;
+		
+		Iterator i = e.iterator();
+		
+		while(i.hasNext())
+		{
+			unidad = (Unidad)i.next();
+			if(unidad.incluyeA(posicion))
+				return unidad;
 		}
 		return null;
 	}

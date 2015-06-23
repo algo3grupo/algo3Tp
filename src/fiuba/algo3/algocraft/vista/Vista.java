@@ -140,7 +140,7 @@ public class Vista implements Observer {
 	public void dibujarFrontBuffer(Graphics g)
 	{				
 		
-		g.drawImage(backBuffer.getSubimage(-lienzo.getX(), -lienzo.getY(), ventana.getWidth(), ventana.getHeight()),-lienzo.getX(),-lienzo.getY(),null);
+		g.drawImage(backBuffer,0,0,null);
 		
 		if(menuContextual != null)
 			menuContextual.updateUI();

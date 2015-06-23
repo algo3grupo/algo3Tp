@@ -65,7 +65,11 @@ public class Controlador {
 
 			public void actionPerformed(ActionEvent arg0)
 			{
-				juego.crearUnidad(nombre,estructura);
+				try{
+					juego.crearUnidad(nombre,estructura);
+				} catch (NoPuedeRealizarEsaAccion e) {
+					reproducirSonido("recursos/cant do that.wav");
+				}
 			}
 			
 		}	
@@ -162,15 +166,15 @@ public class Controlador {
 			public void actionPerformed(ActionEvent arg0)
 			{
 				Entidad entidad;
-				ArrayList<Unidad> aux;
+				Unidad aux;
 				
-				entidad = juego.obtenerEstructura(posicion);
+				entidad = juego.obtenerEstructuraContraria(posicion);
 				
 				if(entidad == null)
 				{
-					aux = juego.obtenerUnidad(posicion);
+					aux = juego.obtenerUnidadContraria(posicion);
 					
-					if(aux.size() == 0)
+					if(aux == null)
 					{
 						class Posicion extends Entidad
 						{
@@ -190,6 +194,10 @@ public class Controlador {
 							
 						}
 						entidad = new Posicion(0, posicion, 0, 0, null, string, null, string, 0);
+					}
+					else 
+					{
+						entidad = aux;
 					}
 				}
 								

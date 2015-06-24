@@ -144,12 +144,8 @@ public class AltoTemplarioTest {
 		//Turno 226: Mueve Marine a posicion dada y crea Puerto Estelar
 		Unidad marine = juego.obtenerUnidadesTurno().get(0);
 		
-		nuevaPosicion= new Vector2D().aleatorio(0, 1000, 0, 1000);
 		
-		while(!mundo.estaLibre(nuevaPosicion))
-			nuevaPosicion.aleatorio(0, 1000, 0, 1000);
-		
-		juego.moverUnidad(marine, nuevaPosicion);
+		juego.moverUnidad(marine, new Vector2D(500,500));
 		int vidaMarine = marine.verVida();
 		
 		while(!mundo.estaLibre(nuevaPosicion))
@@ -163,7 +159,7 @@ public class AltoTemplarioTest {
 		Unidad copia = juego.obtenerUnidadesTurno().get(6);
 		assertEquals(0,copia.verVida());
 		assertEquals(100, copia.getVida().obtenerEscudoActual());
-		juego.moverUnidad(copia, new Vector2D(0,1).sumarA(nuevaPosicion));
+		juego.moverUnidad(copia, new Vector2D(500,501));
 		juego.unidadAtaqueAtacaA((UnidadAtaqueBasico) copia,  marine);
 		assertEquals(vidaMarine, marine.verVida());
 		

@@ -59,9 +59,7 @@ public class VidaConEscudo extends Vida {
 		return valorMaximo;
 	}
 	
-	public void modificarVida(int vida, int escudo){
-		
-	}
+
 	
 	public boolean estaMuerta(){
 		if ( (vidaMaxima()== 0) & (escudo == 0)){

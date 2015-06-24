@@ -31,6 +31,7 @@ public abstract class UnidadNave extends Unidad {
 		else {
 			cargado+= unidad.transporte();
 			unidadesCargadas.add(unidad);
+			// falta desaparecer del mapa
 		}
 		
 	}
@@ -38,6 +39,18 @@ public abstract class UnidadNave extends Unidad {
 	public void descargarUnidad(Unidad unidad){
 		int i = unidadesCargadas.indexOf(unidad);
 		unidadesCargadas.remove(i);
+		cargado -= unidad.transporte();
+		//falta posicionar
+	}
+	
+	public void eliminar(){
+		//Cuando muere mueren todas las unidades cargadas tambien
+		for (int i = 0; i < unidadesCargadas.size(); i++){
+			//elimina del jugador a las unidades
+			unidadesCargadas.get(i).eliminar();
+		}
+		//se elimina a si misma
+		super.eliminar();
 	}
 	
 	public int cantidadCargado(){

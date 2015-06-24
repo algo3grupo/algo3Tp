@@ -20,8 +20,9 @@ public class VidaConEscudo extends Vida {
 	
 	private int herirCampo(int danio) {
 		if (escudo - danio < 0 ){
+			int balance = danio - escudo;
 			escudo = 0;
-			return danio-escudo;
+			return balance;
 		}
 		escudo-=danio;
 		return 0;

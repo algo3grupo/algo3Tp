@@ -24,9 +24,8 @@ public class PerduracionTormenta implements IAccion {
 	public void ejecutar(IColaDeAcciones llamador) {
 		turnos ++;
 
-		
-		if (turnos==2){
-			tormenta.lanzarHechizoA(null,centro, mundo);
+		tormenta.lanzarHechizoA(null,centro, mundo);
+		if (turnos == 2){
 			llamador.QuitarAccion(this);
 		}
 	}

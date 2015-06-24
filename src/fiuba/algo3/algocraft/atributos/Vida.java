@@ -38,4 +38,14 @@ public class Vida {
 
 	public void desactivarCampo() {
 	}
+	
+	public int obtenerEscudoMaximo()
+	{
+		return 0;
+	}
+	
+	public int obtenerEscudoActual()
+	{
+		return 0;
+	}
 }

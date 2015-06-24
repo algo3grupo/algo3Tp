@@ -17,7 +17,6 @@ public class EMP extends HechizoAreaDeEfecto {
 		
 		if (unidad instanceof IEfectoEMP){
 			((IEfectoEMP) unidad).atacadoPorEMP();
-			//ActualizarVista
 		}
 		
 	}

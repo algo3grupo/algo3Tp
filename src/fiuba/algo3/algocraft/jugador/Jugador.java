@@ -148,6 +148,11 @@ public abstract class Jugador {
 		poblacionMaxima -= i;
 		
 	}
+	
+	public void disminuirPoblacionActual(int i){
+		
+		poblacionActual -= i;
+	}
 
 	public ArrayList<Estructura> obtenerEstructuras() {
 		

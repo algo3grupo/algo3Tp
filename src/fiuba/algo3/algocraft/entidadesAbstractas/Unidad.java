@@ -119,7 +119,7 @@ public abstract class Unidad extends ColaDeAcciones implements IUnidad, IEfectoE
 	}
 	
 	public void eliminar(){
-		getJugador().disminuirPoblacion(suministro);
+		getJugador().disminuirPoblacionActual(suministro);
 		super.eliminar();
 	}
 	

@@ -53,7 +53,7 @@ public abstract class Entidad {
 	
 	public int obtenerVidaMaxima()
 	{
-		return vida.VidaMaxima();
+		return vida.vidaMaxima();
 	}
 	
 	

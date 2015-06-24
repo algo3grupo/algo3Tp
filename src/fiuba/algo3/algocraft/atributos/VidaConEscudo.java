@@ -57,4 +57,12 @@ public class VidaConEscudo extends Vida {
 	public void modificarVida(int vida, int escudo){
 		
 	}
+	
+	public boolean estaMuerta(){
+		if ( (vidaMaxima()== 0) & (escudo == 0)){
+			//caso copia
+			return true;
+		}
+		return super.estaMuerta();
+	}
 }

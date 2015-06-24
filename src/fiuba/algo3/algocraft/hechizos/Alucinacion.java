@@ -9,6 +9,7 @@ import fiuba.algo3.algocraft.atributos.VidaConEscudo;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.UnidadAtaqueBasico;
+import fiuba.algo3.algocraft.excepciones.NoEsPosibleLanzarElHechizoAlli;
 import fiuba.algo3.algocraft.excepciones.NoHayUnidadEnEsaPosicion;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.mundo.Mundo;
@@ -39,7 +40,7 @@ public class Alucinacion extends Hechizo {
 	}
 
 	@Override
-	public void lanzarHechizoA(Jugador jugador,Vector2D posicion, Mundo mundo) {
+	public void lanzarHechizoA(Jugador jugador,Vector2D posicion, Mundo mundo) throws NoEsPosibleLanzarElHechizoAlli {
 		Unidad unidad;
 		try {
 			
@@ -55,7 +56,7 @@ public class Alucinacion extends Hechizo {
 				| IllegalArgumentException | InvocationTargetException
 				| NoSuchFieldException | NoLePerteneceLaEntidad e) {
 			
-			e.printStackTrace();
+			throw new NoEsPosibleLanzarElHechizoAlli();
 		}
 		
 	}

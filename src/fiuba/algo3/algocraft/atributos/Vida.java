@@ -9,7 +9,7 @@ public class Vida {
 		vidaMaxima=valor;
 	}
 
-	public int VidaMaxima() {
+	public int vidaMaxima() {
 		
 		return vidaMaxima;
 	}

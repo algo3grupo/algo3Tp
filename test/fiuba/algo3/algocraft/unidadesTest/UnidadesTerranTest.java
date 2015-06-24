@@ -160,35 +160,7 @@ public class UnidadesTerranTest {
 	
 	}
 	
-	@Test
-	public void MarineEsFuliminadaPorUnAtaqueYEsEliminadaDelJugador() throws NoSeEncontroLaEntidad, ErrorAlHacerCopia, 
-																		NoSePuedeAtacarEstaFueraDeRango, 
-																		NoPuedeAtacarUnidadesEnTierra,
-																		NoPuedeAtacarUnidadesAereas{
-		Jugador jugador= new Terran(10,new Vector2D(100,100),"Pepe",new Color(0), new Mundo(1000, 1000, null));
-		jugador.agregarMineral(180);
-		jugador.agregarGas(60);
-		try {
-			jugador.agregarEstructura("Barraca", new Vector2D());
-			PasaTurnos.pasarTurnos(jugador, 15);
-			Estructura barraca = jugador.obtenerEstructuras().get(1);
-			jugador.agregarUnidad("Marine", barraca);
-			
-		}catch (NoEsDeSuRazaLaUnidadException
-				| NoEsDeSuRazaLaEstructuraException
-				| NoTieneLaEstructuraCreadaException
-				| NoTieneRecursosSuficientesException
-				| NoHayMineralEnElLugarACrear 
-				| NoHayGasEnElLugarACrear 
-				| NoHaySuministroEnElLugarACrear e) {
-			fail("No deberia tirar este error");
-		} 
-		PasaTurnos.pasarTurnos(jugador, 10);
-		Unidad marine = jugador.ObtenerUnidades().get(0);
-		Ataque eliminador = new Ataque(40, 40, 5, 1);
-		marine.atacado(eliminador, 4);
-		assertEquals(0,jugador.ObtenerUnidades().size());
-	}
+
 	
 	@Test
 	public void SeIntentaAtacarConUnAtaqueSoloTerrenoAUnaUnidadAerea() throws NoSeEncontroLaEntidad, ErrorAlHacerCopia, 

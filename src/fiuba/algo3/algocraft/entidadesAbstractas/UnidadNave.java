@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.atributos.Vida;
 import fiuba.algo3.algocraft.excepciones.NoEsPosibleCargarEstaUnidad;
+import fiuba.algo3.algocraft.excepciones.NoHayUnidadEnEsaPosicion;
 import fiuba.algo3.algocraft.excepciones.NoPuedeRealizarEsaAccion;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
@@ -31,16 +32,20 @@ public abstract class UnidadNave extends Unidad {
 		else {
 			cargado+= unidad.transporte();
 			unidadesCargadas.add(unidad);
-			// falta desaparecer del mapa
+			unidad.sacarDelMapa();
 		}
 		
 	}
 	
-	public void descargarUnidad(Unidad unidad){
-		int i = unidadesCargadas.indexOf(unidad);
-		unidadesCargadas.remove(i);
-		cargado -= unidad.transporte();
-		//falta posicionar
+	public void descargarUnidades(){
+		Vector2D posicionNave = obtenerPosicion();
+		while (unidadesCargadas.size() > 0){
+			Unidad unidad = unidadesCargadas.get(0);
+			unidadesCargadas.remove(0);
+			cargado -= unidad.transporte();
+			unidad.posicionarEn(new Vector2D().aleatorio(posicionNave.obtenerCoordenadaX(), posicionNave.obtenerCoordenadaX() + obtenerDimension()
+					, posicionNave.obtenerCoordenadaY(), posicionNave.obtenerCoordenadaY()+obtenerDimension()));
+		}
 	}
 	
 	public void eliminar(){
@@ -69,14 +74,15 @@ public abstract class UnidadNave extends Unidad {
 	public void realizarAccion(String accion, Entidad destino) throws NoPuedeRealizarEsaAccion{
 		switch (accion){
 			case "Cargar": try {
+								getJugador().getMundo().obtenerUnidadEn(destino.obtenerPosicion());
 								cargarUnidad((Unidad) destino);
 				
-							}catch (NoEsPosibleCargarEstaUnidad e) {
+							}catch (NoEsPosibleCargarEstaUnidad | NoHayUnidadEnEsaPosicion e) {
 								e.printStackTrace();
 							}
 							break;
 							
-			case "Descargar": descargarUnidad( (Unidad) destino);
+			case "Descargar": descargarUnidades();
 							break;
 							
 			default:	super.realizarAccion(accion, destino);

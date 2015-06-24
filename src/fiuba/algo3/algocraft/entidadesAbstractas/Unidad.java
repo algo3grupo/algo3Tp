@@ -131,5 +131,11 @@ public abstract class Unidad extends ColaDeAcciones implements IUnidad, IEfectoE
 	public void atacadoPorEMP(){
 		desactivarEscudo();
 	}
+
+
+	public void sacarDelMapa() {
+		
+		posicionarEn(new Vector2D(-10000,-10000));
+	}
 }
 

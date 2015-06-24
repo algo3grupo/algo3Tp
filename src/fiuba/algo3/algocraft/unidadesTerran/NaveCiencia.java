@@ -46,7 +46,7 @@ public class NaveCiencia extends UnidadEnergia {
 			case "LanzarRadiacion": 
 					
 					try {
-						lanzarRadiacion(destino.obtenerPosicion(), getJugador().getMundo());
+						lanzarRadiacion(destino.obtenerPosicion(),destino.getJugador().getMundo());
 					} catch (NoTieneEnergiaSuficiente | NoEsPosibleLanzarElHechizoAlli e) {
 					
 						throw new NoPuedeRealizarEsaAccion();
@@ -56,7 +56,7 @@ public class NaveCiencia extends UnidadEnergia {
 				
 			case "LanzarEMP": 
 					try {
-						lanzarEMP(destino.obtenerPosicion(), getJugador().getMundo());
+						lanzarEMP(destino.obtenerPosicion(),destino.getJugador().getMundo());
 					} catch (NoTieneEnergiaSuficiente | NoEsPosibleLanzarElHechizoAlli e) {
 					
 						throw new NoPuedeRealizarEsaAccion();

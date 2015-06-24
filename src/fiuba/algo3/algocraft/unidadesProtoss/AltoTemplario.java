@@ -55,7 +55,7 @@ public class AltoTemplario extends UnidadEnergia {
 		switch (accion){
 			case "LanzarTormentaPsiconica": 
 					try {
-						lanzarTormentaPsiconica(destino.obtenerPosicion(), getJugador().getMundo());
+						lanzarTormentaPsiconica(destino.obtenerPosicion(),destino.getJugador().getMundo());
 					} catch (NoTieneEnergiaSuficiente | NoEsPosibleLanzarElHechizoAlli e) {
 					
 						throw new NoPuedeRealizarEsaAccion();
@@ -64,7 +64,7 @@ public class AltoTemplario extends UnidadEnergia {
 							
 			case "LanzarAlucinacion":
 					try {
-						lanzarAlucinacion(destino.obtenerPosicion(), getJugador().getMundo());
+						lanzarAlucinacion(destino.obtenerPosicion(),destino.getJugador().getMundo());
 					} catch (NoTieneEnergiaSuficiente | NoEsPosibleLanzarElHechizoAlli e) {
 						
 						throw new NoPuedeRealizarEsaAccion();

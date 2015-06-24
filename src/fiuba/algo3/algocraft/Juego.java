@@ -109,12 +109,8 @@ public class Juego extends Observable{
 	}
 	
 	public void finalizarTurno()
-	{
-		String ganador;
-		
-		if ((ganador =  alguienPerdio()) != null){
-			throw new FinDeLaPartida(ganador);
-		}
+	{		
+		verificarCondicionDeGanador();
 		
 		if(turno == jugador1)
 			turno = jugador2;
@@ -125,6 +121,15 @@ public class Juego extends Observable{
 		jugador2.terminarTurno();
 		
 		actualizarObservadores();
+	}
+	
+	public void verificarCondicionDeGanador()
+	{
+		String ganador;
+		
+		if ((ganador =  alguienPerdio()) != null){
+			throw new FinDeLaPartida(ganador);
+		}
 	}
 	
 	private String alguienPerdio() 
@@ -378,6 +383,7 @@ public class Juego extends Observable{
 		{
 			throw e;
 		}
+		actualizarObservadores();
 	}
 
 	public String obtenerNombreJugador()

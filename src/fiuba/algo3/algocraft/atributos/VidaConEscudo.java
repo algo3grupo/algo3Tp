@@ -19,13 +19,18 @@ public class VidaConEscudo extends Vida {
 	}
 	
 	private int herirCampo(int danio) {
-		if (escudo - danio < 0 ){
-			int balance = danio - escudo;
+
+		if(escudo - danio < 0)
+		{
+			int sobrante = -(escudo-danio);
 			escudo = 0;
-			return balance;
+			return  sobrante;
 		}
-		escudo-=danio;
-		return 0;
+		else
+		{
+			escudo -= danio;
+			return 0;
+		}
 	}
 	
 	public void herir(int danio){
@@ -34,7 +39,7 @@ public class VidaConEscudo extends Vida {
 		super.herir(danioSobrante);
 	}
 	
-	public void desactivarCampo(){
+	public void desactivarEscudo(){
 		escudo = 0;
 	}
 	
@@ -43,13 +48,15 @@ public class VidaConEscudo extends Vida {
 		return true;
 	}
 	
-	public boolean estaMuerta(){
-		return (super.estaMuerta() & escudo == 0);
+	public int obtenerEscudoMaximo()
+	{
+		return valorMaximo;
 	}
-
-	public int valorEscudo() {
+	
+	public int obtenerEscudoActual()
+	{
 		return escudo;
 	}
 	
-	
+
 }

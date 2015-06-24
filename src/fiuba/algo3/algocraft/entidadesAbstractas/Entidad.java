@@ -144,7 +144,6 @@ public abstract class Entidad {
 	protected void eliminar() {
 		
 		jugador.eliminar(this);
-		//Actualizar Vista
 		
 		
 	}
@@ -195,7 +194,6 @@ public abstract class Entidad {
 		//en principio las entidades son terrenas salvo q sea el caso de una unidad voladora
 		if (ataque.estaEnRangoTierra(distancia)){
 			daniar(ataque.danioTierra());
-			//ActualizarVista
 			
 		}
 		else{
@@ -206,8 +204,8 @@ public abstract class Entidad {
 		
 	}
 	
-	public boolean murio(){
-		
+	public boolean murio()
+	{	
 		return vida.estaMuerta();
 	}
 	
@@ -216,6 +214,7 @@ public abstract class Entidad {
 		vida.herir(danio);
 		if (murio()){
 			eliminar();
+			jugador.getMundo().obtenerJuego().verificarCondicionDeGanador();
 		}
 	}
 	
@@ -274,10 +273,6 @@ public abstract class Entidad {
 		if (getVida().tieneEscudo()){
 			((VidaConEscudo) getVida()).recuperarCampo();
 		}
-	}
-	
-	public void cambiarVida(Vida vida){
-		this.vida = vida;
 	}
 	
 	

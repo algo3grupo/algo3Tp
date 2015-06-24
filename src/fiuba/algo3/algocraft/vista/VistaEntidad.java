@@ -23,8 +23,17 @@ public abstract class VistaEntidad {
 		{
 			Color color = entidad.getJugador().obtenerColor();
 			
-			Dibujar.dibujarRectangulo(g, color.getRed(), color.getGreen(), color.getBlue(), posicion , entidad.verVida()/entidad.obtenerVidaMaxima()*entidad.obtenerDimension(), 3);
+			Dibujar.dibujarRectangulo(g, color.getRed(), color.getGreen(), color.getBlue(), posicion , (int)(((double)entidad.getVida().vidaActual()/entidad.getVida().VidaMaxima()) * entidad.obtenerDimension()), 3);
+		
+			if(entidad.getVida().tieneEscudo())
+			{
+				color = new Color(128,128,128);
+				
+				Dibujar.dibujarRectangulo(g, color.getRed(), color.getGreen(), color.getBlue(), posicion.sumarA(new Vector2D(0,5)) , (int)(((double)entidad.getVida().obtenerEscudoActual()/entidad.getVida().obtenerEscudoMaximo())*entidad.obtenerDimension()), 3);
+			}
+		
 		}
+		
 	}
 
 	public abstract void dibujarApariencia(Graphics g, Entidad entidad);

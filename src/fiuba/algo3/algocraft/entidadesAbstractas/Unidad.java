@@ -111,30 +111,10 @@ public abstract class Unidad extends ColaDeAcciones implements IUnidad {
 	
 	public void desactivarEscudo(){
 		getVida().desactivarCampo();
-		if (getVida().estaMuerta()){
-			eliminar();
-		}
 	}
 	
 	public void eliminar(){
 		getJugador().disminuirPoblacion(suministro);
 		super.eliminar();
-	}
-	
-	public void sacarDelMapa(){
-		posicionarEn( new Vector2D(-1000,-1000) );
-		
-	}
-	
-	public void cambiarSuministro(int i){
-		suministro = i;
-	}
-
-
-	public int verEscudo() {
-		if( getVida().tieneEscudo()){
-			return ( (VidaConEscudo) getVida() ).valorEscudo();
-		}
-		return 0;
 	}
 }

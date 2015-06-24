@@ -8,7 +8,7 @@ public class VistaMineral extends VistaEntidad {
 	
 	public void dibujarApariencia(Graphics contexto, Entidad entidad) 
 	{
-		dibujarImagen(contexto,"recursos/cristal.png", entidad.obtenerPosicion(), entidad.obtenerDimension(),entidad.obtenerDimension());
+		Dibujar.dibujarImagen(contexto,"recursos/cristal.png", entidad.obtenerPosicion(), entidad.obtenerDimension(),entidad.obtenerDimension());
 	}
 
 }

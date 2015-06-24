@@ -8,6 +8,6 @@ public class VistaGolliat extends VistaEntidad
 {
 	public void dibujarApariencia(Graphics contexto, Entidad entidad) 
 	{
-		dibujarImagen(contexto,"recursos/golliat (terran).png", entidad.obtenerPosicion(), entidad.obtenerDimension(),entidad.obtenerDimension());
+		Dibujar.dibujarImagen(contexto,"recursos/golliat (terran).png", entidad.obtenerPosicion(), entidad.obtenerDimension(),entidad.obtenerDimension());
 	}
 }

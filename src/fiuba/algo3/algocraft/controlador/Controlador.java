@@ -5,15 +5,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
-import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
@@ -23,9 +19,18 @@ import fiuba.algo3.algocraft.atributos.Vida;
 import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
+import fiuba.algo3.algocraft.excepciones.ErrorAlHacerCopia;
+import fiuba.algo3.algocraft.excepciones.FinDeLaPartida;
+import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
+import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaUnidadException;
+import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
+import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
+import fiuba.algo3.algocraft.excepciones.NoHaySuministroEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoPuedeRealizarEsaAccion;
+import fiuba.algo3.algocraft.excepciones.NoSeEncontroLaEntidad;
+import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
+import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
 import fiuba.algo3.algocraft.jugador.Jugador;
-import fiuba.algo3.algocraft.unidadesProtoss.Zealot;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 import fiuba.algo3.algocraft.vista.Vista;
 
@@ -50,9 +55,19 @@ public class Controlador {
 				try{
 					juego.construirEstructura(nombre, posicion);
 					reproducirSonido("recursos/new toy.wav");
-				} catch (NoPuedeRealizarEsaAccion e) {
+				} catch (NoEsDeSuRazaLaEstructuraException
+						| NoTieneLaEstructuraCreadaException
+						| NoHayMineralEnElLugarACrear | NoHayGasEnElLugarACrear
+						| ErrorAlHacerCopia | NoHaySuministroEnElLugarACrear e) {
 					reproducirSonido("recursos/cant do that.wav");
+					vista.mostrarCartel("Advertencia", "No se puede contruir la estructura ahi!.");
 				}
+				catch(NoTieneRecursosSuficientesException e)
+				{
+					reproducirSonido("recursos/cant do that.wav");
+					vista.mostrarCartel("Advertencia", "No hay recursos suficientes para construir.");		
+				}
+				
 			}
 			
 		}	
@@ -68,8 +83,17 @@ public class Controlador {
 			{
 				try{
 					juego.crearUnidad(nombre,estructura);
-				} catch (NoPuedeRealizarEsaAccion e) {
+				} catch (NoEsDeSuRazaLaUnidadException
+						| NoTieneLaEstructuraCreadaException
+						| NoSeEncontroLaEntidad
+						| ErrorAlHacerCopia e) {
 					reproducirSonido("recursos/cant do that.wav");
+					vista.mostrarCartel("Advertencia", "No se puede crear la unidad solicitada.");
+				}
+				catch(NoTieneRecursosSuficientesException e)
+				{
+					reproducirSonido("recursos/cant do that.wav");
+					vista.mostrarCartel("Advertencia", "No hay recursos suficientes para construir.");	
 				}
 			}
 			
@@ -152,7 +176,15 @@ public class Controlador {
 			public void actionPerformed(ActionEvent arg0)
 			{
 				vista.deseleccionarUnidad();
-				juego.finalizarTurno();
+				try
+				{
+					juego.finalizarTurno();
+				}
+				catch(FinDeLaPartida e)
+				{
+					vista.mostrarCartelFinJuego("El jugador "+e.obtenerGanador()+" ha ganador la partida");
+				}
+				
 			}
 			
 		}	
@@ -209,6 +241,11 @@ public class Controlador {
 					}
 				} catch (NoPuedeRealizarEsaAccion e) {
 					reproducirSonido("recursos/cant do that.wav");
+					vista.mostrarCartel("Advertencia", "La unidad no puede realizar la accion solicitada.");
+				}
+				catch(FinDeLaPartida e)
+				{
+					vista.mostrarCartelFinJuego("El jugador "+e.obtenerGanador()+" ha ganador la partida");
 				}
 			}
 			

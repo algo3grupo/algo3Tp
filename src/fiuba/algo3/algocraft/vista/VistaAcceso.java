@@ -10,7 +10,13 @@ public class VistaAcceso extends VistaEntidad
 	
 	public void dibujarApariencia(Graphics contexto, Entidad entidad) 
 	{
-		dibujarImagen(contexto,"recursos/acceso (protoss).png", entidad.obtenerPosicion(), entidad.obtenerDimension(),entidad.obtenerDimension());
+		if(entidad.estaHabilitada())
+			Dibujar.dibujarImagen(contexto,"recursos/acceso (protoss).png", entidad.obtenerPosicion(), entidad.obtenerDimension(),entidad.obtenerDimension());
+		else
+		{
+			Dibujar.dibujarRectanguloVacio(contexto, entidad.obtenerPosicion(), entidad.obtenerDimension(), entidad.obtenerDimension());
+			Dibujar.escribirTexto(contexto,entidad.obtenerPosicion(),entidad.nombre()+" en construccion");
+		}
 	}
 
 }

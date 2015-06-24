@@ -8,7 +8,7 @@ public class VistaGas extends VistaEntidad{
 	
 	public void dibujarApariencia(Graphics contexto, Entidad entidad) 
 	{
-		dibujarImagen(contexto,"recursos/gas.png", entidad.obtenerPosicion(), entidad.obtenerDimension(),entidad.obtenerDimension());
+		Dibujar.dibujarImagen(contexto,"recursos/gas.png", entidad.obtenerPosicion(), entidad.obtenerDimension(),entidad.obtenerDimension());
 	}
 
 }

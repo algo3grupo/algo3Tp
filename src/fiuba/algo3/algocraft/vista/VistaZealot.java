@@ -8,7 +8,7 @@ public class VistaZealot extends VistaEntidad
 {
 	public void dibujarApariencia(Graphics contexto, Entidad entidad) 
 	{
-		dibujarImagen(contexto,"recursos/zealot (protoss).png", entidad.obtenerPosicion(), entidad.obtenerDimension(),entidad.obtenerDimension());
+		Dibujar.dibujarImagen(contexto,"recursos/zealot (protoss).png", entidad.obtenerPosicion(), entidad.obtenerDimension(),entidad.obtenerDimension());
 	}
 
 }

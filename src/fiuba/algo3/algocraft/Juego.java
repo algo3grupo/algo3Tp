@@ -56,7 +56,7 @@ import fiuba.algo3.algocraft.mundo.Ceguera;
 import fiuba.algo3.algocraft.mundo.Mineral;
 import fiuba.algo3.algocraft.mundo.Mundo;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
-import fiuba.algo3.algocraft.vista.Dibujable;
+import fiuba.algo3.algocraft.vista.Dibujar;
 import fiuba.algo3.algocraft.vista.Lienzo;
 import fiuba.algo3.excepciones.NoExisteLaRaza;
 import fiuba.algo3.excepciones.NoLePerteneceLaEntidad;
@@ -110,8 +110,10 @@ public class Juego extends Observable{
 	
 	public void finalizarTurno()
 	{
-		if ( alguienPerdio()){
-			throw new FinDeLaPartida();
+		String ganador;
+		
+		if ((ganador =  alguienPerdio()) != null){
+			throw new FinDeLaPartida(ganador);
 		}
 		
 		if(turno == jugador1)
@@ -125,11 +127,14 @@ public class Juego extends Observable{
 		actualizarObservadores();
 	}
 	
-	private boolean alguienPerdio() {
-		if (( jugador1.estaVivo() ) & ( jugador2.estaVivo() )){
-			return false;
-		}
-		return true;
+	private String alguienPerdio() 
+	{
+		if(!jugador1.estaVivo())
+			return jugador2.obtenerNombre();
+		else if(!jugador2.estaVivo())
+			return jugador1.obtenerNombre();
+		return null;
+
 	}
 
 	public ArrayList<Unidad> obtenerUnidadesContrarias()
@@ -151,7 +156,11 @@ public class Juego extends Observable{
 		return mundo;
 	}
 
-	public void construirEstructura(String nombre, Vector2D posicion) throws NoPuedeRealizarEsaAccion 
+	public void construirEstructura(String nombre, Vector2D posicion) throws NoEsDeSuRazaLaEstructuraException,
+	NoTieneLaEstructuraCreadaException,
+	NoTieneRecursosSuficientesException,
+	NoHayMineralEnElLugarACrear, 
+	NoHayGasEnElLugarACrear, ErrorAlHacerCopia, NoHaySuministroEnElLugarACrear 
 	{
 		posicion = mundo.pixelAGrilla(posicion);
 				try {
@@ -162,13 +171,15 @@ public class Juego extends Observable{
 						| NoHayMineralEnElLugarACrear | NoHayGasEnElLugarACrear
 						| ErrorAlHacerCopia | NoHaySuministroEnElLugarACrear e) {
 					
-					e.printStackTrace();
-					throw new NoPuedeRealizarEsaAccion();
+					throw e;
 				}
 				actualizarObservadores();
 	}
 	
-	public void crearUnidad(String nombre, Estructura estructura) throws NoPuedeRealizarEsaAccion
+	public void crearUnidad(String nombre, Estructura estructura) throws NoEsDeSuRazaLaUnidadException,
+	NoTieneLaEstructuraCreadaException,
+	NoTieneRecursosSuficientesException,  
+	NoSeEncontroLaEntidad, ErrorAlHacerCopia
 	{
 		try {
 			turno.agregarUnidad(nombre, estructura);
@@ -177,7 +188,7 @@ public class Juego extends Observable{
 				| NoTieneRecursosSuficientesException | NoSeEncontroLaEntidad
 				| ErrorAlHacerCopia e) {
 			e.printStackTrace();
-			throw new NoPuedeRealizarEsaAccion();
+			throw e;
 		}
 		
 		actualizarObservadores();

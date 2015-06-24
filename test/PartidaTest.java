@@ -10,8 +10,17 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.UnidadAtaqueBasico;
+import fiuba.algo3.algocraft.excepciones.ErrorAlHacerCopia;
 import fiuba.algo3.algocraft.excepciones.FinDeLaPartida;
+import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
+import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaUnidadException;
+import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
+import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
+import fiuba.algo3.algocraft.excepciones.NoHaySuministroEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoPuedeRealizarEsaAccion;
+import fiuba.algo3.algocraft.excepciones.NoSeEncontroLaEntidad;
+import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
+import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
 import fiuba.algo3.excepciones.NoExisteLaRaza;
 import fiuba.algo3.excepciones.NoLePerteneceLaEntidad;
 
@@ -27,20 +36,56 @@ public class PartidaTest {
 		
 			/*Turno 1: Jugador 1 crea un nexo mineral*/
 			
-			juego.construirEstructura("Nexo Mineral", mundo.mineralesCercanos(mundo.posicionBaseJugador1()).get(0).obtenerPosicion()); 
+			try {
+				juego.construirEstructura("Nexo Mineral", mundo.mineralesCercanos(mundo.posicionBaseJugador1()).get(0).obtenerPosicion());
+			} catch (NoEsDeSuRazaLaEstructuraException
+					| NoTieneLaEstructuraCreadaException
+					| NoTieneRecursosSuficientesException
+					| NoHayMineralEnElLugarACrear | NoHayGasEnElLugarACrear
+					| ErrorAlHacerCopia | NoHaySuministroEnElLugarACrear e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
 			
 			juego.finalizarTurno();
 			
 			/*Turno 2: Jugador 2 crea un centro mineral y una refineria.*/
 			
-			juego.construirEstructura("Centro De Minerales", mundo.mineralesCercanos(mundo.posicionBaseJugador2()).get(0).obtenerPosicion());
-			juego.construirEstructura("Refineria", mundo.gasCercano(mundo.posicionBaseJugador2()).get(0).obtenerPosicion());
+			try {
+				juego.construirEstructura("Centro De Minerales", mundo.mineralesCercanos(mundo.posicionBaseJugador2()).get(0).obtenerPosicion());
+			} catch (NoEsDeSuRazaLaEstructuraException
+					| NoTieneLaEstructuraCreadaException
+					| NoTieneRecursosSuficientesException
+					| NoHayMineralEnElLugarACrear | NoHayGasEnElLugarACrear
+					| ErrorAlHacerCopia | NoHaySuministroEnElLugarACrear e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				juego.construirEstructura("Refineria", mundo.gasCercano(mundo.posicionBaseJugador2()).get(0).obtenerPosicion());
+			} catch (NoEsDeSuRazaLaEstructuraException
+					| NoTieneLaEstructuraCreadaException
+					| NoTieneRecursosSuficientesException
+					| NoHayMineralEnElLugarACrear | NoHayGasEnElLugarACrear
+					| ErrorAlHacerCopia | NoHaySuministroEnElLugarACrear e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			juego.finalizarTurno();
 			
 			/*Turno 3: Jugador 1 crea un pilon */
 			
-			juego.construirEstructura("Pilon", mundo.posicionBaseJugador1());
+			try {
+				juego.construirEstructura("Pilon", mundo.posicionBaseJugador1());
+			} catch (NoEsDeSuRazaLaEstructuraException
+					| NoTieneLaEstructuraCreadaException
+					| NoTieneRecursosSuficientesException
+					| NoHayMineralEnElLugarACrear | NoHayGasEnElLugarACrear
+					| ErrorAlHacerCopia | NoHaySuministroEnElLugarACrear e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			
 			for(int i=3;i<=100;i++)
@@ -53,7 +98,16 @@ public class PartidaTest {
 			while(!mundo.estaLibre(posicionLibre))
 				posicionLibre.aleatorio(0, 1000, 0, 1000);
 			
-			juego.construirEstructura("Acceso", posicionLibre);
+			try {
+				juego.construirEstructura("Acceso", posicionLibre);
+			} catch (NoEsDeSuRazaLaEstructuraException
+					| NoTieneLaEstructuraCreadaException
+					| NoTieneRecursosSuficientesException
+					| NoHayMineralEnElLugarACrear | NoHayGasEnElLugarACrear
+					| ErrorAlHacerCopia | NoHaySuministroEnElLugarACrear e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			juego.finalizarTurno();
 			
@@ -64,7 +118,16 @@ public class PartidaTest {
 			while(!mundo.estaLibre(posicionLibre))
 				posicionLibre.aleatorio(0, 1000, 0, 1000);
 			
-			juego.construirEstructura("Barraca",posicionLibre);
+			try {
+				juego.construirEstructura("Barraca",posicionLibre);
+			} catch (NoEsDeSuRazaLaEstructuraException
+					| NoTieneLaEstructuraCreadaException
+					| NoTieneRecursosSuficientesException
+					| NoHayMineralEnElLugarACrear | NoHayGasEnElLugarACrear
+					| ErrorAlHacerCopia | NoHaySuministroEnElLugarACrear e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			for(int i=102;i<=200;i++)
 				juego.finalizarTurno();
@@ -72,14 +135,30 @@ public class PartidaTest {
 			//Turno 201: Comienza la creacion de unidades y la batalla.
 			Estructura acceso = juego.obtenerEstructurasDeJugador1().get(3);
 			for (int j = 0; j < 5; j++){
-				juego.crearUnidad("Zealot", acceso);
+				try {
+					juego.crearUnidad("Zealot", acceso);
+				} catch (NoEsDeSuRazaLaUnidadException
+						| NoTieneLaEstructuraCreadaException
+						| NoTieneRecursosSuficientesException
+						| NoSeEncontroLaEntidad | ErrorAlHacerCopia e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			juego.finalizarTurno();
 			
 			//Turno 202:Crea UnidadesElJugadorTerran
 			Estructura barraca = juego.obtenerEstructurasDeJugador2().get(3);
 			for (int j = 0; j < 5; j++){
-				juego.crearUnidad("Marine", barraca);
+				try {
+					juego.crearUnidad("Marine", barraca);
+				} catch (NoEsDeSuRazaLaUnidadException
+						| NoTieneLaEstructuraCreadaException
+						| NoTieneRecursosSuficientesException
+						| NoSeEncontroLaEntidad | ErrorAlHacerCopia e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			
 			for(int i=202;i<=209;i++)

@@ -1,16 +1,13 @@
 package fiuba.algo3.algocraft.creadores;
 
 
-import javax.swing.JFrame;
 
-import fiuba.algo3.algocraft.Acciones.AumentarPoblacion;
+
 import fiuba.algo3.algocraft.Interfaces.IRecolectores;
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.excepciones.ErrorAlHacerCopia;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEntidadException;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
-import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
-import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoHaySuministroEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
 import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
@@ -29,7 +26,10 @@ public abstract class CreadorEstructuras extends Creador {
 			
 			if (estructura instanceof IRecolectores){
 				if ( ! ((IRecolectores) estructura).haySuministroEn(posicion) ){
+					estructura.getJugador().agregarGas(estructura.costo().gas());
+					estructura.getJugador().agregarMineral(estructura.costo().minerales());
 					throw new NoHaySuministroEnElLugarACrear();
+
 				}
 			}
 			return estructura;

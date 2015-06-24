@@ -10,7 +10,7 @@ public class VistaCeguera extends VistaEntidad
 	@Override
 	public void dibujarApariencia(Graphics g, Entidad entidad) 
 	{
-		dibujarRectangulo(g,0,0,0, entidad.obtenerPosicion(),entidad.obtenerDimension(),entidad.obtenerDimension());
+		Dibujar.dibujarRectangulo(g,0,0,0, entidad.obtenerPosicion(),entidad.obtenerDimension(),entidad.obtenerDimension());
 	}
 
 }

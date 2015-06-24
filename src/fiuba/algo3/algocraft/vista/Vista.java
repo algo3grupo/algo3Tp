@@ -2,6 +2,7 @@ package fiuba.algo3.algocraft.vista;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -12,10 +13,12 @@ import java.util.Observer;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 
@@ -39,6 +42,7 @@ public class Vista implements Observer {
 	private JLabel datosJugador;
 	private Unidad seleccion;
 	private BufferedImage backBuffer;
+	private JScrollPane camara;
 	
 	public Vista(Juego juego)
 	{
@@ -86,25 +90,25 @@ public class Vista implements Observer {
 	
 	private void dibujar(Graphics g, Entidad e)
 	{
-		Vistas.get(e.getClass().getSimpleName()).dibujar(g,e);
+		Vistas.get(e.getClass().getSimpleName()).dibujar(g,e,this);
 	}
 	
 	private void dibujar(Graphics g, Mundo m)
 	{
-		Dibujable.dibujarImagenEnMosaico(g,"recursos/terreno.jpg",new Vector2D(0,0),m.obtenerResolucion(),m.obtenerResolucion(),m.obtenerDivisionDeGrilla());
+		Dibujar.dibujarImagenEnMosaico(g,"recursos/terreno.jpg",new Vector2D(0,0),m.obtenerResolucion(),m.obtenerResolucion(),m.obtenerDivisionDeGrilla());
 	}
 	
 	private void dibujar(Graphics g, ArrayList<Ceguera> c)
 	{
 		for(int i=0; i<c.size();i++)
-			Vistas.get("Ceguera").dibujar(g, c.get(i));
+			Vistas.get("Ceguera").dibujar(g, c.get(i), this);
 	}
 	
 	private JFrame crearVentana(Juego juego) 
 	{
 		JFrame ventana = new JFrame("Algocraft"); 
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		ventana.setSize(800,800);
+		ventana.setSize(900,900);
 		ventana.setVisible(true);
 		
 		JMenuBar menu = new JMenuBar();
@@ -124,9 +128,8 @@ public class Vista implements Observer {
 		lienzo.addMouseListener(controlador.obtenerListenerMouse(menuContextual));
 		
 		
-		JScrollPane camara = new JScrollPane(lienzo);
-		camara.setPreferredSize(new Dimension(400,400));
-
+		camara = new JScrollPane(lienzo);
+		
 		ventana.add(camara);				
 		
 		return ventana;
@@ -138,9 +141,8 @@ public class Vista implements Observer {
 	}
 	
 	public void dibujarFrontBuffer(Graphics g)
-	{				
-		
-		g.drawImage(backBuffer,0,0,null);
+	{						
+		g.drawImage(backBuffer.getSubimage(-lienzo.getX(), -lienzo.getY(), camara.getWidth() - camara.getVerticalScrollBar().getWidth() -3 , camara.getHeight() - camara.getHorizontalScrollBar().getHeight()-3), -lienzo.getX(), -lienzo.getY(),null);
 		
 		if(menuContextual != null)
 			menuContextual.updateUI();
@@ -211,7 +213,7 @@ public class Vista implements Observer {
 					
 					entidades = juego.entidadesEnRectangulo(posicion,e.obtenerDimension());
 					
-					Dibujable.dibujarImagen(g,"recursos/terreno.jpg", juego.obtenerMundo().pixelAGrilla(posicion), e.obtenerDimension(), e.obtenerDimension());			
+					Dibujar.dibujarImagen(g,"recursos/terreno.jpg", juego.obtenerMundo().pixelAGrilla(posicion), e.obtenerDimension(), e.obtenerDimension());			
 										
 					for(int b=0;b<entidades.size();b++)
 						dibujar(g,entidades.get(b));	
@@ -276,11 +278,13 @@ public class Vista implements Observer {
 	public void seleccionarUnidad(Unidad unidad) 
 	{
 		seleccion = unidad;		
+		update(null,null);
 	}
 
 	public void deseleccionarUnidad() 
 	{
-		seleccion = null;		
+		seleccion = null;	
+		update(null,null);
 	}
 
 	public void dibujarMenuAccionesUnidad(Vector2D posicion) 
@@ -304,6 +308,26 @@ public class Vista implements Observer {
 		
 		menuContextual.show(lienzo, (int)posicion.obtenerCoordenadaX(), (int)posicion.obtenerCoordenadaY());	
 		menuContextual.setVisible(true);		
+	}
+
+	public Entidad obtenerSeleccion() 
+	{
+		return seleccion;
+	}
+	
+	public void mostrarCartel(String titulo, String contenido)
+	{		
+		JOptionPane.showMessageDialog(ventana, contenido);	
+	}
+
+	public void destruir()
+	{
+		ventana.dispose();		
+	}
+
+	public void mostrarCartelFinJuego(String mensaje)
+	{
+		JOptionPane.showMessageDialog(null, mensaje);		
 	}
 
 }

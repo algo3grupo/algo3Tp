@@ -3,13 +3,18 @@ package fiuba.algo3.algocraft.vista;
 import java.awt.Graphics;
 
 import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
+import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class VistaNexoMineral extends VistaEntidad {
 	
 	public void dibujarApariencia(Graphics contexto, Entidad entidad) 
 	{
-		dibujarImagen(contexto,"recursos/nexo mineral (protoss).png", entidad.obtenerPosicion(), entidad.obtenerDimension(),entidad.obtenerDimension());
+		if(entidad.estaHabilitada())
+			Dibujar.dibujarImagen(contexto,"recursos/nexo mineral (protoss).png", entidad.obtenerPosicion(), entidad.obtenerDimension(),entidad.obtenerDimension());
+		else
+		{
+			Dibujar.dibujarRectanguloVacio(contexto, entidad.obtenerPosicion(), entidad.obtenerDimension(), entidad.obtenerDimension());
+			Dibujar.escribirTexto(contexto,entidad.obtenerPosicion(),entidad.nombre()+" en construccion");
+		}
 	}
-
-
 }

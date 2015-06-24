@@ -9,7 +9,7 @@ public class VistaNaveCiencia extends VistaEntidad
 	
 	public void dibujarApariencia(Graphics contexto, Entidad entidad) 
 	{
-		dibujarImagen(contexto,"recursos/nave ciencia (terran).png", entidad.obtenerPosicion(), entidad.obtenerDimension(),entidad.obtenerDimension());
+		Dibujar.dibujarImagen(contexto,"recursos/nave ciencia (terran).png", entidad.obtenerPosicion(), entidad.obtenerDimension(),entidad.obtenerDimension());
 	}
 
 }

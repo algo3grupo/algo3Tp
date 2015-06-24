@@ -6,21 +6,27 @@ import java.awt.Graphics;
 import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 
-public abstract class VistaEntidad extends Dibujable {
+public abstract class VistaEntidad {
 	
-	public void dibujar(Graphics g, Entidad entidad)
+	public void dibujar(Graphics g, Entidad entidad, Vista vista)
 	{
+		Vector2D posicion = new Vector2D(entidad.obtenerPosicion());
+		
 		dibujarApariencia(g,entidad);
 		
-		if(entidad.getJugador() != null)
+		if(entidad == vista.obtenerSeleccion())
+		{
+			Dibujar.dibujarRectanguloVacio(g,posicion,entidad.obtenerDimension(),entidad.obtenerDimension());
+		}
+		
+		if(entidad.estaHabilitada() && entidad.getJugador() != null)
 		{
 			Color color = entidad.getJugador().obtenerColor();
-			Vector2D posicion = new Vector2D(entidad.obtenerPosicion());
 			
-			dibujarRectangulo(g, color.getRed(), color.getGreen(), color.getBlue(), posicion , entidad.verVida()/entidad.obtenerVidaMaxima()*entidad.obtenerDimension(), 3);
+			Dibujar.dibujarRectangulo(g, color.getRed(), color.getGreen(), color.getBlue(), posicion , entidad.verVida()/entidad.obtenerVidaMaxima()*entidad.obtenerDimension(), 3);
 		}
 	}
-	
+
 	public abstract void dibujarApariencia(Graphics g, Entidad entidad);
 
 }

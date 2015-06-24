@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 
 import fiuba.algo3.algocraft.atributos.Hechizo;
+import fiuba.algo3.algocraft.atributos.VidaConEscudo;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.UnidadAtaqueBasico;
@@ -32,6 +33,9 @@ public class Alucinacion extends Hechizo {
 		Field suministro = unidad.getClass().getField("suministro");
 		suministro.setAccessible(true);
 		suministro.set( (Object) unidad, 0);
+		Field vida = unidad.getClass().getField("vida");
+		suministro.setAccessible(true);
+		suministro.set( (Object) unidad, new VidaConEscudo(0,100));
 		copia.habilitar();
 		unidad.getJugador().incorporarUnidad(copia);
 		

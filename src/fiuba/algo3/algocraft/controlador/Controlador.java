@@ -19,6 +19,7 @@ import javax.swing.JPopupMenu;
 
 import fiuba.algo3.algocraft.Juego;
 import fiuba.algo3.algocraft.atributos.Costo;
+import fiuba.algo3.algocraft.atributos.Vida;
 import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
@@ -179,7 +180,7 @@ public class Controlador {
 						class Posicion extends Entidad
 						{
 
-							public Posicion(int dimension, Vector2D posicion,int vida, int rangoDeVision,Jugador jugador, String nombre,Costo costo, String requiere, int turnos) 
+							public Posicion(int dimension, Vector2D posicion,Vida vida, int rangoDeVision,Jugador jugador, String nombre,Costo costo, String requiere, int turnos) 
 							{
 								super(dimension, posicion, vida, rangoDeVision, jugador, nombre, costo,
 										requiere, turnos);
@@ -193,7 +194,7 @@ public class Controlador {
 							}
 							
 						}
-						entidad = new Posicion(0, posicion, 0, 0, null, string, null, string, 0);
+						entidad = new Posicion(0, posicion, null, 0, null, string, null, string, 0);
 					}
 					else 
 					{

@@ -76,7 +76,12 @@ public abstract class Creador {
 		ArrayList<String> nombres = new ArrayList<String>();
 		
 		for(int i = 0; i < entidades.size(); i++ ){
-			nombres.add( entidades.get(i).nombre() );
+			Entidad entidad =entidades.get(i);
+			if( entidad.estaLaEstructuraCreada( entidad.getJugador().obtenerEstructuras() )){
+				
+				nombres.add( entidades.get(i).nombre() );
+			}
+
 		}
 		return nombres;
 	}

@@ -6,15 +6,16 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 
 import fiuba.algo3.algocraft.atributos.Costo;
-import fiuba.algo3.algocraft.entidadesAbstractas.Protegidas;
+import fiuba.algo3.algocraft.atributos.VidaConEscudo;
+import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 
-public class Acceso extends Protegidas{
+public class Acceso extends Estructura{
 
 	public Acceso(int dimension, Vector2D posicion, Jugador jugador) {
 		
-		super(dimension, posicion, 500, 0, jugador, "Acceso",new Costo(150,0), "", 8);
+		super(dimension, posicion, new VidaConEscudo(500,500), 0, jugador, "Acceso",new Costo(150,0), "", 8);
 		
 	}
 

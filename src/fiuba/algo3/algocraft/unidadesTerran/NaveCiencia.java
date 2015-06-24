@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 
 import fiuba.algo3.algocraft.atributos.Costo;
+import fiuba.algo3.algocraft.atributos.Vida;
 import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.UnidadEnergia;
 import fiuba.algo3.algocraft.excepciones.NoEsPosibleLanzarElHechizoAlli;
@@ -20,7 +21,7 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 public class NaveCiencia extends UnidadEnergia {
 
 	public NaveCiencia(int dimension, Vector2D posicion, Jugador jugador) {
-		super(dimension, posicion, 200, 10, jugador, "NaveCiencia", new Costo(125,50), "Puerto Estelar", 2, 0, 10);
+		super(dimension, posicion, new Vida(200), 10, jugador, "NaveCiencia", new Costo(125,50), "Puerto Estelar", 2, 0, 10);
 	}
 
 	public void lanzarEMP(Vector2D posicion, Mundo mundo) throws NoTieneEnergiaSuficiente, NoEsPosibleLanzarElHechizoAlli{

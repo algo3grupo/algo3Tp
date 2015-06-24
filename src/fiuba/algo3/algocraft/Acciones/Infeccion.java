@@ -23,7 +23,7 @@ public class Infeccion implements IAccion {
 		//busca las unidades a su alrededor y las dania
 		ArrayList<Unidad> unidades= (ArrayList<Unidad>)unidad.getJugador().getMundo().obtenerUnidadesEnZona(unidad.obtenerPosicion(), rango);
 		for ( int i = 0; i < unidades.size() ; i++){
-			unidades.get(i).herir(danio);
+			unidades.get(i).daniar(danio);
 		}
 		
 	}

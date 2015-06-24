@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 
 import fiuba.algo3.algocraft.atributos.Ataque;
 import fiuba.algo3.algocraft.atributos.Costo;
+import fiuba.algo3.algocraft.atributos.Vida;
+import fiuba.algo3.algocraft.atributos.VidaConEscudo;
 import fiuba.algo3.algocraft.excepciones.NoPuedeAtacarUnidadesAereas;
 import fiuba.algo3.algocraft.excepciones.NoPuedeAtacarUnidadesEnTierra;
 import fiuba.algo3.algocraft.excepciones.NoSePuedeAtacarEstaFueraDeRango;
@@ -17,7 +19,7 @@ import fiuba.algo3.algocraft.ID;
 public abstract class Entidad {
 	private int turnos;
 	private int ID;
-	private int vida;
+	private Vida vida;
 	private int vidaMaxima;
 	private int rangoDeVision;
 	private Jugador jugador;
@@ -36,10 +38,9 @@ public abstract class Entidad {
 			}
 	}
 	
-	public Entidad(int dimension, Vector2D posicion, int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int turnos){
+	public Entidad(int dimension, Vector2D posicion, Vida vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int turnos){
 		this.ID = new ID().getIdNuevo();
 		this.vida = vida;
-		this.vidaMaxima = vida;
 		this.rangoDeVision = rangoDeVision;
 		this.jugador = jugador;
 		this.nombre = nombre;
@@ -52,7 +53,7 @@ public abstract class Entidad {
 	
 	public int obtenerVidaMaxima()
 	{
-		return vidaMaxima;
+		return vida.VidaMaxima();
 	}
 	
 	
@@ -94,7 +95,7 @@ public abstract class Entidad {
 		return this.costo;
 	}
 	
-	public boolean estaLaEstructuraCreada(ArrayList<Estructura> estructuras) throws NoTieneLaEstructuraCreadaException  {
+	public boolean estaLaEstructuraCreada(ArrayList<Estructura> estructuras) {
 		
 		if (this.requiere == ""){
 			return true;
@@ -118,7 +119,7 @@ public abstract class Entidad {
 	
 	public int verVida(){
 		
-		return vida;
+		return vida.vidaActual();
 		
 	}
 	
@@ -192,7 +193,8 @@ public abstract class Entidad {
 	public void atacado(Ataque ataque, int distancia) throws NoSePuedeAtacarEstaFueraDeRango, NoPuedeAtacarUnidadesEnTierra, NoPuedeAtacarUnidadesAereas {
 		//en principio las entidades son terrenas salvo q sea el caso de una unidad voladora
 		if (ataque.estaEnRangoTierra(distancia)){
-			herir(ataque.danioTierra());
+			daniar(ataque.danioTierra());
+			
 		}
 		else{
 			throw new NoSePuedeAtacarEstaFueraDeRango();
@@ -201,17 +203,20 @@ public abstract class Entidad {
 		
 		
 	}
-
-
-	public void herir(int danio) {
+	
+	public boolean murio(){
 		
-		if (loMata(danio)){
+		return vida.estaMuerta();
+	}
+	
+	public void daniar(int danio){
+		
+		vida.herir(danio);
+		if (murio()){
 			eliminar();
 		}
-		else{
-			this.vida -= danio;
-		}
 	}
+	
 	
 	public void posicionarEn(Vector2D posicion){
 		
@@ -230,11 +235,6 @@ public abstract class Entidad {
 		return ( ID() == ( ( (Entidad) comparado ).ID()) );
 	}
 	
-	public boolean loMata(int danio){
-		
-		return (vida - danio <= 0);
-		
-	}
 	
 	public boolean estaEn(Vector2D supizq, int dimension)
 	{
@@ -262,4 +262,17 @@ public abstract class Entidad {
 		
 		
 	}
+	
+	public Vida getVida(){
+		return vida;
+	}
+	
+	public void recuperarEscudo() {
+		
+		if (getVida().tieneEscudo()){
+			((VidaConEscudo) getVida()).recuperarCampo();
+		}
+	}
+	
+	
 }

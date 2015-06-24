@@ -16,7 +16,7 @@ public class TormentaPsiconica extends HechizoAreaDeEfecto {
 	@Override
 	public void afectar(Unidad unidad) {
 		
-		unidad.herir(50);
+		unidad.daniar(50);
 		
 	}
 

@@ -8,15 +8,16 @@ import javax.swing.JFrame;
 import fiuba.algo3.algocraft.Acciones.RecogerSuministro;
 import fiuba.algo3.algocraft.Interfaces.IRecolectores;
 import fiuba.algo3.algocraft.atributos.Costo;
-import fiuba.algo3.algocraft.entidadesAbstractas.Protegidas;
+import fiuba.algo3.algocraft.atributos.VidaConEscudo;
+import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 
-public class NexoMineral extends Protegidas implements IRecolectores{
+public class NexoMineral extends Estructura implements IRecolectores{
 
 	public NexoMineral(int dimension, Vector2D posicion, Jugador jugador) 
 	{
-		super(dimension, posicion, 250, 0, jugador, "Nexo Mineral", new Costo(50,0), "", 4);
+		super(dimension, posicion, new VidaConEscudo(250,250) , 0, jugador, "Nexo Mineral", new Costo(50,0), "", 4);
 		
 		agregarAccion(new RecogerSuministro(this));
 	}

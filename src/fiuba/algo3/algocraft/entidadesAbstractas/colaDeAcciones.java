@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import fiuba.algo3.algocraft.Interfaces.IAccion;
 import fiuba.algo3.algocraft.Interfaces.IColaDeAcciones;
 import fiuba.algo3.algocraft.atributos.Costo;
+import fiuba.algo3.algocraft.atributos.Vida;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 
@@ -21,7 +22,7 @@ public abstract class ColaDeAcciones extends Entidad implements IColaDeAcciones{
 		colaDeAcciones = new ArrayList<IAccion>();
 	}
 	
-	public ColaDeAcciones(int dimension, Vector2D posicion, int vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int turnos) {
+	public ColaDeAcciones(int dimension, Vector2D posicion, Vida vida, int rangoDeVision, Jugador jugador, String nombre, Costo costo, String requiere, int turnos) {
 
 		super(dimension, posicion, vida, rangoDeVision, jugador, nombre, costo, requiere, turnos);
 		

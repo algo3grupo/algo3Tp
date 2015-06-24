@@ -9,7 +9,7 @@ public class Ceguera extends Entidad
 
 	public Ceguera(Vector2D posicion, int dimension) 
 	{
-		super(dimension, posicion,0,0, null, null, null, null, 0);			
+		super(dimension, posicion,null,0, null, null, null, null, 0);			
 	}
 
 	@Override

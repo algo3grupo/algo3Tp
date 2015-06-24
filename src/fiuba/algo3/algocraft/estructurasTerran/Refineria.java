@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import fiuba.algo3.algocraft.Acciones.RecogerSuministro;
 import fiuba.algo3.algocraft.Interfaces.IRecolectores;
 import fiuba.algo3.algocraft.atributos.Costo;
+import fiuba.algo3.algocraft.atributos.Vida;
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
@@ -15,7 +16,7 @@ import fiuba.algo3.algocraft.vector2D.Vector2D;
 public class Refineria extends Estructura implements IRecolectores {
 
 	public Refineria(int dimension, Vector2D posicion, Jugador jugador) {
-		super(dimension, posicion, 750, 0, jugador, "Refineria", new Costo(100,0), "", 6);
+		super(dimension, posicion, new Vida(750), 0, jugador, "Refineria", new Costo(100,0), "", 6);
 		
 		agregarAccion(new RecogerSuministro(this));
 	}

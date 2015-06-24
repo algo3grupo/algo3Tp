@@ -11,16 +11,12 @@ import fiuba.algo3.algocraft.entidadesAbstractas.UnidadNave;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 
-public class NaveTransporteProtoss extends UnidadNave implements IEfectoEMP {
+public class NaveTransporteProtoss extends UnidadNave{
 
 	public NaveTransporteProtoss(int dimension, Vector2D posicion, Jugador jugador) {
 		super(dimension, posicion, new VidaConEscudo(80, 60), 8, jugador, new Costo(100,0), 2, 8);
 		
 		setNombre("NaveTransporteProtoss");
-	}
-
-	public void atacadoPorEMP() {
-		desactivarEscudo();
 	}
 	
 

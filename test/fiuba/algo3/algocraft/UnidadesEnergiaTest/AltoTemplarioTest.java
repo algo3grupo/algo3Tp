@@ -162,7 +162,7 @@ public class AltoTemplarioTest {
 		
 		Unidad copia = juego.obtenerUnidadesTurno().get(6);
 		assertEquals(0,copia.verVida());
-		assertEquals(100, copia.verEscudo());
+		assertEquals(100, copia.getVida().obtenerEscudoActual());
 		juego.moverUnidad(copia, new Vector2D(0,1).sumarA(nuevaPosicion));
 		juego.unidadAtaqueAtacaA((UnidadAtaqueBasico) copia,  marine);
 		assertEquals(vidaMarine, marine.verVida());
@@ -185,7 +185,7 @@ public class AltoTemplarioTest {
 		NaveCiencia nave = (NaveCiencia) juego.obtenerUnidadesTurno().get(1);
 		nave.lanzarEMP(copia.obtenerPosicion(), mundo);
 		
-		assertEquals(0, copia.verEscudo());
+		assertEquals(0, copia.getVida().obtenerEscudoActual());
 		assertEquals(0, mago.obtenerEnergia());
 		assertEquals(6, juego.obtenerUnidadesDeJugador1().size());
 	}

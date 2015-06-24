@@ -12,7 +12,7 @@ import fiuba.algo3.algocraft.entidadesAbstractas.UnidadAtaqueBasico;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 
-public class Dragon extends UnidadAtaqueBasico implements IEfectoEMP {
+public class Dragon extends UnidadAtaqueBasico {
 
 	public Dragon(int dimension, Vector2D posicion, Jugador jugador) {
 		
@@ -20,9 +20,5 @@ public class Dragon extends UnidadAtaqueBasico implements IEfectoEMP {
 		
 	}
 
-	
-	public void atacadoPorEMP() {
-		desactivarEscudo();
-	}
 
 }

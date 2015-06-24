@@ -36,7 +36,7 @@ public class Vida {
 		return false;
 	}
 
-	public void desactivarCampo() {
+	public void desactivarEscudo() {
 	}
 	
 	public int obtenerEscudoMaximo()

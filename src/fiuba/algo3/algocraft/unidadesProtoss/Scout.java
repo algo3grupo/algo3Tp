@@ -12,7 +12,7 @@ import fiuba.algo3.algocraft.entidadesAbstractas.UnidadAtaqueBasico;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 
-public class Scout extends UnidadAtaqueBasico implements IEfectoEMP{
+public class Scout extends UnidadAtaqueBasico {
 
 	public Scout(int dimension, Vector2D posicion, Jugador jugador) {
 		
@@ -20,9 +20,4 @@ public class Scout extends UnidadAtaqueBasico implements IEfectoEMP{
 		
 	}
 
-	@Override
-	public void atacadoPorEMP() {
-		desactivarEscudo();
-		
-	}
 }

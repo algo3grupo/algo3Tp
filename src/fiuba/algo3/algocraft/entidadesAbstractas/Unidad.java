@@ -7,6 +7,7 @@ import java.util.TimerTask;
 import javax.swing.JFrame;
 
 import fiuba.algo3.algocraft.Acciones.RecuperarEscudo;
+import fiuba.algo3.algocraft.Interfaces.IEfectoEMP;
 import fiuba.algo3.algocraft.Interfaces.IUnidad;
 import fiuba.algo3.algocraft.atributos.Ataque;
 import fiuba.algo3.algocraft.atributos.Costo;
@@ -21,7 +22,7 @@ import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 
-public abstract class Unidad extends ColaDeAcciones implements IUnidad {
+public abstract class Unidad extends ColaDeAcciones implements IUnidad, IEfectoEMP {
 	
 	private int suministro;
 	private int transporte;
@@ -109,12 +110,26 @@ public abstract class Unidad extends ColaDeAcciones implements IUnidad {
 	}
 	
 	
-	public void desactivarEscudo(){
-		getVida().desactivarCampo();
+	private void desactivarEscudo(){
+		//La unidad copia muere si el escudo llega a 0 por lo que si esto le pega a una copia debe morir
+		getVida().desactivarEscudo();
+		if (murio()){
+			eliminar();
+		}
 	}
 	
 	public void eliminar(){
 		getJugador().disminuirPoblacion(suministro);
 		super.eliminar();
 	}
+	
+	public void cambiarSuministro(int i){
+		//No pude cambiar el suministro por reflexion por lo que agregue esto
+		suministro = i;
+	}
+	
+	public void atacadoPorEMP(){
+		desactivarEscudo();
+	}
 }
+

@@ -30,12 +30,8 @@ public class Alucinacion extends Hechizo {
 		UnidadAtaqueBasico copia = (UnidadAtaqueBasico)constructor.newInstance(mundo.obtenerDivisionDeGrilla(), posicion, unidad.getJugador());
 		
 		copia.obtenerAtaque().modificarAtaque(0,0);
-		Field suministro = unidad.getClass().getField("suministro");
-		suministro.setAccessible(true);
-		suministro.set( (Object) unidad, 0);
-		Field vida = unidad.getClass().getField("vida");
-		suministro.setAccessible(true);
-		suministro.set( (Object) unidad, new VidaConEscudo(0,100));
+		copia.cambiarSuministro(0);
+		copia.cambiarVida(new VidaConEscudo(0 ,100));
 		copia.habilitar();
 		unidad.getJugador().incorporarUnidad(copia);
 		

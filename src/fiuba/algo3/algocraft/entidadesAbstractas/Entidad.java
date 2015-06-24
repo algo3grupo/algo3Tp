@@ -275,5 +275,10 @@ public abstract class Entidad {
 		}
 	}
 	
+	public void cambiarVida(Vida vida){
+		// No pude cambiar la vida con reflexion entonces meti esto
+		this.vida = vida;
+	}
+	
 	
 }

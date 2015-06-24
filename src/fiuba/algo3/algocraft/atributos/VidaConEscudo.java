@@ -48,15 +48,13 @@ public class VidaConEscudo extends Vida {
 		return true;
 	}
 	
-	public int obtenerEscudoMaximo()
-	{
-		return valorMaximo;
-	}
 	
 	public int obtenerEscudoActual()
 	{
 		return escudo;
 	}
 	
-
+	public void modificarVida(int vida, int escudo){
+		
+	}
 }

@@ -46,7 +46,7 @@ public class Alucinacion extends Hechizo {
 			
 			unidad = mundo.obtenerUnidadEn(posicion);
 			if ( unidad.getJugador()==jugador ){
-			nuevaUnidadCopia(unidad,posicion,mundo);
+				nuevaUnidadCopia(unidad,posicion,mundo);
 			}
 			else throw new NoLePerteneceLaEntidad();
 			

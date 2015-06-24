@@ -25,19 +25,31 @@ public abstract class UnidadNave extends Unidad {
 	
 	public void cargarUnidad(Unidad unidad) throws NoEsPosibleCargarEstaUnidad{
 		
-		if ( (cargado + unidad.transporte() > capacidad) || (unidad.esVoladora()) || ( !esDelMismoJugador(unidad))){
+		if ( (cargado + unidad.transporte() > capacidad) || (unidad.esVoladora()) || ( !esDelMismoJugador(unidad)) ){
 			throw new NoEsPosibleCargarEstaUnidad();
 		}
 		else {
 			cargado+= unidad.transporte();
 			unidadesCargadas.add(unidad);
+			unidad.sacarDelMapa();
+			//Actualizarvista
 		}
+	
 		
 	}
 	
-	public void descargarUnidad(Unidad unidad){
+	public void descargarUnidades(){
+		for (int i= 0 ; i<unidadesCargadas.size(); i++){
+			descargarUnidad(unidadesCargadas.get(i));
+		}
+		//ActualizarVista
+	}
+	
+	private void descargarUnidad(Unidad unidad){
 		int i = unidadesCargadas.indexOf(unidad);
+		cargado -= unidad.transporte();
 		unidadesCargadas.remove(i);
+		unidad.moverA(new Vector2D().aleatorio(obtenerPosicion().obtenerCoordenadaX(), obtenerPosicion().obtenerCoordenadaX()+ obtenerDimension(), obtenerPosicion().obtenerCoordenadaY(), obtenerPosicion().obtenerCoordenadaX() + obtenerDimension()));
 	}
 	
 	public int cantidadCargado(){
@@ -53,6 +65,14 @@ public abstract class UnidadNave extends Unidad {
 		
 	}
 	
+	public void eliminar(){
+		// si muere se eliminan las unidades q tenia cargadas
+		for (int i= 0 ; i<unidadesCargadas.size(); i++){
+			unidadesCargadas.get(i).eliminar();
+		}
+		super.eliminar();
+	}
+	
 	public void realizarAccion(String accion, Entidad destino) throws NoPuedeRealizarEsaAccion{
 		switch (accion){
 			case "Cargar": try {
@@ -63,7 +83,7 @@ public abstract class UnidadNave extends Unidad {
 							}
 							break;
 							
-			case "Descargar": descargarUnidad( (Unidad) destino);
+			case "Descargar": descargarUnidades();
 							break;
 							
 			default:	super.realizarAccion(accion, destino);

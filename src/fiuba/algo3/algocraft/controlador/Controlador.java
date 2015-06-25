@@ -23,11 +23,13 @@ import fiuba.algo3.algocraft.excepciones.ErrorAlHacerCopia;
 import fiuba.algo3.algocraft.excepciones.FinDeLaPartida;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaUnidadException;
+import fiuba.algo3.algocraft.excepciones.NoEsPosibleLanzarElHechizoAlli;
 import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoHaySuministroEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoPuedeRealizarEsaAccion;
 import fiuba.algo3.algocraft.excepciones.NoSeEncontroLaEntidad;
+import fiuba.algo3.algocraft.excepciones.NoTieneEnergiaSuficiente;
 import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
 import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
 import fiuba.algo3.algocraft.jugador.Jugador;
@@ -247,15 +249,15 @@ public class Controlador {
 								
 				try {
 					juego.indicarAccion(string,unidad,entidad);
-					if (string == "Atacar"){
-						reproducirSonido("recursos/pew pew.wav");
-					}
+					reproducirSonidoDeAtaque(string);
+					
 				} catch (NoPuedeRealizarEsaAccion e) {
 					reproducirSonido("recursos/cant do that.wav");
 					vista.mostrarCartel("Advertencia", "La unidad no puede realizar la accion solicitada.");
 				}
 				catch(FinDeLaPartida e)
 				{
+					reproducirSonido("recursos/congrats.wav");
 					vista.mostrarCartelFinJuego("El jugador "+e.obtenerGanador()+" ha ganador la partida");
 				}
 			}
@@ -292,6 +294,33 @@ public class Controlador {
 			
 		}	
 		return new ListenerMusica();
+	}
+	
+	public void reproducirSonidoDeAtaque(String accion){
+
+		switch (accion){
+			case "Atacar": 
+				reproducirSonido("recursos/pew pew.wav");
+				break;
+	
+			case "LanzarTormentaPsiconica": 
+				reproducirSonido("recursos/storm.wav");
+				break;
+							
+			case "LanzarAlucinacion":
+				reproducirSonido("recursos/illusion.wav");
+				break;
+				
+			case "LanzarRadiacion": 
+				reproducirSonido("recursos/radiation.wav");
+				break;		
+				
+			case "LanzarEMP": 
+				reproducirSonido("recursos/emp.wav");
+				break;
+							
+			default: break;
+		}
 	}
 	
 	public void reproducirSonido(String ruta){

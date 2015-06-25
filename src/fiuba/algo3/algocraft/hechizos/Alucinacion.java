@@ -11,9 +11,9 @@ import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.UnidadAtaqueBasico;
 import fiuba.algo3.algocraft.excepciones.NoEsPosibleLanzarElHechizoAlli;
 import fiuba.algo3.algocraft.excepciones.NoHayUnidadEnEsaPosicion;
+import fiuba.algo3.algocraft.excepciones.NoLePerteneceLaEntidad;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.mundo.Mundo;
-import fiuba.algo3.excepciones.NoLePerteneceLaEntidad;
 
 public class Alucinacion extends Hechizo {
 	// copia la unidad en la misma posicion que la copiada

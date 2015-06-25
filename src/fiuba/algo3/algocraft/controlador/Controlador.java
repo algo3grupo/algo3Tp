@@ -264,21 +264,14 @@ public class Controlador {
 		return new ListenerCreadorEstructuras();
 	}
 	
-	public ActionListener obtenerListenerMusica(final JMenuItem play) 
+	public ActionListener obtenerListenerMusica(final JMenuItem play, final Clip clip) 
 	{
 		class ListenerMusica implements ActionListener
 		{
-			Clip clip;
 			int lastFrame;
 			public void actionPerformed(ActionEvent arg0)
 			{
-                if (clip == null) {
-                    	clip = abrirClip("recursos/algocraft theme.wav");
-                		clip.start();
-                        clip.loop(Clip.LOOP_CONTINUOUSLY);
-                        play.setText("||");
-                } else {
-
+                if (clip != null) {
                     if (clip.isRunning()) {
                         lastFrame = clip.getFramePosition();
                         clip.stop();
@@ -304,6 +297,13 @@ public class Controlador {
 	public void reproducirSonido(String ruta){
 			Clip clip = abrirClip(ruta);
 	        clip.start();
+	}
+	
+	public Clip reproducirClipDeSonidoContinuamente(String ruta){
+		Clip clip = abrirClip(ruta);
+        clip.start();
+        clip.loop(Clip.LOOP_CONTINUOUSLY);
+        return clip;
 	}
 	
 	public Clip abrirClip(String ruta){

@@ -15,6 +15,7 @@ import fiuba.algo3.algocraft.excepciones.NoEsPosibleLanzarElHechizoAlli;
 import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoHaySuministroEnElLugarACrear;
+import fiuba.algo3.algocraft.excepciones.NoLePerteneceLaEntidad;
 import fiuba.algo3.algocraft.excepciones.NoPuedeRealizarEsaAccion;
 import fiuba.algo3.algocraft.excepciones.NoSeEncontroLaEntidad;
 import fiuba.algo3.algocraft.excepciones.NoTieneEnergiaSuficiente;
@@ -24,7 +25,6 @@ import fiuba.algo3.algocraft.mundo.Mundo;
 import fiuba.algo3.algocraft.unidadesProtoss.AltoTemplario;
 import fiuba.algo3.algocraft.unidadesTerran.NaveCiencia;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
-import fiuba.algo3.excepciones.NoLePerteneceLaEntidad;
 
 public class AltoTemplarioTest {
 

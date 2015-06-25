@@ -79,6 +79,7 @@ public abstract class UnidadNave extends Unidad {
 				
 							}catch (NoEsPosibleCargarEstaUnidad | NoHayUnidadEnEsaPosicion e) {
 								e.printStackTrace();
+								throw new NoPuedeRealizarEsaAccion();
 							}
 							break;
 							

@@ -14,15 +14,15 @@ import fiuba.algo3.algocraft.excepciones.ErrorAlHacerCopia;
 import fiuba.algo3.algocraft.excepciones.FinDeLaPartida;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaUnidadException;
+import fiuba.algo3.algocraft.excepciones.NoExisteLaRaza;
 import fiuba.algo3.algocraft.excepciones.NoHayGasEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoHaySuministroEnElLugarACrear;
+import fiuba.algo3.algocraft.excepciones.NoLePerteneceLaEntidad;
 import fiuba.algo3.algocraft.excepciones.NoPuedeRealizarEsaAccion;
 import fiuba.algo3.algocraft.excepciones.NoSeEncontroLaEntidad;
 import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
 import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
-import fiuba.algo3.excepciones.NoExisteLaRaza;
-import fiuba.algo3.excepciones.NoLePerteneceLaEntidad;
 
 public class PartidaTest {
 

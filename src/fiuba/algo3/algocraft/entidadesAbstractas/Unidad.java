@@ -82,6 +82,8 @@ public abstract class Unidad extends ColaDeAcciones implements IUnidad, IEfectoE
 		
 		for(int i=0;i<camino.size();i++)
 		{
+			//if ( !getJugador().getMundo().estaLibre(camino.get(i)) & ( !esVoladora() ) )
+				//break;
 			posicionarEn(camino.get(i));		
 			despejarZona();
 			getJugador().getMundo().obtenerJuego().actualizarObservadores(this);

@@ -45,7 +45,7 @@ public class Controlador {
 		this.vista = vista;
 	}
 	
-	public ActionListener obtenerListenerCreadorEstructuras(String nombre, Vector2D posicion) 
+	public ActionListener obtenerListenerCreadorEstructuras(final String nombre, final Vector2D posicion) 
 	{
 		class ListenerCreadorEstructuras implements ActionListener
 		{
@@ -74,7 +74,7 @@ public class Controlador {
 		return new ListenerCreadorEstructuras();
 	}
 	
-	public ActionListener obtenerListenerCreadorDeUnidades(String nombre, Estructura estructura) 
+	public ActionListener obtenerListenerCreadorDeUnidades(final String nombre, final Estructura estructura) 
 	{
 		class ListenerCreadorUnidades implements ActionListener
 		{
@@ -191,7 +191,7 @@ public class Controlador {
 		return new ListenerPasarTurno();
 	}
 
-	public ActionListener obtenerListenerAccionesDeUnidad(String string, Unidad unidad, Vector2D posicion)
+	public ActionListener obtenerListenerAccionesDeUnidad(final String string, final Unidad unidad, final Vector2D posicion)
 	{
 		class ListenerCreadorEstructuras implements ActionListener
 		{
@@ -264,7 +264,7 @@ public class Controlador {
 		return new ListenerCreadorEstructuras();
 	}
 	
-	public ActionListener obtenerListenerMusica(JMenuItem play) 
+	public ActionListener obtenerListenerMusica(final JMenuItem play) 
 	{
 		class ListenerMusica implements ActionListener
 		{

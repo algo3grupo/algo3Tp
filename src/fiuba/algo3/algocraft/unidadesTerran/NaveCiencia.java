@@ -1,9 +1,6 @@
 package fiuba.algo3.algocraft.unidadesTerran;
 
-import java.awt.Graphics;
 import java.util.ArrayList;
-
-import javax.swing.JFrame;
 
 import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.atributos.Vida;
@@ -25,6 +22,7 @@ public class NaveCiencia extends UnidadEnergia {
 	}
 
 	public void lanzarEMP(Vector2D posicion, Mundo mundo) throws NoTieneEnergiaSuficiente, NoEsPosibleLanzarElHechizoAlli{
+		
 		lanzarHechizo(new EMP(), posicion, mundo);
 	}
 	

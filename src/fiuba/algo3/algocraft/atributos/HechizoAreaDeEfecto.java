@@ -38,4 +38,8 @@ public abstract class HechizoAreaDeEfecto extends Hechizo {
 
 	public abstract void afectar(Unidad unidad);
 	
+	public int obtenerRadioEfecto()
+	{
+		return radioDeEfecto;
+	}
 }

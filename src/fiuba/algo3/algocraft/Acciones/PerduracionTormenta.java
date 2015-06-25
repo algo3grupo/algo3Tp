@@ -18,6 +18,8 @@ public class PerduracionTormenta implements IAccion {
 		this.mundo = mundo;
 		this.tormenta = tormenta;
 		
+		mundo.obtenerJuego().registrarAreaAfectada(centro,tormenta.obtenerRadioEfecto(),2);
+		
 	}
 	
 	@Override

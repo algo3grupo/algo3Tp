@@ -86,7 +86,13 @@ public abstract class Dibujar
 		contexto.drawString(texto, (int)posicion.obtenerCoordenadaX(), (int)posicion.obtenerCoordenadaY());			
 	}
 	
-	
+	public static void dibujarCirculo(Graphics contexto, Vector2D centro, int radio)
+	{
+		contexto.setColor(new Color(90,90,90,60));
+		
+		contexto.fillArc((int)(centro.obtenerCoordenadaX()-radio), (int)(centro.obtenerCoordenadaY()-radio), 2*radio, 2*radio, 0, 360);
+		
+	}
 	
 
 }

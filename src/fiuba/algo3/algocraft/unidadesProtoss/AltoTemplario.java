@@ -34,7 +34,6 @@ public class AltoTemplario extends UnidadEnergia {
 	public void lanzarTormentaPsiconica(Vector2D posicion, Mundo mundo) throws NoTieneEnergiaSuficiente,
 																	NoEsPosibleLanzarElHechizoAlli{
 		
-		//sup la tormenta actua a fin de turno
 		this.agregarAccion(new PerduracionTormenta(posicion, mundo, new TormentaPsiconica()));
 		
 	}

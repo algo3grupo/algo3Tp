@@ -30,6 +30,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import fiuba.algo3.algocraft.atributos.AreaAfectada;
 import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
@@ -65,10 +66,11 @@ public class Juego extends Observable{
 	
 	private Jugador jugador1, jugador2, turno;
 	private Mundo mundo;
+	private ArrayList<AreaAfectada> areasAfectadas;
 	
 	public Juego(String razaJugador1, String nombreJugador1, Color colorJugador1, String razaJugador2, String nombreJugador2, Color colorJugador2)
 	{
-		
+		areasAfectadas = new ArrayList<AreaAfectada>();
 		mundo = new Mundo(5000,100,this);
 		mundo.generar();		
 		try{
@@ -119,6 +121,10 @@ public class Juego extends Observable{
 		
 		jugador1.terminarTurno();
 		jugador2.terminarTurno();
+		
+		for(int i=0;i<areasAfectadas.size();i++)
+			if(areasAfectadas.get(i).actualizar())
+				areasAfectadas.remove(i);
 		
 		actualizarObservadores();
 	}
@@ -454,6 +460,18 @@ public class Juego extends Observable{
 		return aux;
 		
 		
+	}
+	
+	public ArrayList<AreaAfectada> obtenerAreasAfectadas()
+	{
+		return areasAfectadas;
+	}
+
+	public void registrarAreaAfectada(Vector2D centro, int radio, int turnos) 
+	{
+		AreaAfectada aux = new AreaAfectada(centro,radio,turnos);
+		
+		areasAfectadas.add(aux);
 	}
 	
 	

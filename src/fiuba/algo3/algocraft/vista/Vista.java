@@ -23,6 +23,7 @@ import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 
 import fiuba.algo3.algocraft.Juego;
+import fiuba.algo3.algocraft.atributos.AreaAfectada;
 import fiuba.algo3.algocraft.controlador.Controlador;
 import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
@@ -84,13 +85,18 @@ public class Vista implements Observer {
 		Vistas.put("Marine", new VistaMarine());
 		Vistas.put("NaveCiencia", new VistaNaveCiencia());
 		Vistas.put("NaveTransporteTerran", new VistaNaveTransporteTerran());
-		Vistas.put("Ceguera", new VistaCeguera());		
+		Vistas.put("Ceguera", new VistaCeguera());	
 		
 	}
 	
 	private void dibujar(Graphics g, Entidad e)
 	{
 		Vistas.get(e.getClass().getSimpleName()).dibujar(g,e,this);
+	}
+	
+	private void dibujar(Graphics g, AreaAfectada a)
+	{
+		Dibujar.dibujarCirculo(g, a.obtenerCentro() , a.obtenerRadio());
 	}
 	
 	private void dibujar(Graphics g, Mundo m)
@@ -195,6 +201,11 @@ public class Vista implements Observer {
 		
 			while(i.hasNext())
 				dibujar(g,(Entidad)i.next());
+			
+			i = this.juego.obtenerAreasAfectadas().iterator();
+			
+			while(i.hasNext())
+				dibujar(g,(AreaAfectada)i.next());			
 		
 			dibujar(g,juego.obtenerCegueras());
 		
@@ -205,6 +216,7 @@ public class Vista implements Observer {
 			ArrayList<Entidad> entidades;
 			ArrayList<Ceguera> cegueras;
 			Vector2D posicion;
+			Iterator it;
 			
 			for(int i=0;i<5;i++)
 				for(int a=0;a<5;a++)
@@ -218,6 +230,11 @@ public class Vista implements Observer {
 										
 					for(int b=0;b<entidades.size();b++)
 						dibujar(g,entidades.get(b));	
+					
+					it = this.juego.obtenerAreasAfectadas().iterator();
+					
+					while(it.hasNext())
+						dibujar(g,(AreaAfectada)it.next());	
 					
 					cegueras = juego.ceguerasEnRectangulo(posicion,e.obtenerDimension());
 					

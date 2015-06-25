@@ -174,14 +174,14 @@ public class NaveCienciaTest {
 		//Turno 253 en adelante: VerificarDanioAZealotsAlrededor
 		for (int j = 1; j < 5 ; j++){
 			zealot = juego.obtenerUnidadesTurno().get(j);
-			assertEquals(40,zealot.getVida().obtenerEscudoActual());
+			assertEquals(50,zealot.getVida().obtenerEscudoActual());
 		}
 		
 		juego.finalizarTurno();
 		
 		for (int j = 1; j < 5 ; j++){
 			zealot = juego.obtenerUnidadesDeJugador1().get(j);
-			assertEquals(20,zealot.getVida().obtenerEscudoActual());
+			assertEquals(40,zealot.getVida().obtenerEscudoActual());
 		}
 		
 		juego.finalizarTurno();// les sacan 30 y despues sube el escudo 10 --> -10 vida

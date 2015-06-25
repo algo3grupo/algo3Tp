@@ -6,6 +6,7 @@ import java.awt.Color;
 
 import org.junit.Test;
 
+import fiuba.algo3.algocraft.Juego;
 import fiuba.algo3.algocraft.excepciones.ErrorAlHacerCopia;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaUnidadException;
@@ -81,6 +82,8 @@ public class UnidadesEnergiaTest {
 											NoTieneLaEstructuraCreadaException, NoTieneRecursosSuficientesException,
 											NoHayMineralEnElLugarACrear, NoHayGasEnElLugarACrear, ErrorAlHacerCopia,
 											NoEsDeSuRazaLaUnidadException, NoSeEncontroLaEntidad, NoEsPosibleLanzarElHechizoAlli, NoHaySuministroEnElLugarACrear{
+		Juego juego = new Juego("Protoss","DSRKLI",new Color(1),"Terran","YTREJS",new Color(0));
+		
 		Jugador jugador = new Protoss(100,new Vector2D(100,100),"Pepe",new Color(0),new Mundo(1000, 1000, null));
 		jugador.agregarMineral(4000);
 		jugador.agregarGas(4000);
@@ -97,7 +100,7 @@ public class UnidadesEnergiaTest {
 		PasaTurnos.pasarTurnos(jugador, 8);
 		AltoTemplario altoTemplario = (AltoTemplario) jugador.ObtenerUnidades().get(0);
 		try {
-			altoTemplario.lanzarTormentaPsiconica(new Vector2D(), new Mundo(1000, 1000, null));
+			altoTemplario.lanzarTormentaPsiconica(new Vector2D(), new Mundo(1000, 1000, juego));
 		} catch (NoTieneEnergiaSuficiente e) {
 			assert(true);
 		}

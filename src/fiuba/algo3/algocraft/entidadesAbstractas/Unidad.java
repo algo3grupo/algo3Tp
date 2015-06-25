@@ -6,7 +6,6 @@ import java.util.TimerTask;
 
 import javax.swing.JFrame;
 
-import fiuba.algo3.algocraft.Acciones.RecuperarEscudo;
 import fiuba.algo3.algocraft.Interfaces.IEfectoEMP;
 import fiuba.algo3.algocraft.Interfaces.IUnidad;
 import fiuba.algo3.algocraft.atributos.Ataque;
@@ -33,7 +32,6 @@ public abstract class Unidad extends ColaDeAcciones implements IUnidad, IEfectoE
 		this.suministro = suministro;
 		this.transporte = transporte;
 
-		this.agregarAccion(new RecuperarEscudo(this));
  	}
 
 

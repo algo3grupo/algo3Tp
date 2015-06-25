@@ -1,9 +1,5 @@
 package fiuba.algo3.algocraft.unidadesTerran;
 
-import java.awt.Graphics;
-
-import javax.swing.JFrame;
-
 import fiuba.algo3.algocraft.atributos.Ataque;
 import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.atributos.Vida;

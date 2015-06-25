@@ -1,19 +1,13 @@
 package fiuba.algo3.algocraft.unidadesProtoss;
 
-import java.awt.Graphics;
 import java.util.ArrayList;
-
-import javax.swing.JFrame;
 
 import fiuba.algo3.algocraft.Acciones.PerduracionTormenta;
 import fiuba.algo3.algocraft.Acciones.RecuperarCampo;
-import fiuba.algo3.algocraft.Interfaces.IEfectoEMP;
 import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.atributos.VidaConEscudo;
 import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
-import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.UnidadEnergia;
-import fiuba.algo3.algocraft.excepciones.NoEsPosibleCargarEstaUnidad;
 import fiuba.algo3.algocraft.excepciones.NoEsPosibleLanzarElHechizoAlli;
 import fiuba.algo3.algocraft.excepciones.NoPuedeRealizarEsaAccion;
 import fiuba.algo3.algocraft.excepciones.NoTieneEnergiaSuficiente;

@@ -3,7 +3,6 @@ package fiuba.algo3.algocraft.vista;
 import java.awt.Graphics;
 
 import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
-import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class VistaNexoMineral extends VistaEntidad {
 	

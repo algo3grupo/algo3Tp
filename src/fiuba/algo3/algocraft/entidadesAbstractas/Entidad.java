@@ -2,8 +2,7 @@ package fiuba.algo3.algocraft.entidadesAbstractas;
 
 import java.util.ArrayList;
 
-import javax.swing.JFrame;
-
+import fiuba.algo3.algocraft.ID;
 import fiuba.algo3.algocraft.atributos.Ataque;
 import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.atributos.Vida;
@@ -11,10 +10,8 @@ import fiuba.algo3.algocraft.atributos.VidaConEscudo;
 import fiuba.algo3.algocraft.excepciones.NoPuedeAtacarUnidadesAereas;
 import fiuba.algo3.algocraft.excepciones.NoPuedeAtacarUnidadesEnTierra;
 import fiuba.algo3.algocraft.excepciones.NoSePuedeAtacarEstaFueraDeRango;
-import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
-import fiuba.algo3.algocraft.ID;
 
 public abstract class Entidad {
 	private int turnos;
@@ -63,7 +60,7 @@ public abstract class Entidad {
 	}
 	
 	public boolean incluyeA(Vector2D posicion)
-	{		
+	{			
 		
 		if(!this.posicion.distintoA(posicion))
 			return true;

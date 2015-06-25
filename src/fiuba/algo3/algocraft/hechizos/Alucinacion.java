@@ -1,12 +1,10 @@
 package fiuba.algo3.algocraft.hechizos;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 
 import fiuba.algo3.algocraft.atributos.Hechizo;
 import fiuba.algo3.algocraft.atributos.VidaConEscudo;
-import fiuba.algo3.algocraft.vector2D.Vector2D;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.UnidadAtaqueBasico;
 import fiuba.algo3.algocraft.excepciones.NoEsPosibleLanzarElHechizoAlli;
@@ -14,6 +12,7 @@ import fiuba.algo3.algocraft.excepciones.NoHayUnidadEnEsaPosicion;
 import fiuba.algo3.algocraft.excepciones.NoLePerteneceLaEntidad;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.mundo.Mundo;
+import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public class Alucinacion extends Hechizo {
 	// copia la unidad en la misma posicion que la copiada

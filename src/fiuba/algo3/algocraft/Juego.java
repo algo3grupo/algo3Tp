@@ -1,41 +1,15 @@
 package fiuba.algo3.algocraft;
 
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Toolkit;
 import java.util.ArrayList;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import java.util.Iterator;
 import java.util.Observable;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 import fiuba.algo3.algocraft.atributos.AreaAfectada;
 import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.UnidadAtaqueBasico;
-import fiuba.algo3.algocraft.entidadesAbstractas.UnidadEnergia;
 import fiuba.algo3.algocraft.excepciones.ErrorAlHacerCopia;
 import fiuba.algo3.algocraft.excepciones.FinDeLaPartida;
 import fiuba.algo3.algocraft.excepciones.NoEsDeSuRazaLaEstructuraException;
@@ -56,11 +30,9 @@ import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.jugador.Protoss;
 import fiuba.algo3.algocraft.jugador.Terran;
 import fiuba.algo3.algocraft.mundo.Ceguera;
-import fiuba.algo3.algocraft.mundo.Mineral;
 import fiuba.algo3.algocraft.mundo.Mundo;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
-import fiuba.algo3.algocraft.vista.Dibujar;
-import fiuba.algo3.algocraft.vista.Lienzo;
+
 
 public class Juego extends Observable{
 	

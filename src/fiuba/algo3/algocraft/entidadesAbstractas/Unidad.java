@@ -1,18 +1,12 @@
 package fiuba.algo3.algocraft.entidadesAbstractas;
 
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import javax.swing.JFrame;
 
 import fiuba.algo3.algocraft.Interfaces.IEfectoEMP;
 import fiuba.algo3.algocraft.Interfaces.IUnidad;
 import fiuba.algo3.algocraft.atributos.Ataque;
 import fiuba.algo3.algocraft.atributos.Costo;
-import fiuba.algo3.algocraft.atributos.Escudo;
 import fiuba.algo3.algocraft.atributos.Vida;
-import fiuba.algo3.algocraft.atributos.VidaConEscudo;
 import fiuba.algo3.algocraft.excepciones.NoPuedeAtacarUnidadesAereas;
 import fiuba.algo3.algocraft.excepciones.NoPuedeAtacarUnidadesEnTierra;
 import fiuba.algo3.algocraft.excepciones.NoPuedeRealizarEsaAccion;

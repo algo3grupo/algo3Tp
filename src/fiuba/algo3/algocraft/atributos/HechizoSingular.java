@@ -5,7 +5,6 @@ import fiuba.algo3.algocraft.excepciones.NoEsPosibleLanzarElHechizoAlli;
 import fiuba.algo3.algocraft.excepciones.NoHayUnidadEnEsaPosicion;
 import fiuba.algo3.algocraft.jugador.Jugador;
 import fiuba.algo3.algocraft.mundo.Mundo;
-import fiuba.algo3.algocraft.unidadesProtoss.Zealot;
 import fiuba.algo3.algocraft.vector2D.Vector2D;
 
 public abstract class HechizoSingular extends Hechizo {

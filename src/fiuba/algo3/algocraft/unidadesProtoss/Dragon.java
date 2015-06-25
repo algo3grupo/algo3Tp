@@ -1,11 +1,6 @@
 package fiuba.algo3.algocraft.unidadesProtoss;
 
-import java.awt.Graphics;
-
-import javax.swing.JFrame;
-
 import fiuba.algo3.algocraft.Acciones.RecuperarCampo;
-import fiuba.algo3.algocraft.Interfaces.IEfectoEMP;
 import fiuba.algo3.algocraft.atributos.Ataque;
 import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.atributos.VidaConEscudo;

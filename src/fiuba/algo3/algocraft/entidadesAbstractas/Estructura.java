@@ -2,8 +2,6 @@ package fiuba.algo3.algocraft.entidadesAbstractas;
 
 import java.util.ArrayList;
 
-import javax.swing.JFrame;
-
 import fiuba.algo3.algocraft.Interfaces.IEstructura;
 import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.atributos.Vida;

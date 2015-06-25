@@ -1,8 +1,6 @@
 package fiuba.algo3.algocraft.vista;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -11,7 +9,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import fiuba.algo3.algocraft.controlador.Controlador;
 import fiuba.algo3.algocraft.controlador.ControladorMenu;
 
 public class VistaMenu 

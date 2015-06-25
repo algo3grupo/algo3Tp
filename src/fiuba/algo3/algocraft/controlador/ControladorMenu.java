@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import fiuba.algo3.algocraft.Juego;
-import fiuba.algo3.algocraft.vector2D.Vector2D;
 import fiuba.algo3.algocraft.vista.Vista;
 import fiuba.algo3.algocraft.vista.VistaMenu;
 

@@ -1,19 +1,14 @@
 package fiuba.algo3.algocraft.entidadesAbstractas;
 
-import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.JFrame;
 
 import fiuba.algo3.algocraft.vector2D.Vector2D;
-import fiuba.algo3.algocraft.vista.Lienzo;
 
 public abstract class Dibujable 
 {

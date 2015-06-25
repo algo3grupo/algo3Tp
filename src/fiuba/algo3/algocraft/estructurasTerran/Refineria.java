@@ -1,9 +1,6 @@
 package fiuba.algo3.algocraft.estructurasTerran;
 
-import java.awt.Graphics;
 import java.util.ArrayList;
-
-import javax.swing.JFrame;
 
 import fiuba.algo3.algocraft.Acciones.RecogerSuministro;
 import fiuba.algo3.algocraft.Interfaces.IRecolectores;

@@ -1,20 +1,12 @@
 package fiuba.algo3.algocraft.jugador;
 
 import java.awt.Color;
-import java.awt.Graphics;
 import java.util.ArrayList;
-import java.util.Iterator;
 
-import javax.swing.JFrame;
-
-import fiuba.algo3.algocraft.IModo;
-import fiuba.algo3.algocraft.ModoID;
-import fiuba.algo3.algocraft.ModoNombre;
 import fiuba.algo3.algocraft.Acciones.CrearUnidad;
 import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.creadores.CreadorEstructuras;
 import fiuba.algo3.algocraft.creadores.CreadorUnidades;
-import fiuba.algo3.algocraft.entidadesAbstractas.ColaDeAcciones;
 import fiuba.algo3.algocraft.entidadesAbstractas.Entidad;
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
 import fiuba.algo3.algocraft.entidadesAbstractas.Unidad;
@@ -26,7 +18,6 @@ import fiuba.algo3.algocraft.excepciones.NoHayMineralEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoHaySuministroEnElLugarACrear;
 import fiuba.algo3.algocraft.excepciones.NoSeEncontroLaEntidad;
 import fiuba.algo3.algocraft.excepciones.NoTieneLaEstructuraCreadaException;
-import fiuba.algo3.algocraft.excepciones.NoTienePoblacionSuficienteException;
 import fiuba.algo3.algocraft.excepciones.NoTieneRecursosSuficientesException;
 import fiuba.algo3.algocraft.mundo.Ceguera;
 import fiuba.algo3.algocraft.mundo.Mundo;

@@ -219,7 +219,8 @@ public abstract class Jugador {
 		}
 		
 	}
-	public void terminarTurno(){
+	public void terminarTurno()
+	{
 		ejecutarAccionesDeLista((ArrayList) estructuras);
 		ejecutarAccionesDeLista((ArrayList) unidades);
 		

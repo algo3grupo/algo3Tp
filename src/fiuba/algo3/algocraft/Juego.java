@@ -72,8 +72,8 @@ public class Juego extends Observable{
 		mundo = new Mundo(5000,100,this);
 		mundo.generar();		
 		try{
-		jugador1 = nuevoJugador("Protoss",nombreJugador1, colorJugador1, mundo.posicionBaseJugador1());
-		jugador2= nuevoJugador("Terran",nombreJugador2, colorJugador2, mundo.posicionBaseJugador2());
+		jugador1 = nuevoJugador(razaJugador1,nombreJugador1, colorJugador1, mundo.posicionBaseJugador1());
+		jugador2= nuevoJugador(razaJugador2,nombreJugador2, colorJugador2, mundo.posicionBaseJugador2());
 		}catch (NoExisteLaRaza e){
 			return;
 		}
@@ -436,10 +436,25 @@ public class Juego extends Observable{
 		
 		for(int i=0;i<unidades.size();i++)
 			if(unidades.get(i).estaEn(supizq,dimension))
-				aux.add(unidades.get(i));		
-		
-
-	
+				aux.add(unidades.get(i));	
 		return aux;
+		
+		
 	}
+	
+	public ArrayList<Ceguera> ceguerasEnRectangulo(Vector2D supizq, int dimension) 
+	{
+		ArrayList<Ceguera> aux = new ArrayList<Ceguera>(), cegueras;
+		
+		cegueras = turno.obtenerCegueras();		
+		
+		for(int i=0;i<cegueras.size();i++)
+			if(cegueras.get(i).estaEn(supizq,dimension))
+				aux.add(cegueras.get(i));	
+		return aux;
+		
+		
+	}
+	
+	
 }

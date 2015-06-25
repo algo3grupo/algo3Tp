@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 
 import fiuba.algo3.algocraft.Acciones.RecogerSuministro;
+import fiuba.algo3.algocraft.Acciones.RecuperarCampo;
 import fiuba.algo3.algocraft.Interfaces.IRecolectores;
 import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.atributos.VidaConEscudo;
@@ -20,6 +21,7 @@ public class NexoMineral extends Estructura implements IRecolectores{
 		super(dimension, posicion, new VidaConEscudo(250,250) , 0, jugador, "Nexo Mineral", new Costo(50,0), "", 4);
 		
 		agregarAccion(new RecogerSuministro(this));
+		agregarAccion(new RecuperarCampo(this));
 	}
 	
 	public void recolectarSuministro()

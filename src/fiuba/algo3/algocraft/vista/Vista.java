@@ -203,6 +203,7 @@ public class Vista implements Observer {
 		{
 			Entidad e = (Entidad)objeto;
 			ArrayList<Entidad> entidades;
+			ArrayList<Ceguera> cegueras;
 			Vector2D posicion;
 			
 			for(int i=0;i<5;i++)
@@ -217,6 +218,11 @@ public class Vista implements Observer {
 										
 					for(int b=0;b<entidades.size();b++)
 						dibujar(g,entidades.get(b));	
+					
+					cegueras = juego.ceguerasEnRectangulo(posicion,e.obtenerDimension());
+					
+					for(int b=0;b<cegueras.size();b++)
+						dibujar(g,cegueras.get(b));
 					
 					dibujar(g,e);
 				}

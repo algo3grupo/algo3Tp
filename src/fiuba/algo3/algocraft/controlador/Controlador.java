@@ -200,6 +200,7 @@ public class Controlador {
 			{
 				Entidad entidad;
 				Unidad aux;
+				ArrayList<Unidad> unidades;
 				
 				entidad = juego.obtenerEstructuraContraria(posicion);
 				
@@ -209,24 +210,34 @@ public class Controlador {
 					
 					if(aux == null)
 					{
-						class Posicion extends Entidad
+						
+						unidades = juego.obtenerUnidad(posicion);
+						
+						if(unidades.size() == 0)
 						{
-
-							public Posicion(int dimension, Vector2D posicion,Vida vida, int rangoDeVision,Jugador jugador, String nombre,Costo costo, String requiere, int turnos) 
+												
+							class Posicion extends Entidad
 							{
-								super(dimension, posicion, vida, rangoDeVision, jugador, nombre, costo,
-										requiere, turnos);
+
+								public Posicion(int dimension, Vector2D posicion,Vida vida, int rangoDeVision,Jugador jugador, String nombre,Costo costo, String requiere, int turnos) 
+								{
+									super(dimension, posicion, vida, rangoDeVision, jugador, nombre, costo,	requiere, turnos);
 								
-							}
+								}
 
 							
-							public void hacerMisAcciones() 
-							{
+								public void hacerMisAcciones() 
+								{
 																
+								}
+							
 							}
+							
+							entidad = new Posicion(0, posicion, null, 0, null, string, null, string, 0);
 							
 						}
-						entidad = new Posicion(0, posicion, null, 0, null, string, null, string, 0);
+						else
+							entidad = unidades.get(0);
 					}
 					else 
 					{

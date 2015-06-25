@@ -4,6 +4,7 @@ import java.awt.Graphics;
 
 import javax.swing.JFrame;
 
+import fiuba.algo3.algocraft.Acciones.RecuperarCampo;
 import fiuba.algo3.algocraft.Interfaces.IEfectoEMP;
 import fiuba.algo3.algocraft.atributos.Ataque;
 import fiuba.algo3.algocraft.atributos.Costo;
@@ -18,6 +19,8 @@ public class Dragon extends UnidadAtaqueBasico {
 		
 		super(dimension, posicion, new VidaConEscudo(100,80), 1, jugador, "Dragon", new Costo(125,50), "Acceso", 2 , 4, 6 ,new Ataque(20, 20, 4*dimension, 4*dimension));
 		
+		agregarAccion(new RecuperarCampo(this));
+	
 	}
 
 

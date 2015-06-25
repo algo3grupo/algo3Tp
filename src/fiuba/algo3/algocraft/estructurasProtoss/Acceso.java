@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
+import fiuba.algo3.algocraft.Acciones.RecuperarCampo;
 import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.atributos.VidaConEscudo;
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
@@ -16,6 +17,8 @@ public class Acceso extends Estructura{
 	public Acceso(int dimension, Vector2D posicion, Jugador jugador) {
 		
 		super(dimension, posicion, new VidaConEscudo(500,500), 0, jugador, "Acceso",new Costo(150,0), "", 8);
+		
+		agregarAccion(new RecuperarCampo(this));
 		
 	}
 

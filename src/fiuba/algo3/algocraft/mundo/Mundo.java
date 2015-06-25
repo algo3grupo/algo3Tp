@@ -34,11 +34,20 @@ public class Mundo{
 		baseJugador1 = pixelAGrilla(new Vector2D(4*divisionGrilla,4*divisionGrilla));
 		baseJugador2 = pixelAGrilla(new Vector2D(resolucion-4*divisionGrilla,resolucion-4*divisionGrilla));
 		
+		Vector2D posicionGas = new Vector2D(0,0), posicionMineral;
+		
+		gas.add(new Gas(divisionGrilla,posicionGas));
+		
+		posicionGas = new Vector2D(resolucion-divisionGrilla,resolucion-divisionGrilla);
+		
+		gas.add(new Gas(divisionGrilla,posicionGas));
+		
+		
 		for(int i=0;i<divisionGrillaParaAnalisis;i++)
 			for(int a=0;a<divisionGrillaParaAnalisis;a++)
 				for(int j=0;j<50;j++)
 				{
-					Vector2D posicionMineral = pixelAGrilla(new Vector2D().aleatorio(tamañoDivision*i,tamañoDivision*(i+1)-divisionGrilla,tamañoDivision*a,tamañoDivision*(a+1)-divisionGrilla));
+					posicionMineral = pixelAGrilla(new Vector2D().aleatorio(tamañoDivision*i,tamañoDivision*(i+1)-divisionGrilla,tamañoDivision*a,tamañoDivision*(a+1)-divisionGrilla));
 					
 					if(!hayMineral(posicionMineral) && !hayGas(posicionMineral) && baseJugador1.distintoA(posicionMineral) && baseJugador2.distintoA(posicionMineral))
 						mineral.add(new Mineral(divisionGrilla,posicionMineral));	
@@ -49,7 +58,7 @@ public class Mundo{
 			for(int a=0;a<divisionGrillaParaAnalisis;a++)
 				for(int j=0;j<10;j++)
 				{
-					Vector2D posicionGas = pixelAGrilla(new Vector2D().aleatorio(tamañoDivision*i,tamañoDivision*(i+1)-divisionGrilla,tamañoDivision*a,tamañoDivision*(a+1)-divisionGrilla));
+					posicionGas = pixelAGrilla(new Vector2D().aleatorio(tamañoDivision*i,tamañoDivision*(i+1)-divisionGrilla,tamañoDivision*a,tamañoDivision*(a+1)-divisionGrilla));
 					
 					if(!hayMineral(posicionGas) && !hayGas(posicionGas) && baseJugador1.distintoA(posicionGas) && baseJugador2.distintoA(posicionGas))
 						gas.add(new Gas(divisionGrilla,posicionGas));	

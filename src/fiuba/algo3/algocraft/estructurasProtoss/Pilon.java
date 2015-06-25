@@ -3,6 +3,7 @@ package fiuba.algo3.algocraft.estructurasProtoss;
 import java.util.ArrayList;
 
 import fiuba.algo3.algocraft.Acciones.AumentarPoblacion;
+import fiuba.algo3.algocraft.Acciones.RecuperarCampo;
 import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.atributos.VidaConEscudo;
 import fiuba.algo3.algocraft.entidadesAbstractas.Estructura;
@@ -14,6 +15,8 @@ public class Pilon extends Estructura {
 	public Pilon(int dimension, Vector2D posicion, Jugador jugador) {
 		super(dimension, posicion, new VidaConEscudo(300,300), 0, jugador, "Pilon", new Costo(100,0), "", 5);
 		this.agregarAccion(new AumentarPoblacion(this));
+		
+		agregarAccion(new RecuperarCampo(this));
 	}
 	
 	public void actualizarPoblacion(){

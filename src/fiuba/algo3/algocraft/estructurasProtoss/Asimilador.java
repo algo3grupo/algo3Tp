@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 
 import fiuba.algo3.algocraft.Acciones.RecogerSuministro;
+import fiuba.algo3.algocraft.Acciones.RecuperarCampo;
 import fiuba.algo3.algocraft.Interfaces.IRecolectores;
 import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.atributos.VidaConEscudo;
@@ -19,6 +20,7 @@ public class Asimilador extends Estructura implements IRecolectores {
 		super(dimension, posicion, new VidaConEscudo(450, 450), 0, jugador, "Asimilador", new Costo(50,0), "", 8);
 		
 		agregarAccion(new RecogerSuministro(this));
+		agregarAccion(new RecuperarCampo(this));
 	}
 	
 	public void recolectarSuministro()

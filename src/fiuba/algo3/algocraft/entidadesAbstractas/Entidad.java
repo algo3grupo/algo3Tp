@@ -31,8 +31,8 @@ public abstract class Entidad {
 	
 	public void despejarZona()
 	{
-		for(int i=0;i<rangoDeVision*2;i++)
-			for(int a=0;a<rangoDeVision*2;a++)
+		for(int i=0;i<rangoDeVision*3;i++)
+			for(int a=0;a<rangoDeVision*3;a++)
 			{
 				jugador.verZona(new Vector2D((i*dimension)+(posicion.obtenerCoordenadaX()-(rangoDeVision*dimension)),(a*dimension)+(posicion.obtenerCoordenadaY()-(rangoDeVision*dimension))));	
 			}

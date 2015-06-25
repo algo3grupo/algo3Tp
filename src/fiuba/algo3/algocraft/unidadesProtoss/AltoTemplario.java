@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 
 import fiuba.algo3.algocraft.Acciones.PerduracionTormenta;
+import fiuba.algo3.algocraft.Acciones.RecuperarCampo;
 import fiuba.algo3.algocraft.Interfaces.IEfectoEMP;
 import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.atributos.VidaConEscudo;
@@ -27,6 +28,7 @@ public class AltoTemplario extends UnidadEnergia {
 	public AltoTemplario(int dimension, Vector2D posicion, Jugador jugador) {
 		super(dimension, posicion, new VidaConEscudo(40,40), 7, jugador, "AltoTemplario", new Costo(100,0), "Archivos Templarios", 2, 2, 7);
 		
+		agregarAccion(new RecuperarCampo(this));
 	}
 
 	public void lanzarTormentaPsiconica(Vector2D posicion, Mundo mundo) throws NoTieneEnergiaSuficiente,

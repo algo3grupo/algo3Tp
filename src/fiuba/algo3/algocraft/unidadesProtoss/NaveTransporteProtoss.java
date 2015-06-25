@@ -4,6 +4,7 @@ import java.awt.Graphics;
 
 import javax.swing.JFrame;
 
+import fiuba.algo3.algocraft.Acciones.RecuperarCampo;
 import fiuba.algo3.algocraft.Interfaces.IEfectoEMP;
 import fiuba.algo3.algocraft.atributos.Costo;
 import fiuba.algo3.algocraft.atributos.VidaConEscudo;
@@ -17,6 +18,8 @@ public class NaveTransporteProtoss extends UnidadNave{
 		super(dimension, posicion, new VidaConEscudo(80, 60), 8, jugador, new Costo(100,0), 2, 8);
 		
 		setNombre("NaveTransporteProtoss");
+	
+		agregarAccion(new RecuperarCampo(this));
 	}
 	
 
